@@ -1,15 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class EventManager : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+	public static EventManager instance;
+
+	public List<CutScene> cutScenes;
+
+	void Awake()
+	{
+		if (instance == null) 
+			instance = this;
+
+		if (instance != this)
+			Destroy (gameObject);
+
+		DontDestroyOnLoad (gameObject);
 	}
 }

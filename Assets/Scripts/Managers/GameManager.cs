@@ -8,12 +8,15 @@ public class GameManager : MonoBehaviour {
 
 	public Stats stats;
 
-	void Initialize()
+	void Awake()
 	{
-		if (instance != null) 
-			DestroyImmediate (instance);
+		if (instance == null) 
+			instance = this;
 
-		instance = this;
+		if (instance != this)
+			Destroy (gameObject);
+
+		DontDestroyOnLoad (gameObject);
 	}
 
 }
