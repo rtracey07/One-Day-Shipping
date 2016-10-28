@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour {
 		Move ();
 
 		//Update Animation variable.
-//		animator.SetFloat ("Speed", controller.velocity.magnitude * Mathf.CeilToInt(vertical));			
+		animator.SetFloat ("Speed", controller.velocity.magnitude * Mathf.CeilToInt(vertical));			
 	}
 
 	//Rotate Player Around y-axis.
@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour {
 		transform.Rotate(0,rotation,0);
 
 		//Update Rotation Animation variable.
-//		animator.SetFloat ("TurnSpeed", rotation);
+		animator.SetFloat ("TurnSpeed", rotation);
 	}
 
 	//Move Player.
@@ -100,7 +100,7 @@ public class PlayerController : MonoBehaviour {
 		//Jumping.
 		if (!sliding && Input.GetButton ("Jump") && controller.isGrounded) 
 		{
-//			animator.SetBool ("Jump", true);
+			animator.SetBool ("Jump", true);
 			moveDirection.y = jumpSpeed;
 		} 
 		//Falling.
@@ -111,7 +111,7 @@ public class PlayerController : MonoBehaviour {
 		//On Ground.
 		else 
 		{
-//			animator.SetBool ("Jump", false);
+			animator.SetBool ("Jump", false);
 		}
 
 		//Move the Player via the character controller.
