@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour {
 		Move ();
 
 		//Update Animation variable.
-		animator.SetFloat ("Speed", controller.velocity.magnitude * Mathf.CeilToInt(vertical));			
+		animator.SetFloat ("Speed", new Vector2(controller.velocity.x, controller.velocity.z).magnitude * Mathf.CeilToInt(vertical));			
 	}
 
 	//Rotate Player Around y-axis.
