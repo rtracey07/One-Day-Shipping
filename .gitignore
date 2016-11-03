@@ -11,3 +11,9 @@ One-Day-Shipping.sln
 *.csproj
 
 One-Day-Shipping.userprefs
+
+*.csproj
+
+Assembly-CSharp-Editor.csproj
+
+Assembly-CSharp-firstpass.csproj
