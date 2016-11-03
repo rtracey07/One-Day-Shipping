@@ -5,3 +5,9 @@ Temp/**
 Assembly-CSharp.csproj
 
 One-Day-Shipping.sln
+
+*.csproj
+
+*.csproj
+
+One-Day-Shipping.userprefs
