@@ -22,6 +22,7 @@ public class DogAI : MonoBehaviour {
 	private bool wallHit = false;
 	private bool playerChase = false;							// if the player is nearby
 	private Animator animator;									// for animating
+	private bool wall = false;
 
 	//positions
 	private float x;
@@ -62,6 +63,16 @@ public class DogAI : MonoBehaviour {
 		if (Physics.Raycast (transform.position, -Vector3.up, out hit)) {
 			ground = hit;
 		}
+		if (Physics.Raycast (transform.position, Vector3.forward, out hit)) {
+			if (hit.distance < 0.3f) {
+				wall = true;
+			}
+			else {
+				wall = false;
+			}
+		} else {
+			wall = false;
+		}
 	}
 
 
@@ -90,6 +101,17 @@ public class DogAI : MonoBehaviour {
 			} else if((transform.position.x - center.x)*(transform.position.x - center.x) 
 				+ (transform.position.z - center.z)*(transform.position.z - center.z) >= radius*radius && !wallHit) {
 				// hit the circumference, so turn around
+				transform.Translate (-2.0f * transform.forward * Time.deltaTime * speed, Space.World);
+				current = transform.rotation.eulerAngles.y;
+				if (current > 180.0f) {
+					change = Random.Range (-180.0f, -120.0f);
+				} else {
+					change = Random.Range (120.0f, 180.0f);
+				}
+				playerChase = false;
+				wallHit = true;
+			} else if(wall && !wallHit) {
+				// hit a wall, so turn around
 				transform.Translate (-2.0f * transform.forward * Time.deltaTime * speed, Space.World);
 				current = transform.rotation.eulerAngles.y;
 				if (current > 180.0f) {
