@@ -21,7 +21,7 @@ GameObject:
   - 4: {fileID: 4000010608261654}
   - 33: {fileID: 33000012473598664}
   - 23: {fileID: 23000011305654468}
-  - 64: {fileID: 64000012068754196}
+  - 64: {fileID: 64000013589347988}
   m_Layer: 0
   m_Name: City_Mailbox_Rusted
   m_TagString: Untagged
@@ -78,7 +78,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012570914920}
   m_Mesh: {fileID: 4300004, guid: ec80b13509ab91d4886451dd8b93d8bb, type: 3}
---- !u!64 &64000012068754196
+--- !u!64 &64000013589347988
 MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -89,4 +89,4 @@ MeshCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Convex: 0
-  m_Mesh: {fileID: 4300006, guid: ec80b13509ab91d4886451dd8b93d8bb, type: 3}
+  m_Mesh: {fileID: 4300004, guid: ec80b13509ab91d4886451dd8b93d8bb, type: 3}
