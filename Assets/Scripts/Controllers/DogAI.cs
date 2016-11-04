@@ -63,9 +63,13 @@ public class DogAI : MonoBehaviour {
 		if (Physics.Raycast (transform.position, -Vector3.up, out hit)) {
 			ground = hit;
 		}
-		if (Physics.Raycast (transform.position, Vector3.forward, out hit)) {
-			if (hit.distance < 0.3f) {
+		//don't walk into walls, do walk up to player
+		RaycastHit front;
+		if (Physics.Raycast (transform.position, transform.forward, out front)) {
+			//Debug.Log ("hit something " + front.distance);
+			if (front.distance < 0.3f && !hit.collider.name.Equals("player")) {
 				wall = true;
+				//Debug.Log ("hit wall");
 			}
 			else {
 				wall = false;
