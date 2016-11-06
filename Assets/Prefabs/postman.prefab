@@ -774,6 +774,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000011406300282}
   - 95: {fileID: 95000012663946288}
+  - 114: {fileID: 114000011324207448}
   m_Layer: 0
   m_Name: postman
   m_TagString: Untagged
@@ -1491,7 +1492,7 @@ Transform:
   m_GameObject: {fileID: 1000013488615578}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -42.386932, y: -0.099, z: 40.89025}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalScale: {x: 0.55, y: 0.55, z: 0.55}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 4000013054298618}
@@ -2156,6 +2157,24 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114000011324207448
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013488615578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a53c889da8bf0482cb8ca59db8f8a236, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundOffset: 0.05
+  speed: 3
+  damageStrength: 15
+  center: {x: -42.38693, y: -0.099, z: 40.89025}
+  radius: 5
+  attackProximity: 0.3
+  player: {fileID: 0}
 --- !u!137 &137000010023492578
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
