@@ -5314,7 +5314,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000011406300282, guid: 9062692dc9f2e41698be565a79e79390, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -42.386932
+      value: -43.07
       objectReference: {fileID: 0}
     - target: {fileID: 4000011406300282, guid: 9062692dc9f2e41698be565a79e79390, type: 2}
       propertyPath: m_LocalPosition.y
@@ -5322,7 +5322,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000011406300282, guid: 9062692dc9f2e41698be565a79e79390, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 40.89025
+      value: 36.11
       objectReference: {fileID: 0}
     - target: {fileID: 4000011406300282, guid: 9062692dc9f2e41698be565a79e79390, type: 2}
       propertyPath: m_LocalRotation.x
@@ -8969,7 +8969,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92601243b6f7f47a0a59d7ba2561e421, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 40
+  speed: 50
   backupSpeedFactor: 2
   rotationSpeed: 60
   jumpSpeed: 10

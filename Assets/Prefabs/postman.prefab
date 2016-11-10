@@ -775,6 +775,7 @@ GameObject:
   - 4: {fileID: 4000011406300282}
   - 95: {fileID: 95000012663946288}
   - 114: {fileID: 114000011324207448}
+  - 54: {fileID: 54000012414592464}
   m_Layer: 0
   m_Name: postman
   m_TagString: Untagged
@@ -1491,7 +1492,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013488615578}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -42.386932, y: -0.099, z: 40.89025}
+  m_LocalPosition: {x: -43.07, y: -0.099, z: 36.11}
   m_LocalScale: {x: 0.55, y: 0.55, z: 0.55}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -2140,6 +2141,21 @@ Transform:
   - {fileID: 4000013883392678}
   m_Father: {fileID: 4000014099406146}
   m_RootOrder: 0
+--- !u!54 &54000012414592464
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013488615578}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!95 &95000012663946288
 Animator:
   serializedVersion: 3
@@ -2168,12 +2184,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a53c889da8bf0482cb8ca59db8f8a236, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pathType: 0
+  route:
+  - {x: -38.47, y: -0.099, z: 47.63}
+  - {x: -51.12, y: -0.099, z: 49.5}
+  - {x: -69.93, y: -0.099, z: 49.5}
+  - {x: -76.95, y: -0.099, z: 47.89}
+  - {x: -76.95, y: -0.099, z: 35.74}
+  - {x: -63.14, y: -0.099, z: 35.74}
+  - {x: -57.11, y: -0.099, z: 36.86}
+  - {x: -50.36, y: -0.099, z: 35.63}
+  - {x: -43.07, y: -0.099, z: 36.11}
   groundOffset: 0.05
   speed: 3
   damageStrength: 15
-  center: {x: -42.38693, y: -0.099, z: 40.89025}
-  radius: 5
+  radius: 3
+  projectileRadius: 5
   attackProximity: 0.3
+  throwsProjectiles: 1
+  projectileSpeed: 1000
+  projectileInterval: 0.5
+  projectile: {fileID: 54000011118484082, guid: da7e932ec170646a3a2f9cb4897ad98a,
+    type: 2}
   player: {fileID: 0}
 --- !u!137 &137000010023492578
 SkinnedMeshRenderer:
