@@ -1,5 +1,7 @@
 fileFormatVersion: 2
-guid: a4051385261ccbb45a4060203fd8d66e
+guid: 7b25da1e6027d45f6bb9eaced9240c22
+timeCreated: 1479170876
+licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
@@ -8,10 +10,8 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: Natures_Fir Tree
-    6400000: //RootNode
-    9500000: //RootNode
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:
@@ -34,9 +34,9 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
-    meshCompression: 2
-    addColliders: 1
+    globalScale: 50
+    meshCompression: 0
+    addColliders: 0
     importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
@@ -48,11 +48,11 @@ ModelImporter:
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
-    useFileScale: 0
+    useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
-    tangentImportMode: 4
+    tangentImportMode: 3
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
@@ -68,7 +68,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
