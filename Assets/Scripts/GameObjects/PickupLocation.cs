@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(Animator))]
 public class PickupLocation : MonoBehaviour {
 
 	private bool selectedLocation;
-	private Animator m_Animator;
+	public Animator m_Animator;
 
 	public ParticleSystem activeEffect;
 	public ParticleSystem collectedEffect;
@@ -14,13 +13,22 @@ public class PickupLocation : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		selectedLocation = false;
-		m_Animator = GetComponent<Animator> ();
 	}
 
 	public void SetActive()
 	{
 		selectedLocation = true;
 		activeEffect.Play ();
+		m_Animator.SetBool ("CollectedBox", false);
 		m_Animator.SetBool ("SelectedBox", true);
-	}		
+	}	
+
+	void OnTriggerEnter(Collider other) {
+		if (other.tag == "Player") {
+			GameManager.Instance.hasPackage = true;
+			activeEffect.Stop ();
+			m_Animator.SetBool ("CollectedBox", true);
+			m_Animator.SetBool ("SelectedBox", false);
+		}
+	}
 }

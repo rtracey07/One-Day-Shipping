@@ -19,11 +19,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011837411038}
-  - 33: {fileID: 33000014279305978}
-  - 23: {fileID: 23000010255171546}
-  - 64: {fileID: 64000013927079918}
   - 114: {fileID: 114000012690788420}
-  - 95: {fileID: 95000014197088960}
+  - 65: {fileID: 65000013342119374}
   m_Layer: 0
   m_Name: City_Mailbox
   m_TagString: Postbox
@@ -47,6 +44,25 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!1 &1000012161878164
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000013474634292}
+  - 23: {fileID: 23000013431373502}
+  - 33: {fileID: 33000012817842854}
+  - 95: {fileID: 95000013322185830}
+  - 64: {fileID: 64000012614427128}
+  m_Layer: 0
+  m_Name: Mailbox_Model
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1000013309452402
 GameObject:
@@ -78,6 +94,7 @@ Transform:
   m_Children:
   - {fileID: 4000014217428542}
   - {fileID: 4000012672640354}
+  - {fileID: 4000013474634292}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &4000012672640354
@@ -93,6 +110,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4000011837411038}
   m_RootOrder: 1
+--- !u!4 &4000013474634292
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012161878164}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 4000011837411038}
+  m_RootOrder: 2
 --- !u!4 &4000014217428542
 Transform:
   m_ObjectHideFlags: 1
@@ -106,12 +136,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4000011837411038}
   m_RootOrder: 0
---- !u!23 &23000010255171546
+--- !u!23 &23000013431373502
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010967416636}
+  m_GameObject: {fileID: 1000012161878164}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -135,32 +165,44 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &33000014279305978
+--- !u!33 &33000012817842854
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010967416636}
+  m_GameObject: {fileID: 1000012161878164}
   m_Mesh: {fileID: 4300002, guid: ec80b13509ab91d4886451dd8b93d8bb, type: 3}
---- !u!64 &64000013927079918
+--- !u!64 &64000012614427128
 MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010967416636}
+  m_GameObject: {fileID: 1000012161878164}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300002, guid: ec80b13509ab91d4886451dd8b93d8bb, type: 3}
---- !u!95 &95000014197088960
+--- !u!65 &65000013342119374
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010967416636}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.3516489, y: 1.299608, z: 1.3325717}
+  m_Center: {x: -0.03417421, y: 0.7198066, z: 0.3630283}
+--- !u!95 &95000013322185830
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010967416636}
+  m_GameObject: {fileID: 1000012161878164}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 07123792ba6054a0f9a44a20da61ddf7, type: 2}
@@ -182,6 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ce5c0d47e068487b987d6994d4be91c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Animator: {fileID: 95000013322185830}
   activeEffect: {fileID: 198000011681228746}
   collectedEffect: {fileID: 198000014044577808}
 --- !u!198 &198000011681228746
@@ -234,7 +277,7 @@ ParticleSystem:
   moveWithTransform: 1
   autoRandomSeed: 1
   scalingMode: 1
-  randomSeed: 1732095471
+  randomSeed: 1192151369
   InitialModule:
     serializedVersion: 2
     enabled: 1
@@ -1988,7 +2031,7 @@ ParticleSystem:
   moveWithTransform: 1
   autoRandomSeed: 1
   scalingMode: 1
-  randomSeed: 1250174629
+  randomSeed: -1113214553
   InitialModule:
     serializedVersion: 2
     enabled: 1

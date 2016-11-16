@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f1c58ec081064413a2bebda9ccb76cb, type: 3}
   m_Name: Monday
   m_EditorClassIdentifier: 
-  name: Monday
+  levelName: Monday
   pickupLocations:
   - locations:
     - City_Mailbox_A

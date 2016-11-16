@@ -21,7 +21,7 @@ public class Level : ScriptableObject{
 
 	public PickupLocation GetPickupLocation(ref PickupLocation[] activeLocations)
 	{
-		string current = pickupLocations [currIndex].locations [UnityEngine.Random.Range(0, pickupLocations [currIndex].locations.Count-1)];
+		string current = pickupLocations [currIndex].locations [UnityEngine.Random.Range(0, pickupLocations [currIndex].locations.Count)];
 
 
 		for (int i = 0; i < activeLocations.Length; i++) {
