@@ -4,10 +4,14 @@ using System.Collections;
 public class LevelManager : MonoBehaviour {
 
 	public Level levelData;
-	public GameObject currentPickup;
+	public PickupLocation currentPickup;
+
+	private PickupLocation[] activePickupLocations;
 
 	// Use this for initialization
 	void Start () {
-		currentPickup = levelData.GetPickupLocation ();
+		activePickupLocations = GameObject.FindObjectsOfType<PickupLocation> ();
+
+		currentPickup = levelData.GetPickupLocation (ref activePickupLocations);
 	}
 }
