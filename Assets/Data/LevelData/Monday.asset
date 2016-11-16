@@ -12,3 +12,36 @@ MonoBehaviour:
   m_Name: Monday
   m_EditorClassIdentifier: 
   name: Monday
+  pickupLocations:
+  - locations:
+    - City_Mailbox_A
+    - City_Mailbox_B
+    - City_Mailbox_C
+  - locations:
+    - City_Mailbox_D
+    - City_Mailbox_E
+    - City_Mailbox_F
+    - City_Mailbox_G
+  - locations:
+    - City_Mailbox_H
+    - City_Mailbox_I
+    - City_Mailbox_J
+    - City_Mailbox_K
+    - City_Mailbox_L
+  - locations:
+    - City_Mailbox_M
+    - City_Mailbox_N
+    - City_Mailbox_O
+    - City_Mailbox_P
+    - City_Mailbox_Q
+  - locations:
+    - City_Mailbox_R
+    - City_Mailbox_S
+    - City_Mailbox_T
+    - City_Mailbox_U
+  - locations:
+    - City_Mailbox_V
+    - City_Mailbox_W
+    - City_Mailbox_Y
+    - City_Mailbox_X
+    - City_Mailbox_Z

@@ -11,4 +11,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea726306599174a85a770ee404be0753, type: 3}
   m_Name: Intro
   m_EditorClassIdentifier: 
-  events: []
+  events:
+  - sound: {fileID: 0}
+    dialogue: 
+    isSkippable: 0
+    duration: 0
+  - sound: {fileID: 0}
+    dialogue: 
+    isSkippable: 0
+    duration: 0
+  - sound: {fileID: 0}
+    dialogue: 
+    isSkippable: 0
+    duration: 0
+  - sound: {fileID: 0}
+    dialogue: 
+    isSkippable: 0
+    duration: 0
