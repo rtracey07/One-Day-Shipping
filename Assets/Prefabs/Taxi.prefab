@@ -441,24 +441,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c795bcde3a2a244dca298df41be2c3fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypointArray:
-  - {x: 0.46, y: 0, z: 35.4}
-  - {x: 0.46, y: 0, z: 66.5}
-  - {x: -1.75, y: 0, z: 73.3}
-  - {x: -6.53, y: 0, z: 73.3}
-  - {x: -29.6, y: 0, z: 73.3}
-  - {x: -37.9, y: 0, z: 76}
-  - {x: -37.9, y: 0, z: 88.2}
-  - {x: -35.7, y: 0, z: 93.1}
-  - {x: -30.7, y: 0, z: 93.1}
-  - {x: -25.7, y: 0, z: 93.1}
-  - {x: 17.9, y: 0, z: 93.1}
-  - {x: 31, y: 0, z: 93.1}
-  - {x: 33, y: 0, z: 84.7}
-  - {x: 33, y: 0, z: 66}
-  - {x: 5.1, y: 0, z: 33.8}
-  - {x: 0.46, y: 0, z: 35.4}
   rotationOffset: 0.05
-  speed: 50
+  citySpeed: 50
+  suburbSpeed: 50
+  postalSpeed: 50
   player: {fileID: 0}
   tossTime: 1
+  mapSuburbCenter: {x: 250.5, y: 0, z: 121}
+  mapCityCenter: {x: -107, y: 0, z: 91.3}
+  mapPostalCenter: {x: 80.1, y: 0, z: -82}
+  suburbRadius: 185
+  cityRadius: 165
+  postalRadius: 101
+  pathCity: {fileID: 11400000, guid: 25de3dbfc0a0a4c2980e999363f7dec2, type: 2}
+  pathSuburb: {fileID: 11400000, guid: ad52c4fdc444f4f3fb7af903fe5d1dcb, type: 2}
+  pathPostal: {fileID: 11400000, guid: ad52c4fdc444f4f3fb7af903fe5d1dcb, type: 2}
