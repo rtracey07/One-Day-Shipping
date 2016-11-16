@@ -22,6 +22,7 @@ GameObject:
   - 33: {fileID: 33000014279305978}
   - 23: {fileID: 23000010255171546}
   - 64: {fileID: 64000013927079918}
+  - 114: {fileID: 114000012690788420}
   m_Layer: 0
   m_Name: City_Mailbox
   m_TagString: Postbox
@@ -90,3 +91,14 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300002, guid: ec80b13509ab91d4886451dd8b93d8bb, type: 3}
+--- !u!114 &114000012690788420
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010967416636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ce5c0d47e068487b987d6994d4be91c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
