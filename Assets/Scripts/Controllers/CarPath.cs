@@ -11,7 +11,7 @@ public class CarPath : MonoBehaviour {
 	private float speed;
 	float currentLook =0.25f;										// where the car is looking
 	float percentsPerSecond = 0.1f; 								// %1 of the path moved per second
-	float currentPathPercent = 0.0f; 								//min 0, max 1
+	//float CurrentPathPercent = 0.0f; 								//min 0, max 1
 	bool carHit = false;											// if the player gets hit by car
 	[SerializeField] private GameObject player;						// player to hit
 	float tossPlayer = 0.0f;
@@ -32,13 +32,22 @@ public class CarPath : MonoBehaviour {
 	void Start()
 	{
 		speed = citySpeed;
-		currentLook = rotationOffset;
+		currentLook = CurrentPathPercent + rotationOffset;
 		percentsPerSecond = speed * 0.001f;
 		waypointArray = pathCity.pathway.ToArray();
 
 
 	}
 		
+	public float CurrentPathPercent {
+		get;
+		set;
+	}
+
+	public GameObject Player {
+		get{ return player; }
+		set{ player = value; }
+	}
 
 	void OnTriggerEnter(Collider other) {
 		Debug.Log ("collision " + other.name);
@@ -71,20 +80,20 @@ public class CarPath : MonoBehaviour {
 		}
 
 		// if the we're at the end, restart
-		if (currentPathPercent >= 0.99f) {
-			currentPathPercent = 0.0f;
+		if (CurrentPathPercent >= 0.99f) {
+			CurrentPathPercent = 0.0f;
 			// TODO - this needs some lerping adjustment
 			currentLook = rotationOffset;
 		}
 
 		// move along the percentage of the path by time
-		currentPathPercent += percentsPerSecond * Time.deltaTime;
+		CurrentPathPercent += percentsPerSecond * Time.deltaTime;
 		currentLook += percentsPerSecond * Time.deltaTime;
 		Vector3 look = iTween.PointOnPath (waypointArray, currentLook);
-		iTween.PutOnPath(gameObject, waypointArray, currentPathPercent);
+		iTween.PutOnPath(gameObject, waypointArray, CurrentPathPercent);
 		transform.LookAt (look);
 
-		//iTween.MoveTo (gameObject, iTween.Hash ("path", waypointArray, "time", currentPathPercent, "orienttopath", true , "lookahead", 1.0f ,"axis", "y"));
+		//iTween.MoveTo (gameObject, iTween.Hash ("path", waypointArray, "time", CurrentPathPercent, "orienttopath", true , "lookahead", 1.0f ,"axis", "y"));
 		//iTween.MoveTo(gameObject, iTween.Hash("path", iTweenPath.GetPath("spaceshipPath"), "axis", "z", "time", 20, "orienttopath", true)); 
 
 		if (carHit && tossPlayer < tossTime) {
