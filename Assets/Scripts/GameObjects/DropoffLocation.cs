@@ -7,11 +7,16 @@ public class DropoffLocation : Location {
 	{
 		if (on) 
 		{
-
+			activeEffect.Play ();
 		} 
 		else 
 		{
-
+			activeEffect.Stop ();
 		}
+	}
+
+	public override void HandlePackage()
+	{
+		GameManager.Instance.hasPackage = false;
 	}
 }

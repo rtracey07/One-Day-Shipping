@@ -22,18 +22,21 @@ public class LevelManager : MonoBehaviour {
 			Debug.Log ("Multiple Level Managers in the scene.");
 		
 		activeLocations = GameObject.FindObjectsOfType<Location> ();
-		currentDestination = levelData.GetPickupLocation (ref activeLocations);
 
 		StartCoroutine (RunLevel());
 	}
 
 	IEnumerator RunLevel()
 	{
-		yield return new WaitUntil (() => GameManager.Instance.hasPackage);
+		for (int i = 0; i < 5; i++) {
+			currentDestination = levelData.GetPickupLocation (ref activeLocations);
 
-		currentDestination = levelData.GetDropoffLocation (ref activeLocations);
+			yield return new WaitUntil (() => GameManager.Instance.hasPackage);
 
-		yield return new WaitUntil (() => ! GameManager.Instance.hasPackage);
+			currentDestination = levelData.GetDropoffLocation (ref activeLocations);
+
+			yield return new WaitUntil (() => !GameManager.Instance.hasPackage);
+		}
 	}
 
 }

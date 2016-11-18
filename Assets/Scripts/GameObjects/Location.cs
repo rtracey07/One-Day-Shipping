@@ -15,7 +15,7 @@ public class Location : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
 		if (other.tag == "Player") {
-			GameManager.Instance.hasPackage = true;
+			HandlePackage ();
 			TriggerEvent (false);
 		}
 	}
@@ -33,5 +33,10 @@ public class Location : MonoBehaviour {
 			m_Animator.SetBool ("CollectedBox", true);
 			m_Animator.SetBool ("SelectedBox", false);
 		}
+	}
+
+	public virtual void HandlePackage()
+	{
+		GameManager.Instance.hasPackage = true;
 	}
 }

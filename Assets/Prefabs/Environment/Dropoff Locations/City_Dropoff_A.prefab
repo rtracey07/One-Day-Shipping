@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3da3e68a2783499d8a711e4897f8df7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Animator: {fileID: 0}
+  m_Animator: {fileID: 95000012193989936}
   activeEffect: {fileID: 198000013064465992}
   collectedEffect: {fileID: 198000010500812204}
 --- !u!198 &198000010500812204
