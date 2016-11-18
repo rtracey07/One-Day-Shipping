@@ -8,6 +8,8 @@ TagManager:
   - waypoints
   - Building
   - Postbox
+  - MiniMapDirectionArrow
+  - MiniMap
   layers:
   - Default
   - TransparentFX
