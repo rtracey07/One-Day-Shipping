@@ -45,3 +45,8 @@ MonoBehaviour:
     - City_Mailbox_Y
     - City_Mailbox_X
     - City_Mailbox_Z
+  carPathGroup:
+    numberOfCarsToSpawn: 50
+    carPrefabs:
+    - {fileID: 1000014174934912, guid: ff0d95c161361449c84725d1c2fac500, type: 2}
+    - {fileID: 1000014174934912, guid: 51860edce4c0a4b769ff189aba3c918d, type: 2}

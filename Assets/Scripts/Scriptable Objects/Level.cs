@@ -14,8 +14,17 @@ public class Level : ScriptableObject{
 	{
 		public List<string> locations;
 	}
+
+	[HideInInspector]
+	[Serializable]
+	public class CarPathGroup
+	{
+		public int numberOfCarsToSpawn;
+		public List<GameObject> carPrefabs;
+	}
 		
 	public List<PickupLocationGroup> pickupLocations;
+	public CarPathGroup carPathGroup;
 
 	private int currIndex = 0;
 
