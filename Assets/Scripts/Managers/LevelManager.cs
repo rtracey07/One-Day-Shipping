@@ -11,19 +11,8 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	public Level levelData;
-	public GameObject currentPickup;
-	private GameObject player;
-
-	// Use this for initialization
-//	void Start () {
-//		currentPickup = levelData.GetPickupLocation ();
-//		player = GameObject.FindGameObjectWithTag ("Player");
-//		SpawnCars ();
-//	}
-
-
 	public Location currentDestination;
-
+	private GameObject player;
 	private Location[] activeLocations;
 
 	void Awake () {
@@ -31,11 +20,13 @@ public class LevelManager : MonoBehaviour {
 			_Instance = this;
 		else
 			Debug.Log ("Multiple Level Managers in the scene.");
-		
+
 		activeLocations = GameObject.FindObjectsOfType<Location> ();
 
-		StartCoroutine (RunLevel());
+		player = GameObject.FindGameObjectWithTag ("Player");
 		SpawnCars ();
+
+		StartCoroutine (RunLevel());
 	}
 
 	IEnumerator RunLevel()

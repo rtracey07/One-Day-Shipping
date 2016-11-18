@@ -22,7 +22,7 @@ public class Level : ScriptableObject{
 		public int numberOfCarsToSpawn;
 		public List<GameObject> carPrefabs;
 	}
-		
+
 	public CarPathGroup carPathGroup;
 
 	public List<LocationGroup> pickupLocations;

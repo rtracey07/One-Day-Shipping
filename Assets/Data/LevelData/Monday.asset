@@ -45,13 +45,6 @@ MonoBehaviour:
     - City_Mailbox_Y
     - City_Mailbox_X
     - City_Mailbox_Z
-<<<<<<< HEAD
-  carPathGroup:
-    numberOfCarsToSpawn: 50
-    carPrefabs:
-    - {fileID: 1000014174934912, guid: ff0d95c161361449c84725d1c2fac500, type: 2}
-    - {fileID: 1000014174934912, guid: 51860edce4c0a4b769ff189aba3c918d, type: 2}
-=======
   dropoffLocations:
   - locations:
     - City_Dropoff_P
@@ -80,4 +73,3 @@ MonoBehaviour:
     - City_Dropoff_P
     - City_Dropoff_Q
     - City_Dropoff_Z
->>>>>>> master
