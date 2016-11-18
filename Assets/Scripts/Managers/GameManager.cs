@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour {
 
 	public bool hasPackage = false;
 
-
 	public Stats stats;
 
 	void Awake()

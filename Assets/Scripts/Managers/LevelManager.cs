@@ -11,18 +11,18 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	public Level levelData;
-	public PickupLocation currentPickup;
+	public Location currentDestination;
 
-	private PickupLocation[] activePickupLocations;
+	private Location[] activeLocations;
 
-	void Start () {
+	void Awake () {
 		if (_Instance == null)
 			_Instance = this;
 		else
 			Debug.Log ("Multiple Level Managers in the scene.");
 		
-		activePickupLocations = GameObject.FindObjectsOfType<PickupLocation> ();
-		currentPickup = levelData.GetPickupLocation (ref activePickupLocations);
+		activeLocations = GameObject.FindObjectsOfType<Location> ();
+		currentDestination = levelData.GetPickupLocation (ref activeLocations);
 
 		StartCoroutine (RunLevel());
 	}
@@ -30,7 +30,10 @@ public class LevelManager : MonoBehaviour {
 	IEnumerator RunLevel()
 	{
 		yield return new WaitUntil (() => GameManager.Instance.hasPackage);
-		Debug.Log ("Has Package");
+
+		currentDestination = levelData.GetDropoffLocation (ref activeLocations);
+
+		yield return new WaitUntil (() => ! GameManager.Instance.hasPackage);
 	}
 
 }
