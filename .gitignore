@@ -37,3 +37,19 @@ Assembly-CSharp-firstpass.csproj
 Assembly-CSharp-Editor.csproj
 
 One-Day-Shipping.userprefs
+
+*.csproj
+
+obj/Debug/Assembly-CSharp-firstpass.dll
+
+obj/Debug/Assembly-CSharp-firstpass.dll.mdb
+
+obj/Debug/Assembly-CSharp.dll
+
+obj/Debug/Assembly-CSharp.dll.mdb
+
+Assembly-CSharp-Editor.csproj
+
+Assembly-CSharp-firstpass.csproj
+
+*.csproj

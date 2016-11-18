@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f1c58ec081064413a2bebda9ccb76cb, type: 3}
   m_Name: Monday
   m_EditorClassIdentifier: 
-  name: Monday
+  levelName: Monday
   pickupLocations:
   - locations:
     - City_Mailbox_A
@@ -45,8 +45,39 @@ MonoBehaviour:
     - City_Mailbox_Y
     - City_Mailbox_X
     - City_Mailbox_Z
+<<<<<<< HEAD
   carPathGroup:
     numberOfCarsToSpawn: 50
     carPrefabs:
     - {fileID: 1000014174934912, guid: ff0d95c161361449c84725d1c2fac500, type: 2}
     - {fileID: 1000014174934912, guid: 51860edce4c0a4b769ff189aba3c918d, type: 2}
+=======
+  dropoffLocations:
+  - locations:
+    - City_Dropoff_P
+    - City_Dropoff_Q
+    - City_Dropoff_R
+  - locations:
+    - City_Dropoff_H
+    - City_Dropoff_I
+    - City_Dropoff_J
+    - City_Dropoff_K
+  - locations:
+    - City_Dropoff_A
+    - City_Dropoff_B
+    - City_Dropoff_C
+  - locations:
+    - City_Dropoff_T
+    - City_Dropoff_U
+    - City_Dropoff_V
+    - City_Dropoff_W
+  - locations:
+    - City_Dropoff_M
+    - City_Dropoff_N
+    - City_Dropoff_O
+  - locations:
+    - City_Dropoff_O
+    - City_Dropoff_P
+    - City_Dropoff_Q
+    - City_Dropoff_Z
+>>>>>>> master
