@@ -50,7 +50,12 @@ public class Level : ScriptableObject{
 	public Location GetDropoffLocation(ref Location[] activeLocations)
 	{
 		string current = dropoffLocations [currIndex].locations [UnityEngine.Random.Range(0, pickupLocations [currIndex].locations.Count)];
+
 		currIndex++;
+
+		if (currIndex >= pickupLocations.Count)
+			currIndex = 0;
+
 
 		for (int i = 0; i < activeLocations.Length; i++) {
 			if (activeLocations[i].gameObject.name == current) {
@@ -62,11 +67,6 @@ public class Level : ScriptableObject{
 
 		Debug.Log (string.Format ("Dropoff Location {0} not found in scene.", current));
 
-		currIndex++;
-
-		if (currIndex >= pickupLocations.Count)
-			currIndex = 0;
-		
 		return null;
 	}
 }
