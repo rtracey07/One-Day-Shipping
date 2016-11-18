@@ -33,7 +33,7 @@ public class CarPath : MonoBehaviour {
 	{
 		speed = citySpeed;
 		currentLook = CurrentPathPercent + rotationOffset;
-		percentsPerSecond = speed * 0.001f;
+		percentsPerSecond = speed * 0.0003f;
 		waypointArray = pathCity.pathway.ToArray();
 
 
@@ -50,7 +50,7 @@ public class CarPath : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-		Debug.Log ("collision " + other.name);
+		//Debug.Log ("collision " + other.name);
 		if (other.name.Equals("Player")){
 			
 			carHit = true;
@@ -97,20 +97,20 @@ public class CarPath : MonoBehaviour {
 		//iTween.MoveTo(gameObject, iTween.Hash("path", iTweenPath.GetPath("spaceshipPath"), "axis", "z", "time", 20, "orienttopath", true)); 
 
 		if (carHit && tossPlayer < tossTime) {
-			Debug.Log ("tossing");
+			//Debug.Log ("tossing");
 			player.transform.Translate (transform.forward * Time.deltaTime * speed, Space.World);
-			player.transform.Translate (0.3f * transform.up * Time.deltaTime * speed, Space.World);
+			player.transform.Translate (0.5f * transform.up * Time.deltaTime * speed, Space.World);
 			tossPlayer += 3.0f * Time.deltaTime;
 		} else if (carHit && tossPlayer >= tossTime) {
 			carHit = false;
-			Debug.Log ("not tossing");
+			//Debug.Log ("not tossing");
 			tossPlayer = 0.0f;
 		}
 	}
 
-//	void OnDrawGizmos()
-//	{
-//		//Visual. Not used in movement
-//		iTween.DrawPath(waypointArray);
-//	}
+	void OnDrawGizmos()
+	{
+		//Visual. Not used in movement
+		iTween.DrawPath(waypointArray);
+	}
 }
