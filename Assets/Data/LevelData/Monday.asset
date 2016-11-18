@@ -45,3 +45,31 @@ MonoBehaviour:
     - City_Mailbox_Y
     - City_Mailbox_X
     - City_Mailbox_Z
+  dropoffLocations:
+  - locations:
+    - City_Dropoff_P
+    - City_Dropoff_Q
+    - City_Dropoff_R
+  - locations:
+    - City_Dropoff_H
+    - City_Dropoff_I
+    - City_Dropoff_J
+    - City_Dropoff_K
+  - locations:
+    - City_Dropoff_A
+    - City_Dropoff_B
+    - City_Dropoff_C
+  - locations:
+    - City_Dropoff_T
+    - City_Dropoff_U
+    - City_Dropoff_V
+    - City_Dropoff_W
+  - locations:
+    - City_Dropoff_M
+    - City_Dropoff_N
+    - City_Dropoff_O
+  - locations:
+    - City_Dropoff_O
+    - City_Dropoff_P
+    - City_Dropoff_Q
+    - City_Dropoff_Z
