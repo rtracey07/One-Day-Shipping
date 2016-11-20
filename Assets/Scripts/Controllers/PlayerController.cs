@@ -29,12 +29,17 @@ public class PlayerController : MonoBehaviour {
 	//Cached Variables to reduce re-declaration.
 	private CharacterController controller;		
 	private Animator animator;
-	private Vector3 moveDirection = Vector3.zero;
+	public Vector3 moveDirection = Vector3.zero;
 	private float rotation = 0.0f;
-	private float vertical = 0.0f;
+	public float vertical = 0.0f;
 	private float horizontal = 0.0f;
 	private float time = 0.0f;
 	private bool sliding = false;
+
+	public float currSpeed = 0.0f;
+	public float acceleration = 5.0f;
+
+	public Transform legL, legR;
 
 	void Start()
 	{
@@ -57,9 +62,13 @@ public class PlayerController : MonoBehaviour {
 		Rotate ();
 		Move ();
 
+		float speedFraction = Mathf.Abs(currSpeed/speed);
 		//Update Animation variable.
-		animator.SetFloat ("Speed", new Vector2(controller.velocity.x, controller.velocity.z).magnitude * Mathf.CeilToInt(vertical));			
-	}
+		animator.SetFloat ("Speed", speedFraction);	
+
+		legL.localScale = new Vector3(legL.localScale.x, Mathf.Lerp(1.0f, 1.4f, speedFraction), legL.localScale.z);
+		legR.localScale = new Vector3(legR.localScale.x, Mathf.Lerp(1.0f, 1.4f, speedFraction), legR.localScale.z);
+}
 
 	//Rotate Player Around y-axis.
 	void Rotate()
@@ -78,6 +87,8 @@ public class PlayerController : MonoBehaviour {
 		//Store current y-value.
 		float fall = moveDirection.y;
 
+		currSpeed = Mathf.Clamp ((vertical != 0) ? (currSpeed + acceleration) : (currSpeed - acceleration), 0, speed);
+
 		//Only move player if they aren't on a sloped surface.
 		if (!sliding) 
 		{
@@ -88,13 +99,14 @@ public class PlayerController : MonoBehaviour {
 			//Character is moving forward.
 			if (vertical >= 0) 
 			{
-				moveDirection *= speed;
+				moveDirection *= currSpeed * Time.deltaTime;
 			} 
 			//Character is moving backwards.
 			else 
 			{
-				moveDirection *= speed / backupSpeedFactor;
+				moveDirection *= currSpeed/backupSpeedFactor * Time.deltaTime;
 			}
+
 		}
 
 		//Jumping.
@@ -115,7 +127,7 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		//Move the Player via the character controller.
-		controller.Move(moveDirection * Time.deltaTime);
+//		controller.Move(moveDirection * Time.deltaTime);
 	}
 
 	//Use Collision detection to detect if sliding.

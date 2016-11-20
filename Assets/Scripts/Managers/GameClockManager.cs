@@ -4,7 +4,8 @@ using System.Collections.Generic;
 
 public class GameClockManager : MonoBehaviour {
 
-	public static GameClockManager instance;
+	private static GameClockManager _Instance;
+	public static  GameClockManager Instance { get{ return _Instance; } }
 
 	public float time;
 
@@ -12,12 +13,12 @@ public class GameClockManager : MonoBehaviour {
 
 	void Awake()
 	{
-		if (instance == null) 
+		if (_Instance == null) 
 		{
-			instance = this;
+			_Instance = this;
 		}
 
-		if (instance != this) 
+		if (_Instance != this) 
 		{
 			Destroy (gameObject);
 		}

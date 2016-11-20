@@ -20,7 +20,8 @@ public class PointerArrow : MonoBehaviour {
 					destination = LevelManager.Instance.currentDestination;
 			}
 
-			this.transform.up = Vector3.Normalize (destination.transform.position - this.transform.position);
+			this.transform.right = -Vector3.Normalize (destination.transform.position - this.transform.position);
+
 		}
 	}
 }
