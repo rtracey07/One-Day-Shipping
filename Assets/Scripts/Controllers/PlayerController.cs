@@ -41,11 +41,15 @@ public class PlayerController : MonoBehaviour {
 
 	public Transform legL, legR;
 
+	private Collider[] colliders;
+	private bool jumpPrimed = false;
+
 	void Start()
 	{
 		//Cache Controllers for use.
 		controller = GetComponent<CharacterController>();
 		animator = GetComponent<Animator> ();
+		colliders = GetComponentsInChildren<Collider> ();
 
 	}
 
@@ -64,7 +68,8 @@ public class PlayerController : MonoBehaviour {
 
 		float speedFraction = Mathf.Abs(currSpeed/speed);
 		//Update Animation variable.
-		animator.SetFloat ("Speed", speedFraction);	
+		animator.SetFloat ("Speed", speedFraction);
+		animator.SetFloat ("Direction", vertical);
 
 		legL.localScale = new Vector3(legL.localScale.x, Mathf.Lerp(1.0f, 1.4f, speedFraction), legL.localScale.z);
 		legR.localScale = new Vector3(legR.localScale.x, Mathf.Lerp(1.0f, 1.4f, speedFraction), legR.localScale.z);
@@ -75,7 +80,9 @@ public class PlayerController : MonoBehaviour {
 	{
 		//rotate player from horizontal input.
 		rotation = horizontal * rotationSpeed * Time.deltaTime;
-		transform.Rotate(0,rotation,0);
+
+		if(currSpeed != 0 )
+			transform.Rotate(0,rotation,0);
 
 		//Update Rotation Animation variable.
 		animator.SetFloat ("TurnSpeed", rotation);
@@ -87,7 +94,7 @@ public class PlayerController : MonoBehaviour {
 		//Store current y-value.
 		float fall = moveDirection.y;
 
-		currSpeed = Mathf.Clamp ((vertical != 0) ? (currSpeed + acceleration) : (currSpeed - acceleration), 0, speed);
+		currSpeed = Mathf.Clamp ((vertical != 0) ? (currSpeed + acceleration) : (currSpeed - 10*acceleration), 0, speed);
 
 		//Only move player if they aren't on a sloped surface.
 		if (!sliding) 
@@ -107,27 +114,23 @@ public class PlayerController : MonoBehaviour {
 				moveDirection *= currSpeed/backupSpeedFactor * Time.deltaTime;
 			}
 
+
 		}
 
 		//Jumping.
-		if (!sliding && Input.GetButton ("Jump") && controller.isGrounded) 
-		{
+		if (!sliding && Input.GetButton ("Jump") && controller.isGrounded) {
 			animator.SetBool ("Jump", true);
-			moveDirection.y = jumpSpeed;
+			jumpPrimed = true;
 		} 
 		//Falling.
-		else if (!controller.isGrounded || sliding) 
-		{
+		else if (!controller.isGrounded || sliding) {
 			moveDirection.y = fall - gravity * Time.deltaTime;
-		} 
-		//On Ground.
-		else 
-		{
-			animator.SetBool ("Jump", false);
+		} else {
+			animator.SetBool ("Jump", jumpPrimed);
 		}
 
-		//Move the Player via the character controller.
-//		controller.Move(moveDirection * Time.deltaTime);
+		if(!animator.GetCurrentAnimatorStateInfo(0).IsName("Stop") || !animator.GetCurrentAnimatorStateInfo(0).IsName("Stop Backwards"))
+			controller.Move(moveDirection * Time.deltaTime);
 	}
 
 	//Use Collision detection to detect if sliding.
@@ -150,5 +153,17 @@ public class PlayerController : MonoBehaviour {
 		{
 			sliding = false;
 		}
+	}
+
+	public void PlayerStop()
+	{
+		currSpeed /= 2;
+	}
+
+	public void PlayerJump()
+	{
+		moveDirection.y = jumpSpeed;
+		controller.Move (new Vector3 (0, jumpSpeed* Time.deltaTime, 0));
+		jumpPrimed = false;
 	}
 }
