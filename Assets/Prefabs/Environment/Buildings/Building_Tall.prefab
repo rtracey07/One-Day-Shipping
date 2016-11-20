@@ -13,7 +13,7 @@ GameObject:
   - 64: {fileID: 64000011920951226}
   m_Layer: 0
   m_Name: Building_Tall
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +30,7 @@ GameObject:
   - 23: {fileID: 2333430}
   m_Layer: 0
   m_Name: urb_bui
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -75,7 +75,7 @@ GameObject:
   - 4: {fileID: 4000012562396846}
   m_Layer: 0
   m_Name: house_003
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -353,7 +353,7 @@ GameObject:
   - 4: {fileID: 4000012973462744}
   m_Layer: 0
   m_Name: Suburb_House_2
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -420,7 +420,7 @@ GameObject:
   - 111: {fileID: 111000014003430434}
   m_Layer: 0
   m_Name: Suburb_Postbox_1
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
