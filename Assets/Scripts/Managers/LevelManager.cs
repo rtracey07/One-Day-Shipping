@@ -53,4 +53,9 @@ public class LevelManager : MonoBehaviour {
 		}
 	}
 
+	public float GetMissionLength()
+	{
+		return levelData.missionLength;
+	}
+
 }

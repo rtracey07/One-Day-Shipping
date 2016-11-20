@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Name: Monday
   m_EditorClassIdentifier: 
   levelName: Monday
+  missionLength: 10
+  carPathGroup:
+    numberOfCarsToSpawn: 0
+    carPrefabs: []
   pickupLocations:
   - locations:
     - City_Mailbox_A

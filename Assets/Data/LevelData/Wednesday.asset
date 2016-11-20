@@ -11,4 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f1c58ec081064413a2bebda9ccb76cb, type: 3}
   m_Name: Wednesday
   m_EditorClassIdentifier: 
-  name: Wednesday
+  levelName: Wednesday
+  missionLength: 10
+  carPathGroup:
+    numberOfCarsToSpawn: 0
+    carPrefabs: []
+  pickupLocations: []
+  dropoffLocations: []
