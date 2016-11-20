@@ -18,23 +18,28 @@ public class CarPath : MonoBehaviour {
 	[SerializeField] private float tossTime = 1.0f;					// how far the player gets tossed
 
 	[SerializeField] private Vector3 mapSuburbCenter;				//creates radius for car placement
-	[SerializeField] private Vector3 mapCityCenter;			 		//creates radius for car placement
+	[SerializeField] private Vector3 mapCityACenter;			 	//creates radius for car placement
+	[SerializeField] private Vector3 mapCityBCenter;			 	//creates radius for car placement
 	[SerializeField] private Vector3 mapPostalCenter;				//creates radius for car placement
 	[SerializeField] private float suburbRadius = 300.0f;
-	[SerializeField] private float cityRadius = 300.0f;
+	[SerializeField] private float cityARadius = 100.0f;
+	[SerializeField] private float cityBRadius = 100.0f;
 	[SerializeField] private float postalRadius = 300.0f;
 
-	[SerializeField] private Pathway pathCity;
+	[SerializeField] private Pathway pathACity;
+	[SerializeField] private Pathway pathBCity;
 	[SerializeField] private Pathway pathSuburb;
 	[SerializeField] private Pathway pathPostal;
+
+	private float bounceOffset = 0.07f;								//for car bouncing
 
 
 	void Start()
 	{
 		speed = citySpeed;
 		currentLook = CurrentPathPercent + rotationOffset;
-		percentsPerSecond = speed * 0.0003f;
-		waypointArray = pathCity.pathway.ToArray();
+		percentsPerSecond = speed * 0.0005f;
+		waypointArray = pathACity.pathway.ToArray();
 
 
 	}
@@ -67,16 +72,25 @@ public class CarPath : MonoBehaviour {
 			//in the suburb area
 			waypointArray = pathSuburb.pathway.ToArray();
 			speed = suburbSpeed;
-		} else if ((player.transform.position.x - mapCityCenter.x) * (player.transform.position.x - mapCityCenter.x)
-		           + (player.transform.position.z - mapCityCenter.z) * (player.transform.position.z - mapCityCenter.z) <= cityRadius * cityRadius) {
+			bounceOffset = 10.0f;
+		} else if ((player.transform.position.x - mapCityACenter.x) * (player.transform.position.x - mapCityACenter.x)
+			+ (player.transform.position.z - mapCityACenter.z) * (player.transform.position.z - mapCityACenter.z) <= cityARadius * cityARadius) {
 			//in the city area
-			waypointArray = pathCity.pathway.ToArray();
-			speed = citySpeed;
+			waypointArray = pathACity.pathway.ToArray();
+			speed = citySpeed*10.0f;
+			bounceOffset = 0.07f;
+		} else if ((player.transform.position.x - mapCityBCenter.x) * (player.transform.position.x - mapCityBCenter.x)
+			+ (player.transform.position.z - mapCityBCenter.z) * (player.transform.position.z - mapCityBCenter.z) <= cityBRadius * cityBRadius) {
+			//in the city area
+			waypointArray = pathBCity.pathway.ToArray();
+			speed = citySpeed*10.0f;
+			bounceOffset = 0.07f;
 		} else if ((player.transform.position.x - mapPostalCenter.x) * (player.transform.position.x - mapPostalCenter.x)
 		          + (player.transform.position.z - mapPostalCenter.z) * (player.transform.position.z - mapPostalCenter.z) <= postalRadius * postalRadius) {
 			//in the postal area
 			waypointArray = pathPostal.pathway.ToArray();
-			speed = citySpeed;
+			speed = citySpeed*10.0f;
+			bounceOffset = 0.07f;
 		}
 
 		// if the we're at the end, restart
@@ -98,8 +112,8 @@ public class CarPath : MonoBehaviour {
 
 		if (carHit && tossPlayer < tossTime) {
 			//Debug.Log ("tossing");
-			player.transform.Translate (transform.forward * Time.deltaTime * speed, Space.World);
-			player.transform.Translate (0.5f * transform.up * Time.deltaTime * speed, Space.World);
+			player.transform.Translate (transform.forward * Time.deltaTime * speed * bounceOffset, Space.World);
+			player.transform.Translate (0.5f * transform.up * Time.deltaTime * speed * bounceOffset, Space.World);
 			tossPlayer += 3.0f * Time.deltaTime;
 		} else if (carHit && tossPlayer >= tossTime) {
 			carHit = false;

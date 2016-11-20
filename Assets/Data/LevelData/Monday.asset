@@ -24,6 +24,7 @@ MonoBehaviour:
     - {fileID: 1000014174934912, guid: c107bcefa27034374912dac7d1df6dea, type: 2}
     - {fileID: 1000014174934912, guid: cb1168ac3685a4af7bd2c6c94c382247, type: 2}
     - {fileID: 1000014174934912, guid: 79da92a775832432e9302135f66d4645, type: 2}
+    - {fileID: 1000014174934912, guid: 8b25db4f5147e41f0abe134f5b126e41, type: 2}
   pickupLocations:
   - locations:
     - City_Mailbox_A

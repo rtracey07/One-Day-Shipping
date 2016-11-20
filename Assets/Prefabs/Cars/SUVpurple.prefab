@@ -442,17 +442,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationOffset: 0.005
-  citySpeed: 50
-  suburbSpeed: 5
+  citySpeed: 75
+  suburbSpeed: 3
   postalSpeed: 50
   player: {fileID: 0}
   tossTime: 1.2
   mapSuburbCenter: {x: 250.5, y: 0, z: 121}
-  mapCityCenter: {x: -107, y: 0, z: 91.3}
+  mapCityACenter: {x: -95.7, y: 0, z: -5.7}
+  mapCityBCenter: {x: -89.2, y: 0, z: 107.1}
   mapPostalCenter: {x: 80.1, y: 0, z: -82}
   suburbRadius: 185
-  cityRadius: 165
+  cityARadius: 100
+  cityBRadius: 180
   postalRadius: 101
-  pathCity: {fileID: 11400000, guid: 25de3dbfc0a0a4c2980e999363f7dec2, type: 2}
+  pathACity: {fileID: 11400000, guid: 5d5098166cdc9469ab999301af43b953, type: 2}
+  pathBCity: {fileID: 11400000, guid: 594437148493148c19995e8f0f10f872, type: 2}
   pathSuburb: {fileID: 11400000, guid: 31d56e69b12b94e39a6364f085c2745d, type: 2}
   pathPostal: {fileID: 11400000, guid: ad52c4fdc444f4f3fb7af903fe5d1dcb, type: 2}
