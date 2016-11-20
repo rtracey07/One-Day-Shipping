@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour {
 	public float currSpeed = 0.0f;
 	public float acceleration = 5.0f;
 
-	public Transform legL, legR;
+	public Transform legL, legR, armL, armR;
 
 	private Collider[] colliders;
 	private bool jumpPrimed = false;
@@ -73,6 +73,8 @@ public class PlayerController : MonoBehaviour {
 
 		legL.localScale = new Vector3(legL.localScale.x, Mathf.Lerp(1.0f, 1.4f, speedFraction), legL.localScale.z);
 		legR.localScale = new Vector3(legR.localScale.x, Mathf.Lerp(1.0f, 1.4f, speedFraction), legR.localScale.z);
+		armL.localScale = new Vector3(armL.localScale.x, Mathf.Lerp(1.2f, 1.4f, speedFraction), armL.localScale.z);
+		armR.localScale = new Vector3(armR.localScale.x, Mathf.Lerp(1.2f, 1.4f, speedFraction), armR.localScale.z);
 }
 
 	//Rotate Player Around y-axis.
@@ -94,7 +96,7 @@ public class PlayerController : MonoBehaviour {
 		//Store current y-value.
 		float fall = moveDirection.y;
 
-		currSpeed = Mathf.Clamp ((vertical != 0) ? (currSpeed + acceleration) : (currSpeed - 10*acceleration), 0, speed);
+		currSpeed = Mathf.Clamp ((vertical != 0) ? (currSpeed + acceleration) : (currSpeed - 3*acceleration), 0, speed);
 
 		//Only move player if they aren't on a sloped surface.
 		if (!sliding) 
