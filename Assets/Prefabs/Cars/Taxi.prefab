@@ -441,18 +441,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c795bcde3a2a244dca298df41be2c3fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationOffset: 0.05
-  citySpeed: 50
-  suburbSpeed: 50
+  rotationOffset: 0.01
+  citySpeed: 75
+  suburbSpeed: 10
   postalSpeed: 50
   player: {fileID: 0}
   tossTime: 1
   mapSuburbCenter: {x: 250.5, y: 0, z: 121}
-  mapCityCenter: {x: -107, y: 0, z: 91.3}
+  mapCityACenter: {x: -80.6, y: 0, z: 2.4}
+  mapCityBCenter: {x: 10, y: 0, z: 99}
+  mapCityCCenter: {x: -79.4, y: 0, z: 115}
   mapPostalCenter: {x: 80.1, y: 0, z: -82}
   suburbRadius: 185
-  cityRadius: 165
+  cityARadius: 45
+  cityBRadius: 70
+  cityCRadius: 100
   postalRadius: 101
-  pathCity: {fileID: 11400000, guid: 25de3dbfc0a0a4c2980e999363f7dec2, type: 2}
+  pathACity: {fileID: 11400000, guid: bea9ac01d164b440a96634589cae9d4b, type: 2}
+  pathBCity: {fileID: 11400000, guid: 3958d2028c70f4887b25f377c8bb525d, type: 2}
+  pathCCity: {fileID: 11400000, guid: 4680d29d6bed4400284941b00469a1cc, type: 2}
   pathSuburb: {fileID: 11400000, guid: ad52c4fdc444f4f3fb7af903fe5d1dcb, type: 2}
   pathPostal: {fileID: 11400000, guid: ad52c4fdc444f4f3fb7af903fe5d1dcb, type: 2}

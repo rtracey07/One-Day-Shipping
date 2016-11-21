@@ -251,7 +251,10 @@ GameObject:
   - 4: {fileID: 4000010061742352}
   - 33: {fileID: 33000010221763138}
   - 23: {fileID: 23000014099041946}
+<<<<<<< HEAD
+=======
   - 64: {fileID: 64000013872852424}
+>>>>>>> master
   m_Layer: 0
   m_Name: Box131
   m_TagString: Building

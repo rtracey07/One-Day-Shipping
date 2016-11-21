@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcec4d19ae60945748ec14f6a2e98c28, type: 3}
+  m_Name: CityBlock2
+  m_EditorClassIdentifier: 
+  pathway:
+  - {x: -63.52, y: 0, z: -13.65}
+  - {x: -40.1, y: 0, z: -12.8}
+  - {x: -35, y: 0, z: -4.6}
+  - {x: -35.88, y: 0, z: 3.43}
+  - {x: -45.1, y: 0, z: 4.4}
+  - {x: -71.9, y: 0, z: 4.67}
+  - {x: -81.3, y: 0, z: 2.67}
+  - {x: -81.52, y: 0, z: -9.4}
+  - {x: -76.3, y: 0, z: -13.65}
+  - {x: -63.52, y: 0, z: -13.65}
