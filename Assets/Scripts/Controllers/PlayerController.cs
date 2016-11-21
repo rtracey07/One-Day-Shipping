@@ -1,9 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(CharacterController))]
+//[RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(Animator))]
 public class PlayerController : MonoBehaviour {
+
+
+	class gizmoData{
+		public Vector3 collisionPoint;
+		public Vector3 collisionNormal;
+	};
 
 	[Tooltip("Character Move Speed")]
 	public float speed = 6.0f;
@@ -27,24 +33,33 @@ public class PlayerController : MonoBehaviour {
 	public float yBoundary;
 
 	//Cached Variables to reduce re-declaration.
-	private CharacterController controller;		
+	//private CharacterController controller;		
 	private Animator animator;
-	private Vector3 moveDirection = Vector3.zero;
+	public Vector3 moveDirection = Vector3.zero;
 	private float rotation = 0.0f;
-	private float vertical = 0.0f;
+	public float vertical = 0.0f;
 	private float horizontal = 0.0f;
 	private float time = 0.0f;
-	private bool sliding = false;
+	public bool sliding = false;
+
+	public float currSpeed = 0.0f;
+	public float acceleration = 5.0f;
+
+	public Transform legL, legR, armL, armR;
+	private gizmoData[] gizmos;
+
+	private bool jumpPrimed = false;
+	private Rigidbody m_Rigidbody;
 
 	void Start()
 	{
 		//Cache Controllers for use.
-		controller = GetComponent<CharacterController>();
+		//controller = GetComponent<CharacterController>();
 		animator = GetComponent<Animator> ();
-
+		m_Rigidbody = GetComponent<Rigidbody> ();
 	}
 
-	void Update() 
+	void FixedUpdate() 
 	{
 		//Update Time.
 		time += Time.deltaTime;
@@ -57,16 +72,25 @@ public class PlayerController : MonoBehaviour {
 		Rotate ();
 		Move ();
 
+		float speedFraction = Mathf.Abs(currSpeed/speed);
 		//Update Animation variable.
-		animator.SetFloat ("Speed", new Vector2(controller.velocity.x, controller.velocity.z).magnitude * Mathf.CeilToInt(vertical));			
-	}
+		animator.SetFloat ("Speed", speedFraction);
+		animator.SetFloat ("Direction", vertical);
+
+		legL.localScale = new Vector3(legL.localScale.x, Mathf.Lerp(1.0f, 1.4f, speedFraction), legL.localScale.z);
+		legR.localScale = new Vector3(legR.localScale.x, Mathf.Lerp(1.0f, 1.4f, speedFraction), legR.localScale.z);
+		armL.localScale = new Vector3(armL.localScale.x, Mathf.Lerp(1.2f, 1.4f, speedFraction), armL.localScale.z);
+		armR.localScale = new Vector3(armR.localScale.x, Mathf.Lerp(1.2f, 1.4f, speedFraction), armR.localScale.z);
+}
 
 	//Rotate Player Around y-axis.
 	void Rotate()
 	{
 		//rotate player from horizontal input.
-		rotation = horizontal * rotationSpeed * Time.deltaTime;
-		transform.Rotate(0,rotation,0);
+		rotation = horizontal * rotationSpeed * Time.fixedDeltaTime;
+
+		if(currSpeed != 0 )
+			transform.Rotate(0,rotation,0);
 
 		//Update Rotation Animation variable.
 		animator.SetFloat ("TurnSpeed", rotation);
@@ -76,7 +100,9 @@ public class PlayerController : MonoBehaviour {
 	void Move()
 	{
 		//Store current y-value.
-		float fall = moveDirection.y;
+//		float fall = moveDirection.y;
+
+		currSpeed = Mathf.Clamp ((vertical != 0) ? (currSpeed + acceleration) : (currSpeed - 3*acceleration), 0, speed);
 
 		//Only move player if they aren't on a sloped surface.
 		if (!sliding) 
@@ -88,55 +114,95 @@ public class PlayerController : MonoBehaviour {
 			//Character is moving forward.
 			if (vertical >= 0) 
 			{
-				moveDirection *= speed;
+				moveDirection *= currSpeed;// * Time.fixedDeltaTime;
 			} 
 			//Character is moving backwards.
 			else 
 			{
-				moveDirection *= speed / backupSpeedFactor;
+				moveDirection *= currSpeed/backupSpeedFactor;// * Time.fixedDeltaTime;
 			}
 		}
 
 		//Jumping.
-		if (!sliding && Input.GetButton ("Jump") && controller.isGrounded) 
-		{
+		if (!sliding && Input.GetButton ("Jump") && m_Rigidbody.velocity.y == 0 && !sliding) {
 			animator.SetBool ("Jump", true);
-			moveDirection.y = jumpSpeed;
+			jumpPrimed = true;
 		} 
 		//Falling.
-		else if (!controller.isGrounded || sliding) 
-		{
-			moveDirection.y = fall - gravity * Time.deltaTime;
-		} 
-		//On Ground.
-		else 
-		{
-			animator.SetBool ("Jump", false);
+		else if (m_Rigidbody.velocity.y != 0 || sliding) {
+//			moveDirection.y = fall - gravity * Time.fixedDeltaTime;
+		} else {
+			animator.SetBool ("Jump", jumpPrimed);
 		}
 
-		//Move the Player via the character controller.
-		controller.Move(moveDirection * Time.deltaTime);
+		if(!animator.GetCurrentAnimatorStateInfo(0).IsName("Stop") || !animator.GetCurrentAnimatorStateInfo(0).IsName("Stop Backwards") && !sliding)
+//			controller.Move(moveDirection * Time.deltaTime);
+			m_Rigidbody.AddForce(moveDirection);
+
 	}
+
 
 	//Use Collision detection to detect if sliding.
 	//This stops the character from overcoming large slopes and escaping the level boundary.
-	void OnControllerColliderHit(ControllerColliderHit other)
+	void OnCollisionEnter(Collision other)
 	{
-		//Check for "Ground" tag and if the character exceeds the maximum angle.
-		if (other.gameObject.tag == "Ground" && Vector3.Angle (other.normal, Vector3.up) > controller.slopeLimit) 
-		{
-			//Set the current direction to be relative to the collision normal.
-			moveDirection = other.normal;
+		if (other.gameObject.tag == "Ground" || (other.gameObject.tag == "Building" && animator.GetBool("Jump"))) {
+			for (int i = 0; i < other.contacts.Length; i++) {
+				if (other.contacts [i].normal.y < 0.7) {
+					if (!sliding) {
+						sliding = true;
+						currSpeed = -3 * acceleration;
+						moveDirection = Vector3.zero;
+						m_Rigidbody.AddForce (new Vector3 (other.contacts [i].normal.x, -other.contacts [i].normal.y, other.contacts [i].normal.z) * slideSpeed);
+					}
+				} else {
+					sliding = false;
+				}
+			}
+		}
 
-			//Negate the y-value so the player falls.
-			moveDirection.y = -other.normal.y;
-			moveDirection *= slideSpeed;
-			sliding = true;
-		} 
-		//Not on slope.
-		else 
-		{
-			sliding = false;
+
+		gizmos = new gizmoData[other.contacts.Length];
+
+		for (int i = 0; i < gizmos.Length; i++) {
+			gizmos [i] = new gizmoData ();
+			gizmos [i].collisionPoint = other.contacts [i].point;
+			gizmos [i].collisionNormal = other.contacts [i].normal;
+		}
+	}
+
+
+	public void PlayerStop()
+	{
+		currSpeed /= 2;
+	}
+
+	public void PlayerJump()
+	{
+		if (!sliding) {
+			moveDirection.y = jumpSpeed;
+//		controller.Move (new Vector3 (0, jumpSpeed* Time.deltaTime, 0));
+			m_Rigidbody.AddForce (new Vector3 (0, jumpSpeed, 0));
+		}
+		jumpPrimed = false;
+	}
+
+	void OnDrawGizmos()
+	{
+		if (gizmos != null) {
+			for (int i = 0; i < gizmos.Length; i++) {
+				if (gizmos [i].collisionNormal.y < 0.7) {
+					Gizmos.color = Color.green;
+					Gizmos.DrawLine (gizmos [i].collisionPoint,  
+						gizmos [i].collisionPoint 
+						+ new Vector3(gizmos [i].collisionNormal.x, -gizmos [i].collisionNormal.y, gizmos [i].collisionNormal.z));
+					Gizmos.color = Color.red;
+				}
+				else
+					Gizmos.color = Color.white;
+				
+				Gizmos.DrawLine (gizmos [i].collisionPoint,  gizmos [i].collisionPoint + gizmos [i].collisionNormal);
+			}
 		}
 	}
 }

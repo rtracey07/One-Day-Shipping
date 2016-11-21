@@ -39,7 +39,7 @@ GameObject:
   - 111: {fileID: 111000012495188314}
   m_Layer: 0
   m_Name: Suburb_Postbox_1 (1)
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -57,7 +57,7 @@ GameObject:
   - 64: {fileID: 64000014266292346}
   m_Layer: 0
   m_Name: windowFrames
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -75,7 +75,7 @@ GameObject:
   - 64: {fileID: 64000012684325644}
   m_Layer: 0
   m_Name: roof
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -93,7 +93,7 @@ GameObject:
   - 64: {fileID: 64000010502717222}
   m_Layer: 0
   m_Name: wood
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -129,7 +129,7 @@ GameObject:
   - 64: {fileID: 64000012179847710}
   m_Layer: 0
   m_Name: roofsides
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -147,7 +147,7 @@ GameObject:
   - 64: {fileID: 64000012974937054}
   m_Layer: 0
   m_Name: Object027
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -165,7 +165,7 @@ GameObject:
   - 64: {fileID: 64000013197041144}
   m_Layer: 0
   m_Name: window_s
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -183,7 +183,7 @@ GameObject:
   - 64: {fileID: 64000012607997482}
   m_Layer: 0
   m_Name: door
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -201,7 +201,7 @@ GameObject:
   - 64: {fileID: 64000011320491856}
   m_Layer: 0
   m_Name: window
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -219,7 +219,7 @@ GameObject:
   - 64: {fileID: 64000011749255724}
   m_Layer: 0
   m_Name: Box132
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -237,7 +237,7 @@ GameObject:
   - 64: {fileID: 64000011635509236}
   m_Layer: 0
   m_Name: roof1
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -252,10 +252,9 @@ GameObject:
   - 4: {fileID: 4000010061742352}
   - 33: {fileID: 33000010221763138}
   - 23: {fileID: 23000014099041946}
-  - 64: {fileID: 64000012051106058}
   m_Layer: 0
   m_Name: Box131
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -273,7 +272,7 @@ GameObject:
   - 64: {fileID: 64000013741455112}
   m_Layer: 0
   m_Name: stairs
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -286,10 +285,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012227771094}
-  - 64: {fileID: 64000012298192108}
   m_Layer: 0
   m_Name: Suburb_House_1
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -354,7 +352,7 @@ GameObject:
   - 64: {fileID: 64000011327973652}
   m_Layer: 0
   m_Name: Object025
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -372,7 +370,7 @@ GameObject:
   - 64: {fileID: 64000013876859922}
   m_Layer: 0
   m_Name: SmokeHoleTop
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -390,7 +388,7 @@ GameObject:
   - 64: {fileID: 64000013703514140}
   m_Layer: 0
   m_Name: doorFrame
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -408,7 +406,7 @@ GameObject:
   - 64: {fileID: 64000013645434562}
   m_Layer: 0
   m_Name: Box133
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -426,7 +424,7 @@ GameObject:
   - 64: {fileID: 64000012352807724}
   m_Layer: 0
   m_Name: underRoof
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -461,7 +459,7 @@ GameObject:
   - 64: {fileID: 64000010179184246}
   m_Layer: 0
   m_Name: insides_windowHoles
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1694,18 +1692,6 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: 1d1eb5d68d1aeb7459b3faeac01256c5, type: 3}
---- !u!64 &64000012051106058
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011712751976}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 4300022, guid: 1d1eb5d68d1aeb7459b3faeac01256c5, type: 3}
 --- !u!64 &64000012179847710
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -1718,18 +1704,6 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300026, guid: 1d1eb5d68d1aeb7459b3faeac01256c5, type: 3}
---- !u!64 &64000012298192108
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011967017740}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 0}
 --- !u!64 &64000012352807724
 MeshCollider:
   m_ObjectHideFlags: 1

@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcec4d19ae60945748ec14f6a2e98c28, type: 3}
+  m_Name: CityCMiddle
+  m_EditorClassIdentifier: 
+  pathway:
+  - {x: -116.5, y: 0, z: 63.4}
+  - {x: -117.4, y: 0, z: 86}
+  - {x: -112.8, y: 0, z: 90.2}
+  - {x: -86.4, y: 0, z: 90.2}
+  - {x: -82.7, y: 0, z: 82.8}
+  - {x: -82.7, y: 0, z: 50.4}
+  - {x: -82.7, y: 0, z: 34.6}
+  - {x: -72.83, y: 0, z: 31.5}
+  - {x: -42.5, y: 0, z: 31.5}
+  - {x: -34.5, y: 0, z: 37.5}
+  - {x: -34.5, y: 0, z: 50}
+  - {x: -59.3, y: 0, z: 52.3}
+  - {x: -78.5, y: 0, z: 55.3}
+  - {x: -79.7, y: 0, z: 88.3}
+  - {x: -80.4, y: 0, z: 108.8}
+  - {x: -88.1, y: 0, z: 112.7}
+  - {x: -100.6, y: 0, z: 110.7}
+  - {x: -101.1, y: 0, z: 93.2}
+  - {x: -99.1, y: 0, z: 87.8}
+  - {x: -99.1, y: 0, z: 60.7}
+  - {x: -101.3, y: 0, z: 52.9}
+  - {x: -113.2, y: 0, z: 52.3}
+  - {x: -116.4, y: 0, z: 55.3}
+  - {x: -116.5, y: 0, z: 63.4}

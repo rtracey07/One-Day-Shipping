@@ -175,7 +175,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000014174934912}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.223984, y: -0.10978036, z: 43.691475}
+  m_LocalPosition: {x: -38.133392, y: -0.11142635, z: 35.985283}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -404,7 +404,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.16, y: 2.89, z: 1.71}
+  m_Size: {x: 3.16, y: 3.38, z: 2.23}
   m_Center: {x: 0, y: 1.87, z: 3.47}
 --- !u!65 &65000013432596394
 BoxCollider:
@@ -448,14 +448,17 @@ MonoBehaviour:
   player: {fileID: 0}
   tossTime: 1.3
   mapSuburbCenter: {x: 250.5, y: 0, z: 121}
-  mapCityACenter: {x: -95.7, y: 0, z: -5.7}
-  mapCityBCenter: {x: -89.2, y: 0, z: 107.1}
+  mapCityACenter: {x: -80.6, y: 0, z: 2.4}
+  mapCityBCenter: {x: 10, y: 0, z: 99}
+  mapCityCCenter: {x: -79.4, y: 0, z: 115}
   mapPostalCenter: {x: 80.1, y: 0, z: -82}
   suburbRadius: 185
-  cityARadius: 100
-  cityBRadius: 180
+  cityARadius: 45
+  cityBRadius: 70
+  cityCRadius: 100
   postalRadius: 101
-  pathACity: {fileID: 11400000, guid: 00e9ea3e8461b471fabe0b730a86c7d7, type: 2}
-  pathBCity: {fileID: 11400000, guid: 594437148493148c19995e8f0f10f872, type: 2}
+  pathACity: {fileID: 11400000, guid: ab32e13b156b9462d9b9476df99c1073, type: 2}
+  pathBCity: {fileID: 11400000, guid: 2358673e145f149168f1a4d0149ae6cf, type: 2}
+  pathCCity: {fileID: 11400000, guid: 9af3cce5f732047b583e3274a89c662d, type: 2}
   pathSuburb: {fileID: 11400000, guid: 31d56e69b12b94e39a6364f085c2745d, type: 2}
   pathPostal: {fileID: 11400000, guid: ad52c4fdc444f4f3fb7af903fe5d1dcb, type: 2}

@@ -24,7 +24,7 @@ GameObject:
   - 64: {fileID: 64000012366745982}
   m_Layer: 0
   m_Name: Object262
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -39,7 +39,7 @@ GameObject:
   - 4: {fileID: 4000011055694312}
   m_Layer: 0
   m_Name: Entrance
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -57,7 +57,7 @@ GameObject:
   - 64: {fileID: 64000012807580488}
   m_Layer: 0
   m_Name: Object261
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -75,7 +75,7 @@ GameObject:
   - 64: {fileID: 64000012612494486}
   m_Layer: 0
   m_Name: Object263
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -110,7 +110,7 @@ GameObject:
   - 64: {fileID: 64000012604815074}
   m_Layer: 0
   m_Name: Box1440
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -162,7 +162,7 @@ GameObject:
   - 64: {fileID: 64000012219419458}
   m_Layer: 0
   m_Name: Box1441
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -228,7 +228,7 @@ GameObject:
   - 4: {fileID: 4000012983655844}
   m_Layer: 0
   m_Name: Suburb_House_3
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -246,7 +246,7 @@ GameObject:
   - 64: {fileID: 64000012165257068}
   m_Layer: 0
   m_Name: Object260
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -264,7 +264,7 @@ GameObject:
   - 64: {fileID: 64000011840703386}
   m_Layer: 0
   m_Name: h2_smoke_hall010
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -331,7 +331,7 @@ GameObject:
   - 64: {fileID: 64000012165140890}
   m_Layer: 0
   m_Name: house_2_roof012
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -385,7 +385,7 @@ GameObject:
   - 64: {fileID: 64000013172680446}
   m_Layer: 0
   m_Name: house_2_underroof011
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295

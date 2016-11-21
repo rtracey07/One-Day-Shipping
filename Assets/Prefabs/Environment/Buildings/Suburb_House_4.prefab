@@ -74,7 +74,7 @@ GameObject:
   - 4: {fileID: 4000011424560188}
   m_Layer: 0
   m_Name: Suburb_House_4
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -511,7 +511,7 @@ GameObject:
   - 4: {fileID: 4000011042030462}
   m_Layer: 0
   m_Name: house_005
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295

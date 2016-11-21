@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Turn
+  m_Name: Splay
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,19 +20,24 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: -0
-        inSlope: 0
-        outSlope: 0
+        value: 0
+        inSlope: 1.4636872
+        outSlope: 1.4636872
+        tangentMode: 10
+      - time: 0.5
+        value: 0.7318436
+        inSlope: 0.698324
+        outSlope: 0.698324
         tangentMode: 10
       - time: 1
-        value: -0
-        inSlope: 0
-        outSlope: 0
+        value: 0.698324
+        inSlope: -0.06703913
+        outSlope: -0.06703913
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: RootQ.x
+    attribute: Left Shoulder Front-Back
     path: 
     classID: 95
     script: {fileID: 0}
@@ -40,19 +45,24 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: -0
-        inSlope: 0
-        outSlope: 0
+        value: 0
+        inSlope: 1.4413408
+        outSlope: 1.4413408
+        tangentMode: 10
+      - time: 0.5
+        value: 0.7206704
+        inSlope: 0.7122905
+        outSlope: 0.7122905
         tangentMode: 10
       - time: 1
-        value: -0
-        inSlope: 0
-        outSlope: 0
+        value: 0.7122905
+        inSlope: -0.016759753
+        outSlope: -0.016759753
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: RootQ.y
+    attribute: Right Shoulder Front-Back
     path: 
     classID: 95
     script: {fileID: 0}
@@ -60,19 +70,24 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: -0
-        inSlope: 0.24693435
-        outSlope: 0.24693435
+        value: 0
+        inSlope: 0.51955307
+        outSlope: 0.51955307
         tangentMode: 10
-      - time: 0.96666664
-        value: 0.2387032
-        inSlope: 0.24693435
-        outSlope: 0.24693435
+      - time: 0.5
+        value: 0.25977653
+        inSlope: 0.2849162
+        outSlope: 0.2849162
+        tangentMode: 10
+      - time: 1
+        value: 0.2849162
+        inSlope: 0.05027932
+        outSlope: 0.05027932
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: RootQ.z
+    attribute: Left Upper Leg In-Out
     path: 
     classID: 95
     script: {fileID: 0}
@@ -80,19 +95,24 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
+        value: 0
+        inSlope: 0.5698324
+        outSlope: 0.5698324
+        tangentMode: 10
+      - time: 0.5
+        value: 0.2849162
+        inSlope: 0.24581006
+        outSlope: 0.24581006
         tangentMode: 10
       - time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
+        value: 0.24581006
+        inSlope: -0.07821226
+        outSlope: -0.07821226
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: RootQ.w
+    attribute: Right Upper Leg In-Out
     path: 
     classID: 95
     script: {fileID: 0}
@@ -105,25 +125,25 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - path: 0
-      attribute: 12
+      attribute: 77
       script: {fileID: 0}
       classID: 95
       customType: 8
       isPPtrCurve: 0
     - path: 0
-      attribute: 10
+      attribute: 86
       script: {fileID: 0}
       classID: 95
       customType: 8
       isPPtrCurve: 0
     - path: 0
-      attribute: 11
+      attribute: 61
       script: {fileID: 0}
       classID: 95
       customType: 8
       isPPtrCurve: 0
     - path: 0
-      attribute: 13
+      attribute: 69
       script: {fileID: 0}
       classID: 95
       customType: 8
@@ -154,19 +174,24 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: -0
-        inSlope: 0
-        outSlope: 0
+        value: 0
+        inSlope: 1.4636872
+        outSlope: 1.4636872
+        tangentMode: 10
+      - time: 0.5
+        value: 0.7318436
+        inSlope: 0.698324
+        outSlope: 0.698324
         tangentMode: 10
       - time: 1
-        value: -0
-        inSlope: 0
-        outSlope: 0
+        value: 0.698324
+        inSlope: -0.06703913
+        outSlope: -0.06703913
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: RootQ.x
+    attribute: Left Shoulder Front-Back
     path: 
     classID: 95
     script: {fileID: 0}
@@ -174,19 +199,24 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: -0
-        inSlope: 0
-        outSlope: 0
+        value: 0
+        inSlope: 1.4413408
+        outSlope: 1.4413408
+        tangentMode: 10
+      - time: 0.5
+        value: 0.7206704
+        inSlope: 0.7122905
+        outSlope: 0.7122905
         tangentMode: 10
       - time: 1
-        value: -0
-        inSlope: 0
-        outSlope: 0
+        value: 0.7122905
+        inSlope: -0.016759753
+        outSlope: -0.016759753
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: RootQ.y
+    attribute: Right Shoulder Front-Back
     path: 
     classID: 95
     script: {fileID: 0}
@@ -194,19 +224,24 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: -0
-        inSlope: 0.24693435
-        outSlope: 0.24693435
+        value: 0
+        inSlope: 0.51955307
+        outSlope: 0.51955307
         tangentMode: 10
-      - time: 0.96666664
-        value: 0.2387032
-        inSlope: 0.24693435
-        outSlope: 0.24693435
+      - time: 0.5
+        value: 0.25977653
+        inSlope: 0.2849162
+        outSlope: 0.2849162
+        tangentMode: 10
+      - time: 1
+        value: 0.2849162
+        inSlope: 0.05027932
+        outSlope: 0.05027932
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: RootQ.z
+    attribute: Left Upper Leg In-Out
     path: 
     classID: 95
     script: {fileID: 0}
@@ -214,19 +249,24 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
+        value: 0
+        inSlope: 0.5698324
+        outSlope: 0.5698324
+        tangentMode: 10
+      - time: 0.5
+        value: 0.2849162
+        inSlope: 0.24581006
+        outSlope: 0.24581006
         tangentMode: 10
       - time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
+        value: 0.24581006
+        inSlope: -0.07821226
+        outSlope: -0.07821226
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: RootQ.w
+    attribute: Right Upper Leg In-Out
     path: 
     classID: 95
     script: {fileID: 0}

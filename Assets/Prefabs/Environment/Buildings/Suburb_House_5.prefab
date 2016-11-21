@@ -230,7 +230,7 @@ GameObject:
   - 4: {fileID: 4000011227616518}
   m_Layer: 0
   m_Name: Entrance
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -280,7 +280,7 @@ GameObject:
   - 4: {fileID: 4000010062702542}
   m_Layer: 0
   m_Name: house_006
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -331,7 +331,7 @@ GameObject:
   - 4: {fileID: 4000011019694114}
   m_Layer: 0
   m_Name: Suburb_House_5
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295

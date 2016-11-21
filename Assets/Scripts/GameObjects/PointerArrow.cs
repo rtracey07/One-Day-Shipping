@@ -4,11 +4,19 @@ using System.Collections;
 public class PointerArrow : MonoBehaviour {
 
 	private Location destination;
+	private Material arrowMaterial;
+	private bool hasPackage = false;
+
+	public Color getPackageColor = Color.blue;
+	public Color deliverPackageColor = Color.red;
 
 	// Use this for initialization
 	void Start () {
 		if(LevelManager.Instance != null && LevelManager.Instance.currentDestination != null)
 			destination = LevelManager.Instance.currentDestination;
+
+		arrowMaterial = this.GetComponent<MeshRenderer> ().sharedMaterial;
+		arrowMaterial.color = getPackageColor;
 	}
 	
 	// Update is called once per frame
@@ -20,7 +28,27 @@ public class PointerArrow : MonoBehaviour {
 					destination = LevelManager.Instance.currentDestination;
 			}
 
-			this.transform.up = Vector3.Normalize (destination.transform.position - this.transform.position);
+			this.transform.right = -Vector3.Normalize (destination.transform.position - this.transform.position);
+
+			if (hasPackage != GameManager.Instance.hasPackage) {
+				hasPackage = GameManager.Instance.hasPackage;
+				StartCoroutine (SwapColor (3));
+			}
 		}
+	}
+
+	IEnumerator SwapColor(float swapTime)
+	{
+		float time = 0.0f;
+
+		do {
+			if (hasPackage)
+				arrowMaterial.color = Color.Lerp (getPackageColor, deliverPackageColor, time / swapTime);
+			else
+				arrowMaterial.color = Color.Lerp (getPackageColor, deliverPackageColor, (1 - time / swapTime));
+
+			time += Time.deltaTime;
+			yield return null;	
+		} while(time <= swapTime);
 	}
 }
