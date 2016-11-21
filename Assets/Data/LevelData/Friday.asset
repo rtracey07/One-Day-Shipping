@@ -11,21 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f1c58ec081064413a2bebda9ccb76cb, type: 3}
   m_Name: Friday
   m_EditorClassIdentifier: 
-  levelName: 
+  levelName: Friday
+  missionLength: 10
   carPathGroup:
-    numberOfCarsToSpawn: 70
-    carPrefabs:
-    - {fileID: 1000014174934912, guid: 51860edce4c0a4b769ff189aba3c918d, type: 2}
-    - {fileID: 1000014174934912, guid: cb1168ac3685a4af7bd2c6c94c382247, type: 2}
-    - {fileID: 1000014174934912, guid: 95fb02a8189804689a7b7891228feabf, type: 2}
-    - {fileID: 1000014174934912, guid: 79da92a775832432e9302135f66d4645, type: 2}
-    - {fileID: 1000014174934912, guid: 8b25db4f5147e41f0abe134f5b126e41, type: 2}
-    - {fileID: 1000014174934912, guid: 959c8c6aaf3b540a98416b2e4488a64b, type: 2}
-    - {fileID: 1000014174934912, guid: 4acac27cebe2844cda271e3772cfd4a2, type: 2}
-    - {fileID: 1000014174934912, guid: a2db029ef64e6482796b19afb56e225b, type: 2}
-    - {fileID: 1000014174934912, guid: c107bcefa27034374912dac7d1df6dea, type: 2}
-    - {fileID: 1000014174934912, guid: 1cd65b0e33630439bb90e45101f98c92, type: 2}
-    - {fileID: 1000014174934912, guid: 54e4f6d1fdf3f48cb9a482354b76f00c, type: 2}
-    - {fileID: 1000014174934912, guid: ff0d95c161361449c84725d1c2fac500, type: 2}
+    numberOfCarsToSpawn: 0
+    carPrefabs: []
   pickupLocations: []
   dropoffLocations: []

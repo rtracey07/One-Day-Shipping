@@ -7,6 +7,7 @@ using System;
 public class Level : ScriptableObject{
 
 	public string levelName;
+	public float missionLength;
 
 	[HideInInspector]
 	[Serializable]

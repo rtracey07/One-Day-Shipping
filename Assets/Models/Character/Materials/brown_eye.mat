@@ -8,10 +8,18 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: brown_eye
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+<<<<<<< HEAD
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
   m_CustomRenderQueue: -1
   stringTagMap: {}
+=======
+  m_ShaderKeywords: _ALPHAPREMULTIPLY_ON _EMISSION
+  m_LightmapFlags: 1
+  m_CustomRenderQueue: 3000
+  stringTagMap:
+    RenderType: Transparent
+>>>>>>> master
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
@@ -81,7 +89,11 @@ Material:
       second: 1
     - first:
         name: _DstBlend
+<<<<<<< HEAD
       second: 0
+=======
+      second: 10
+>>>>>>> master
     - first:
         name: _GlossMapScale
       second: 1
@@ -96,7 +108,11 @@ Material:
       second: 0
     - first:
         name: _Mode
+<<<<<<< HEAD
       second: 0
+=======
+      second: 3
+>>>>>>> master
     - first:
         name: _OcclusionStrength
       second: 1
@@ -117,7 +133,11 @@ Material:
       second: 0
     - first:
         name: _ZWrite
+<<<<<<< HEAD
       second: 1
+=======
+      second: 0
+>>>>>>> master
     m_Colors:
     - first:
         name: _Color

@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour {
 	public float acceleration = 5.0f;
 
 	public Transform legL, legR, armL, armR;
+	public GameObject package;
 	private gizmoData[] gizmos;
 
 	private bool jumpPrimed = false;
@@ -81,6 +82,8 @@ public class PlayerController : MonoBehaviour {
 		legR.localScale = new Vector3(legR.localScale.x, Mathf.Lerp(1.0f, 1.4f, speedFraction), legR.localScale.z);
 		armL.localScale = new Vector3(armL.localScale.x, Mathf.Lerp(1.2f, 1.4f, speedFraction), armL.localScale.z);
 		armR.localScale = new Vector3(armR.localScale.x, Mathf.Lerp(1.2f, 1.4f, speedFraction), armR.localScale.z);
+
+		GetPackage (GameManager.Instance.hasPackage);
 }
 
 	//Rotate Player Around y-axis.
@@ -204,5 +207,11 @@ public class PlayerController : MonoBehaviour {
 				Gizmos.DrawLine (gizmos [i].collisionPoint,  gizmos [i].collisionPoint + gizmos [i].collisionNormal);
 			}
 		}
+	}
+
+	public void GetPackage(bool state)
+	{
+		animator.SetBool ("Package", state);
+		package.SetActive (state);
 	}
 }

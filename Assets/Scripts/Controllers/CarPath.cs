@@ -60,7 +60,7 @@ public class CarPath : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
 		
 		if (other.tag.Equals("Player")){
-			Debug.Log ("collision");
+			//Debug.Log ("collision");
 			carHit = true;
 		}
 
@@ -94,14 +94,14 @@ public class CarPath : MonoBehaviour {
 		} else if ((player.transform.position.x - mapCityACenter.x) * (player.transform.position.x - mapCityACenter.x)
 			+ (player.transform.position.z - mapCityACenter.z) * (player.transform.position.z - mapCityACenter.z) <= cityARadius * cityARadius) {
 			//in the city area
-			Debug.Log ("a");
+			//Debug.Log ("a");
 			waypointArray = pathACity.pathway.ToArray();
 			speed = citySpeed*10.0f;
 			bounceOffset = 0.07f;
 		} else if ((player.transform.position.x - mapCityBCenter.x) * (player.transform.position.x - mapCityBCenter.x)
 			+ (player.transform.position.z - mapCityBCenter.z) * (player.transform.position.z - mapCityBCenter.z) <= cityBRadius * cityBRadius) {
 			//in the city area
-			Debug.Log ("b");
+			//Debug.Log ("b");
 			waypointArray = pathBCity.pathway.ToArray();
 			speed = citySpeed*10.0f;
 			bounceOffset = 0.07f;
@@ -110,7 +110,7 @@ public class CarPath : MonoBehaviour {
 			//in the city area
 			waypointArray = pathCCity.pathway.ToArray();
 			speed = citySpeed*10.0f;
-			Debug.Log ("c");
+			//Debug.Log ("c");
 			bounceOffset = 0.07f;
 		} else if ((player.transform.position.x - mapPostalCenter.x) * (player.transform.position.x - mapPostalCenter.x)
 		          + (player.transform.position.z - mapPostalCenter.z) * (player.transform.position.z - mapPostalCenter.z) <= postalRadius * postalRadius) {
