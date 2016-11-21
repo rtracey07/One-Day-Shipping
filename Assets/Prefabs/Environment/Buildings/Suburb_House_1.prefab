@@ -36,7 +36,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012766489968}
-  - 111: {fileID: 111000012495188314}
   m_Layer: 0
   m_Name: Suburb_Postbox_1 (1)
   m_TagString: Building
@@ -252,6 +251,7 @@ GameObject:
   - 4: {fileID: 4000010061742352}
   - 33: {fileID: 33000010221763138}
   - 23: {fileID: 23000014099041946}
+  - 64: {fileID: 64000013872852424}
   m_Layer: 0
   m_Name: Box131
   m_TagString: Building
@@ -1812,6 +1812,18 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300008, guid: 1d1eb5d68d1aeb7459b3faeac01256c5, type: 3}
+--- !u!64 &64000013872852424
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011712751976}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_Mesh: {fileID: 4300022, guid: 1d1eb5d68d1aeb7459b3faeac01256c5, type: 3}
 --- !u!64 &64000013876859922
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -1836,17 +1848,3 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300016, guid: 1d1eb5d68d1aeb7459b3faeac01256c5, type: 3}
---- !u!111 &111000012495188314
-Animation:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010450434800}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0

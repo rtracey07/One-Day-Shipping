@@ -10,7 +10,6 @@ GameObject:
   - 4: {fileID: 453006}
   - 33: {fileID: 3391810}
   - 23: {fileID: 2360072}
-  - 64: {fileID: 64000011920951226}
   m_Layer: 0
   m_Name: Building_Tall
   m_TagString: Building
@@ -145,15 +144,3 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 147108}
   m_IsPrefabParent: 1
---- !u!64 &64000011920951226
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 147108}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 4300004, guid: 51dd5bf4be5fbb84e9f6e823c6b2fbc9, type: 3}

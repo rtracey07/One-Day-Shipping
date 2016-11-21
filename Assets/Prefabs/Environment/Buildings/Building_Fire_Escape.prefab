@@ -27,7 +27,6 @@ GameObject:
   - 4: {fileID: 498984}
   - 33: {fileID: 3323044}
   - 23: {fileID: 2367744}
-  - 64: {fileID: 64000013109610854}
   m_Layer: 0
   m_Name: Building_Fire_Escape
   m_TagString: Building
@@ -145,15 +144,3 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 151704}
   m_IsPrefabParent: 1
---- !u!64 &64000013109610854
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 151704}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 4300004, guid: e2fe373d4157e40419112124b720d7de, type: 3}
