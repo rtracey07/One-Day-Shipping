@@ -251,10 +251,7 @@ GameObject:
   - 4: {fileID: 4000010061742352}
   - 33: {fileID: 33000010221763138}
   - 23: {fileID: 23000014099041946}
-<<<<<<< HEAD
-=======
   - 64: {fileID: 64000013872852424}
->>>>>>> master
   m_Layer: 0
   m_Name: Box131
   m_TagString: Building
@@ -1817,7 +1814,7 @@ MeshCollider:
   m_Mesh: {fileID: 4300008, guid: 1d1eb5d68d1aeb7459b3faeac01256c5, type: 3}
 --- !u!64 &64000013872852424
 MeshCollider:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011712751976}
