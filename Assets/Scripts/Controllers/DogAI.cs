@@ -10,7 +10,7 @@ using System.Collections;
 public class DogAI : MonoBehaviour {
 	//speed to move
 	[SerializeField] private float speed = 5.0f;				// flight speed
-	[SerializeField] private float damageStrength = 15.0f;			// damage to player
+	[SerializeField] private float damageStrength = 1.0f;			// damage to player
 	// the space in which it can travel
 	[SerializeField] private Vector3 center = Vector3.zero;		// center of the radius
 	[SerializeField] private float radius = 3.0f;
