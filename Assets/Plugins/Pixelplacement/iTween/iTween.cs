@@ -5792,7 +5792,7 @@ public class iTween : MonoBehaviour{
 	/// A <see cref="Vector3s[]"/>
 	/// </param>
 	public static void DrawPath(Vector3[] path) {
-		if(path != null && path.Length>0){
+		if(path.Length>0){
 			DrawPathHelper(path,Defaults.color,"gizmos");
 		}
 	}		
@@ -6654,7 +6654,6 @@ public class iTween : MonoBehaviour{
 		
 		//Line Draw:
 		Vector3 prevPt = Interp(vector3s,0);
-//		Gizmos.color=color;
 		int SmoothAmount = path.Length*20;
 		for (int i = 1; i <= SmoothAmount; i++) {
 			float pm = (float) i / SmoothAmount;

@@ -26,14 +26,14 @@ public class CarPath : MonoBehaviour {
 
 		m_Manager = GetComponentInParent<CarPathManager> ();
 	}
-		
+
 	public float CurrentPathPercent {
 		get;
 		set;
 	}
 
 	void OnTriggerEnter(Collider other) {
-		
+
 		if (other.tag.Equals("Player")){
 			//Debug.Log ("collision");
 			carHit = true;
@@ -41,20 +41,20 @@ public class CarPath : MonoBehaviour {
 
 	}
 
-//	/// <summary>
-//	/// FixedUpdate
-//	/// using raycasts to detect player
-//	/// </summary>
-//	void FixedUpdate() {
-//		RaycastHit front;
-//		if (Physics.Raycast (transform.position, transform.forward, out front)) {
-//			//Debug.Log ("hit something " + front.distance);
-//			if (front.distance < 0.1f && front.collider.tag.Equals("Player")) {
-//				
-//			}
-//		} 
-//
-//	}
+	//	/// <summary>
+	//	/// FixedUpdate
+	//	/// using raycasts to detect player
+	//	/// </summary>
+	//	void FixedUpdate() {
+	//		RaycastHit front;
+	//		if (Physics.Raycast (transform.position, transform.forward, out front)) {
+	//			//Debug.Log ("hit something " + front.distance);
+	//			if (front.distance < 0.1f && front.collider.tag.Equals("Player")) {
+	//				
+	//			}
+	//		} 
+	//
+	//	}
 
 
 	void Update () 
@@ -64,7 +64,7 @@ public class CarPath : MonoBehaviour {
 		}
 
 		if (wayPoints != null) {
-		// if the we're at the end, restart
+			// if the we're at the end, restart
 			if (CurrentPathPercent >= 0.99f) {
 				CurrentPathPercent = 0.0f;
 				// TODO - this needs some lerping adjustment
@@ -79,7 +79,7 @@ public class CarPath : MonoBehaviour {
 			transform.LookAt (look);
 		}
 
-/*
+		/*
 		if (carHit && tossPlayer < tossTime) {
 			//Debug.Log ("tossing");
 			player.transform.Translate (transform.forward * Time.deltaTime * speed * bounceOffset, Space.World);
