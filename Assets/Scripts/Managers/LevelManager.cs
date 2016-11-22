@@ -51,13 +51,22 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	private void SpawnCars(){
-		for (int i = 0; i < levelData.carPathGroup.numberOfCarsToSpawn; i++) {
-			int prefabIndex = Random.Range (0, levelData.carPathGroup.carPrefabs.Count);
-			GameObject carPrefab = levelData.carPathGroup.carPrefabs [prefabIndex];
-			GameObject car = GameObject.Instantiate (carPrefab);
-			CarPath carPath = car.GetComponent<CarPath> ();
-			carPath.Player = player;
-			carPath.CurrentPathPercent = (float)i / levelData.carPathGroup.numberOfCarsToSpawn;
+		GameObject carParent = GameObject.Find ("Car Pool");
+
+		if(carParent != null)
+		{
+			for (int i = 0; i < levelData.carPathGroup.numberOfCarsToSpawn; i++) {
+				int prefabIndex = Random.Range (0, levelData.carPathGroup.carPrefabs.Count);
+				GameObject carPrefab = levelData.carPathGroup.carPrefabs [prefabIndex];
+				GameObject car = GameObject.Instantiate (carPrefab);
+				car.transform.parent = carParent.transform;
+				CarPath carPath = car.GetComponent<CarPath> ();
+				carPath.CurrentPathPercent = (float)i / levelData.carPathGroup.numberOfCarsToSpawn;
+	}
+		}
+		else
+		{
+			Debug.Log("Car Pool GameObject missing from scene. Nowhere to instantiate cars");
 		}
 	}
 
