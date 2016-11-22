@@ -31,23 +31,15 @@ public class LevelManager : MonoBehaviour {
 
 	IEnumerator RunLevel()
 	{
-        for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 5; i++) {
 			currentDestination = levelData.GetPickupLocation (ref activeLocations);
-            
-            currentDestination.SetMiniMapMarkerActive(true);            
 
-            yield return new WaitUntil (() => GameManager.Instance.hasPackage);
+			yield return new WaitUntil (() => GameManager.Instance.hasPackage);
 
-            currentDestination.SetMiniMapMarkerActive(false);
+			currentDestination = levelData.GetDropoffLocation (ref activeLocations);
 
-            currentDestination = levelData.GetDropoffLocation (ref activeLocations);
-
-            currentDestination.SetMiniMapMarkerActive(true);
-
-            yield return new WaitUntil (() => !GameManager.Instance.hasPackage);
-
-            currentDestination.SetMiniMapMarkerActive(false);
-        }
+			yield return new WaitUntil (() => !GameManager.Instance.hasPackage);
+		}
 	}
 
 	private void SpawnCars(){
