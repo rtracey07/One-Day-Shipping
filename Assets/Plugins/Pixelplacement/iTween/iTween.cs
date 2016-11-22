@@ -6654,7 +6654,6 @@ public class iTween : MonoBehaviour{
 		
 		//Line Draw:
 		Vector3 prevPt = Interp(vector3s,0);
-		Gizmos.color=color;
 		int SmoothAmount = path.Length*20;
 		for (int i = 1; i <= SmoothAmount; i++) {
 			float pm = (float) i / SmoothAmount;

@@ -31,33 +31,42 @@ public class LevelManager : MonoBehaviour {
 
 	IEnumerator RunLevel()
 	{
-        for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 5; i++) {
 			currentDestination = levelData.GetPickupLocation (ref activeLocations);
-            
-            currentDestination.SetMiniMapMarkerActive(true);            
 
-            yield return new WaitUntil (() => GameManager.Instance.hasPackage);
+			currentDestination.SetMiniMapMarkerActive(true);            
 
-            currentDestination.SetMiniMapMarkerActive(false);
+			yield return new WaitUntil (() => GameManager.Instance.hasPackage);
 
-            currentDestination = levelData.GetDropoffLocation (ref activeLocations);
+			currentDestination.SetMiniMapMarkerActive(false);
 
-            currentDestination.SetMiniMapMarkerActive(true);
+			currentDestination = levelData.GetDropoffLocation (ref activeLocations);
 
-            yield return new WaitUntil (() => !GameManager.Instance.hasPackage);
+			currentDestination.SetMiniMapMarkerActive(true);
 
-            currentDestination.SetMiniMapMarkerActive(false);
-        }
+			yield return new WaitUntil (() => !GameManager.Instance.hasPackage);
+
+			currentDestination.SetMiniMapMarkerActive(false);
+		}
 	}
 
 	private void SpawnCars(){
-		for (int i = 0; i < levelData.carPathGroup.numberOfCarsToSpawn; i++) {
-			int prefabIndex = Random.Range (0, levelData.carPathGroup.carPrefabs.Count);
-			GameObject carPrefab = levelData.carPathGroup.carPrefabs [prefabIndex];
-			GameObject car = GameObject.Instantiate (carPrefab);
-			CarPath carPath = car.GetComponent<CarPath> ();
-			carPath.Player = player;
-			carPath.CurrentPathPercent = (float)i / levelData.carPathGroup.numberOfCarsToSpawn;
+		GameObject carParent = GameObject.Find ("Car Pool");
+
+		if(carParent != null)
+		{
+			for (int i = 0; i < levelData.carPathGroup.numberOfCarsToSpawn; i++) {
+				int prefabIndex = Random.Range (0, levelData.carPathGroup.carPrefabs.Count);
+				GameObject carPrefab = levelData.carPathGroup.carPrefabs [prefabIndex];
+				GameObject car = GameObject.Instantiate (carPrefab);
+				car.transform.parent = carParent.transform;
+				CarPath carPath = car.GetComponent<CarPath> ();
+				carPath.CurrentPathPercent = (float)i / levelData.carPathGroup.numberOfCarsToSpawn;
+			}
+		}
+		else
+		{
+			Debug.Log("Car Pool GameObject missing from scene. Nowhere to instantiate cars");
 		}
 	}
 
