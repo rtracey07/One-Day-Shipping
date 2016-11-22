@@ -15,7 +15,7 @@ public class DogAI : MonoBehaviour {
 	[SerializeField] private Vector3 center = Vector3.zero;		// center of the radius
 	[SerializeField] private float radius = 3.0f;
 	[SerializeField] private float attackProximity = 0.3f;		// when to do attack animation
-
+	[SerializeField] private GameObject package;				// package to damage
 
 	[SerializeField] private GameObject player;
 	private Collider col;
@@ -87,6 +87,7 @@ public class DogAI : MonoBehaviour {
 		if ((player.transform.position.x - transform.position.x) * (player.transform.position.x - transform.position.x)
 		    + (player.transform.position.z - transform.position.z) * (player.transform.position.z - transform.position.z) <= attackProximity) {
 			animator.SetBool ("Attack", true);
+
 		} else {
 			animator.SetBool ("Attack", false);
 		
