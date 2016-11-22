@@ -87,7 +87,7 @@ public class DogAI : MonoBehaviour {
 		if ((player.transform.position.x - transform.position.x) * (player.transform.position.x - transform.position.x)
 		    + (player.transform.position.z - transform.position.z) * (player.transform.position.z - transform.position.z) <= attackProximity) {
 			animator.SetBool ("Attack", true);
-
+			package.GetComponent<Package> ().DamagePackage (damageStrength);
 		} else {
 			animator.SetBool ("Attack", false);
 		
