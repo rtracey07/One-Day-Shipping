@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1000012922055700}
+  m_IsPrefabParent: 1
+--- !u!1 &1000012922055700
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000010718362738}
+  - 114: {fileID: 114000010428052028}
+  m_Layer: 0
+  m_Name: Car Pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4000010718362738
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012922055700}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -42.3, y: 0, z: 38.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &114000010428052028
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012922055700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37b0814d5ab3f4123910cd7a4095a015, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  areas:
+  - name: Map Suburb
+    pathColor: {r: 1, g: 0, b: 0, a: 1}
+    center: {x: 250.5, y: 0, z: 121}
+    radius: 185
+    paths:
+    - {fileID: 11400000, guid: 31d56e69b12b94e39a6364f085c2745d, type: 2}
+  - name: Map City A
+    pathColor: {r: 1, g: 1, b: 1, a: 1}
+    center: {x: -80.6, y: 0, z: 2.4}
+    radius: 45
+    paths:
+    - {fileID: 11400000, guid: ab32e13b156b9462d9b9476df99c1073, type: 2}
+    - {fileID: 11400000, guid: 00e9ea3e8461b471fabe0b730a86c7d7, type: 2}
+    - {fileID: 11400000, guid: bdd72631f036f46eba15b4b1101aa79a, type: 2}
+  - name: Map City B
+    pathColor: {r: 0.07586217, g: 1, b: 0, a: 1}
+    center: {x: 10, y: 0, z: 99}
+    radius: 70
+    paths:
+    - {fileID: 11400000, guid: 2358673e145f149168f1a4d0149ae6cf, type: 2}
+    - {fileID: 11400000, guid: 3958d2028c70f4887b25f377c8bb525d, type: 2}
+    - {fileID: 11400000, guid: 18cc7ecd1183b4c69a813a1c23df2efc, type: 2}
+    - {fileID: 11400000, guid: c1fa2a648fa254cc2b82c733b6b104bf, type: 2}
+  - name: Map City C
+    pathColor: {r: 0, g: 0.5448277, b: 1, a: 1}
+    center: {x: -79.4, y: 0, z: 115}
+    radius: 100
+    paths:
+    - {fileID: 11400000, guid: 9af3cce5f732047b583e3274a89c662d, type: 2}
+    - {fileID: 11400000, guid: 46b6998a2b14e4f188f0a01f859f4af6, type: 2}
+    - {fileID: 11400000, guid: bea9ac01d164b440a96634589cae9d4b, type: 2}
+  - name: Map Plateau
+    pathColor: {r: 1, g: 0.76551723, b: 0, a: 1}
+    center: {x: 80.1, y: 0, z: -82}
+    radius: 101
+    paths:
+    - {fileID: 11400000, guid: ad52c4fdc444f4f3fb7af903fe5d1dcb, type: 2}
+  pathChange: 0
+  debug: 1
