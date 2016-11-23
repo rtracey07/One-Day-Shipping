@@ -11,6 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcec4d19ae60945748ec14f6a2e98c28, type: 3}
   m_Name: LongSuburb
   m_EditorClassIdentifier: 
+  name: Long Suburb
+  isActive: 0
+  center: {x: 170.3, y: 0, z: 100}
   pathway:
   - {x: 129.4, y: 0, z: 79.9}
   - {x: 129.4, y: 0, z: 122}

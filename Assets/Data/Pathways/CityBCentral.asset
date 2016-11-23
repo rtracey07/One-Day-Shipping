@@ -11,6 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcec4d19ae60945748ec14f6a2e98c28, type: 3}
   m_Name: CityBCentral
   m_EditorClassIdentifier: 
+  name: City B Central
+  isActive: 0
+  center: {x: -22.3, y: 0, z: 79.1}
   pathway:
   - {x: -34.5, y: 0, z: 67}
   - {x: -34.5, y: 0, z: 104}
