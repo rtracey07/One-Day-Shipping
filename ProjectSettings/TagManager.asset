@@ -10,6 +10,7 @@ TagManager:
   - Postbox
   - MiniMapDirectionArrow
   - MiniMap
+  - Package
   layers:
   - Default
   - TransparentFX
