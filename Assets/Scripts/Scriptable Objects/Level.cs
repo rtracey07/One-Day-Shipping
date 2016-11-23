@@ -29,12 +29,11 @@ public class Level : ScriptableObject{
 	public List<LocationGroup> pickupLocations;
 	public List<LocationGroup> dropoffLocations;
 
-	private int currIndex = 0;
+	public int currIndex = 0;
 
 	public Location GetPickupLocation(ref Location[] activeLocations)
 	{
-		string current = pickupLocations [currIndex].locations [UnityEngine.Random.Range(0, pickupLocations [currIndex].locations.Count)];
-
+		string current = pickupLocations [currIndex].locations [UnityEngine.Random.Range(0, pickupLocations [currIndex].locations.Count)];        
 
 		for (int i = 0; i < activeLocations.Length; i++) {
 			if (activeLocations[i].gameObject.name == current) {
@@ -49,14 +48,13 @@ public class Level : ScriptableObject{
 	}
 
 	public Location GetDropoffLocation(ref Location[] activeLocations)
-	{
-		string current = dropoffLocations [currIndex].locations [UnityEngine.Random.Range(0, pickupLocations [currIndex].locations.Count)];
+	{        
+		string current = dropoffLocations [currIndex].locations [UnityEngine.Random.Range(0, dropoffLocations [currIndex].locations.Count)];
 
 		currIndex++;
 
 		if (currIndex >= pickupLocations.Count)
 			currIndex = 0;
-
 
 		for (int i = 0; i < activeLocations.Length; i++) {
 			if (activeLocations[i].gameObject.name == current) {
