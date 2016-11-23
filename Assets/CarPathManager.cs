@@ -41,10 +41,10 @@ public class CarPathManager : MonoBehaviour {
 		}
 	}
 
-	public Vector3[] GetAreaPath()
+	public Pathway GetAreaPath()
 	{
 		if (activeAreas.Count > 0) {
-			return activeAreas[Random.Range(0, activeAreas.Count-1)].pathway.ToArray();
+			return activeAreas[Random.Range(0, activeAreas.Count-1)];
 		}
 
 		return null;
@@ -64,7 +64,7 @@ public class CarPathManager : MonoBehaviour {
 			}
 		}
 	}
-
+		
 	void OnDestroy()
 	{
 		foreach (Pathway p in areas) {

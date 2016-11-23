@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour {
 	public static GameManager Instance {  get { return _Instance; } }
 
 	public bool hasPackage = false;
+	public Camera mainCamera;
 
 	public Stats stats;
 
@@ -19,5 +20,7 @@ public class GameManager : MonoBehaviour {
 			Debug.LogError ("Multiple Game Managers in Scene.");
 
 		DontDestroyOnLoad (gameObject);
+
+		mainCamera = GameObject.Find ("Main Camera").GetComponent<Camera> ();
 	}
 }

@@ -11,6 +11,7 @@ TagManager:
   - MiniMapDirectionArrow
   - MiniMap
   - Package
+  - Vehicle
   layers:
   - Default
   - TransparentFX
