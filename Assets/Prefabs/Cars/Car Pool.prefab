@@ -34,7 +34,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012922055700}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -42.3, y: 0, z: 42.1}
+  m_LocalPosition: {x: -42.3, y: 0, z: 38.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -72,5 +72,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5d5098166cdc9469ab999301af43b953, type: 2}
   inactivePathColor: {r: 1, g: 1, b: 1, a: 1}
   activePathColor: {r: 1, g: 0, b: 0, a: 1}
-  activeDistance: 80
+  activeDistance: 50
+  carSpawnDistance: 50
   debug: 1

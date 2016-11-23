@@ -14,7 +14,7 @@ MonoBehaviour:
   levelName: Monday
   missionLength: 10
   carPathGroup:
-    numberOfCarsToSpawn: 50
+    numberOfCarsToSpawn: 30
     carPrefabs:
     - {fileID: 1000014174934912, guid: 51860edce4c0a4b769ff189aba3c918d, type: 2}
     - {fileID: 1000014174934912, guid: cb1168ac3685a4af7bd2c6c94c382247, type: 2}
@@ -89,3 +89,4 @@ MonoBehaviour:
     - City_Dropoff_P
     - City_Dropoff_Q
     - City_Dropoff_Z
+  currIndex: 0
