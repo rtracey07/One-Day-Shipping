@@ -105,13 +105,12 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000011727044898}
   - 54: {fileID: 54000013047909606}
-  - 65: {fileID: 65000013432596394}
   - 65: {fileID: 65000014105000854}
   - 65: {fileID: 65000010420372706}
   - 114: {fileID: 114000010463511558}
   m_Layer: 0
   m_Name: BusAlt
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -390,7 +389,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
@@ -404,20 +403,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.16, y: 3.13, z: 2.21}
-  m_Center: {x: 0, y: 1.87, z: 3.27}
---- !u!65 &65000013432596394
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000014174934912}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 2.54, y: 1.27, z: 1.12}
-  m_Center: {x: 0, y: 0.9, z: -4.27}
+  m_Size: {x: 5.9461823, y: 3.38, z: 3.4148436}
+  m_Center: {x: 0.018348694, y: 1.8699999, z: 4.679367}
 --- !u!65 &65000014105000854
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -428,8 +415,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.22, y: 2.8, z: 7.67}
-  m_Center: {x: 0, y: 1.78, z: -1.03}
+  m_Size: {x: 3.22, y: 3.4872746, z: 9.479917}
+  m_Center: {x: 0, y: 1.9750378, z: -0.38508606}
 --- !u!114 &114000010463511558
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -442,23 +429,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationOffset: 0.005
-  citySpeed: 75
-  suburbSpeed: 3
-  postalSpeed: 50
-  player: {fileID: 0}
-  tossTime: 1.5
-  mapSuburbCenter: {x: 250.5, y: 0, z: 121}
-  mapCityACenter: {x: -80.6, y: 0, z: 2.4}
-  mapCityBCenter: {x: 10, y: 0, z: 99}
-  mapCityCCenter: {x: -79.4, y: 0, z: 115}
-  mapPostalCenter: {x: 80.1, y: 0, z: -82}
-  suburbRadius: 185
-  cityARadius: 45
-  cityBRadius: 70
-  cityCRadius: 100
-  postalRadius: 101
-  pathACity: {fileID: 11400000, guid: 5d5098166cdc9469ab999301af43b953, type: 2}
-  pathBCity: {fileID: 11400000, guid: c1fa2a648fa254cc2b82c733b6b104bf, type: 2}
-  pathCCity: {fileID: 11400000, guid: 4680d29d6bed4400284941b00469a1cc, type: 2}
-  pathSuburb: {fileID: 11400000, guid: 35728b576b1e94004bcdc75e841e7a6b, type: 2}
-  pathPostal: {fileID: 11400000, guid: ad52c4fdc444f4f3fb7af903fe5d1dcb, type: 2}
+  speed: 0

@@ -2197,7 +2197,7 @@ MonoBehaviour:
   - {x: -43.07, y: -0.099, z: 36.11}
   groundOffset: 0.05
   speed: 3
-  damageStrength: 15
+  damageStrength: 2
   radius: 3
   projectileRadius: 5
   attackProximity: 0.3

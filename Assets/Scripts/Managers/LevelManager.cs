@@ -10,6 +10,11 @@ public class LevelManager : MonoBehaviour {
 		}
 	}
 
+    void OnDestroy()
+    {
+        levelData.currIndex = 0;
+    }
+
 	public Level levelData;
 	public Location currentDestination;
 	private GameObject player;

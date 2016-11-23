@@ -31,6 +31,10 @@ public class DogAI : MonoBehaviour {
 	private float angle = 0.0f;
 	private float current;
 
+	private bool attack = false;
+	private float attackTime = 3.0f;
+	private float attackDelay = 3.0f;
+
 	//keep track of ground
 	private RaycastHit ground;
 	[SerializeField] private float groundOffset = 0.5f;
@@ -88,8 +92,7 @@ public class DogAI : MonoBehaviour {
 		if ((player.transform.position.x - transform.position.x) * (player.transform.position.x - transform.position.x)
 		    + (player.transform.position.z - transform.position.z) * (player.transform.position.z - transform.position.z) <= attackProximity) {
 			animator.SetBool ("Attack", true);
-			package = GameObject.FindGameObjectWithTag ("Package");
-			package.GetComponent<Package> ().DamagePackage (damageStrength);
+			attack = true;
 		} else {
 			animator.SetBool ("Attack", false);
 		
@@ -144,6 +147,19 @@ public class DogAI : MonoBehaviour {
 			// stay on the ground
 			transform.position = Vector3.MoveTowards (transform.position, new Vector3 (transform.position.x, ground.point.y + groundOffset, transform.position.z), Time.deltaTime * speed);
 
+		}
+
+
+		if (attack && attackTime >= attackDelay) {
+			//Debug.Log ("tossing");
+			package = GameObject.FindGameObjectWithTag ("Package");
+			if (package != null) {
+				package.GetComponent<Package> ().DamagePackage (damageStrength);
+			}
+			attackTime = 0.0f;
+		} else if (attack && attackTime < attackDelay) {
+			attackTime += 3.0f * Time.deltaTime;
+			attack = false;
 		}
 
 	}

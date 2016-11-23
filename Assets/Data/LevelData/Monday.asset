@@ -89,3 +89,4 @@ MonoBehaviour:
     - City_Dropoff_P
     - City_Dropoff_Q
     - City_Dropoff_Z
+  currIndex: 0

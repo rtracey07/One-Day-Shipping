@@ -52,42 +52,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   areas:
-  - name: Map Suburb
-    pathColor: {r: 1, g: 0, b: 0, a: 1}
-    center: {x: 250.5, y: 0, z: 121}
-    radius: 185
-    paths:
-    - {fileID: 11400000, guid: 31d56e69b12b94e39a6364f085c2745d, type: 2}
-  - name: Map City A
-    pathColor: {r: 1, g: 1, b: 1, a: 1}
-    center: {x: -80.6, y: 0, z: 2.4}
-    radius: 45
-    paths:
-    - {fileID: 11400000, guid: ab32e13b156b9462d9b9476df99c1073, type: 2}
-    - {fileID: 11400000, guid: 00e9ea3e8461b471fabe0b730a86c7d7, type: 2}
-    - {fileID: 11400000, guid: bdd72631f036f46eba15b4b1101aa79a, type: 2}
-  - name: Map City B
-    pathColor: {r: 0.07586217, g: 1, b: 0, a: 1}
-    center: {x: 10, y: 0, z: 99}
-    radius: 70
-    paths:
-    - {fileID: 11400000, guid: 2358673e145f149168f1a4d0149ae6cf, type: 2}
-    - {fileID: 11400000, guid: 3958d2028c70f4887b25f377c8bb525d, type: 2}
-    - {fileID: 11400000, guid: 18cc7ecd1183b4c69a813a1c23df2efc, type: 2}
-    - {fileID: 11400000, guid: c1fa2a648fa254cc2b82c733b6b104bf, type: 2}
-  - name: Map City C
-    pathColor: {r: 0, g: 0.5448277, b: 1, a: 1}
-    center: {x: -79.4, y: 0, z: 115}
-    radius: 100
-    paths:
-    - {fileID: 11400000, guid: 9af3cce5f732047b583e3274a89c662d, type: 2}
-    - {fileID: 11400000, guid: 46b6998a2b14e4f188f0a01f859f4af6, type: 2}
-    - {fileID: 11400000, guid: bea9ac01d164b440a96634589cae9d4b, type: 2}
-  - name: Map Plateau
-    pathColor: {r: 1, g: 0.76551723, b: 0, a: 1}
-    center: {x: 80.1, y: 0, z: -82}
-    radius: 101
-    paths:
-    - {fileID: 11400000, guid: ad52c4fdc444f4f3fb7af903fe5d1dcb, type: 2}
-  pathChange: 0
+  - {fileID: 11400000, guid: ad52c4fdc444f4f3fb7af903fe5d1dcb, type: 2}
+  - {fileID: 11400000, guid: 00e9ea3e8461b471fabe0b730a86c7d7, type: 2}
+  - {fileID: 11400000, guid: 3958d2028c70f4887b25f377c8bb525d, type: 2}
+  - {fileID: 11400000, guid: 9af3cce5f732047b583e3274a89c662d, type: 2}
+  - {fileID: 11400000, guid: 35728b576b1e94004bcdc75e841e7a6b, type: 2}
+  - {fileID: 11400000, guid: 18cc7ecd1183b4c69a813a1c23df2efc, type: 2}
+  - {fileID: 11400000, guid: 46b6998a2b14e4f188f0a01f859f4af6, type: 2}
+  - {fileID: 11400000, guid: 31d56e69b12b94e39a6364f085c2745d, type: 2}
+  - {fileID: 11400000, guid: ab32e13b156b9462d9b9476df99c1073, type: 2}
+  - {fileID: 11400000, guid: 2358673e145f149168f1a4d0149ae6cf, type: 2}
+  - {fileID: 11400000, guid: 8b4c909a9f1544d87a9ea381fc18fc74, type: 2}
+  - {fileID: 11400000, guid: bea9ac01d164b440a96634589cae9d4b, type: 2}
+  - {fileID: 11400000, guid: c1fa2a648fa254cc2b82c733b6b104bf, type: 2}
+  - {fileID: 11400000, guid: 4680d29d6bed4400284941b00469a1cc, type: 2}
+  - {fileID: 11400000, guid: bdd72631f036f46eba15b4b1101aa79a, type: 2}
+  - {fileID: 11400000, guid: 594437148493148c19995e8f0f10f872, type: 2}
+  - {fileID: 11400000, guid: 1ce7097cc90954aa6b33c673f45eb4db, type: 2}
+  - {fileID: 11400000, guid: 5d5098166cdc9469ab999301af43b953, type: 2}
+  inactivePathColor: {r: 1, g: 1, b: 1, a: 1}
+  activePathColor: {r: 1, g: 0, b: 0, a: 1}
+  activeDistance: 50
+  carSpawnDistance: 50
   debug: 1
