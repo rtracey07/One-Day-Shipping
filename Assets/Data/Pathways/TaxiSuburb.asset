@@ -11,6 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcec4d19ae60945748ec14f6a2e98c28, type: 3}
   m_Name: TaxiSuburb
   m_EditorClassIdentifier: 
+  name: Taxi Suburb
+  isActive: 0
+  center: {x: 111, y: 0, z: 70.08}
   pathway:
   - {x: 124.6, y: 0, z: 53.2}
   - {x: 124.6, y: 0, z: 42.6}
