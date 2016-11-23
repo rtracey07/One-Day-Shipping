@@ -19,7 +19,7 @@ public class PostmanAI : MonoBehaviour {
 	private RaycastHit ground;
 	[SerializeField] private float groundOffset = 0.5f;
 	[SerializeField] private float speed = 5.0f;				// flight speed
-	[SerializeField] private float damageStrength = 15.0f;		// damage to player
+	[SerializeField] private float damageStrength = 5.0f;		// damage to player
 	private Vector3 center;										// center of the chase radius
 	[SerializeField] private float radius = 3.0f;				// chasing radius
 	[SerializeField] private float projectileRadius = 5.0f;		// radius for shooting projectiles
@@ -33,6 +33,7 @@ public class PostmanAI : MonoBehaviour {
 	private float projectileTime = 0.0f;
 	[SerializeField] private Rigidbody projectile;				// package
 	[SerializeField] private GameObject player;					// player to chase
+	private GameObject package;
 
 	private Animator animator;
 
@@ -86,6 +87,8 @@ public class PostmanAI : MonoBehaviour {
 		center = transform.position;
 
 		fwd = true;
+
+		package = GameObject.FindGameObjectWithTag ("Package");
 	}
 
 	/// <summary>
@@ -96,6 +99,8 @@ public class PostmanAI : MonoBehaviour {
 			+ (player.transform.position.z - transform.position.z) * (player.transform.position.z - transform.position.z) ) <= attackProximity
 			&& Mathf.Abs(player.transform.position.y - transform.position.y) <= attackProximity) {
 			state = State.Attacking;
+			//make this lighter than the projectile
+			package.GetComponent<Package> ().DamagePackage (damageStrength/2.0f);
 		}
 	}
 
@@ -226,6 +231,7 @@ public class PostmanAI : MonoBehaviour {
 	/// If the player is nearby, chase until he gets away, then go back to route
 	/// </summary>
 	void PlayerChaseState(){
+		package = GameObject.FindGameObjectWithTag ("Package");
 		//Debug.Log ("chasing");
 		float dir_y = -0.1014264f; 
 		Vector3 dir = (new Vector3 (player.transform.position.x, dir_y, player.transform.position.z) - transform.position).normalized;
@@ -246,6 +252,7 @@ public class PostmanAI : MonoBehaviour {
 	/// Throws packages at player
 	/// </summary>
 	void PlayerShootState(){
+		package = GameObject.FindGameObjectWithTag ("Package");
 
 		if (throwsProjectiles) {
 			animator.SetBool ("Walk", false);
