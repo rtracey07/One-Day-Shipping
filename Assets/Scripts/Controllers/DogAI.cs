@@ -10,12 +10,12 @@ using System.Collections;
 public class DogAI : MonoBehaviour {
 	//speed to move
 	[SerializeField] private float speed = 5.0f;				// flight speed
-	[SerializeField] private float damageStrength = 15.0f;			// damage to player
+	[SerializeField] private float damageStrength = 1.0f;			// damage to player
 	// the space in which it can travel
 	[SerializeField] private Vector3 center = Vector3.zero;		// center of the radius
 	[SerializeField] private float radius = 3.0f;
 	[SerializeField] private float attackProximity = 0.3f;		// when to do attack animation
-
+	private GameObject package;				// package to damage
 
 	[SerializeField] private GameObject player;
 	private Collider col;
@@ -45,6 +45,7 @@ public class DogAI : MonoBehaviour {
 		animator = GetComponent <Animator>();
 		transform.position = center;
 		transform.Rotate(0, Random.Range(-180.0f, 180.0f), 0);
+		package = GameObject.FindGameObjectWithTag ("Package");
 		//life = lifePoints;
 	}
 
@@ -87,6 +88,8 @@ public class DogAI : MonoBehaviour {
 		if ((player.transform.position.x - transform.position.x) * (player.transform.position.x - transform.position.x)
 		    + (player.transform.position.z - transform.position.z) * (player.transform.position.z - transform.position.z) <= attackProximity) {
 			animator.SetBool ("Attack", true);
+			package = GameObject.FindGameObjectWithTag ("Package");
+			package.GetComponent<Package> ().DamagePackage (damageStrength);
 		} else {
 			animator.SetBool ("Attack", false);
 		
@@ -95,6 +98,7 @@ public class DogAI : MonoBehaviour {
 			if ((player.transform.position.x - center.x)*(player.transform.position.x - center.x) 
 				+ (player.transform.position.z - center.z)*(player.transform.position.z - center.z) <= radius*radius) {
 				// the player is within the radius, attack
+				package = GameObject.FindGameObjectWithTag ("Package");
 				wallHit = false;
 				//animator.SetBool ("Attack", true);
 				playerChase = true;
