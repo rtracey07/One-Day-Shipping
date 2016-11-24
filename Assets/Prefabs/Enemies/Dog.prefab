@@ -4330,7 +4330,7 @@ GameObject:
   - 114: {fileID: 114000012287616952}
   m_Layer: 0
   m_Name: Dog
-  m_TagString: Untagged
+  m_TagString: Dog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8881,8 +8881,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013319492356}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 14.2, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -46.136078, y: -0.11142635, z: 108.61257}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -11000,10 +11000,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   damageStrength: 15
-  center: {x: 1, y: 10, z: 7}
   radius: 5
   attackProximity: 0.2
-  player: {fileID: 0}
   groundOffset: 0.1
 --- !u!137 &137000011064557356
 SkinnedMeshRenderer:
