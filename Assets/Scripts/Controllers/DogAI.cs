@@ -12,12 +12,12 @@ public class DogAI : MonoBehaviour {
 	[SerializeField] private float speed = 5.0f;				// flight speed
 	[SerializeField] private float damageStrength = 1.0f;			// damage to player
 	// the space in which it can travel
-	[SerializeField] private Vector3 center = Vector3.zero;		// center of the radius
+	private Vector3 center = Vector3.zero;		// center of the radius
 	[SerializeField] private float radius = 3.0f;
 	[SerializeField] private float attackProximity = 0.3f;		// when to do attack animation
 	private GameObject package;				// package to damage
 
-	[SerializeField] private GameObject player;
+	private GameObject player;
 	private Collider col;
 	private bool wallHit = false;
 	private bool playerChase = false;							// if the player is nearby
@@ -44,11 +44,22 @@ public class DogAI : MonoBehaviour {
 		get{ return damageStrength; }
 	}
 
+	public Vector3 Center {
+		set{ 
+			center = value;
+			transform.position = center;
+			Debug.Log ("changing pos to " + transform.position);
+		}
+		get{ return center; }
+
+	}
+
 	// Use this for initialization
 	void Start () {
 		animator = GetComponent <Animator>();
-		transform.position = center;
+		//transform.position = center;
 		transform.Rotate(0, Random.Range(-180.0f, 180.0f), 0);
+		player = GameObject.Find ("Player");
 		package = GameObject.FindGameObjectWithTag ("Package");
 		//life = lifePoints;
 	}
@@ -74,7 +85,7 @@ public class DogAI : MonoBehaviour {
 			//Debug.Log ("hit something " + front.distance);
 			if (front.distance < 0.3f && !hit.collider.name.Equals("player")) {
 				wall = true;
-				//Debug.Log ("hit wall");
+				Debug.Log ("hit wall " + hit.collider.name);
 			}
 			else {
 				wall = false;
@@ -87,7 +98,7 @@ public class DogAI : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-
+		Debug.Log ("pos " + transform.position);
 		//attack or run around
 		if ((player.transform.position.x - transform.position.x) * (player.transform.position.x - transform.position.x)
 		    + (player.transform.position.z - transform.position.z) * (player.transform.position.z - transform.position.z) <= attackProximity) {

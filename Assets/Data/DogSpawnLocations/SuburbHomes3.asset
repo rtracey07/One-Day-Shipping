@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6c76d983fd6542819816f0c212ebb9b, type: 3}
+  m_Name: SuburbHomes3
+  m_EditorClassIdentifier: 
+  name: SuburbHomes3
+  isActive: 0
+  center: {x: 243.38, y: 0.14, z: 130}
+  locations:
+  - {x: 253.49, y: 0.14, z: 124}
+  - {x: 270.4, y: 0.14, z: 101}
+  - {x: 229.3, y: 0.14, z: 107}
+  - {x: 232.92, y: 0.14, z: 113}
+  - {x: 202.6, y: 0.14, z: 143}
+  - {x: 248.7, y: 0.14, z: 151}
+  - {x: 257.4, y: 0.14, z: 164}
+  - {x: 208.2, y: 0.14, z: 159}
+  - {x: 228.9, y: 0.14, z: 108}
+  - {x: 276.4, y: 0.14, z: 108}
