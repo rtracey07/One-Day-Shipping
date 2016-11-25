@@ -29,13 +29,15 @@ public class PostmanAI : MonoBehaviour {
 	// projectile variables
 	[SerializeField] private bool throwsProjectiles = true;		// turn this on to throw packages
 	[SerializeField] private float projectileSpeed = 1000.0f;	// speed of projectiles
-	[SerializeField] private float projectileInterval = 0.5f;	// wait between projectiles
+	[SerializeField] private float projectileInterval = 1.0f;	// wait between projectiles
 	private float projectileTime = 0.0f;
 	[SerializeField] private Rigidbody projectile;				// package
 	[SerializeField] private GameObject player;					// player to chase
 	private GameObject package;
 
 	private Animator animator;
+	private float attackTime = 1.0f;
+	private float attackDelay = 3.0f;
 
 	private float change = 0.0f;
 	private float angle = 0.0f;
@@ -99,8 +101,6 @@ public class PostmanAI : MonoBehaviour {
 			+ (player.transform.position.z - transform.position.z) * (player.transform.position.z - transform.position.z) ) <= attackProximity
 			&& Mathf.Abs(player.transform.position.y - transform.position.y) <= attackProximity) {
 			state = State.Attacking;
-			//make this lighter than the projectile
-			package.GetComponent<Package> ().DamagePackage (damageStrength/2.0f);
 		}
 	}
 
@@ -155,7 +155,15 @@ public class PostmanAI : MonoBehaviour {
 	void shoot(){
 
 		if (Time.time >= projectileTime) {
+			package = GameObject.FindGameObjectWithTag ("Package");
 			Rigidbody projectile_shoot = Instantiate (projectile, new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z), transform.rotation) as Rigidbody;
+
+			projectile_shoot.GetComponent<PostmanProjectile> ().DamageStrength = damageStrength;
+			if (package != null) {
+				projectile_shoot.GetComponent<PostmanProjectile> ().Pack = package;
+			}
+
+			Debug.Log(projectile_shoot.gameObject.name);
 			//send forward
 			projectile_shoot.AddForce (transform.forward * projectileSpeed);
 			Destroy (projectile_shoot.gameObject, 2.0f);
@@ -212,6 +220,18 @@ public class PostmanAI : MonoBehaviour {
 		if ((player.transform.position.x - transform.position.x) * (player.transform.position.x - transform.position.x)
 		    + (player.transform.position.z - transform.position.z) * (player.transform.position.z - transform.position.z) <= attackProximity) {
 			state = State.Attacking;
+
+			if (attackTime >= attackDelay) {
+				//Debug.Log ("tossing");
+				package = GameObject.FindGameObjectWithTag ("Package");
+				if (package != null) {
+					package.GetComponent<Package> ().DamagePackage (damageStrength / 2.0f);
+				}
+				attackTime = 0.0f;
+			} else if (attackTime < attackDelay) {
+				attackTime += 5.0f * Time.deltaTime;
+			}
+
 		} else {
 			state = State.Walking;
 		}
@@ -231,7 +251,6 @@ public class PostmanAI : MonoBehaviour {
 	/// If the player is nearby, chase until he gets away, then go back to route
 	/// </summary>
 	void PlayerChaseState(){
-		package = GameObject.FindGameObjectWithTag ("Package");
 		//Debug.Log ("chasing");
 		float dir_y = -0.1014264f; 
 		Vector3 dir = (new Vector3 (player.transform.position.x, dir_y, player.transform.position.z) - transform.position).normalized;
@@ -252,7 +271,6 @@ public class PostmanAI : MonoBehaviour {
 	/// Throws packages at player
 	/// </summary>
 	void PlayerShootState(){
-		package = GameObject.FindGameObjectWithTag ("Package");
 
 		if (throwsProjectiles) {
 			animator.SetBool ("Walk", false);
@@ -353,6 +371,10 @@ public class PostmanAI : MonoBehaviour {
 			break;
 		}
 		CheckForPlayer ();
+
+
 	}
+
+
 
 }

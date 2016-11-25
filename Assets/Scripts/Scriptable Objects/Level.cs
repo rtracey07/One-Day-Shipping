@@ -26,6 +26,16 @@ public class Level : ScriptableObject{
 
 	public CarPathGroup carPathGroup;
 
+	[HideInInspector]
+	[Serializable]
+	public class DogGroup
+	{
+		public GameObject dog;
+		public int numDogsToSpawn;
+	}
+
+	public DogGroup dogGroup;
+
 	public List<LocationGroup> pickupLocations;
 	public List<LocationGroup> dropoffLocations;
 

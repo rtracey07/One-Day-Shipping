@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6c76d983fd6542819816f0c212ebb9b, type: 3}
+  m_Name: CityPark
+  m_EditorClassIdentifier: 
+  name: CityPark
+  isActive: 0
+  center: {x: -55.93, y: 0.14, z: 84.05}
+  locations:
+  - {x: -56.1, y: 0.14, z: 101}
+  - {x: -68.8, y: 0.14, z: 99}
+  - {x: -47.76, y: 0.14, z: 62.57}
+  - {x: -44.94, y: 0.14, z: 65.4}
+  - {x: -71.2, y: 0.14, z: 93.9}
+  - {x: -51.3, y: 0.14, z: 70.2}

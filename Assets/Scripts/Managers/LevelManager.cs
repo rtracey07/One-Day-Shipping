@@ -30,6 +30,7 @@ public class LevelManager : MonoBehaviour {
 
 		player = GameObject.FindGameObjectWithTag ("Player");
 		SpawnCars ();
+		SpawnDogs ();
 
 		StartCoroutine (RunLevel());
 	}
@@ -72,6 +73,24 @@ public class LevelManager : MonoBehaviour {
 		else
 		{
 			Debug.Log("Car Pool GameObject missing from scene. Nowhere to instantiate cars");
+		}
+	}
+
+	private void SpawnDogs(){
+		GameObject dogParent = GameObject.Find ("Dog Pool");
+
+		if(dogParent != null)
+		{
+			Debug.Log("spawning " + levelData.dogGroup.numDogsToSpawn);
+			for (int i = 0; i < levelData.dogGroup.numDogsToSpawn; i++) {
+				GameObject dog = GameObject.Instantiate (levelData.dogGroup.dog);
+				dog.transform.parent = dogParent.transform;
+				//dog.GetComponent<DogAI>().Center = levelData.dogGroup.dogSpawnLocations [i];
+			}
+		}
+		else
+		{
+			Debug.Log("Dog Pool GameObject missing from scene. Nowhere to instantiate cars");
 		}
 	}
 

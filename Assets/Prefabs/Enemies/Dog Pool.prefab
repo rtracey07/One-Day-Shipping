@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1000012922055700}
+  m_IsPrefabParent: 1
+--- !u!1 &1000012922055700
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000010718362738}
+  - 114: {fileID: 114000013697014482}
+  m_Layer: 0
+  m_Name: Dog Pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4000010718362738
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012922055700}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &114000013697014482
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012922055700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d54d4416fe934a62bff318f5e162efd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  areas:
+  - {fileID: 11400000, guid: d90433da42c584ca38bc938c670bb105, type: 2}
+  - {fileID: 11400000, guid: f31de076fba98468ab01c96070f164d9, type: 2}
+  - {fileID: 11400000, guid: e7aad4183ea314171a562e254c8ee568, type: 2}
+  - {fileID: 11400000, guid: 76afec60410cb4bb194295fff5f86123, type: 2}
+  - {fileID: 11400000, guid: 65523635846a64d67bf02d0ec8fc1a1b, type: 2}
+  - {fileID: 11400000, guid: ee66b1c79ded74a93bd244d759d30a91, type: 2}
+  - {fileID: 11400000, guid: 39fdb462509aa4dee95ca98a63f498bb, type: 2}
+  - {fileID: 11400000, guid: 935114c13371d4de991b0315cb88a946, type: 2}
+  inactivePathColor: {r: 0.44117647, g: 0.56064904, b: 1, a: 1}
+  activePathColor: {r: 1, g: 0, b: 0, a: 1}
+  activeDistance: 50
+  debug: 1

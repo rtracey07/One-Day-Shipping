@@ -12,6 +12,7 @@ TagManager:
   - MiniMap
   - Package
   - Vehicle
+  - Dog
   layers:
   - Default
   - TransparentFX
