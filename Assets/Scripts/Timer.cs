@@ -16,8 +16,6 @@ public class Timer : MonoBehaviour {
 
 	public Color m_OutOfTimeColor;
 
-	// Use this for initialization
-
 	void Start () {
 		time = LevelManager.Instance.GetMissionLength () * 60.0f;
 		currTime = time;
@@ -25,7 +23,6 @@ public class Timer : MonoBehaviour {
 		minuteColor = minuteHand.color;
 	}
 
-	// Update is called once per frame
 	void Update () {
 		if (active) 
 		{

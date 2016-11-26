@@ -110,7 +110,7 @@ namespace UnityStandardAssets.Vehicles.Car
             // gear factor is a normalised representation of the current speed within the current gear's range of speeds.
             // We smooth towards the 'target' gear factor, so that revs don't instantly snap up or down when changing gear.
             var targetGearFactor = Mathf.InverseLerp(f*m_GearNum, f*(m_GearNum + 1), Mathf.Abs(CurrentSpeed/MaxSpeed));
-            m_GearFactor = Mathf.Lerp(m_GearFactor, targetGearFactor, Time.deltaTime*5f);
+			m_GearFactor = Mathf.Lerp(m_GearFactor, targetGearFactor, Time.deltaTime*5f);
         }
 
 

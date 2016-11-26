@@ -32,6 +32,8 @@ public class GameClockManager : MonoBehaviour {
 	{
 		if (!freeze) {
 			time = Time.deltaTime;
+		} else {
+			time = 0.0f;
 		}
 	}
 

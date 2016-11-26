@@ -111,9 +111,9 @@ public class PostmanAI : MonoBehaviour {
 	void WalkingState() {
 		//create the rotation we need to be in to look at the target
 		Quaternion lookRotation = Quaternion.LookRotation((route[next] - transform.position).normalized);
-		transform.rotation = Quaternion.Slerp (transform.rotation, lookRotation, Time.deltaTime * speed * 3.0f);
+		transform.rotation = Quaternion.Slerp (transform.rotation, lookRotation, GameClockManager.Instance.time * speed * 3.0f);
 
-		transform.position = Vector3.MoveTowards (transform.position, new Vector3 (route[next].x, ground.point.y + groundOffset, route[next].z), Time.deltaTime * speed);
+		transform.position = Vector3.MoveTowards (transform.position, new Vector3 (route[next].x, ground.point.y + groundOffset, route[next].z), GameClockManager.Instance.time * speed);
 		//when reached, go to next
 		if ((route [next].x - transform.position.x) * (route [next].x - transform.position.x)
 		    + (route [next].z - transform.position.z) * (route [next].z - transform.position.z) <= 0.1f) {
@@ -179,7 +179,7 @@ public class PostmanAI : MonoBehaviour {
 	/// </summary>
 	void TurningState() {
 		if (!dirChange) {
-			transform.Translate (-4.0f * transform.forward * Time.deltaTime * speed, Space.World);
+			transform.Translate (-4.0f * transform.forward * GameClockManager.Instance.time * speed, Space.World);
 			current = transform.rotation.eulerAngles.y;
 			if (current > 180.0f) {
 				change = Random.Range (-180.0f, -120.0f);
@@ -192,13 +192,13 @@ public class PostmanAI : MonoBehaviour {
 
 		// the rotation is slerped based on turning direction
 		if (current > 180.0f && transform.rotation.eulerAngles.y > current + change) {
-			transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.Euler (transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + change, transform.rotation.eulerAngles.z), Time.deltaTime * speed);
+			transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.Euler (transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + change, transform.rotation.eulerAngles.z), GameClockManager.Instance.time * speed);
 		} else if (current < 180.0f && transform.rotation.eulerAngles.y < current + change) {
-			transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.Euler (transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + change, transform.rotation.eulerAngles.z), Time.deltaTime * speed);
+			transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.Euler (transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + change, transform.rotation.eulerAngles.z), GameClockManager.Instance.time * speed);
 		} else {
 			dirChange = false;
 			//Debug.Log ("dir false");
-			transform.Translate (transform.forward * Time.deltaTime * speed, Space.World);
+			transform.Translate (transform.forward * GameClockManager.Instance.time * speed, Space.World);
 			state = State.Walking;
 		}
 		//Debug.Log ("turn state");
@@ -229,7 +229,7 @@ public class PostmanAI : MonoBehaviour {
 				}
 				attackTime = 0.0f;
 			} else if (attackTime < attackDelay) {
-				attackTime += 5.0f * Time.deltaTime;
+				attackTime += 5.0f * GameClockManager.Instance.time;
 			}
 
 		} else {
@@ -255,8 +255,8 @@ public class PostmanAI : MonoBehaviour {
 		float dir_y = -0.1014264f; 
 		Vector3 dir = (new Vector3 (player.transform.position.x, dir_y, player.transform.position.z) - transform.position).normalized;
 		Quaternion rot = Quaternion.LookRotation (dir);
-		transform.rotation = Quaternion.Slerp (transform.rotation, rot, Time.deltaTime * speed);
-		transform.Translate (transform.forward * Time.deltaTime * speed, Space.World);
+		transform.rotation = Quaternion.Slerp (transform.rotation, rot, GameClockManager.Instance.time * speed);
+		transform.Translate (transform.forward * GameClockManager.Instance.time * speed, Space.World);
 
 		if ((transform.position.x - center.x) * (transform.position.x - center.x)
 			+ (transform.position.z - center.z) * (transform.position.z - center.z) >= radius * radius) {
@@ -277,9 +277,9 @@ public class PostmanAI : MonoBehaviour {
 			animator.SetTrigger("Attack");
 			Vector3 dir = (new Vector3 (player.transform.position.x, player.transform.position.y, player.transform.position.z) - transform.position).normalized;
 			Quaternion rot = Quaternion.LookRotation (dir);
-			transform.rotation = Quaternion.Slerp (transform.rotation, rot, Time.deltaTime * speed);
+			transform.rotation = Quaternion.Slerp (transform.rotation, rot, GameClockManager.Instance.time * speed);
 			shoot ();
-			//transform.Translate (transform.forward * Time.deltaTime * speed, Space.World);
+			//transform.Translate (transform.forward * GameClockManager.Instance.time * speed, Space.World);
 			if (radius <= projectileRadius && ((player.transform.position.x - transform.position.x) * (player.transform.position.x - transform.position.x)
 				+ (player.transform.position.z - transform.position.z) * (player.transform.position.z - transform.position.z) <= radius * radius)) {
 				center = transform.position;
