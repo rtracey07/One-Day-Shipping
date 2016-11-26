@@ -2,25 +2,44 @@
 using UnityEngine.UI;
 using System.Collections;
 
-[RequireComponent(typeof(Text))]
 public class Timer : MonoBehaviour {
 
 	private float time;
-	private Text timerField;
+	private float currTime;
 	public bool active;
 
+	public Image hourHand;
+	private Color hourColor;
+
+	public Image minuteHand;
+	private Color minuteColor;
+
+	public Color m_OutOfTimeColor;
+
 	// Use this for initialization
+
 	void Start () {
 		time = LevelManager.Instance.GetMissionLength () * 60.0f;
-		timerField = GetComponent<Text> ();
+		currTime = time;
+		hourColor = hourHand.color;
+		minuteColor = minuteHand.color;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		if (active) 
 		{
-			time -= GameClockManager.Instance.time;
-			timerField.text = string.Format("{0}:{1:00}", (int)time / 60, (int)time % 60);
+			currTime -= GameClockManager.Instance.time;
+
+			//Move hands.
+			hourHand.rectTransform.localRotation = Quaternion.Euler(0, 0, Mathf.Lerp (-150, 90, currTime/time));
+			minuteHand.rectTransform.localRotation = Quaternion.Euler(0, 0, Mathf.Lerp (-2880, 0, currTime/time));
+
+			//Change to Red.
+			if (currTime / time < 0.5f) {
+				hourHand.color = Color.Lerp (m_OutOfTimeColor, hourColor, 2 * (currTime / time));
+				minuteHand.color = Color.Lerp (m_OutOfTimeColor, minuteColor, 2 * (currTime / time));
+			}
 		}
 	}
 }
