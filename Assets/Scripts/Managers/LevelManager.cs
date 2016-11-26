@@ -29,31 +29,11 @@ public class LevelManager : MonoBehaviour {
 		activeLocations = GameObject.FindObjectsOfType<Location> ();
 
 		player = GameObject.FindGameObjectWithTag ("Player");
+
 		SpawnCars ();
 		SpawnDogs ();
 
-		StartCoroutine (RunLevel());
-	}
-
-	IEnumerator RunLevel()
-	{
-		for (int i = 0; i < 5; i++) {
-			currentDestination = levelData.GetPickupLocation (ref activeLocations);
-
-			currentDestination.SetMiniMapMarkerActive(true);            
-
-			yield return new WaitUntil (() => GameManager.Instance.hasPackage);
-
-			currentDestination.SetMiniMapMarkerActive(false);
-
-			currentDestination = levelData.GetDropoffLocation (ref activeLocations);
-
-			currentDestination.SetMiniMapMarkerActive(true);
-
-			yield return new WaitUntil (() => !GameManager.Instance.hasPackage);
-
-			currentDestination.SetMiniMapMarkerActive(false);
-		}
+		StartCoroutine (levelData.RunLevel());
 	}
 
 	private void SpawnCars(){
@@ -97,6 +77,33 @@ public class LevelManager : MonoBehaviour {
 	public float GetMissionLength()
 	{
 		return levelData.missionLength;
+	}
+
+	public void SetPickup()
+	{
+		if (currentDestination != null && currentDestination.minimapMarker != null) {
+			currentDestination.SetMiniMapMarkerActive (false);
+			currentDestination = levelData.GetPickupLocation (ref activeLocations);
+			currentDestination.SetMiniMapMarkerActive (true);   
+		} else if (currentDestination == null) {
+			currentDestination = levelData.GetPickupLocation (ref activeLocations);
+			if (currentDestination.minimapMarker != null) {
+				currentDestination.SetMiniMapMarkerActive (true);  
+			}
+		} else {
+			Debug.Log ("Current location doesn't exist or has no minimap marker.");
+		}
+	}
+
+	public void SetDropoff()
+	{
+		if (currentDestination != null && currentDestination.minimapMarker != null) {
+			currentDestination.SetMiniMapMarkerActive (false);
+			currentDestination = levelData.GetDropoffLocation (ref activeLocations);
+			currentDestination.SetMiniMapMarkerActive (true);
+		} else {
+		Debug.Log ("Current location doesn't exist or has no minimap marker.");
+		}
 	}
 
 }

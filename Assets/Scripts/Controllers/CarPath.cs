@@ -53,8 +53,10 @@ public class CarPath : MonoBehaviour {
 
 	void OnDrawGizmos()
 	{
-		//Visual. Not used in movement
-		iTween.DrawPath(path.pathway.ToArray());
+		if (path != null && path.pathway != null) {
+			//Visual. Not used in movement
+			iTween.DrawPath (path.pathway.ToArray ());
+		}
 
 		if (m_Manager.debug) {
 			Gizmos.color = Color.green;

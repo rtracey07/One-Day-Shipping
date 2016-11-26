@@ -78,4 +78,17 @@ public class Level : ScriptableObject{
 
 		return null;
 	}
+
+	public virtual IEnumerator RunLevel()
+	{
+		for (int i = 0; i < 5; i++) {
+			LevelManager.Instance.SetPickup ();
+
+			yield return new WaitUntil (() => GameManager.Instance.hasPackage);
+
+			LevelManager.Instance.SetDropoff ();
+
+			yield return new WaitUntil (() => !GameManager.Instance.hasPackage);	
+		}
+	}
 }
