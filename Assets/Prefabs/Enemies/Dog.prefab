@@ -11002,6 +11002,7 @@ MonoBehaviour:
   damageStrength: 15
   radius: 5
   attackProximity: 0.2
+  package: {fileID: 0}
   groundOffset: 0.1
 --- !u!137 &137000011064557356
 SkinnedMeshRenderer:

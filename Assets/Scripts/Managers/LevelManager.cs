@@ -69,7 +69,6 @@ public class LevelManager : MonoBehaviour {
 
 		if(dogParent != null)
 		{
-			Debug.Log("spawning " + levelData.dogGroup.numDogsToSpawn);
 			for (int i = 0; i < levelData.dogGroup.numDogsToSpawn; i++) {
 				GameObject dog = GameObject.Instantiate (levelData.dogGroup.dog);
 				dog.transform.parent = dogParent.transform;
@@ -137,11 +136,11 @@ public class LevelManager : MonoBehaviour {
 
 	public void UpdatePackageDeliveredCount()
 	{
-		m_ParcelCount.text = string.Format ("{0}/{1}", GameManager.Instance.deliveredCount, levelData.packageCount);
+		m_ParcelCount.text = string.Format ("{0}/{1}", GameManager.Instance.stats.packagesDelivered, levelData.packageCount);
 	}
 
 	public bool CheckWinState()
 	{
-		return (GameManager.Instance.deliveredCount == levelData.packageCount);
+		return (GameManager.Instance.stats.packagesDelivered == levelData.packageCount);
 	}
 }

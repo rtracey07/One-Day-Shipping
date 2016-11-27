@@ -9,9 +9,9 @@ public class Stats {
 
 	public int score;
 	public int packagesDelivered;
-	public int damageTaken;
-	public int gameplayTime;
-	public int numberRespawns;
-	public int numberPowerUps;
+	public int packagesDestroyed;
+	public int carsHit;
+	public int dogsHit;
+	public int postmenHit;
 
 }
