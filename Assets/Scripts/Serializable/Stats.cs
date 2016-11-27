@@ -5,8 +5,6 @@ using System;
 [Serializable]
 public class Stats {
 
-	public Level currentLevel;
-
 	public int score;
 	public int packagesDelivered;
 	public int packagesDestroyed;

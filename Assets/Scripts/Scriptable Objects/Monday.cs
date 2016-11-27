@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using UnityEngine.SceneManagement;
 
 [CreateAssetMenu(menuName = "Data/Level/Monday")]
 public class Monday : Level {
@@ -66,6 +67,6 @@ public class Monday : Level {
 		yield return new WaitUntil (() => GameManager.Instance.timeUp);
 		yield return LevelManager.Instance.StartCoroutine (TriggerEvent (eventIndex));
 
-		//Put the Scene change here.
+		SceneManager.LoadScene ("Results Screen");
 	}
 }
