@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CarPath : MonoBehaviour {
 
-	private Pathway path;									// the path
+	private Pathway path;						// the path
 	public float rotationOffset = 0.05f;			// how far ahead to look to orient on path
 	public float speed = 50.0f;
 	private float speedMod = 1.0f;

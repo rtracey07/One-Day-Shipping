@@ -48,7 +48,6 @@ public class DogAI : MonoBehaviour {
 		set{ 
 			center = value;
 			transform.position = center;
-			Debug.Log ("changing pos to " + transform.position);
 		}
 		get{ return center; }
 
@@ -85,7 +84,6 @@ public class DogAI : MonoBehaviour {
 			//Debug.Log ("hit something " + front.distance);
 			if (front.distance < 0.3f && !hit.collider.name.Equals("player")) {
 				wall = true;
-				Debug.Log ("hit wall " + hit.collider.name);
 			}
 			else {
 				wall = false;
@@ -104,12 +102,10 @@ public class DogAI : MonoBehaviour {
 		else
 		{
 			animator.speed = 1;
-		Debug.Log ("pos " + transform.position);
 		//attack or run around
 			if ((player.transform.position.x - transform.position.x) * (player.transform.position.x - transform.position.x)
 			   + (player.transform.position.z - transform.position.z) * (player.transform.position.z - transform.position.z) <= attackProximity) {
 				animator.SetBool ("Attack", true);
-				GameManager.Instance.dogAttack = true;
 				attack = true;
 			} else {
 				animator.SetBool ("Attack", false);
@@ -123,6 +119,7 @@ public class DogAI : MonoBehaviour {
 					wallHit = false;
 					//animator.SetBool ("Attack", true);
 					playerChase = true;
+					GameManager.Instance.dogAttack = true;
 					//Vector3 dir = (new Vector3 (player.transform.position.x, center.y, player.transform.position.z) - transform.position).normalized;
 					Vector3 dir = (new Vector3 (player.transform.position.x, player.transform.position.y, player.transform.position.z) - transform.position).normalized;
 					Quaternion rot = Quaternion.LookRotation (dir);
