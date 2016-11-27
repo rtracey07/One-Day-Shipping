@@ -34,6 +34,9 @@ public class PointerArrow : MonoBehaviour {
 				hasPackage = GameManager.Instance.hasPackage;
 				StartCoroutine (SwapColor (3));
 			}
+		} else {
+			if(LevelManager.Instance != null && LevelManager.Instance.currentDestination != null)
+				destination = LevelManager.Instance.currentDestination;
 		}
 	}
 

@@ -20,6 +20,7 @@ public class DogManager : MonoBehaviour {
 	{
 		player = GameObject.Find ("Player").transform;
 		activeAreas = new List<DogSpawnLocations> (areas.Count);
+		LevelManager.Instance.SpawnDogs ();
 	}
 
 	void Start() {

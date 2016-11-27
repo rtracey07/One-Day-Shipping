@@ -9,3 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/InGame.unity
   - enabled: 1
     path: Assets/Scenes/Results Screen.unity
+  - enabled: 1
+    path: Assets/Scenes/FrontEnd.unity
+  - enabled: 1
+    path: Assets/Scenes/CutScene.unity

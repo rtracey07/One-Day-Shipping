@@ -184,6 +184,7 @@ MonoBehaviour:
   m_Skip: {fileID: 114000010593140184}
   m_Avatar: {fileID: 114000013685373964}
   levelData: {fileID: 11400000, guid: 3681cef75f96c41e6873f7c877bbcd78, type: 2}
+  cutSceneData: {fileID: 11400000, guid: c79b9f14ad18e4d519ca6a94777a358e, type: 2}
   currentDestination: {fileID: 0}
 --- !u!114 &114000010305486198
 MonoBehaviour:

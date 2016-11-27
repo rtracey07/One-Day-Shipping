@@ -11,20 +11,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea726306599174a85a770ee404be0753, type: 3}
   m_Name: Intro
   m_EditorClassIdentifier: 
-  events:
+  Events:
   - sound: {fileID: 0}
-    dialogue: 
+    avatar: {fileID: 0}
+    dialogue:
+    - This is an example of a cutscene.
+    - This is dialogue between characters.
+    - I can't get the continue button working.
+    - So for now it auto-switches.
+    timeBeforeDisplaying: 0
     isSkippable: 0
-    duration: 0
-  - sound: {fileID: 0}
-    dialogue: 
-    isSkippable: 0
-    duration: 0
-  - sound: {fileID: 0}
-    dialogue: 
-    isSkippable: 0
-    duration: 0
-  - sound: {fileID: 0}
-    dialogue: 
-    isSkippable: 0
-    duration: 0
+    pauseGame: 0
+    requiresConfirmation: 0
+    duration: 2

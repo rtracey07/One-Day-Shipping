@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour {
 
@@ -26,6 +27,8 @@ public class LevelManager : MonoBehaviour {
 	public Image m_Avatar;
 
 	public Level levelData;
+	public CutScene cutSceneData;
+
 	public Location currentDestination;
 
 	private Location[] activeLocations;
@@ -36,15 +39,10 @@ public class LevelManager : MonoBehaviour {
 		else
 			Debug.Log ("Multiple Level Managers in the scene.");
 
-		activeLocations = GameObject.FindObjectsOfType<Location> ();
-
-		SpawnCars ();
-		SpawnDogs ();
-
-		StartCoroutine (levelData.RunLevel());
+		StartCoroutine(Run ());
 	}
 
-	private void SpawnCars(){
+	public void SpawnCars(){
 		GameObject carParent = GameObject.Find ("Car Pool");
 
 		if(carParent != null)
@@ -64,7 +62,7 @@ public class LevelManager : MonoBehaviour {
 		}
 	}
 
-	private void SpawnDogs(){
+	public void SpawnDogs(){
 		GameObject dogParent = GameObject.Find ("Dog Pool");
 
 		if(dogParent != null)
@@ -142,5 +140,20 @@ public class LevelManager : MonoBehaviour {
 	public bool CheckWinState()
 	{
 		return (GameManager.Instance.stats.packagesDelivered == levelData.packageCount);
+	}
+
+	private IEnumerator Run()
+	{
+		GameManager.Instance.FindCamera ();
+		yield return StartCoroutine (cutSceneData.RunCutScene ());
+		AsyncOperation loadLevel = SceneManager.LoadSceneAsync ("InGame");
+		yield return new WaitUntil (()=> loadLevel.isDone);
+		GameManager.Instance.FindCamera ();
+		activeLocations = GameObject.FindObjectsOfType<Location> ();
+
+		SpawnCars ();
+
+		yield return StartCoroutine (levelData.RunLevel());
+		SceneManager.LoadScene ("Results Screen");
 	}
 }

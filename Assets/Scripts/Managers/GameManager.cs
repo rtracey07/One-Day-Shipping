@@ -31,12 +31,15 @@ public class GameManager : MonoBehaviour {
 			Debug.LogError ("Multiple Game Managers in Scene.");
 
 		DontDestroyOnLoad (gameObject);
-
-		mainCamera = GameObject.Find ("Main Camera").GetComponent<Camera> ();
 	}
 
 	public void Continue()
 	{
 		continueClicked = true;
+	}
+
+	public void FindCamera()
+	{
+		mainCamera = GameObject.Find ("Main Camera").GetComponent<Camera> ();
 	}
 }

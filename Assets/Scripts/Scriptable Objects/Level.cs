@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 using System;
@@ -111,5 +112,13 @@ public class Level : ScriptableObject{
 
 		LevelManager.Instance.HideTextBox ();
 		GameClockManager.Instance.freeze = false;
+	}
+
+	public IEnumerator TimeUp(int eventIndex)
+	{
+		yield return new WaitUntil (() => GameManager.Instance.timeUp);
+		yield return LevelManager.Instance.StartCoroutine (TriggerEvent (eventIndex));
+
+		SceneManager.LoadScene ("Results Screen");
 	}
 }

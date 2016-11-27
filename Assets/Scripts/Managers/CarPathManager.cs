@@ -19,6 +19,7 @@ public class CarPathManager : MonoBehaviour {
 	{
 		player = GameObject.Find ("Player").transform;
 		activeAreas = new List<Pathway> (areas.Count);
+		LevelManager.Instance.SpawnCars ();
 	}
 
 	// Update is called once per frame
