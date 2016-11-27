@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class DogManager : MonoBehaviour {
 
 	[SerializeField]
-	public List<DogSpawnLocations> areas;			
+	public List<DogSpawnLocations> areas;	
 	private List<DogSpawnLocations> activeAreas;
 	private List<DogAI> dogs;
 
@@ -25,7 +25,6 @@ public class DogManager : MonoBehaviour {
 	void Start() {
 		dogs = new List<DogAI> ();
 		GameObject[] dogGameObjects = GameObject.FindGameObjectsWithTag ("Dog");
-		Debug.Log ("Found this many dogs " + dogs.Count);
 		foreach (GameObject d in dogGameObjects) {
 			dogs.Add (d.GetComponent<DogAI>());
 		}
@@ -63,7 +62,6 @@ public class DogManager : MonoBehaviour {
 
 	void SetDogPositions(DogSpawnLocations area){
 		for (int i = 0; i < area.locations.Count; i++) {
-			Debug.Log ("location " + area.locations [i]);
 			dogs [i].Center = area.locations [i];
 		}
 	}

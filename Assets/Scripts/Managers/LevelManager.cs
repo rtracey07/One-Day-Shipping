@@ -20,6 +20,9 @@ public class LevelManager : MonoBehaviour {
 	//Dialog Box Elements.
 	public Image m_TextBox;
 	public Text m_Text;
+	public Image m_DialogueBox;
+	public Text m_Dialogue;
+	public Text m_ParcelCount;
 	public Button m_Confirm;
 	public Button m_Skip;
 	public Image m_Avatar;
@@ -91,7 +94,6 @@ public class LevelManager : MonoBehaviour {
 
 		if(dogParent != null)
 		{
-			Debug.Log("spawning " + levelData.dogGroup.numDogsToSpawn);
 			for (int i = 0; i < levelData.dogGroup.numDogsToSpawn; i++) {
 				GameObject dog = GameObject.Instantiate (levelData.dogGroup.dog);
 				dog.transform.parent = dogParent.transform;
@@ -108,6 +110,7 @@ public class LevelManager : MonoBehaviour {
 	{
 		return levelData.missionLength;
 	}
+		
 
 	public void SetPickup()
 	{
@@ -143,9 +146,15 @@ public class LevelManager : MonoBehaviour {
 			if (currEvent.avatar != null)
 				m_Avatar.sprite = currEvent.avatar;
 
+
 			m_Text.text = dialogue;
 
 			m_TextBox.gameObject.SetActive (true);
+
+			m_Dialogue.text = dialogue;
+
+			m_DialogueBox.gameObject.SetActive (true);
+
 			m_Confirm.gameObject.SetActive(currEvent.requiresConfirmation);
 			m_Skip.gameObject.SetActive(currEvent.isSkippable);
 		}
@@ -154,5 +163,16 @@ public class LevelManager : MonoBehaviour {
 	public void HideTextBox()
 	{
 		m_TextBox.gameObject.SetActive (false);
+		m_DialogueBox.gameObject.SetActive (false);
+	}
+
+	public void UpdatePackageDeliveredCount()
+	{
+		m_ParcelCount.text = string.Format ("{0}/{1}", GameManager.Instance.stats.packagesDelivered, levelData.packageCount);
+	}
+
+	public bool CheckWinState()
+	{
+		return (GameManager.Instance.stats.packagesDelivered == levelData.packageCount);
 	}
 }

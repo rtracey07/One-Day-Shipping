@@ -21,7 +21,7 @@ public class Location : MonoBehaviour {
     }	
 
 	void OnTriggerEnter(Collider other) {
-		if (other.tag == "Player") {
+		if (other.tag == "Player" && LevelManager.Instance.currentDestination == this) {
 			HandlePackage ();
 			TriggerEvent (false);
 		}

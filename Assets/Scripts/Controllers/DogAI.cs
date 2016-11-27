@@ -15,7 +15,7 @@ public class DogAI : MonoBehaviour {
 	private Vector3 center = Vector3.zero;		// center of the radius
 	[SerializeField] private float radius = 3.0f;
 	[SerializeField] private float attackProximity = 0.3f;		// when to do attack animation
-	private GameObject package;				// package to damage
+	private Package package;				// package to damage
 
 	private GameObject player;
 	private Collider col;
@@ -48,7 +48,6 @@ public class DogAI : MonoBehaviour {
 		set{ 
 			center = value;
 			transform.position = center;
-			Debug.Log ("changing pos to " + transform.position);
 		}
 		get{ return center; }
 
@@ -60,7 +59,6 @@ public class DogAI : MonoBehaviour {
 		//transform.position = center;
 		transform.Rotate(0, Random.Range(-180.0f, 180.0f), 0);
 		player = GameObject.Find ("Player");
-		package = GameObject.FindGameObjectWithTag ("Package");
 		//life = lifePoints;
 	}
 
@@ -85,7 +83,6 @@ public class DogAI : MonoBehaviour {
 			//Debug.Log ("hit something " + front.distance);
 			if (front.distance < 0.3f && !hit.collider.name.Equals("player")) {
 				wall = true;
-				Debug.Log ("hit wall " + hit.collider.name);
 			}
 			else {
 				wall = false;
@@ -104,12 +101,10 @@ public class DogAI : MonoBehaviour {
 		else
 		{
 			animator.speed = 1;
-		Debug.Log ("pos " + transform.position);
 		//attack or run around
 			if ((player.transform.position.x - transform.position.x) * (player.transform.position.x - transform.position.x)
 			   + (player.transform.position.z - transform.position.z) * (player.transform.position.z - transform.position.z) <= attackProximity) {
 				animator.SetBool ("Attack", true);
-				GameManager.Instance.dogAttack = true;
 				attack = true;
 			} else {
 				animator.SetBool ("Attack", false);
@@ -118,11 +113,15 @@ public class DogAI : MonoBehaviour {
 
 				if ((player.transform.position.x - center.x) * (player.transform.position.x - center.x)
 				   + (player.transform.position.z - center.z) * (player.transform.position.z - center.z) <= radius * radius) {
-					// the player is within the radius, attack
-					package = GameObject.FindGameObjectWithTag ("Package");
 					wallHit = false;
 					//animator.SetBool ("Attack", true);
+					GameObject pack_gameobject = GameObject.FindGameObjectWithTag("Package");
+					if (pack_gameobject != null) {
+						package = pack_gameobject.GetComponent<Package>();
+					}
+
 					playerChase = true;
+					GameManager.Instance.dogAttack = true;
 					//Vector3 dir = (new Vector3 (player.transform.position.x, center.y, player.transform.position.z) - transform.position).normalized;
 					Vector3 dir = (new Vector3 (player.transform.position.x, player.transform.position.y, player.transform.position.z) - transform.position).normalized;
 					Quaternion rot = Quaternion.LookRotation (dir);
@@ -169,11 +168,11 @@ public class DogAI : MonoBehaviour {
 
 
 		if (attack && attackTime >= attackDelay) {
-			//Debug.Log ("tossing");
-			package = GameObject.FindGameObjectWithTag ("Package");
 			if (package != null) {
-				package.GetComponent<Package> ().DamagePackage (damageStrength);
+				package.DamagePackage (damageStrength);
 			}
+
+			GameManager.Instance.stats.dogsHit++;
 			attackTime = 0.0f;
 		} else if (attack && attackTime < attackDelay) {
 			attackTime += 3.0f * GameClockManager.Instance.time;

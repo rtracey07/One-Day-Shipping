@@ -99,18 +99,7 @@ public class PostmanAI : MonoBehaviour {
 		animator = GetComponent <Animator>();
 		//state = State.Standing;
 		state = State.Spawn;
-//		if (route.Length == 1) { 		// he stays in one place for some reason
-//			next = 0;
-//		} else if (route.Length < 1) {	// forgot to set his route
-//			route[0] = transform.position;
-//			next = 0;
-//		} else {
-//			next = 1;
-//		}
-//		transform.position = route [0];
-//		center = transform.position;
-//
-//		fwd = true;
+
 
 		package = GameObject.FindGameObjectWithTag ("Package");
 	}
@@ -131,57 +120,30 @@ public class PostmanAI : MonoBehaviour {
 	/// moves from spot to spot on route
 	/// </summary>
 	void WalkingState() {
-		//create the rotation we need to be in to look at the target
-//<<<<<<< HEAD
-//=======
-//		Quaternion lookRotation = Quaternion.LookRotation((route[next] - transform.position).normalized);
-//		transform.rotation = Quaternion.Slerp (transform.rotation, lookRotation, GameClockManager.Instance.time * speed * 3.0f);
-//
-//		transform.position = Vector3.MoveTowards (transform.position, new Vector3 (route[next].x, ground.point.y + groundOffset, route[next].z), GameClockManager.Instance.time * speed);
-//		//when reached, go to next
-//		if ((route [next].x - transform.position.x) * (route [next].x - transform.position.x)
-//		    + (route [next].z - transform.position.z) * (route [next].z - transform.position.z) <= 0.1f) {
-//			turnDelay = 1.0f;
-//			if (next == route.Length - 1 && pathType == pathEnum.loop) {
-//				next = 0;
-//			} else if (pathType == pathEnum.loop) {
-//				next ++;
-//			} else if (next == route.Length - 1 && pathType == pathEnum.reverse) {
-//				fwd = false;
-//			} else if (next == 0 && pathType == pathEnum.reverse) {
-//				fwd = true;
-//			}
-//>>>>>>> master
-
-//		Quaternion lookRotation = Quaternion.LookRotation((route[next] - transform.position).normalized);
-//		transform.rotation = Quaternion.Slerp (transform.rotation, lookRotation, GameClockManager.Instance.time * speed * 3.0f);
-//
-//		transform.position = Vector3.MoveTowards (transform.position, new Vector3 (route[next].x, ground.point.y + groundOffset, route[next].z), GameClockManager.Instance.time * speed);
-//		//when reached, go to next
-//		if ((route [next].x - transform.position.x) * (route [next].x - transform.position.x)
-//		    + (route [next].z - transform.position.z) * (route [next].z - transform.position.z) <= 0.1f) {
-//			turnDelay = 1.0f;
-//			if (next == route.Length - 1 && pathType == pathEnum.loop) {
-//				next = 0;
-//			} else if (pathType == pathEnum.loop) {
-//				next ++;
-//			} else if (next == route.Length - 1 && pathType == pathEnum.reverse) {
-//				fwd = false;
-//			} else if (next == 0 && pathType == pathEnum.reverse) {
-//				fwd = true;
-//			}
-//
-//			if (pathType == pathEnum.reverse && fwd) {
-//				next++;
-//			} else if (pathType == pathEnum.reverse && !fwd) {
-//				next--;
-//			}
-//
-//		}
 
 		if (path == null || !path.isActive) {
 			path = m_Manager.GetAreaPath ();
 		}
+
+//		Quaternion lookRotation = Quaternion.LookRotation((route[next] - transform.position).normalized);
+//		transform.rotation = Quaternion.Slerp (transform.rotation, lookRotation, GameClockManager.Instance.time * speed * 3.0f);
+//
+//		transform.position = Vector3.MoveTowards (transform.position, new Vector3 (route[next].x, ground.point.y + groundOffset, route[next].z), GameClockManager.Instance.time * speed);
+//		//when reached, go to next
+//		if ((route [next].x - transform.position.x) * (route [next].x - transform.position.x)
+//		    + (route [next].z - transform.position.z) * (route [next].z - transform.position.z) <= 0.1f) {
+//			turnDelay = 1.0f;
+//			if (next == route.Length - 1 && pathType == pathEnum.loop) {
+//				next = 0;
+//			} else if (pathType == pathEnum.loop) {
+//				next ++;
+//			} else if (next == route.Length - 1 && pathType == pathEnum.reverse) {
+//				fwd = false;
+//			} else if (next == 0 && pathType == pathEnum.reverse) {
+//				fwd = true;
+//			}
+//		}
+
 
 		if (path != null) {
 			// if the we're at the end, restart
@@ -317,6 +279,7 @@ public class PostmanAI : MonoBehaviour {
 		//Debug.Log ("chasing");
 		float dir_y = -0.1014264f; 
 
+
 		if ((player.transform.position.x - transform.position.x) * (player.transform.position.x - transform.position.x)
 		    + (player.transform.position.z - transform.position.z) * (player.transform.position.z - transform.position.z) <= attackProximity) {
 			state = State.Attacking;
@@ -329,6 +292,12 @@ public class PostmanAI : MonoBehaviour {
 			transform.Translate (transform.forward * GameClockManager.Instance.time * speed, Space.World);
 		}
 
+
+
+		Vector3 dir2 = (new Vector3 (player.transform.position.x, dir_y, player.transform.position.z) - transform.position).normalized;
+		Quaternion rot2 = Quaternion.LookRotation (dir2);
+		transform.rotation = Quaternion.Slerp (transform.rotation, rot2, GameClockManager.Instance.time * speed);
+		transform.Translate (transform.forward * GameClockManager.Instance.time * speed, Space.World);
 
 
 		if ((transform.position.x - center.x) * (transform.position.x - center.x)
