@@ -8,6 +8,7 @@ public class GameClockManager : MonoBehaviour {
 	public static  GameClockManager Instance { get{ return _Instance; } }
 
 	public float time;
+	public float fixedTime;
 
 	public bool freeze;
 
@@ -32,6 +33,17 @@ public class GameClockManager : MonoBehaviour {
 	{
 		if (!freeze) {
 			time = Time.deltaTime;
+		} else {
+			time = 0.0f;
+		}
+	}
+
+	void FixedUpdate()
+	{
+		if (!freeze) {
+			fixedTime = Time.fixedDeltaTime;
+		} else {
+			fixedTime = 0.0f;
 		}
 	}
 

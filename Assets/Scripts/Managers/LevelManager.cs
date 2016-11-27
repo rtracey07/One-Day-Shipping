@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class LevelManager : MonoBehaviour {
@@ -15,8 +16,17 @@ public class LevelManager : MonoBehaviour {
         levelData.currIndex = 0;
     }
 
+
+	//Dialog Box Elements.
+	public Image m_TextBox;
+	public Text m_Text;
+	public Button m_Confirm;
+	public Button m_Skip;
+	public Image m_Avatar;
+
 	public Level levelData;
 	public Location currentDestination;
+
 	private GameObject player;
 	private Location[] activeLocations;
 
@@ -29,32 +39,12 @@ public class LevelManager : MonoBehaviour {
 		activeLocations = GameObject.FindObjectsOfType<Location> ();
 
 		player = GameObject.FindGameObjectWithTag ("Player");
+
 		SpawnCars ();
 		SpawnDogs ();
 		SpawnPostmans ();
 
-		StartCoroutine (RunLevel());
-	}
-
-	IEnumerator RunLevel()
-	{
-		for (int i = 0; i < 5; i++) {
-			currentDestination = levelData.GetPickupLocation (ref activeLocations);
-
-			currentDestination.SetMiniMapMarkerActive(true);            
-
-			yield return new WaitUntil (() => GameManager.Instance.hasPackage);
-
-			currentDestination.SetMiniMapMarkerActive(false);
-
-			currentDestination = levelData.GetDropoffLocation (ref activeLocations);
-
-			currentDestination.SetMiniMapMarkerActive(true);
-
-			yield return new WaitUntil (() => !GameManager.Instance.hasPackage);
-
-			currentDestination.SetMiniMapMarkerActive(false);
-		}
+		StartCoroutine (levelData.RunLevel());
 	}
 
 	private void SpawnCars(){
@@ -119,4 +109,50 @@ public class LevelManager : MonoBehaviour {
 		return levelData.missionLength;
 	}
 
+	public void SetPickup()
+	{
+		if (currentDestination != null && currentDestination.minimapMarker != null) {
+			currentDestination.SetMiniMapMarkerActive (false);
+			currentDestination = levelData.GetPickupLocation (ref activeLocations);
+			currentDestination.SetMiniMapMarkerActive (true);   
+		} else if (currentDestination == null) {
+			currentDestination = levelData.GetPickupLocation (ref activeLocations);
+			if (currentDestination.minimapMarker != null) {
+				currentDestination.SetMiniMapMarkerActive (true);  
+			}
+		} else {
+			Debug.Log ("Current location doesn't exist or has no minimap marker.");
+		}
+	}
+
+	public void SetDropoff()
+	{
+		if (currentDestination != null && currentDestination.minimapMarker != null) {
+			currentDestination.SetMiniMapMarkerActive (false);
+			currentDestination = levelData.GetDropoffLocation (ref activeLocations);
+			currentDestination.SetMiniMapMarkerActive (true);
+		} else {
+		Debug.Log ("Current location doesn't exist or has no minimap marker.");
+		}
+	}
+
+	public void RunEvent(InGameEvent currEvent, string dialogue)
+	{
+		if (currEvent != null) {
+
+			if (currEvent.avatar != null)
+				m_Avatar.sprite = currEvent.avatar;
+
+			m_Text.text = dialogue;
+
+			m_TextBox.gameObject.SetActive (true);
+			m_Confirm.gameObject.SetActive(currEvent.requiresConfirmation);
+			m_Skip.gameObject.SetActive(currEvent.isSkippable);
+		}
+	}
+
+	public void HideTextBox()
+	{
+		m_TextBox.gameObject.SetActive (false);
+	}
 }

@@ -1,0 +1,17 @@
+/Users/rtracey/Documents/CS/Unity/One-Day-Shipping/Temp/bin/Debug/Assembly-CSharp-firstpass.dll.mdb
+/Users/rtracey/Documents/CS/Unity/One-Day-Shipping/Temp/bin/Debug/Assembly-CSharp-firstpass.dll
+/Users/rtracey/Documents/CS/Unity/One-Day-Shipping/obj/Debug/Assembly-CSharp-firstpass.dll
+/Users/rtracey/Documents/CS/Unity/One-Day-Shipping/obj/Debug/Assembly-CSharp-firstpass.dll.mdb
+/Users/rtracey/Documents/CS/Unity/One-Day-Shipping/Temp/bin/Debug/UnityEngine.dll
+/Users/rtracey/Documents/CS/Unity/One-Day-Shipping/Temp/bin/Debug/UnityEditor.dll
+/Users/rtracey/Documents/CS/Unity/One-Day-Shipping/Temp/bin/Debug/UnityEngine.UI.dll
+/Users/rtracey/Documents/CS/Unity/One-Day-Shipping/Temp/bin/Debug/UnityEngine.Networking.dll
+/Users/rtracey/Documents/CS/Unity/One-Day-Shipping/Temp/bin/Debug/Mono.Cecil.dll
+/Users/rtracey/Documents/CS/Unity/One-Day-Shipping/Temp/bin/Debug/Unity.SerializationLogic.dll
+/Users/rtracey/Documents/CS/Unity/One-Day-Shipping/Temp/bin/Debug/Unity.DataContract.dll
+/Users/rtracey/Documents/CS/Unity/One-Day-Shipping/Temp/bin/Debug/ICSharpCode.NRefactory.dll
+/Users/rtracey/Documents/CS/Unity/One-Day-Shipping/Temp/bin/Debug/Unity.UNetWeaver.dll
+/Users/rtracey/Documents/CS/Unity/One-Day-Shipping/Temp/bin/Debug/Unity.UNetWeaver.dll.mdb
+/Users/rtracey/Documents/CS/Unity/One-Day-Shipping/Temp/bin/Debug/Unity.CecilTools.dll
+/Users/rtracey/Documents/CS/Unity/One-Day-Shipping/Temp/bin/Debug/Mono.Cecil.Pdb.dll
+/Users/rtracey/Documents/CS/Unity/One-Day-Shipping/Temp/bin/Debug/Mono.Cecil.Mdb.dll

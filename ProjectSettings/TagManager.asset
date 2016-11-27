@@ -13,6 +13,7 @@ TagManager:
   - Package
   - Vehicle
   - Dog
+  - UI
   layers:
   - Default
   - TransparentFX
