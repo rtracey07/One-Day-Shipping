@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Name: Monday
   m_EditorClassIdentifier: 
   levelName: Monday
-  missionLength: 10
+  missionLength: 5
+  packageCount: 8
   carPathGroup:
     numberOfCarsToSpawn: 30
     carPrefabs:
@@ -94,6 +95,7 @@ MonoBehaviour:
     - City_Dropoff_Z
   events:
   - sound: {fileID: 0}
+    avatar: {fileID: 0}
     dialogue:
     - Okay Noodleman. Let's run through the basics of parcel delivery.
     - That clock on your left helps you keep track of time.
@@ -101,9 +103,44 @@ MonoBehaviour:
     - That small map on the right is your ... small map.
     - Use it to find your way around.
     - That giant arrow above your head hopefully points to where you should go.
-    - So hurry up and go there. You've got a package waiting!
+    - Hurry up and follow that arrow. You've got a package waiting!
+    timeBeforeDisplaying: 1
     isSkippable: 0
     pauseGame: 1
-    requiresConfirmation: 0
-    duration: 0
+    requiresConfirmation: 1
+    duration: 5
+  - sound: {fileID: 0}
+    avatar: {fileID: 0}
+    dialogue:
+    - Hey Look. You've got your first package.
+    - 'If you get hit by anything, that package is going to get broken. '
+    - Try not to get hit by so many vehicles.
+    - What are you waiting for? Go deliver it. That arrow should point the way.
+    timeBeforeDisplaying: 0.5
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 1
+    duration: 5
+  - sound: {fileID: 0}
+    avatar: {fileID: 0}
+    dialogue:
+    - Do you see that dog!?
+    - The dog is the natural predator of the delivey man.
+    - I'd get out of there if I were you.
+    timeBeforeDisplaying: 0
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 1
+    duration: 5
+  - sound: {fileID: 0}
+    avatar: {fileID: 0}
+    dialogue:
+    - First Package Delivered.
+    - Good work, New Guy. But don't stop now.
+    - You still have 7 more packages to deliver before the day is over.
+    timeBeforeDisplaying: 0.5
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 1
+    duration: 5
   currIndex: 0
