@@ -18,6 +18,12 @@ public class Monday : Level {
 
 		yield return LevelManager.Instance.StartCoroutine (TriggerEvent (1));
 
+		yield return new WaitUntil (() => !GameManager.Instance.hasPackage);
+		LevelManager.Instance.SetPickup ();
+
+		yield return LevelManager.Instance.StartCoroutine (TriggerEvent (3));
+
+
 		for (int i = 0; i < 5; i++) {
 			yield return new WaitUntil (() => !GameManager.Instance.hasPackage);
 
