@@ -34,7 +34,9 @@ public class Package : MonoBehaviour {
 
 	void OnDisable(){
 		Debug.Log ("disabled");
-		damageSlider.gameObject.SetActive (false);
+
+		if(damageSlider != null)
+			damageSlider.gameObject.SetActive (false);
 	}
 
 	void Update()

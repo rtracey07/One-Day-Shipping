@@ -18,8 +18,9 @@ public class LevelManager : MonoBehaviour {
 
 
 	//Dialog Box Elements.
-	public Image m_TextBox;
-	public Text m_Text;
+	public Image m_DialogueBox;
+	public Text m_Dialogue;
+	public Text m_ParcelCount;
 	public Button m_Confirm;
 	public Button m_Skip;
 	public Image m_Avatar;
@@ -27,7 +28,6 @@ public class LevelManager : MonoBehaviour {
 	public Level levelData;
 	public Location currentDestination;
 
-	private GameObject player;
 	private Location[] activeLocations;
 
 	void Awake () {
@@ -37,8 +37,6 @@ public class LevelManager : MonoBehaviour {
 			Debug.Log ("Multiple Level Managers in the scene.");
 
 		activeLocations = GameObject.FindObjectsOfType<Location> ();
-
-		player = GameObject.FindGameObjectWithTag ("Player");
 
 		SpawnCars ();
 		SpawnDogs ();
@@ -123,9 +121,9 @@ public class LevelManager : MonoBehaviour {
 			if (currEvent.avatar != null)
 				m_Avatar.sprite = currEvent.avatar;
 
-			m_Text.text = dialogue;
+			m_Dialogue.text = dialogue;
 
-			m_TextBox.gameObject.SetActive (true);
+			m_DialogueBox.gameObject.SetActive (true);
 			m_Confirm.gameObject.SetActive(currEvent.requiresConfirmation);
 			m_Skip.gameObject.SetActive(currEvent.isSkippable);
 		}
@@ -133,6 +131,16 @@ public class LevelManager : MonoBehaviour {
 
 	public void HideTextBox()
 	{
-		m_TextBox.gameObject.SetActive (false);
+		m_DialogueBox.gameObject.SetActive (false);
+	}
+
+	public void UpdatePackageDeliveredCount()
+	{
+		m_ParcelCount.text = string.Format ("{0}/{1}", GameManager.Instance.deliveredCount, levelData.packageCount);
+	}
+
+	public bool CheckWinState()
+	{
+		return (GameManager.Instance.deliveredCount == levelData.packageCount);
 	}
 }

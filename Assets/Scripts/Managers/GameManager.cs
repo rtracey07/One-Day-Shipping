@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour {
 	[HideInInspector]
 	public bool dogAttack = false;
 
+	[HideInInspector]
+	public int deliveredCount = 0;
+
 	public Camera mainCamera;
 
 	public Stats stats;

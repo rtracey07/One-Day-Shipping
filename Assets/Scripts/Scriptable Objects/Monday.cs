@@ -9,6 +9,7 @@ public class Monday : Level {
 	{
 		LevelManager.Instance.StartCoroutine (OnDogAttack(2));
 
+		LevelManager.Instance.UpdatePackageDeliveredCount ();
 		LevelManager.Instance.SetPickup ();
 
 		yield return LevelManager.Instance.StartCoroutine (TriggerEvent (0));
@@ -19,6 +20,8 @@ public class Monday : Level {
 		yield return LevelManager.Instance.StartCoroutine (TriggerEvent (1));
 
 		yield return new WaitUntil (() => !GameManager.Instance.hasPackage);
+		GameManager.Instance.deliveredCount++;
+		LevelManager.Instance.UpdatePackageDeliveredCount ();
 		LevelManager.Instance.SetPickup ();
 
 		yield return LevelManager.Instance.StartCoroutine (TriggerEvent (3));

@@ -8,6 +8,7 @@ public class Level : ScriptableObject{
 
 	public string levelName;
 	public float missionLength;
+	public float packageCount;
 
 	[HideInInspector]
 	[Serializable]
