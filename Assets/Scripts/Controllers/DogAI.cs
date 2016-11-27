@@ -15,7 +15,7 @@ public class DogAI : MonoBehaviour {
 	private Vector3 center = Vector3.zero;		// center of the radius
 	[SerializeField] private float radius = 3.0f;
 	[SerializeField] private float attackProximity = 0.3f;		// when to do attack animation
-	private GameObject package;				// package to damage
+	public Package package;				// package to damage
 
 	private GameObject player;
 	private Collider col;
@@ -59,7 +59,6 @@ public class DogAI : MonoBehaviour {
 		//transform.position = center;
 		transform.Rotate(0, Random.Range(-180.0f, 180.0f), 0);
 		player = GameObject.Find ("Player");
-		package = GameObject.FindGameObjectWithTag ("Package");
 		//life = lifePoints;
 	}
 
@@ -114,8 +113,6 @@ public class DogAI : MonoBehaviour {
 
 				if ((player.transform.position.x - center.x) * (player.transform.position.x - center.x)
 				   + (player.transform.position.z - center.z) * (player.transform.position.z - center.z) <= radius * radius) {
-					// the player is within the radius, attack
-					package = GameObject.FindGameObjectWithTag ("Package");
 					wallHit = false;
 					//animator.SetBool ("Attack", true);
 					playerChase = true;
@@ -166,11 +163,8 @@ public class DogAI : MonoBehaviour {
 
 
 		if (attack && attackTime >= attackDelay) {
-			//Debug.Log ("tossing");
-			package = GameObject.FindGameObjectWithTag ("Package");
-			if (package != null) {
-				package.GetComponent<Package> ().DamagePackage (damageStrength);
-			}
+			package.DamagePackage (damageStrength);
+			GameManager.Instance.stats.dogsHit++;
 			attackTime = 0.0f;
 		} else if (attack && attackTime < attackDelay) {
 			attackTime += 3.0f * GameClockManager.Instance.time;

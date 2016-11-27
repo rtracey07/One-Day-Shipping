@@ -4,14 +4,15 @@ using System.Collections;
 public class CarPath : MonoBehaviour {
 
 	private Pathway path;						// the path
+	private Rigidbody m_Rigidbody;
 	public float rotationOffset = 0.05f;			// how far ahead to look to orient on path
 	public float speed = 50.0f;
 	private float speedMod = 1.0f;
 
 	private float currentLook =0.25f;										// where the car is looking
 	private float percentsPerSecond = 0.1f; 								// %1 of the path moved per second
-	private bool swapPositions = false;
 	private CarPathManager m_Manager;
+	private bool isHit = false;
 	private Vector3 cameraSpacePos;
 
 	void Start()
@@ -20,6 +21,7 @@ public class CarPath : MonoBehaviour {
 		percentsPerSecond = 0.02f;//speed * 0.0004f;
 
 		m_Manager = GetComponentInParent<CarPathManager> ();
+		m_Rigidbody = GetComponent<Rigidbody> ();
 	}
 
 	public float CurrentPathPercent {
@@ -62,5 +64,23 @@ public class CarPath : MonoBehaviour {
 			Gizmos.color = Color.green;
 			Gizmos.DrawWireSphere (this.transform.position, 3);
 		}
+	}
+
+	void OnCollisionEnter(Collision other)
+	{
+		if (other.gameObject.tag == "Player") {
+			other.rigidbody.AddForce (-other.contacts [0].normal * Vector3.Dot(-other.contacts [0].normal,transform.forward)*m_Rigidbody.mass);
+			if (!isHit) {
+				GameManager.Instance.stats.carsHit++;
+				isHit = true;
+				StartCoroutine (ResetHit (2.0f));
+			}
+		}
+	}
+
+	IEnumerator ResetHit(float time)
+	{
+		yield return new WaitForSeconds (time);
+		isHit = false;
 	}
 }

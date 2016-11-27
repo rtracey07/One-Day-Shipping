@@ -28,7 +28,7 @@ public class Monday : Level {
 
 		//Deliver package and get updated counter.
 		yield return new WaitUntil (() => !GameManager.Instance.hasPackage);
-		GameManager.Instance.deliveredCount++;
+		GameManager.Instance.stats.packagesDelivered++;
 		LevelManager.Instance.UpdatePackageDeliveredCount ();
 		LevelManager.Instance.SetPickup ();
 
@@ -43,7 +43,7 @@ public class Monday : Level {
 
 			//Package Loop Pick up.
 			yield return new WaitUntil (() => !GameManager.Instance.hasPackage);
-			GameManager.Instance.deliveredCount++;
+			GameManager.Instance.stats.packagesDelivered++;
 			LevelManager.Instance.UpdatePackageDeliveredCount ();
 			LevelManager.Instance.SetPickup ();
 		}
