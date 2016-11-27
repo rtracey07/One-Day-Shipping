@@ -9,12 +9,21 @@ public class PostmanAI : MonoBehaviour {
 	private enum pathEnum{loop, reverse};
 	[SerializeField] private pathEnum pathType;
 	//set up a series of points to walk along when not chasing player
-	[SerializeField] Vector3[] route;
+	//[SerializeField] Vector3[] route;
 	private int next;
 	private bool fwd;
 	private float turnDelay = 1.0f;
+	private float speedMod = 1.0f;
 
 	private bool wall = false;
+	private Pathway path;									// the path
+	public float rotationOffset = 0.05f;			// how far ahead to look to orient on path
+	private float currentLook =0.25f;										// where the car is looking
+	private float percentsPerSecond = 0.1f; 								// %1 of the path moved per second
+	private bool swapPositions = false;
+	private PostmanManager m_Manager;
+	private Vector3 cameraSpacePos;
+
 	//keep track of ground
 	private RaycastHit ground;
 	[SerializeField] private float groundOffset = 0.5f;
@@ -32,7 +41,7 @@ public class PostmanAI : MonoBehaviour {
 	[SerializeField] private float projectileInterval = 1.0f;	// wait between projectiles
 	private float projectileTime = 0.0f;
 	[SerializeField] private Rigidbody projectile;				// package
-	[SerializeField] private GameObject player;					// player to chase
+	private GameObject player;					// player to chase
 	private GameObject package;
 
 	private Animator animator;
@@ -72,23 +81,36 @@ public class PostmanAI : MonoBehaviour {
 		
 	}
 
+	public float CurrentPathPercent {
+		get;
+		set;
+	}
+
 	// Use this for initialization
 	void Start () {
+
+		player = GameObject.FindGameObjectWithTag ("Player");
+		currentLook = CurrentPathPercent + rotationOffset;
+		percentsPerSecond = 0.02f;//speed * 0.0004f;
+
+		m_Manager = GetComponentInParent<PostmanManager> ();
+
+
 		animator = GetComponent <Animator>();
 		//state = State.Standing;
 		state = State.Spawn;
-		if (route.Length == 1) { 		// he stays in one place for some reason
-			next = 0;
-		} else if (route.Length < 1) {	// forgot to set his route
-			route[0] = transform.position;
-			next = 0;
-		} else {
-			next = 1;
-		}
-		transform.position = route [0];
-		center = transform.position;
-
-		fwd = true;
+//		if (route.Length == 1) { 		// he stays in one place for some reason
+//			next = 0;
+//		} else if (route.Length < 1) {	// forgot to set his route
+//			route[0] = transform.position;
+//			next = 0;
+//		} else {
+//			next = 1;
+//		}
+//		transform.position = route [0];
+//		center = transform.position;
+//
+//		fwd = true;
 
 		package = GameObject.FindGameObjectWithTag ("Package");
 	}
@@ -110,30 +132,51 @@ public class PostmanAI : MonoBehaviour {
 	/// </summary>
 	void WalkingState() {
 		//create the rotation we need to be in to look at the target
-		Quaternion lookRotation = Quaternion.LookRotation((route[next] - transform.position).normalized);
-		transform.rotation = Quaternion.Slerp (transform.rotation, lookRotation, Time.deltaTime * speed * 3.0f);
 
-		transform.position = Vector3.MoveTowards (transform.position, new Vector3 (route[next].x, ground.point.y + groundOffset, route[next].z), Time.deltaTime * speed);
-		//when reached, go to next
-		if ((route [next].x - transform.position.x) * (route [next].x - transform.position.x)
-		    + (route [next].z - transform.position.z) * (route [next].z - transform.position.z) <= 0.1f) {
-			turnDelay = 1.0f;
-			if (next == route.Length - 1 && pathType == pathEnum.loop) {
-				next = 0;
-			} else if (pathType == pathEnum.loop) {
-				next ++;
-			} else if (next == route.Length - 1 && pathType == pathEnum.reverse) {
-				fwd = false;
-			} else if (next == 0 && pathType == pathEnum.reverse) {
-				fwd = true;
+//		Quaternion lookRotation = Quaternion.LookRotation((route[next] - transform.position).normalized);
+//		transform.rotation = Quaternion.Slerp (transform.rotation, lookRotation, Time.deltaTime * speed * 3.0f);
+//
+//		transform.position = Vector3.MoveTowards (transform.position, new Vector3 (route[next].x, ground.point.y + groundOffset, route[next].z), Time.deltaTime * speed);
+//		//when reached, go to next
+//		if ((route [next].x - transform.position.x) * (route [next].x - transform.position.x)
+//		    + (route [next].z - transform.position.z) * (route [next].z - transform.position.z) <= 0.1f) {
+//			turnDelay = 1.0f;
+//			if (next == route.Length - 1 && pathType == pathEnum.loop) {
+//				next = 0;
+//			} else if (pathType == pathEnum.loop) {
+//				next ++;
+//			} else if (next == route.Length - 1 && pathType == pathEnum.reverse) {
+//				fwd = false;
+//			} else if (next == 0 && pathType == pathEnum.reverse) {
+//				fwd = true;
+//			}
+//
+//			if (pathType == pathEnum.reverse && fwd) {
+//				next++;
+//			} else if (pathType == pathEnum.reverse && !fwd) {
+//				next--;
+//			}
+//
+//		}
+
+		if (path == null || !path.isActive) {
+			path = m_Manager.GetAreaPath ();
+		}
+
+		if (path != null) {
+			// if the we're at the end, restart
+			if (CurrentPathPercent >= 0.99f) {
+				CurrentPathPercent = 0.0f;
+				// TODO - this needs some lerping adjustment
+				currentLook = rotationOffset;
 			}
 
-			if (pathType == pathEnum.reverse && fwd) {
-				next++;
-			} else if (pathType == pathEnum.reverse && !fwd) {
-				next--;
-			}
-
+			// move along the percentage of the path by time
+			CurrentPathPercent += percentsPerSecond * speedMod * Time.deltaTime;
+			currentLook += percentsPerSecond * speedMod * Time.deltaTime;
+			Vector3 look = iTween.PointOnPath (path.pathway.ToArray(), currentLook);
+			iTween.PutOnPath (gameObject, path.pathway.ToArray(), CurrentPathPercent);
+			transform.LookAt (look);
 		}
 
 		if ((player.transform.position.x - transform.position.x) * (player.transform.position.x - transform.position.x)
@@ -212,7 +255,7 @@ public class PostmanAI : MonoBehaviour {
 	void AttackingState(){
 		//Debug.Log ("attack state");
 
-		transform.LookAt (player.transform);
+
 
 		animator.SetBool ("Walk", false);
 		animator.SetTrigger("Attack");
@@ -253,10 +296,24 @@ public class PostmanAI : MonoBehaviour {
 	void PlayerChaseState(){
 		//Debug.Log ("chasing");
 		float dir_y = -0.1014264f; 
-		Vector3 dir = (new Vector3 (player.transform.position.x, dir_y, player.transform.position.z) - transform.position).normalized;
-		Quaternion rot = Quaternion.LookRotation (dir);
-		transform.rotation = Quaternion.Slerp (transform.rotation, rot, Time.deltaTime * speed);
-		transform.Translate (transform.forward * Time.deltaTime * speed, Space.World);
+
+		if ((player.transform.position.x - transform.position.x) * (player.transform.position.x - transform.position.x)
+		    + (player.transform.position.z - transform.position.z) * (player.transform.position.z - transform.position.z) <= attackProximity) {
+			state = State.Attacking;
+
+		} else {
+			Vector3 dir = (new Vector3 (player.transform.position.x, 0.0f, player.transform.position.z) - transform.position).normalized;
+			Quaternion rot = Quaternion.LookRotation (dir);
+			Quaternion newrot = Quaternion.Euler (new Vector3 (transform.rotation.x, rot.y, transform.rotation.z));
+			transform.rotation = Quaternion.Slerp (transform.rotation, newrot, Time.deltaTime * speed);
+			transform.Translate (transform.forward * Time.deltaTime * speed, Space.World);
+		}
+
+
+
+
+
+
 
 		if ((transform.position.x - center.x) * (transform.position.x - center.x)
 			+ (transform.position.z - center.z) * (transform.position.z - center.z) >= radius * radius) {
@@ -314,33 +371,56 @@ public class PostmanAI : MonoBehaviour {
 		if (Physics.Raycast (transform.position, -Vector3.up, out hit)) {
 			ground = hit;
 		}
-		//don't walk into walls, do walk up to player
-		RaycastHit front;
-		if (Physics.Raycast (transform.position, transform.forward, out front)) {
-			//Debug.Log ("hit something " + front.distance);
-			if (hit.point.y > 0.3f && front.distance < 0.3f && !hit.collider.name.Equals("player") && !hit.collider.name.Equals("dog") && state != State.Turning) {
-				//try to avoid walking through walls by going to next step
-				if (state == State.Walking) {
-					if (next == route.Length - 1 && pathType == pathEnum.loop) {
-						next = 0;
-					} else if (pathType == pathEnum.loop) {
-						next++;
-					} else if (next == route.Length - 1 && pathType == pathEnum.reverse) {
-						fwd = false;
-					} else if (next == 0 && pathType == pathEnum.reverse) {
-						fwd = true;
-					}
 
-					if (pathType == pathEnum.reverse && fwd) {
-						next++;
-					} else if (pathType == pathEnum.reverse && !fwd) {
-						next--;
-					}
-				} else {
-					state = State.Walking;
-				}
-			}
-		} 
+
+//		if (path == null || !path.isActive) {
+//			path = m_Manager.GetAreaPath ();
+//		}
+//
+//		if (path != null) {
+//			// if the we're at the end, restart
+//			if (CurrentPathPercent >= 0.99f) {
+//				CurrentPathPercent = 0.0f;
+//				// TODO - this needs some lerping adjustment
+//				currentLook = rotationOffset;
+//			}
+//
+//			// move along the percentage of the path by time
+//			CurrentPathPercent += percentsPerSecond * speedMod * Time.deltaTime;
+//			currentLook += percentsPerSecond * speedMod * Time.deltaTime;
+//			Vector3 look = iTween.PointOnPath (path.pathway.ToArray(), currentLook);
+//			iTween.PutOnPath (gameObject, path.pathway.ToArray(), CurrentPathPercent);
+//			transform.LookAt (look);
+//		}
+
+
+		//don't walk into walls, do walk up to player
+//		RaycastHit front;
+//		if (Physics.Raycast (transform.position, transform.forward, out front)) {
+//			//Debug.Log ("hit something " + front.distance);
+//			if (hit.point.y > 0.3f && front.distance < 0.3f && !hit.collider.name.Equals("player") && !hit.collider.name.Equals("dog") && state != State.Turning) {
+//				//try to avoid walking through walls by going to next step
+//				if (state == State.Walking) {
+//					if (next == route.Length - 1 && pathType == pathEnum.loop) {
+//						next = 0;
+//					} else if (pathType == pathEnum.loop) {
+//						next++;
+//					} else if (next == route.Length - 1 && pathType == pathEnum.reverse) {
+//						fwd = false;
+//					} else if (next == 0 && pathType == pathEnum.reverse) {
+//						fwd = true;
+//					}
+//
+//					if (pathType == pathEnum.reverse && fwd) {
+//						next++;
+//					} else if (pathType == pathEnum.reverse && !fwd) {
+//						next--;
+//					}
+//				} else {
+//					state = State.Walking;
+//				}
+//			}
+//		} 
 
 	}
 	
@@ -373,6 +453,18 @@ public class PostmanAI : MonoBehaviour {
 		CheckForPlayer ();
 
 
+	}
+
+
+	void OnDrawGizmos()
+	{
+		//Visual. Not used in movement
+		iTween.DrawPath(path.pathway.ToArray());
+
+		if (m_Manager.debug) {
+			Gizmos.color = Color.green;
+			Gizmos.DrawWireSphere (this.transform.position, 3);
+		}
 	}
 
 

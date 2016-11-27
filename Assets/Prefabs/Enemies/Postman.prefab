@@ -2185,28 +2185,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathType: 0
-  route:
-  - {x: -38.47, y: -0.099, z: 47.63}
-  - {x: -51.12, y: -0.099, z: 49.5}
-  - {x: -69.93, y: -0.099, z: 49.5}
-  - {x: -76.95, y: -0.099, z: 47.89}
-  - {x: -76.95, y: -0.099, z: 35.74}
-  - {x: -63.14, y: -0.099, z: 35.74}
-  - {x: -57.11, y: -0.099, z: 36.86}
-  - {x: -50.36, y: -0.099, z: 35.63}
-  - {x: -43.07, y: -0.099, z: 36.11}
+  rotationOffset: 0.05
   groundOffset: 0.05
-  speed: 3
+  speed: 1
   damageStrength: 2
   radius: 3
   projectileRadius: 5
-  attackProximity: 0.3
+  attackProximity: 0.6
   throwsProjectiles: 1
   projectileSpeed: 1000
   projectileInterval: 0.5
   projectile: {fileID: 54000011118484082, guid: da7e932ec170646a3a2f9cb4897ad98a,
     type: 2}
-  player: {fileID: 0}
 --- !u!137 &137000010023492578
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

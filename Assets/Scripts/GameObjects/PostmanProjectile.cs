@@ -21,8 +21,8 @@ public class PostmanProjectile : MonoBehaviour {
 	void OnCollisionEnter(Collision collision) {
 		
 		if (collision.rigidbody != null && collision.rigidbody.name.Equals ("Player")) {
-			Debug.Log (DamageStrength);
-			Debug.Log (Pack.name);
+			//Debug.Log (DamageStrength);
+			//Debug.Log (Pack.name);
 			if (Pack != null) {
 				Debug.Log ("Package Hit");
 				Pack.GetComponent<Package> ().DamagePackage (DamageStrength);

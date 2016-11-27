@@ -31,6 +31,7 @@ public class LevelManager : MonoBehaviour {
 		player = GameObject.FindGameObjectWithTag ("Player");
 		SpawnCars ();
 		SpawnDogs ();
+		SpawnPostmans ();
 
 		StartCoroutine (RunLevel());
 	}
@@ -73,6 +74,25 @@ public class LevelManager : MonoBehaviour {
 		else
 		{
 			Debug.Log("Car Pool GameObject missing from scene. Nowhere to instantiate cars");
+		}
+	}
+
+	private void SpawnPostmans(){
+		GameObject postmanParent = GameObject.Find ("Postman Pool");
+
+		if(postmanParent != null)
+		{
+			for (int i = 0; i < levelData.postmanPathGroup.numberOfPostmanToSpawn; i++) {
+				GameObject postmanPrefab = levelData.postmanPathGroup.postmanPrefab;
+				GameObject postman = GameObject.Instantiate (postmanPrefab);
+				postman.transform.parent = postmanParent.transform;
+				PostmanAI postmanPath = postman.GetComponent<PostmanAI> ();
+				postmanPath.CurrentPathPercent = (float)i / levelData.postmanPathGroup.numberOfPostmanToSpawn;
+			}
+		}
+		else
+		{
+			Debug.Log("Postman Pool GameObject missing from scene. Nowhere to instantiate postmans");
 		}
 	}
 

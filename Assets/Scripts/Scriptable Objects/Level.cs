@@ -26,6 +26,17 @@ public class Level : ScriptableObject{
 
 	public CarPathGroup carPathGroup;
 
+
+	[HideInInspector]
+	[Serializable]
+	public class PostmanPathGroup
+	{
+		public int numberOfPostmanToSpawn;
+		public GameObject postmanPrefab;
+	}
+
+	public PostmanPathGroup postmanPathGroup;
+
 	[HideInInspector]
 	[Serializable]
 	public class DogGroup
