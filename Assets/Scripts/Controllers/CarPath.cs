@@ -43,8 +43,8 @@ public class CarPath : MonoBehaviour {
 			}
 
 			// move along the percentage of the path by time
-			CurrentPathPercent += percentsPerSecond * speedMod * GameClockManager.Instance.time;
-			currentLook += percentsPerSecond * speedMod * GameClockManager.Instance.time;
+			CurrentPathPercent += percentsPerSecond * speedMod * GameClockManager.Instance.fixedTime;
+			currentLook += percentsPerSecond * speedMod * GameClockManager.Instance.fixedTime;
 			Vector3 look = iTween.PointOnPath (path.pathway.ToArray(), currentLook);
 			iTween.PutOnPath (gameObject, path.pathway.ToArray(), CurrentPathPercent);
 			transform.LookAt (look);

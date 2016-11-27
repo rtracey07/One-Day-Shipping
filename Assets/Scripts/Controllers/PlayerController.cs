@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour {
 		} else {
 			animator.speed = 1;
 			//Update Time.
-			time += GameClockManager.Instance.time;
+			time += GameClockManager.Instance.fixedTime;
 
 			//Get Values of User Input.
 			vertical = Input.GetAxis ("Vertical");
