@@ -52,6 +52,9 @@ public class PlayerController : MonoBehaviour {
 	private bool jumpPrimed = false;
 	private Rigidbody m_Rigidbody;
 
+	public AudioClip jumpSound;
+	public AudioClip landSound;
+
 	void Start()
 	{
 		//Cache Controllers for use.
@@ -184,8 +187,8 @@ public class PlayerController : MonoBehaviour {
 	{
 		if (!sliding) {
 			moveDirection.y = jumpSpeed;
-//		controller.Move (new Vector3 (0, jumpSpeed* Time.deltaTime, 0));
 			m_Rigidbody.AddForce (new Vector3 (0, jumpSpeed, 0));
+			AudioManager.Instance.PlaySoundEffect(jumpSound);
 		}
 		jumpPrimed = false;
 	}

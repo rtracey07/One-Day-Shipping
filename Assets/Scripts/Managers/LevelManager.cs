@@ -40,7 +40,7 @@ public class LevelManager : MonoBehaviour {
 		for (int i = 0; i < 5; i++) {
 			currentDestination = levelData.GetPickupLocation (ref activeLocations);
 
-			currentDestination.SetMiniMapMarkerActive(true);            
+			currentDestination.SetMiniMapMarkerActive(true);
 
 			yield return new WaitUntil (() => GameManager.Instance.hasPackage);
 
@@ -98,5 +98,6 @@ public class LevelManager : MonoBehaviour {
 	{
 		return levelData.missionLength;
 	}
+		
 
 }
