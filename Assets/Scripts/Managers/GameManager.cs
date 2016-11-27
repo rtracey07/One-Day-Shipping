@@ -7,8 +7,15 @@ public class GameManager : MonoBehaviour {
 	private static GameManager _Instance;
 	public static GameManager Instance {  get { return _Instance; } }
 
+	[HideInInspector]
 	public bool hasPackage = false;
+
+	[HideInInspector]
 	public bool continueClicked = false;
+
+	[HideInInspector]
+	public bool dogAttack = false;
+
 	public Camera mainCamera;
 
 	public Stats stats;

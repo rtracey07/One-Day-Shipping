@@ -85,4 +85,24 @@ public class Level : ScriptableObject{
 		Debug.Log ("Default Level Type. Override to add level structure");
 		yield return null;
 	}
+
+	public virtual IEnumerator TriggerEvent( int index)
+	{
+		yield return new WaitForSeconds (events[index].timeBeforeDisplaying);
+		GameClockManager.Instance.freeze = events [index].pauseGame;
+
+		foreach (string dialogue in events[index].dialogue) {
+			LevelManager.Instance.RunEvent (events [index], dialogue);
+
+			if (events [index].requiresConfirmation) {
+				yield return new WaitUntil (() => GameManager.Instance.continueClicked);
+				GameManager.Instance.continueClicked = false;
+			} else {
+				yield return new WaitForSeconds (events [index].duration);
+			}
+		}
+
+		LevelManager.Instance.HideTextBox ();
+		GameClockManager.Instance.freeze = false;
+	}
 }

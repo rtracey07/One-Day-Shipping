@@ -9,6 +9,7 @@ public class InGameEvent {
 	public AudioClip sound;
 	public Sprite avatar;
 	public String[] dialogue;
+	public float timeBeforeDisplaying;
 	public bool isSkippable;
 	public bool pauseGame;
 	public bool requiresConfirmation;
