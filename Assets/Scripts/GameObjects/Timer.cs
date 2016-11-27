@@ -37,6 +37,10 @@ public class Timer : MonoBehaviour {
 				hourHand.color = Color.Lerp (m_OutOfTimeColor, hourColor, 2 * (currTime / time));
 				minuteHand.color = Color.Lerp (m_OutOfTimeColor, minuteColor, 2 * (currTime / time));
 			}
+
+			//Time Up.
+			if (currTime <= 0.0f)
+				GameManager.Instance.timeUp = true;	
 		}
 	}
 }

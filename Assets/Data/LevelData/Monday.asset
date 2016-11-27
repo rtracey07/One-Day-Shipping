@@ -143,4 +143,23 @@ MonoBehaviour:
     pauseGame: 1
     requiresConfirmation: 1
     duration: 5
+  - sound: {fileID: 0}
+    avatar: {fileID: 0}
+    dialogue:
+    - You did it! And with time to spare.
+    - For the rest of the day, any package delivered is bonus.
+    timeBeforeDisplaying: 0.3
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 1
+    duration: 5
+  - sound: {fileID: 0}
+    avatar: {fileID: 0}
+    dialogue:
+    - Times up! Head back into the office.
+    timeBeforeDisplaying: 0.3
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 1
+    duration: 5
   currIndex: 0

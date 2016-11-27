@@ -6,6 +6,7 @@ using System;
 [CreateAssetMenu(menuName = "Data/Level/Default")]
 public class Level : ScriptableObject{
 
+	[Header("Mission Data")]
 	public string levelName;
 	public float missionLength;
 	public float packageCount;
@@ -24,7 +25,8 @@ public class Level : ScriptableObject{
 		public int numberOfCarsToSpawn;
 		public List<GameObject> carPrefabs;
 	}
-
+		
+	[Header("Enemy and Prop Spawning")]
 	public CarPathGroup carPathGroup;
 
 	[HideInInspector]
@@ -37,10 +39,14 @@ public class Level : ScriptableObject{
 
 	public DogGroup dogGroup;
 
+	[Header("Package Locations")]
 	public List<LocationGroup> pickupLocations;
 	public List<LocationGroup> dropoffLocations;
+
+	[Header("In Game Dialogue Events")]
 	public List<InGameEvent> events;
 
+	[HideInInspector]
 	public int currIndex = 0;
 
 	public Location GetPickupLocation(ref Location[] activeLocations)

@@ -19,6 +19,9 @@ public class GameManager : MonoBehaviour {
 	[HideInInspector]
 	public int deliveredCount = 0;
 
+	[HideInInspector]
+	public bool timeUp = false;
+
 	public Camera mainCamera;
 
 	public Stats stats;
