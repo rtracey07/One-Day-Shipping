@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
-[CreateAssetMenu(menuName = "Data/Level")]
+[CreateAssetMenu(menuName = "Data/Level/Default")]
 public class Level : ScriptableObject{
 
 	public string levelName;
@@ -38,6 +38,7 @@ public class Level : ScriptableObject{
 
 	public List<LocationGroup> pickupLocations;
 	public List<LocationGroup> dropoffLocations;
+	public List<InGameEvent> events;
 
 	public int currIndex = 0;
 
@@ -81,14 +82,7 @@ public class Level : ScriptableObject{
 
 	public virtual IEnumerator RunLevel()
 	{
-		for (int i = 0; i < 5; i++) {
-			LevelManager.Instance.SetPickup ();
-
-			yield return new WaitUntil (() => GameManager.Instance.hasPackage);
-
-			LevelManager.Instance.SetDropoff ();
-
-			yield return new WaitUntil (() => !GameManager.Instance.hasPackage);	
-		}
+		Debug.Log ("Default Level Type. Override to add level structure");
+		yield return null;
 	}
 }

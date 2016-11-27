@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour {
 	public static GameManager Instance {  get { return _Instance; } }
 
 	public bool hasPackage = false;
+	public bool continueClicked = false;
 	public Camera mainCamera;
 
 	public Stats stats;
@@ -22,5 +23,10 @@ public class GameManager : MonoBehaviour {
 		DontDestroyOnLoad (gameObject);
 
 		mainCamera = GameObject.Find ("Main Camera").GetComponent<Camera> ();
+	}
+
+	public void Continue()
+	{
+		continueClicked = true;
 	}
 }

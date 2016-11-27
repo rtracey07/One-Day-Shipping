@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class LevelManager : MonoBehaviour {
@@ -15,8 +16,17 @@ public class LevelManager : MonoBehaviour {
         levelData.currIndex = 0;
     }
 
+
+	//Dialog Box Elements.
+	public Image m_TextBox;
+	public Text m_Text;
+	public Button m_Confirm;
+	public Button m_Skip;
+	public Image m_Avatar;
+
 	public Level levelData;
 	public Location currentDestination;
+
 	private GameObject player;
 	private Location[] activeLocations;
 
@@ -106,4 +116,23 @@ public class LevelManager : MonoBehaviour {
 		}
 	}
 
+	public void RunEvent(InGameEvent currEvent, string dialogue)
+	{
+		if (currEvent != null) {
+
+			if (currEvent.avatar != null)
+				m_Avatar.sprite = currEvent.avatar;
+
+			m_Text.text = dialogue;
+
+			m_TextBox.gameObject.SetActive (true);
+			m_Confirm.gameObject.SetActive(currEvent.requiresConfirmation);
+			m_Skip.gameObject.SetActive(currEvent.isSkippable);
+		}
+	}
+
+	public void HideTextBox()
+	{
+		m_TextBox.gameObject.SetActive (false);
+	}
 }
