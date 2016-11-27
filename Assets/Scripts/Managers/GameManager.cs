@@ -25,12 +25,13 @@ public class GameManager : MonoBehaviour {
 
 	void Awake()
 	{
-		if (_Instance == null)
+		if (_Instance == null) {
 			_Instance = this;
-		else
-			Debug.LogError ("Multiple Game Managers in Scene.");
-
-		DontDestroyOnLoad (gameObject);
+			DontDestroyOnLoad (gameObject);
+		}
+		else {
+			DestroyImmediate (this);
+		}
 	}
 
 	public void Continue()

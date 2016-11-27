@@ -14,7 +14,7 @@ public class AudioManager : MonoBehaviour {
 		if (_Instance == null)
 			_Instance = this;
 		else {
-			Debug.Log ("Multiple Audio Managers in the scene");
+			DestroyImmediate (this);
 		}
 
 	}

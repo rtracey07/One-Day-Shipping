@@ -34,12 +34,13 @@ public class LevelManager : MonoBehaviour {
 	private Location[] activeLocations;
 
 	void Awake () {
-		if (_Instance == null)
+		if (_Instance == null) {
 			_Instance = this;
-		else
-			Debug.Log ("Multiple Level Managers in the scene.");
-
-		StartCoroutine(Run ());
+			StartCoroutine(Run ());
+		}
+		else {
+			DestroyImmediate (this);
+		}
 	}
 
 	public void SpawnCars(){
@@ -144,10 +145,13 @@ public class LevelManager : MonoBehaviour {
 
 	private IEnumerator Run()
 	{
-		GameManager.Instance.FindCamera ();
-		yield return StartCoroutine (cutSceneData.RunCutScene ());
-		AsyncOperation loadLevel = SceneManager.LoadSceneAsync ("InGame");
-		yield return new WaitUntil (()=> loadLevel.isDone);
+		if (SceneManager.GetActiveScene ().name != "InGame") {
+			GameManager.Instance.FindCamera ();
+			yield return StartCoroutine (cutSceneData.RunCutScene ());
+			AsyncOperation loadLevel = SceneManager.LoadSceneAsync ("InGame");
+			yield return new WaitUntil (() => loadLevel.isDone);
+		}
+
 		GameManager.Instance.FindCamera ();
 		activeLocations = GameObject.FindObjectsOfType<Location> ();
 
