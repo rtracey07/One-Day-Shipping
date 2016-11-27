@@ -8,11 +8,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f1c58ec081064413a2bebda9ccb76cb, type: 3}
+  m_Script: {fileID: 11500000, guid: 7925fd0ba3626433cb68b8a461cfa468, type: 3}
   m_Name: Monday
   m_EditorClassIdentifier: 
   levelName: Monday
-  missionLength: 10
+  missionLength: 5
+  packageCount: 8
   carPathGroup:
     numberOfCarsToSpawn: 30
     carPrefabs:
@@ -21,8 +22,8 @@ MonoBehaviour:
     - {fileID: 1000014174934912, guid: 95fb02a8189804689a7b7891228feabf, type: 2}
     - {fileID: 1000014174934912, guid: 79da92a775832432e9302135f66d4645, type: 2}
     - {fileID: 1000014174934912, guid: 8b25db4f5147e41f0abe134f5b126e41, type: 2}
-    - {fileID: 1000014174934912, guid: 4acac27cebe2844cda271e3772cfd4a2, type: 2}
     - {fileID: 1000014174934912, guid: 959c8c6aaf3b540a98416b2e4488a64b, type: 2}
+    - {fileID: 1000014174934912, guid: 4acac27cebe2844cda271e3772cfd4a2, type: 2}
     - {fileID: 1000014174934912, guid: a2db029ef64e6482796b19afb56e225b, type: 2}
     - {fileID: 1000014174934912, guid: c107bcefa27034374912dac7d1df6dea, type: 2}
     - {fileID: 1000014174934912, guid: 1cd65b0e33630439bb90e45101f98c92, type: 2}
@@ -61,8 +62,8 @@ MonoBehaviour:
   - locations:
     - City_Mailbox_V
     - City_Mailbox_W
-    - City_Mailbox_Y
     - City_Mailbox_X
+    - City_Mailbox_Y
     - City_Mailbox_Z
   dropoffLocations:
   - locations:
@@ -92,4 +93,73 @@ MonoBehaviour:
     - City_Dropoff_P
     - City_Dropoff_Q
     - City_Dropoff_Z
+  events:
+  - sound: {fileID: 0}
+    avatar: {fileID: 0}
+    dialogue:
+    - Okay Noodleman. Let's run through the basics of parcel delivery.
+    - That clock on your left helps you keep track of time.
+    - Remember, you're off work at 5.
+    - That small map on the right is your ... small map.
+    - Use it to find your way around.
+    - That giant arrow above your head hopefully points to where you should go.
+    - Hurry up and follow that arrow. You've got a package waiting!
+    timeBeforeDisplaying: 1
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 1
+    duration: 5
+  - sound: {fileID: 0}
+    avatar: {fileID: 0}
+    dialogue:
+    - Hey Look. You've got your first package.
+    - 'If you get hit by anything, that package is going to get broken. '
+    - Try not to get hit by so many vehicles.
+    - What are you waiting for? Go deliver it. That arrow should point the way.
+    timeBeforeDisplaying: 0.5
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 1
+    duration: 5
+  - sound: {fileID: 0}
+    avatar: {fileID: 0}
+    dialogue:
+    - Do you see that dog!?
+    - The dog is the natural predator of the delivey man.
+    - I'd get out of there if I were you.
+    timeBeforeDisplaying: 0
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 1
+    duration: 5
+  - sound: {fileID: 0}
+    avatar: {fileID: 0}
+    dialogue:
+    - First Package Delivered.
+    - Good work, New Guy. But don't stop now.
+    - You still have 7 more packages to deliver before the day is over.
+    timeBeforeDisplaying: 0.5
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 1
+    duration: 5
+  - sound: {fileID: 0}
+    avatar: {fileID: 0}
+    dialogue:
+    - You did it! And with time to spare.
+    - For the rest of the day, any package delivered is bonus.
+    timeBeforeDisplaying: 0.3
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 1
+    duration: 5
+  - sound: {fileID: 0}
+    avatar: {fileID: 0}
+    dialogue:
+    - Times up! Head back into the office.
+    timeBeforeDisplaying: 0.3
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 1
+    duration: 5
   currIndex: 0

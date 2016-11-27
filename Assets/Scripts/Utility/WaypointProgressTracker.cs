@@ -87,10 +87,10 @@ namespace UnityStandardAssets.Utility
                 // determine the position we should currently be aiming for
                 // (this is different to the current progress position, it is a a certain amount ahead along the route)
                 // we use lerp as a simple way of smoothing out the speed over time.
-                if (Time.deltaTime > 0)
+                if (GameClockManager.Instance.time > 0)
                 {
-                    speed = Mathf.Lerp(speed, (lastPosition - transform.position).magnitude/Time.deltaTime,
-                                       Time.deltaTime);
+                    speed = Mathf.Lerp(speed, (lastPosition - transform.position).magnitude/GameClockManager.Instance.time,
+                                       GameClockManager.Instance.time);
                 }
                 target.position =
                     circuit.GetRoutePoint(progressDistance + lookAheadForTargetOffset + lookAheadForTargetFactor*speed)

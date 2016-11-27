@@ -47,7 +47,7 @@ public class PointerArrow : MonoBehaviour {
 			else
 				arrowMaterial.color = Color.Lerp (getPackageColor, deliverPackageColor, (1 - time / swapTime));
 
-			time += Time.deltaTime;
+			time += GameClockManager.Instance.time;
 			yield return null;	
 		} while(time <= swapTime);
 	}

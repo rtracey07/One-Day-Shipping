@@ -65,28 +65,33 @@ public class PlayerController : MonoBehaviour {
 
 	void FixedUpdate() 
 	{
-		//Update Time.
-		time += Time.deltaTime;
+		if (GameClockManager.Instance.freeze) {
+			animator.speed = 0;
+		} else {
+			animator.speed = 1;
+			//Update Time.
+			time += GameClockManager.Instance.fixedTime;
 
-		//Get Values of User Input.
-		vertical = Input.GetAxis ("Vertical");
-		horizontal = Input.GetAxis ("Horizontal");
+			//Get Values of User Input.
+			vertical = Input.GetAxis ("Vertical");
+			horizontal = Input.GetAxis ("Horizontal");
 
-		//Move Character.
-		Rotate ();
-		Move ();
+			//Move Character.
+			Rotate ();
+			Move ();
 
-		float speedFraction = Mathf.Abs(currSpeed/speed);
-		//Update Animation variable.
-		animator.SetFloat ("Speed", speedFraction);
-		animator.SetFloat ("Direction", vertical);
+			float speedFraction = Mathf.Abs (currSpeed / speed);
+			//Update Animation variable.
+			animator.SetFloat ("Speed", speedFraction);
+			animator.SetFloat ("Direction", vertical);
 
-		legL.localScale = new Vector3(legL.localScale.x, Mathf.Lerp(1.0f, 1.4f, speedFraction), legL.localScale.z);
-		legR.localScale = new Vector3(legR.localScale.x, Mathf.Lerp(1.0f, 1.4f, speedFraction), legR.localScale.z);
-		armL.localScale = new Vector3(armL.localScale.x, Mathf.Lerp(1.2f, 1.4f, speedFraction), armL.localScale.z);
-		armR.localScale = new Vector3(armR.localScale.x, Mathf.Lerp(1.2f, 1.4f, speedFraction), armR.localScale.z);
+			legL.localScale = new Vector3 (legL.localScale.x, Mathf.Lerp (1.0f, 1.4f, speedFraction), legL.localScale.z);
+			legR.localScale = new Vector3 (legR.localScale.x, Mathf.Lerp (1.0f, 1.4f, speedFraction), legR.localScale.z);
+			armL.localScale = new Vector3 (armL.localScale.x, Mathf.Lerp (1.2f, 1.4f, speedFraction), armL.localScale.z);
+			armR.localScale = new Vector3 (armR.localScale.x, Mathf.Lerp (1.2f, 1.4f, speedFraction), armR.localScale.z);
 
-		GetPackage (GameManager.Instance.hasPackage);
+			GetPackage (GameManager.Instance.hasPackage);
+		}
 }
 
 	//Rotate Player Around y-axis.
@@ -142,7 +147,7 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		if(!animator.GetCurrentAnimatorStateInfo(0).IsName("Stop") || !animator.GetCurrentAnimatorStateInfo(0).IsName("Stop Backwards") && !sliding)
-//			controller.Move(moveDirection * Time.deltaTime);
+//			controller.Move(moveDirection * GameClockManager.Instance.time);
 			m_Rigidbody.AddForce(moveDirection);
 
 	}

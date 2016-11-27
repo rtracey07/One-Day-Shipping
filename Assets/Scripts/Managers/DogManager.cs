@@ -63,7 +63,6 @@ public class DogManager : MonoBehaviour {
 
 	void SetDogPositions(DogSpawnLocations area){
 		for (int i = 0; i < area.locations.Count; i++) {
-			Debug.Log ("location " + area.locations [i]);
 			dogs [i].Center = area.locations [i];
 		}
 	}

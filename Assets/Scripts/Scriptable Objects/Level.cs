@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
-[CreateAssetMenu(menuName = "Data/Level")]
+[CreateAssetMenu(menuName = "Data/Level/Default")]
 public class Level : ScriptableObject{
 
+	[Header("Mission Data")]
 	public string levelName;
 	public float missionLength;
+	public float packageCount;
 
 	[HideInInspector]
 	[Serializable]
@@ -23,7 +25,8 @@ public class Level : ScriptableObject{
 		public int numberOfCarsToSpawn;
 		public List<GameObject> carPrefabs;
 	}
-
+		
+	[Header("Enemy and Prop Spawning")]
 	public CarPathGroup carPathGroup;
 
 	[HideInInspector]
@@ -36,9 +39,14 @@ public class Level : ScriptableObject{
 
 	public DogGroup dogGroup;
 
+	[Header("Package Locations")]
 	public List<LocationGroup> pickupLocations;
 	public List<LocationGroup> dropoffLocations;
 
+	[Header("In Game Dialogue Events")]
+	public List<InGameEvent> events;
+
+	[HideInInspector]
 	public int currIndex = 0;
 
 	public Location GetPickupLocation(ref Location[] activeLocations)
@@ -77,5 +85,31 @@ public class Level : ScriptableObject{
 		Debug.Log (string.Format ("Dropoff Location {0} not found in scene.", current));
 
 		return null;
+	}
+
+	public virtual IEnumerator RunLevel()
+	{
+		Debug.Log ("Default Level Type. Override to add level structure");
+		yield return null;
+	}
+
+	public virtual IEnumerator TriggerEvent( int index)
+	{
+		yield return new WaitForSeconds (events[index].timeBeforeDisplaying);
+		GameClockManager.Instance.freeze = events [index].pauseGame;
+
+		foreach (string dialogue in events[index].dialogue) {
+			LevelManager.Instance.RunEvent (events [index], dialogue);
+
+			if (events [index].requiresConfirmation) {
+				yield return new WaitUntil (() => GameManager.Instance.continueClicked);
+				GameManager.Instance.continueClicked = false;
+			} else {
+				yield return new WaitForSeconds (events [index].duration);
+			}
+		}
+
+		LevelManager.Instance.HideTextBox ();
+		GameClockManager.Instance.freeze = false;
 	}
 }

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CarPath : MonoBehaviour {
 
-	private Pathway path;									// the path
+	private Pathway path;						// the path
 	public float rotationOffset = 0.05f;			// how far ahead to look to orient on path
 	public float speed = 50.0f;
 	private float speedMod = 1.0f;
@@ -43,8 +43,8 @@ public class CarPath : MonoBehaviour {
 			}
 
 			// move along the percentage of the path by time
-			CurrentPathPercent += percentsPerSecond * speedMod * Time.deltaTime;
-			currentLook += percentsPerSecond * speedMod * Time.deltaTime;
+			CurrentPathPercent += percentsPerSecond * speedMod * GameClockManager.Instance.fixedTime;
+			currentLook += percentsPerSecond * speedMod * GameClockManager.Instance.fixedTime;
 			Vector3 look = iTween.PointOnPath (path.pathway.ToArray(), currentLook);
 			iTween.PutOnPath (gameObject, path.pathway.ToArray(), CurrentPathPercent);
 			transform.LookAt (look);
@@ -53,8 +53,10 @@ public class CarPath : MonoBehaviour {
 
 	void OnDrawGizmos()
 	{
-		//Visual. Not used in movement
-		iTween.DrawPath(path.pathway.ToArray());
+		if (path != null && path.pathway != null) {
+			//Visual. Not used in movement
+			iTween.DrawPath (path.pathway.ToArray ());
+		}
 
 		if (m_Manager.debug) {
 			Gizmos.color = Color.green;
