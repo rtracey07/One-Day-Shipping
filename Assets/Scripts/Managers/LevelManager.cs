@@ -19,6 +19,8 @@ public class LevelManager : MonoBehaviour {
 
 
 	//Dialog Box Elements.
+
+	[Header("In-Game UI Elements")]
 	public Image m_DialogueBox;
 	public Text m_Dialogue;
 	public Text m_ParcelCount;
@@ -26,14 +28,23 @@ public class LevelManager : MonoBehaviour {
 	public Button m_Skip;
 	public Image m_Avatar;
 
+	[Header("Cutscene UI Elements")]
+	public Image m_CutsceneBackground;
+	public Image m_CutsceneAvatarL;
+	public Image m_CutsceneAvatarR;
+	public Text m_CutsceneText;
+	public Button m_CutsceneConfirm;
+
+	[Header("Level Data")]
 	public Level levelData;
 	public CutScene cutSceneData;
 
+	[HideInInspector]
 	public Location currentDestination;
 
 	private Location[] activeLocations;
 
-	void Awake () {
+	void Start () {
 		if (_Instance == null) {
 			_Instance = this;
 			StartCoroutine(Run ());
@@ -116,15 +127,30 @@ public class LevelManager : MonoBehaviour {
 	public void RunEvent(InGameEvent currEvent, string dialogue)
 	{
 		if (currEvent != null) {
+			if (currEvent is CutSceneEvent) {
+				CutSceneEvent currCutScene = currEvent as CutSceneEvent;
 
-			if (currEvent.avatar != null)
-				m_Avatar.sprite = currEvent.avatar;
+				if (currCutScene.avatar != null)
+					m_CutsceneAvatarR.sprite = currCutScene.avatar;
+				if (currCutScene.avatarL != null)
+					m_CutsceneAvatarL.sprite = currCutScene.avatarL;
 
-			m_Dialogue.text = dialogue;
+				m_CutsceneText.text = dialogue;
 
-			m_DialogueBox.gameObject.SetActive (true);
-			m_Confirm.gameObject.SetActive(currEvent.requiresConfirmation);
-			m_Skip.gameObject.SetActive(currEvent.isSkippable);
+				m_CutsceneBackground.sprite = currCutScene.background;
+				m_CutsceneBackground.gameObject.SetActive (true);
+				m_CutsceneConfirm.gameObject.SetActive (currEvent.requiresConfirmation);
+
+			} else {
+				if (currEvent.avatar != null)
+					m_Avatar.sprite = currEvent.avatar;
+
+				m_Dialogue.text = dialogue;
+
+				m_DialogueBox.gameObject.SetActive (true);
+				m_Confirm.gameObject.SetActive (currEvent.requiresConfirmation);
+				m_Skip.gameObject.SetActive (currEvent.isSkippable);
+			}
 		}
 	}
 
@@ -148,6 +174,7 @@ public class LevelManager : MonoBehaviour {
 		if (SceneManager.GetActiveScene ().name != "InGame") {
 			GameManager.Instance.FindCamera ();
 			yield return StartCoroutine (cutSceneData.RunCutScene ());
+			DisableCutScene ();
 			AsyncOperation loadLevel = SceneManager.LoadSceneAsync ("InGame");
 			yield return new WaitUntil (() => loadLevel.isDone);
 		}
@@ -159,5 +186,10 @@ public class LevelManager : MonoBehaviour {
 
 		yield return StartCoroutine (levelData.RunLevel());
 		SceneManager.LoadScene ("Results Screen");
+	}
+
+	private void DisableCutScene()
+	{
+		m_CutsceneBackground.gameObject.SetActive (false);
 	}
 }

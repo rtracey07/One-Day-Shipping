@@ -90,7 +90,7 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &1692155833
+--- !u!1001 &1262584848
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -129,6 +129,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114000012603268402, guid: e3b5d8de54c89481797a0f6752162366,
+        type: 2}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1862905103}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e3b5d8de54c89481797a0f6752162366, type: 2}
   m_IsPrefabParent: 0
@@ -180,8 +185,8 @@ Camera:
   m_GameObject: {fileID: 1862905099}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0

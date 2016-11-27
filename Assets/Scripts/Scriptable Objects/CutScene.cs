@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class CutScene : ScriptableObject {
 
 
-	public List<InGameEvent> Events;
+	public List<CutSceneEvent> Events;
 
 	public IEnumerator RunCutScene()
 	{

@@ -21,6 +21,8 @@ MonoBehaviour:
     - So for now it auto-switches.
     timeBeforeDisplaying: 0
     isSkippable: 0
-    pauseGame: 0
-    requiresConfirmation: 0
+    pauseGame: 1
+    requiresConfirmation: 1
     duration: 2
+    background: {fileID: 21300000, guid: 7ab5bc92dbcdc4cd88927d619085dfe8, type: 3}
+    avatarL: {fileID: 0}

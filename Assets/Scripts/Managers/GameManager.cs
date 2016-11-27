@@ -41,6 +41,9 @@ public class GameManager : MonoBehaviour {
 
 	public void FindCamera()
 	{
-		mainCamera = GameObject.Find ("Main Camera").GetComponent<Camera> ();
+		GameObject cam = GameObject.Find ("Main Camera");
+
+		if (cam != null)
+			mainCamera = cam.GetComponent<Camera> ();
 	}
 }
