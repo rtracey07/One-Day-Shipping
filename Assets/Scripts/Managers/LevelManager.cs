@@ -74,6 +74,27 @@ public class LevelManager : MonoBehaviour {
 		}
 	}
 
+	private void SpawnPostmans(){
+		GameObject postmanParent = GameObject.Find ("Postman Pool");
+
+		if(postmanParent != null)
+		{
+			for (int i = 0; i < levelData.postmanPathGroup.numPostmanToSpawn; i++) {
+				GameObject postmanPrefab = levelData.postmanPathGroup.postman;
+				GameObject postman = GameObject.Instantiate (postmanPrefab);
+				postman.transform.parent = postmanParent.transform;
+				PostmanAI postmanPath = postman.GetComponent<PostmanAI> ();
+				postmanPath.ThrowsProjectiles = levelData.postmanPathGroup.throwProjectiles;
+				postmanPath.CurrentPathPercent = (float)i / levelData.postmanPathGroup.numPostmanToSpawn;
+			}
+		}
+		else
+		{
+			Debug.Log("Postman Pool GameObject missing from scene. Nowhere to instantiate postmans");
+		}
+	}
+
+
 	public void SpawnDogs(){
 		GameObject dogParent = GameObject.Find ("Dog Pool");
 
@@ -132,6 +153,7 @@ public class LevelManager : MonoBehaviour {
 
 				if (currCutScene.avatar != null)
 					m_CutsceneAvatarR.sprite = currCutScene.avatar;
+
 				else
 					m_CutsceneAvatarR.sprite = null;
 				
@@ -139,6 +161,14 @@ public class LevelManager : MonoBehaviour {
 					m_CutsceneAvatarL.sprite = currCutScene.avatarL;
 				else
 					m_CutsceneAvatarL.sprite = null;
+
+
+				if (currCutScene.avatarL != null)
+					m_CutsceneAvatarL.sprite = currCutScene.avatarL;
+
+				else
+					m_CutsceneAvatarR.sprite = null;
+				
 
 				m_CutsceneText.text = dialogue;
 
@@ -188,6 +218,10 @@ public class LevelManager : MonoBehaviour {
 		activeLocations = GameObject.FindObjectsOfType<Location> ();
 
 		SpawnCars ();
+
+		SpawnPostmans ();
+		SpawnDogs ();
+
 
 		yield return StartCoroutine (levelData.RunLevel());
 		SceneManager.LoadScene ("Results Screen");

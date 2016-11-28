@@ -40,6 +40,18 @@ public class Level : ScriptableObject{
 
 	public DogGroup dogGroup;
 
+	[HideInInspector]
+	[Serializable]
+	public class PostmanPathGroup
+	{
+		public GameObject postman;
+		public int numPostmanToSpawn;
+		public bool throwProjectiles;
+	}
+
+	public PostmanPathGroup postmanPathGroup;
+
+
 	[Header("Package Locations")]
 	public List<LocationGroup> pickupLocations;
 	public List<LocationGroup> dropoffLocations;

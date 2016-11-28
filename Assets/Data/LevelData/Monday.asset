@@ -32,6 +32,10 @@ MonoBehaviour:
   dogGroup:
     dog: {fileID: 1000013319492356, guid: b733cab54df0844ea9f357ae13ff3766, type: 2}
     numDogsToSpawn: 10
+  postmanPathGroup:
+    postman: {fileID: 1000013488615578, guid: 9062692dc9f2e41698be565a79e79390, type: 2}
+    numPostmanToSpawn: 5
+    throwProjectiles: 0
   pickupLocations:
   - locations:
     - City_Mailbox_A

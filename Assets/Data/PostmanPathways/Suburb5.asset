@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcec4d19ae60945748ec14f6a2e98c28, type: 3}
+  m_Name: Suburb5
+  m_EditorClassIdentifier: 
+  name: 
+  isActive: 0
+  center: {x: 161.4, y: 0, z: 152.6}
+  pathway:
+  - {x: 186.2, y: 0, z: 119.5}
+  - {x: 177.3, y: 0, z: 123.4}
+  - {x: 173.1, y: 0, z: 128.1}
+  - {x: 179.1, y: 0, z: 133.3}
+  - {x: 185.8, y: 0, z: 140.9}
+  - {x: 175.6, y: 0, z: 140.9}
+  - {x: 170, y: 0, z: 135.8}
+  - {x: 165.6, y: 0, z: 147.6}
+  - {x: 165.6, y: 0, z: 159.9}
+  - {x: 184.7, y: 0, z: 159.9}
+  - {x: 194.1, y: 0, z: 156.2}
+  - {x: 206.4, y: 0, z: 156.2}
+  - {x: 190.9, y: 0, z: 166.2}
+  - {x: 149.6, y: 0, z: 159}
+  - {x: 141.5, y: 0, z: 165.6}
+  - {x: 125.8, y: 0, z: 165.6}
+  - {x: 123, y: 0, z: 147.6}
+  - {x: 123, y: 0, z: 138.7}
+  - {x: 123, y: 0, z: 125}
+  - {x: 132.2, y: 0, z: 125}
+  - {x: 132.2, y: 0, z: 135.2}
+  - {x: 146.9, y: 0, z: 138.6}
+  - {x: 157.8, y: 0, z: 140.2}
+  - {x: 164.7, y: 0, z: 125.8}
+  - {x: 172.4, y: 0, z: 116.7}
+  - {x: 168.3, y: 0, z: 108.8}
+  - {x: 179.4, y: 0, z: 115.9}
+  - {x: 186.2, y: 0, z: 119.5}
