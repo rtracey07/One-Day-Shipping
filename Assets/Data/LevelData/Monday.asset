@@ -100,7 +100,7 @@ MonoBehaviour:
     - City_Dropoff_Z
   events:
   - sound: {fileID: 0}
-    avatar: {fileID: 0}
+    avatar: {fileID: 21300000, guid: aae6d859cf7f246cfb3acc6a36ed621e, type: 3}
     dialogue:
     - Okay Noodleman. Let's run through the basics of parcel delivery.
     - That clock on your left helps you keep track of time.
@@ -115,7 +115,7 @@ MonoBehaviour:
     requiresConfirmation: 1
     duration: 5
   - sound: {fileID: 0}
-    avatar: {fileID: 0}
+    avatar: {fileID: 21300000, guid: 201084ff4c3f142b6b247eb8b414072a, type: 3}
     dialogue:
     - Hey Look. You've got your first package.
     - 'If you get hit by anything, that package is going to get broken. '
@@ -127,7 +127,7 @@ MonoBehaviour:
     requiresConfirmation: 1
     duration: 5
   - sound: {fileID: 0}
-    avatar: {fileID: 0}
+    avatar: {fileID: 21300000, guid: 201084ff4c3f142b6b247eb8b414072a, type: 3}
     dialogue:
     - Do you see that dog!?
     - The dog is the natural predator of the delivey man.
@@ -138,7 +138,7 @@ MonoBehaviour:
     requiresConfirmation: 1
     duration: 5
   - sound: {fileID: 0}
-    avatar: {fileID: 0}
+    avatar: {fileID: 21300000, guid: aae6d859cf7f246cfb3acc6a36ed621e, type: 3}
     dialogue:
     - First Package Delivered.
     - Good work, New Guy. But don't stop now.
@@ -149,7 +149,7 @@ MonoBehaviour:
     requiresConfirmation: 1
     duration: 5
   - sound: {fileID: 0}
-    avatar: {fileID: 0}
+    avatar: {fileID: 21300000, guid: 201084ff4c3f142b6b247eb8b414072a, type: 3}
     dialogue:
     - You did it! And with time to spare.
     - For the rest of the day, any package delivered is bonus.
@@ -159,7 +159,7 @@ MonoBehaviour:
     requiresConfirmation: 1
     duration: 5
   - sound: {fileID: 0}
-    avatar: {fileID: 0}
+    avatar: {fileID: 21300000, guid: aae6d859cf7f246cfb3acc6a36ed621e, type: 3}
     dialogue:
     - Times up! Head back into the office.
     timeBeforeDisplaying: 0.3
