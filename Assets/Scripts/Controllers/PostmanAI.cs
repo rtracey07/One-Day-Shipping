@@ -401,7 +401,11 @@ public class PostmanAI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if (GameClockManager.Instance.freeze)
+			animator.speed = 0.0f;
+		else
+			animator.speed = 1.0f;
+
 		//state machine
 		switch (state) {
 		case State.Attacking:

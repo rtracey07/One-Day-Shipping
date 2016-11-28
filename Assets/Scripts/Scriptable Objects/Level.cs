@@ -130,6 +130,5 @@ public class Level : ScriptableObject{
 	{
 		yield return new WaitUntil (() => GameManager.Instance.timeUp);
 		yield return LevelManager.Instance.StartCoroutine (TriggerEvent (eventIndex));
-		LevelManager.Instance.StopCoroutine ("RunLevel");
 	}
 }

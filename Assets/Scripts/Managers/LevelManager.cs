@@ -224,7 +224,9 @@ public class LevelManager : MonoBehaviour {
 		SpawnDogs ();
 
 
-		yield return StartCoroutine (levelData.RunLevel());
+		Coroutine level = StartCoroutine (levelData.RunLevel());
+		yield return StartCoroutine(levelData.TimeUp(levelData.events.Count-1));
+		StopCoroutine (level);
 
 		DisableHUD ();
 		loadLevel = SceneManager.LoadSceneAsync ("Results");

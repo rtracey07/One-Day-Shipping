@@ -11,7 +11,6 @@ public class Monday : Level {
 		//Setup event for first dog attack.
 		LevelManager.Instance.StartCoroutine (OnDogAttack(2));
 		LevelManager.Instance.StartCoroutine (CheckWinState (4));
-		LevelManager.Instance.StartCoroutine (TimeUp (5));
 
 		//Get first package pickup location & update UI counter.
 		LevelManager.Instance.UpdatePackageDeliveredCount ();
