@@ -132,8 +132,13 @@ public class LevelManager : MonoBehaviour {
 
 				if (currCutScene.avatar != null)
 					m_CutsceneAvatarR.sprite = currCutScene.avatar;
+				else
+					m_CutsceneAvatarR.sprite = null;
+				
 				if (currCutScene.avatarL != null)
 					m_CutsceneAvatarL.sprite = currCutScene.avatarL;
+				else
+					m_CutsceneAvatarL.sprite = null;
 
 				m_CutsceneText.text = dialogue;
 
