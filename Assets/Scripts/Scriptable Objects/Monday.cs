@@ -1,43 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
-
 using UnityEngine.SceneManagement;
-
 
 [CreateAssetMenu(menuName = "Data/Level/Monday")]
 public class Monday : Level {
 
 	public override IEnumerator RunLevel()
 	{
-
-		LevelManager.Instance.StartCoroutine (OnDogAttack(2));
-
-		LevelManager.Instance.SetPickup ();
-
-		yield return LevelManager.Instance.StartCoroutine (TriggerEvent (0));
-
-		yield return new WaitUntil (() => GameManager.Instance.hasPackage);
-		LevelManager.Instance.SetDropoff ();
-
-		yield return LevelManager.Instance.StartCoroutine (TriggerEvent (1));
-
-		yield return new WaitUntil (() => !GameManager.Instance.hasPackage);
-		LevelManager.Instance.SetPickup ();
-
-		yield return LevelManager.Instance.StartCoroutine (TriggerEvent (3));
-
-
-		for (int i = 0; i < 5; i++) {
-			yield return new WaitUntil (() => !GameManager.Instance.hasPackage);
-
-			LevelManager.Instance.SetPickup ();
-
-			yield return new WaitUntil (() => GameManager.Instance.hasPackage);
-
-			LevelManager.Instance.SetDropoff ();
-		}
-
 		//Setup event for first dog attack.
 		LevelManager.Instance.StartCoroutine (OnDogAttack(2));
 		LevelManager.Instance.StartCoroutine (CheckWinState (4));
@@ -77,7 +47,6 @@ public class Monday : Level {
 			GameManager.Instance.stats.packagesDelivered++;
 			LevelManager.Instance.UpdatePackageDeliveredCount ();
 			LevelManager.Instance.SetPickup ();
-
 		}
 	}
 
@@ -87,19 +56,11 @@ public class Monday : Level {
 		yield return LevelManager.Instance.StartCoroutine (TriggerEvent (eventIndex));
 	}
 
-
 	public IEnumerator CheckWinState(int eventIndex)
 	{
 		yield return new WaitUntil (() => LevelManager.Instance.CheckWinState ());
 		yield return LevelManager.Instance.StartCoroutine (TriggerEvent (eventIndex));
+		LevelManager.Instance.StopCoroutine ("RunLevel");
 	}
-
-	public IEnumerator TimeUp(int eventIndex)
-	{
-		yield return new WaitUntil (() => GameManager.Instance.timeUp);
-		yield return LevelManager.Instance.StartCoroutine (TriggerEvent (eventIndex));
-
-		SceneManager.LoadScene ("Results Screen");
-	}
-
+		
 }

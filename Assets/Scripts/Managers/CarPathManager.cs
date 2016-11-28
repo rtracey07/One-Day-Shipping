@@ -15,10 +15,11 @@ public class CarPathManager : MonoBehaviour {
 	public bool debug = false;
 	private Transform player;
 
-	void Awake()
+	void Start()
 	{
 		player = GameObject.Find ("Player").transform;
 		activeAreas = new List<Pathway> (areas.Count);
+		LevelManager.Instance.SpawnCars ();
 	}
 
 	// Update is called once per frame

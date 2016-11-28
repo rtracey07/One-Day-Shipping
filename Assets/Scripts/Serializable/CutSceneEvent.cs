@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 using System;
 
 [Serializable]
-public class CutSceneEvent{
+public class CutSceneEvent : InGameEvent {
 
-	public AudioClip sound;
-	public String dialogue;
-	public bool isSkippable;
-	public float duration;
+	public Sprite background;
+	public Sprite avatarL;
+
 }

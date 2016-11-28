@@ -192,7 +192,6 @@ public class PlayerController : MonoBehaviour {
 	{
 		if (!sliding) {
 			moveDirection.y = jumpSpeed;
-
 			m_Rigidbody.AddForce (new Vector3 (0, jumpSpeed, 0));
 			AudioManager.Instance.PlaySoundEffect(jumpSound);
 		}

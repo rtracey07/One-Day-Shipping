@@ -171,7 +171,7 @@ public class PostmanAI : MonoBehaviour {
 			+ (player.transform.position.z - transform.position.z) * (player.transform.position.z - transform.position.z) <= radius * radius) {
 			center = transform.position;
 			state = State.PlayerChase;
-			Debug.Log ("from walking");
+			//Debug.Log ("from walking");
 		}
 	}
 
@@ -189,7 +189,7 @@ public class PostmanAI : MonoBehaviour {
 				projectile_shoot.GetComponent<PostmanProjectile> ().Pack = package;
 			}
 
-			Debug.Log(projectile_shoot.gameObject.name);
+			//Debug.Log(projectile_shoot.gameObject.name);
 			//send forward
 			projectile_shoot.AddForce (new Vector3(transform.forward.x, transform.forward.y - 0.05f, transform.forward.z) * projectileSpeed);
 			Destroy (projectile_shoot.gameObject, 2.0f);
@@ -214,7 +214,7 @@ public class PostmanAI : MonoBehaviour {
 		if ((transform.position.x - center.x) * (transform.position.x - center.x)
 			+ (transform.position.z - center.z) * (transform.position.z - center.z) <= 0.1f) {
 			state = State.Walking;
-			Debug.Log ("back to path");
+			//Debug.Log ("back to path");
 		}
 	}
 
@@ -223,7 +223,7 @@ public class PostmanAI : MonoBehaviour {
 	/// when the player is close, stop and do an attack animation
 	/// </summary>
 	void AttackingState(){
-		//Debug.Log ("attack state");
+		////Debug.Log ("attack state");
 
 
 
@@ -235,7 +235,7 @@ public class PostmanAI : MonoBehaviour {
 			state = State.Attacking;
 
 			if (attackTime >= attackDelay) {
-				//Debug.Log ("tossing");
+				////Debug.Log ("tossing");
 				package = GameObject.FindGameObjectWithTag ("Package");
 				if (package != null) {
 					package.GetComponent<Package> ().DamagePackage (damageStrength / 2.0f);
@@ -264,25 +264,25 @@ public class PostmanAI : MonoBehaviour {
 	/// If the player is nearby, chase until he gets away, then go back to route
 	/// </summary>
 	void PlayerChaseState(){
-		//Debug.Log ("chasing");
+		////Debug.Log ("chasing");
 		float dir_y = -0.1014264f; 
 
 
 		if ((player.transform.position.x - transform.position.x) * (player.transform.position.x - transform.position.x)
 		    + (player.transform.position.z - transform.position.z) * (player.transform.position.z - transform.position.z) <= attackProximity) {
 			state = State.Attacking;
-			Debug.Log ("player attack");
+			//Debug.Log ("player attack");
 		}
 
 
 		//go back to walking state
 		if ((transform.position.x - center.x) * (transform.position.x - center.x)
 			+ (transform.position.z - center.z) * (transform.position.z - center.z) >= radius * radius) {
-			Debug.Log ("postman outside radius");
+			//Debug.Log ("postman outside radius");
 			state = State.Turning;
 
 		} else {
-			Debug.Log ("player inside radius");
+			//Debug.Log ("player inside radius");
 			Vector3 dir = (new Vector3 (player.transform.position.x, player.transform.position.y - 0.4f, player.transform.position.z) - transform.position).normalized;
 			Quaternion rot = Quaternion.LookRotation (dir);
 			transform.rotation = Quaternion.Slerp (transform.rotation, rot, GameClockManager.Instance.time * speed);
@@ -304,17 +304,17 @@ public class PostmanAI : MonoBehaviour {
 			Quaternion rot = Quaternion.LookRotation (dir);
 			transform.rotation = Quaternion.Slerp (transform.rotation, rot, GameClockManager.Instance.time * speed);
 			shoot ();
-			Debug.Log ("should be looking at player");
+			//Debug.Log ("should be looking at player");
 			//transform.Translate (transform.forward * GameClockManager.Instance.time * speed, Space.World);
 			if (radius <= projectileRadius && ((player.transform.position.x - transform.position.x) * (player.transform.position.x - transform.position.x)
 				+ (player.transform.position.z - transform.position.z) * (player.transform.position.z - transform.position.z) <= radius * radius)) {
 				center = transform.position;
 				state = State.PlayerChase;
-				Debug.Log ("if 1");
+				//Debug.Log ("if 1");
 			} else if ((player.transform.position.x - center.x) * (player.transform.position.x - center.x)
 				+ (player.transform.position.z - center.z) * (player.transform.position.z - center.z) >= projectileRadius * projectileRadius) {
 				state = State.Walking;
-				Debug.Log ("if 2");
+				//Debug.Log ("if 2");
 			} else {
 				CheckForPlayer ();
 			}
@@ -324,7 +324,7 @@ public class PostmanAI : MonoBehaviour {
 			    + (player.transform.position.z - transform.position.z) * (player.transform.position.z - transform.position.z) <= radius * radius)) {
 				center = transform.position;
 				state = State.PlayerChase;
-				Debug.Log ("if 3");
+				//Debug.Log ("if 3");
 			} else {
 				state = State.Walking;
 			}
@@ -368,7 +368,7 @@ public class PostmanAI : MonoBehaviour {
 		//don't walk into walls, do walk up to player
 //		RaycastHit front;
 //		if (Physics.Raycast (transform.position, transform.forward, out front)) {
-//			//Debug.Log ("hit something " + front.distance);
+//			////Debug.Log ("hit something " + front.distance);
 //			if (hit.point.y > 0.3f && front.distance < 0.3f && !hit.collider.name.Equals("player") && !hit.collider.name.Equals("dog") && state != State.Turning) {
 //				//try to avoid walking through walls by going to next step
 //				if (state == State.Walking) {

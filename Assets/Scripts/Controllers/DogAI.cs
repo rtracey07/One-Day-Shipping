@@ -171,7 +171,6 @@ public class DogAI : MonoBehaviour {
 			if (package != null) {
 				package.DamagePackage (damageStrength);
 			}
-
 			GameManager.Instance.stats.dogsHit++;
 			attackTime = 0.0f;
 		} else if (attack && attackTime < attackDelay) {

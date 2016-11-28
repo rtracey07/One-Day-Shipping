@@ -23,20 +23,17 @@ public class Package : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Debug.Log ("start");
 		damageSlider.gameObject.SetActive (true); 
 	}
 
 	void OnEnable()
 	{
-		Debug.Log ("enabled");
 		health = totalHealth;
 		damageSlider.gameObject.SetActive (true);
 		AudioManager.Instance.PlaySoundEffect (pickupSound);
 	}
 
 	void OnDisable(){
-		Debug.Log ("disabled");
 		if(damageSlider != null)
 			damageSlider.gameObject.SetActive (false);
 		AudioManager.Instance.PlaySoundEffect (deliverSound);

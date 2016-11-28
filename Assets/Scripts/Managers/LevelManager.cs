@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour {
 
@@ -18,8 +19,8 @@ public class LevelManager : MonoBehaviour {
 
 
 	//Dialog Box Elements.
-	public Image m_TextBox;
-	public Text m_Text;
+
+	[Header("In-Game UI Elements")]
 	public Image m_DialogueBox;
 	public Text m_Dialogue;
 	public Text m_ParcelCount;
@@ -27,30 +28,33 @@ public class LevelManager : MonoBehaviour {
 	public Button m_Skip;
 	public Image m_Avatar;
 
+	[Header("Cutscene UI Elements")]
+	public Image m_CutsceneBackground;
+	public Image m_CutsceneAvatarL;
+	public Image m_CutsceneAvatarR;
+	public Text m_CutsceneText;
+	public Button m_CutsceneConfirm;
+
+	[Header("Level Data")]
 	public Level levelData;
+	public CutScene cutSceneData;
+
+	[HideInInspector]
 	public Location currentDestination;
 
-	private GameObject player;
 	private Location[] activeLocations;
 
 	void Awake () {
-		if (_Instance == null)
+		if (_Instance == null) {
 			_Instance = this;
-		else
-			Debug.Log ("Multiple Level Managers in the scene.");
-
-		activeLocations = GameObject.FindObjectsOfType<Location> ();
-
-		player = GameObject.FindGameObjectWithTag ("Player");
-
-		SpawnCars ();
-		SpawnDogs ();
-		SpawnPostmans ();
-
-		StartCoroutine (levelData.RunLevel());
+			StartCoroutine(Run ());
+		}
+		else {
+			DestroyImmediate (this);
+		}
 	}
 
-	private void SpawnCars(){
+	public void SpawnCars(){
 		GameObject carParent = GameObject.Find ("Car Pool");
 
 		if(carParent != null)
@@ -75,13 +79,13 @@ public class LevelManager : MonoBehaviour {
 
 		if(postmanParent != null)
 		{
-			for (int i = 0; i < levelData.postmanPathGroup.numberOfPostmanToSpawn; i++) {
-				GameObject postmanPrefab = levelData.postmanPathGroup.postmanPrefab;
+			for (int i = 0; i < levelData.postmanPathGroup.numPostmanToSpawn; i++) {
+				GameObject postmanPrefab = levelData.postmanPathGroup.postman;
 				GameObject postman = GameObject.Instantiate (postmanPrefab);
 				postman.transform.parent = postmanParent.transform;
 				PostmanAI postmanPath = postman.GetComponent<PostmanAI> ();
 				postmanPath.ThrowsProjectiles = levelData.postmanPathGroup.throwProjectiles;
-				postmanPath.CurrentPathPercent = (float)i / levelData.postmanPathGroup.numberOfPostmanToSpawn;
+				postmanPath.CurrentPathPercent = (float)i / levelData.postmanPathGroup.numPostmanToSpawn;
 			}
 		}
 		else
@@ -90,7 +94,7 @@ public class LevelManager : MonoBehaviour {
 		}
 	}
 
-	private void SpawnDogs(){
+	public void SpawnDogs(){
 		GameObject dogParent = GameObject.Find ("Dog Pool");
 
 		if(dogParent != null)
@@ -143,27 +147,35 @@ public class LevelManager : MonoBehaviour {
 	public void RunEvent(InGameEvent currEvent, string dialogue)
 	{
 		if (currEvent != null) {
+			if (currEvent is CutSceneEvent) {
+				CutSceneEvent currCutScene = currEvent as CutSceneEvent;
 
-			if (currEvent.avatar != null)
-				m_Avatar.sprite = currEvent.avatar;
+				if (currCutScene.avatar != null)
+					m_CutsceneAvatarR.sprite = currCutScene.avatar;
+				if (currCutScene.avatarL != null)
+					m_CutsceneAvatarL.sprite = currCutScene.avatarL;
 
+				m_CutsceneText.text = dialogue;
 
-			m_Text.text = dialogue;
+				m_CutsceneBackground.sprite = currCutScene.background;
+				m_CutsceneBackground.gameObject.SetActive (true);
+				m_CutsceneConfirm.gameObject.SetActive (currEvent.requiresConfirmation);
 
-			m_TextBox.gameObject.SetActive (true);
+			} else {
+				if (currEvent.avatar != null)
+					m_Avatar.sprite = currEvent.avatar;
 
-			m_Dialogue.text = dialogue;
+				m_Dialogue.text = dialogue;
 
-			m_DialogueBox.gameObject.SetActive (true);
-
-			m_Confirm.gameObject.SetActive(currEvent.requiresConfirmation);
-			m_Skip.gameObject.SetActive(currEvent.isSkippable);
+				m_DialogueBox.gameObject.SetActive (true);
+				m_Confirm.gameObject.SetActive (currEvent.requiresConfirmation);
+				m_Skip.gameObject.SetActive (currEvent.isSkippable);
+			}
 		}
 	}
 
 	public void HideTextBox()
 	{
-		m_TextBox.gameObject.SetActive (false);
 		m_DialogueBox.gameObject.SetActive (false);
 	}
 
@@ -175,5 +187,31 @@ public class LevelManager : MonoBehaviour {
 	public bool CheckWinState()
 	{
 		return (GameManager.Instance.stats.packagesDelivered == levelData.packageCount);
+	}
+
+	private IEnumerator Run()
+	{
+		if (SceneManager.GetActiveScene ().name != "InGame") {
+			GameManager.Instance.FindCamera ();
+			yield return StartCoroutine (cutSceneData.RunCutScene ());
+			DisableCutScene ();
+			AsyncOperation loadLevel = SceneManager.LoadSceneAsync ("InGame");
+			yield return new WaitUntil (() => loadLevel.isDone);
+		}
+
+		GameManager.Instance.FindCamera ();
+		activeLocations = GameObject.FindObjectsOfType<Location> ();
+
+		SpawnCars ();
+		SpawnPostmans ();
+		SpawnDogs ();
+
+		yield return StartCoroutine (levelData.RunLevel());
+		SceneManager.LoadScene ("Results Screen");
+	}
+
+	private void DisableCutScene()
+	{
+		m_CutsceneBackground.gameObject.SetActive (false);
 	}
 }

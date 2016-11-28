@@ -16,13 +16,11 @@ public class DogManager : MonoBehaviour {
 	public bool debug = false;
 	private Transform player;
 
-	void Awake()
-	{
+	void Start() {
 		player = GameObject.Find ("Player").transform;
 		activeAreas = new List<DogSpawnLocations> (areas.Count);
-	}
+		LevelManager.Instance.SpawnDogs ();
 
-	void Start() {
 		dogs = new List<DogAI> ();
 		GameObject[] dogGameObjects = GameObject.FindGameObjectsWithTag ("Dog");
 		foreach (GameObject d in dogGameObjects) {

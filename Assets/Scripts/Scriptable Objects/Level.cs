@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 using System;
@@ -29,18 +30,6 @@ public class Level : ScriptableObject{
 	[Header("Enemy and Prop Spawning")]
 	public CarPathGroup carPathGroup;
 
-
-	[HideInInspector]
-	[Serializable]
-	public class PostmanPathGroup
-	{
-		public int numberOfPostmanToSpawn;
-		public bool throwProjectiles;
-		public GameObject postmanPrefab;
-	}
-
-	public PostmanPathGroup postmanPathGroup;
-
 	[HideInInspector]
 	[Serializable]
 	public class DogGroup
@@ -51,13 +40,23 @@ public class Level : ScriptableObject{
 
 	public DogGroup dogGroup;
 
+	[HideInInspector]
+	[Serializable]
+	public class PostmanPathGroup
+	{
+		public GameObject postman;
+		public int numPostmanToSpawn;
+		public bool throwProjectiles;
+	}
+
+	public PostmanPathGroup postmanPathGroup;
+
 	[Header("Package Locations")]
 	public List<LocationGroup> pickupLocations;
 	public List<LocationGroup> dropoffLocations;
-	public List<InGameEvent> events;
 
 	[Header("In Game Dialogue Events")]
-	//public List<InGameEvent> events;
+	public List<InGameEvent> events;
 
 	[HideInInspector]
 	public int currIndex = 0;
@@ -124,5 +123,13 @@ public class Level : ScriptableObject{
 
 		LevelManager.Instance.HideTextBox ();
 		GameClockManager.Instance.freeze = false;
+	}
+
+	public IEnumerator TimeUp(int eventIndex)
+	{
+		yield return new WaitUntil (() => GameManager.Instance.timeUp);
+		yield return LevelManager.Instance.StartCoroutine (TriggerEvent (eventIndex));
+
+		SceneManager.LoadScene ("Results Screen");
 	}
 }
