@@ -157,8 +157,8 @@ public class PostmanAI : MonoBehaviour {
 			// move along the percentage of the path by time
 			CurrentPathPercent += percentsPerSecond * speedMod * GameClockManager.Instance.time;
 			currentLook += percentsPerSecond * speedMod * GameClockManager.Instance.time;
-			Vector3 look = iTween.PointOnPath (path.pathway.ToArray(), currentLook);
-			iTween.PutOnPath (gameObject, path.pathway.ToArray(), CurrentPathPercent);
+			Vector3 look = iTween.PointOnPath (path.pathway, currentLook);
+			iTween.PutOnPath (gameObject, path.pathway, CurrentPathPercent);
 			transform.LookAt (look);
 		}
 
@@ -438,7 +438,7 @@ public class PostmanAI : MonoBehaviour {
 	void OnDrawGizmos()
 	{
 		//Visual. Not used in movement
-		iTween.DrawPath(path.pathway.ToArray());
+		iTween.DrawPath(path.pathway);
 
 		if (m_Manager.debug) {
 			Gizmos.color = Color.green;

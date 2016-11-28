@@ -12,6 +12,6 @@ public class PathHelper : MonoBehaviour {
 		Gizmos.DrawWireSphere (this.transform.position, 1);
 
 		if (pathway != null)
-			iTween.DrawPath (pathway.pathway.ToArray ());
+			iTween.DrawPath (pathway.pathway);
 	}
 }

@@ -60,7 +60,7 @@ public class CarPathManager : MonoBehaviour {
 				else
 					Gizmos.color = inactivePathColor;
 					
-				iTween.DrawPath (areas [i].pathway.ToArray ());
+				iTween.DrawPath (areas [i].pathway);
 				Gizmos.DrawWireSphere (areas [i].center, activeDistance);
 			}
 		}

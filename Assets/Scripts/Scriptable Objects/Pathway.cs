@@ -5,10 +5,10 @@ using System.Collections.Generic;
 [CreateAssetMenu(menuName = "Data/Pathway")]
 public class Pathway : ScriptableObject {
 
-	public string name;
+	public string pathName;
 	public bool isActive;
 	public Vector3 center;
-	public List<Vector3> pathway;
+	public Vector3[] pathway;
 
 }
 

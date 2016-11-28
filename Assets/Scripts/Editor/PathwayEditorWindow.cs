@@ -47,9 +47,9 @@ public class PathwayEditorWindow : EditorWindow {
 	{
 		if (GUILayout.Button ("Create")) {
 			m_Pathway = ScriptableObject.CreateInstance<Pathway> ();
-			m_Pathway.pathway = new List<Vector3> (m_PathwayCount);
+			m_Pathway.pathway = new Vector3[m_PathwayCount];
 			for (int i = 0; i < m_PathwayCount; i++)
-				m_Pathway.pathway.Add (Vector3.zero);
+				m_Pathway.pathway[i] = Vector3.zero;
 
 			string pathwayDir = k_SaveDirectory+m_PathwayName+".asset";
 			AssetDatabase.CreateAsset (m_Pathway, pathwayDir);
@@ -75,7 +75,7 @@ public class PathwayEditorWindow : EditorWindow {
 				m_Pathway.pathway[m_CurrVertex] = m_CurrPosition;
 
 				m_CurrVertex++;
-				if (m_CurrVertex >= m_Pathway.pathway.Count) {
+				if (m_CurrVertex >= m_Pathway.pathway.Length) {
 					m_AddVertices = false;
 					m_CurrVertex = 0;
 				}
