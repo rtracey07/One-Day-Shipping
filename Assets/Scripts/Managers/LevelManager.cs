@@ -206,11 +206,12 @@ public class LevelManager : MonoBehaviour {
 
 	private IEnumerator Run()
 	{
+		AsyncOperation loadLevel;
 		if (SceneManager.GetActiveScene ().name != "InGame") {
 			GameManager.Instance.FindCamera ();
 			yield return StartCoroutine (cutSceneData.RunCutScene ());
 			DisableCutScene ();
-			AsyncOperation loadLevel = SceneManager.LoadSceneAsync ("InGame");
+			loadLevel = SceneManager.LoadSceneAsync ("InGame");
 			yield return new WaitUntil (() => loadLevel.isDone);
 		}
 
@@ -224,11 +225,19 @@ public class LevelManager : MonoBehaviour {
 
 
 		yield return StartCoroutine (levelData.RunLevel());
-		SceneManager.LoadScene ("Results Screen");
+
+		DisableHUD ();
+		loadLevel = SceneManager.LoadSceneAsync ("Results");
+		yield return new WaitUntil (() => loadLevel.isDone);
 	}
 
 	private void DisableCutScene()
 	{
 		m_CutsceneBackground.gameObject.SetActive (false);
+	}
+
+	private void DisableHUD()
+	{
+		m_DialogueBox.gameObject.SetActive (false);
 	}
 }
