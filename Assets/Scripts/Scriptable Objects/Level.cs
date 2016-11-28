@@ -11,6 +11,7 @@ public class Level : ScriptableObject{
 	public string levelName;
 	public float missionLength;
 	public float packageCount;
+	public AudioClip backgroundMusic;
 
 	[HideInInspector]
 	[Serializable]

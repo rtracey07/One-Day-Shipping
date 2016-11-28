@@ -116,6 +116,10 @@ public class LevelManager : MonoBehaviour {
 	{
 		return levelData.missionLength;
 	}
+
+	public AudioClip GetBackgroundMusic(){
+		return levelData.backgroundMusic;
+	}
 		
 
 	public void SetPickup()
