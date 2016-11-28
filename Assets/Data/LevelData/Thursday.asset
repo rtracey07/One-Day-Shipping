@@ -14,6 +14,7 @@ MonoBehaviour:
   levelName: Thursday
   missionLength: 10
   packageCount: 0
+  backgroundMusic: {fileID: 8300000, guid: 6a93e87e6e4b44511bdb34709e5fa048, type: 3}
   carPathGroup:
     numberOfCarsToSpawn: 60
     carPrefabs:
