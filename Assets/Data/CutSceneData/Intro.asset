@@ -16,13 +16,44 @@ MonoBehaviour:
     avatar: {fileID: 0}
     dialogue:
     - This is an example of a cutscene.
-    - This is dialogue between characters.
-    - I can't get the continue button working.
-    - So for now it auto-switches.
+    - The upper white boxes are avatars
     timeBeforeDisplaying: 0
     isSkippable: 0
     pauseGame: 1
     requiresConfirmation: 1
     duration: 2
+    background: {fileID: 21300000, guid: 7ab5bc92dbcdc4cd88927d619085dfe8, type: 3}
+    avatarL: {fileID: 0}
+  - sound: {fileID: 0}
+    avatar: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    dialogue:
+    - You can activate the Right Avatar.
+    timeBeforeDisplaying: 0
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 1
+    duration: 2
+    background: {fileID: 21300000, guid: 7ab5bc92dbcdc4cd88927d619085dfe8, type: 3}
+    avatarL: {fileID: 0}
+  - sound: {fileID: 0}
+    avatar: {fileID: 0}
+    dialogue:
+    - Or the Left Avatar.
+    timeBeforeDisplaying: 0
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 1
+    duration: 2
+    background: {fileID: 21300000, guid: 7ab5bc92dbcdc4cd88927d619085dfe8, type: 3}
+    avatarL: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  - sound: {fileID: 0}
+    avatar: {fileID: 0}
+    dialogue:
+    - The scene will start in 3 seconds.
+    timeBeforeDisplaying: 0
+    isSkippable: 0
+    pauseGame: 0
+    requiresConfirmation: 0
+    duration: 3
     background: {fileID: 21300000, guid: 7ab5bc92dbcdc4cd88927d619085dfe8, type: 3}
     avatarL: {fileID: 0}

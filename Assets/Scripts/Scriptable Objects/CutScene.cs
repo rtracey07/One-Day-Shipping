@@ -10,8 +10,8 @@ public class CutScene : ScriptableObject {
 
 	public IEnumerator RunCutScene()
 	{
-		foreach (InGameEvent curr in Events) {
-			yield return LevelManager.Instance.StartCoroutine (TriggerEvent (0));
+		for (int i=0; i<Events.Count; i++) {
+			yield return LevelManager.Instance.StartCoroutine (TriggerEvent (i));
 		}
 	}
 

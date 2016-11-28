@@ -94,6 +94,7 @@ public class LevelManager : MonoBehaviour {
 		}
 	}
 
+
 	public void SpawnDogs(){
 		GameObject dogParent = GameObject.Find ("Dog Pool");
 
@@ -116,7 +117,6 @@ public class LevelManager : MonoBehaviour {
 		return levelData.missionLength;
 	}
 		
-
 	public void SetPickup()
 	{
 		if (currentDestination != null && currentDestination.minimapMarker != null) {
@@ -152,8 +152,13 @@ public class LevelManager : MonoBehaviour {
 
 				if (currCutScene.avatar != null)
 					m_CutsceneAvatarR.sprite = currCutScene.avatar;
+
 				if (currCutScene.avatarL != null)
 					m_CutsceneAvatarL.sprite = currCutScene.avatarL;
+
+				else
+					m_CutsceneAvatarR.sprite = null;
+				
 
 				m_CutsceneText.text = dialogue;
 
@@ -205,6 +210,7 @@ public class LevelManager : MonoBehaviour {
 		SpawnCars ();
 		SpawnPostmans ();
 		SpawnDogs ();
+
 
 		yield return StartCoroutine (levelData.RunLevel());
 		SceneManager.LoadScene ("Results Screen");
