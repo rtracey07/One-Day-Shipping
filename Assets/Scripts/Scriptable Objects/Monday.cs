@@ -11,7 +11,6 @@ public class Monday : Level {
 		//Setup event for first dog attack.
 		LevelManager.Instance.StartCoroutine (OnDogAttack(2));
 		LevelManager.Instance.StartCoroutine (CheckWinState (4));
-		LevelManager.Instance.StartCoroutine (TimeUp (5));
 
 		//Get first package pickup location & update UI counter.
 		LevelManager.Instance.UpdatePackageDeliveredCount ();
@@ -60,7 +59,6 @@ public class Monday : Level {
 	{
 		yield return new WaitUntil (() => LevelManager.Instance.CheckWinState ());
 		yield return LevelManager.Instance.StartCoroutine (TriggerEvent (eventIndex));
-		LevelManager.Instance.StopCoroutine ("RunLevel");
 	}
 		
 }

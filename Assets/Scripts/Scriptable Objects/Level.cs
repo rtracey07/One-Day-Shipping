@@ -11,6 +11,7 @@ public class Level : ScriptableObject{
 	public string levelName;
 	public float missionLength;
 	public float packageCount;
+	public AudioClip backgroundMusic;
 
 	[HideInInspector]
 	[Serializable]
@@ -130,7 +131,5 @@ public class Level : ScriptableObject{
 	{
 		yield return new WaitUntil (() => GameManager.Instance.timeUp);
 		yield return LevelManager.Instance.StartCoroutine (TriggerEvent (eventIndex));
-
-		SceneManager.LoadScene ("Results Screen");
 	}
 }

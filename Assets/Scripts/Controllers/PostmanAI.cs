@@ -121,6 +121,7 @@ public class PostmanAI : MonoBehaviour {
 	/// </summary>
 	void WalkingState() {
 
+
 		if (path == null || !path.isActive) {
 			path = m_Manager.GetAreaPath ();
 		}
@@ -156,8 +157,8 @@ public class PostmanAI : MonoBehaviour {
 			// move along the percentage of the path by time
 			CurrentPathPercent += percentsPerSecond * speedMod * GameClockManager.Instance.time;
 			currentLook += percentsPerSecond * speedMod * GameClockManager.Instance.time;
-			Vector3 look = iTween.PointOnPath (path.pathway.ToArray(), currentLook);
-			iTween.PutOnPath (gameObject, path.pathway.ToArray(), CurrentPathPercent);
+			Vector3 look = iTween.PointOnPath (path.pathway, currentLook);
+			iTween.PutOnPath (gameObject, path.pathway, CurrentPathPercent);
 			transform.LookAt (look);
 		}
 
@@ -204,6 +205,7 @@ public class PostmanAI : MonoBehaviour {
 	/// not used at the moment, keeping it for now
 	/// </summary>
 	void TurningState() {
+
 		transform.LookAt (center);
 		//			Vector3 dir3 = (new Vector3 (center.x, 0.0f, center.z) - transform.position).normalized;
 		//			Quaternion rot3 = Quaternion.LookRotation (dir3);
@@ -213,6 +215,7 @@ public class PostmanAI : MonoBehaviour {
 
 		if ((transform.position.x - center.x) * (transform.position.x - center.x)
 			+ (transform.position.z - center.z) * (transform.position.z - center.z) <= 0.1f) {
+
 			state = State.Walking;
 			//Debug.Log ("back to path");
 		}
@@ -268,6 +271,7 @@ public class PostmanAI : MonoBehaviour {
 		float dir_y = -0.1014264f; 
 
 
+
 		if ((player.transform.position.x - transform.position.x) * (player.transform.position.x - transform.position.x)
 		    + (player.transform.position.z - transform.position.z) * (player.transform.position.z - transform.position.z) <= attackProximity) {
 			state = State.Attacking;
@@ -304,7 +308,7 @@ public class PostmanAI : MonoBehaviour {
 			Quaternion rot = Quaternion.LookRotation (dir);
 			transform.rotation = Quaternion.Slerp (transform.rotation, rot, GameClockManager.Instance.time * speed);
 			shoot ();
-			//Debug.Log ("should be looking at player");
+
 			//transform.Translate (transform.forward * GameClockManager.Instance.time * speed, Space.World);
 			if (radius <= projectileRadius && ((player.transform.position.x - transform.position.x) * (player.transform.position.x - transform.position.x)
 				+ (player.transform.position.z - transform.position.z) * (player.transform.position.z - transform.position.z) <= radius * radius)) {
@@ -397,7 +401,11 @@ public class PostmanAI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if (GameClockManager.Instance.freeze)
+			animator.speed = 0.0f;
+		else
+			animator.speed = 1.0f;
+
 		//state machine
 		switch (state) {
 		case State.Attacking:
@@ -430,7 +438,7 @@ public class PostmanAI : MonoBehaviour {
 	void OnDrawGizmos()
 	{
 		//Visual. Not used in movement
-		iTween.DrawPath(path.pathway.ToArray());
+		iTween.DrawPath(path.pathway);
 
 		if (m_Manager.debug) {
 			Gizmos.color = Color.green;

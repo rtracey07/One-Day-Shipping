@@ -15,6 +15,7 @@ public class DogAI : MonoBehaviour {
 	private Vector3 center = Vector3.zero;		// center of the radius
 	[SerializeField] private float radius = 3.0f;
 	[SerializeField] private float attackProximity = 0.3f;		// when to do attack animation
+
 	private Package package;				// package to damage
 
 	private GameObject player;
@@ -119,7 +120,7 @@ public class DogAI : MonoBehaviour {
 					if (pack_gameobject != null) {
 						package = pack_gameobject.GetComponent<Package>();
 					}
-
+						
 					playerChase = true;
 					GameManager.Instance.dogAttack = true;
 					//Vector3 dir = (new Vector3 (player.transform.position.x, center.y, player.transform.position.z) - transform.position).normalized;
@@ -168,6 +169,7 @@ public class DogAI : MonoBehaviour {
 
 
 		if (attack && attackTime >= attackDelay) {
+
 			if (package != null) {
 				package.DamagePackage (damageStrength);
 			}

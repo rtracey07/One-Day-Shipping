@@ -16,9 +16,15 @@ public class AudioManager : MonoBehaviour {
 		else {
 			DestroyImmediate (this);
 		}
-
 	}
 
+
+	public void playSoundtrack(){
+		AudioSource backgroundAudio = GameObject.FindGameObjectWithTag("backgroundSoundtrack").GetComponent<AudioSource>();
+		backgroundAudio.clip = LevelManager.Instance.GetBackgroundMusic();
+		backgroundAudio.Play ();
+	}
+		
 	public void PlaySoundEffect(AudioClip clip) {
 		AudioSource.PlayClipAtPoint(clip, GameManager.Instance.mainCamera.transform.position);
 	}

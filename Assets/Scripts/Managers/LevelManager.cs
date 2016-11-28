@@ -116,7 +116,12 @@ public class LevelManager : MonoBehaviour {
 	{
 		return levelData.missionLength;
 	}
+
+	public AudioClip GetBackgroundMusic(){
+		return levelData.backgroundMusic;
+	}
 		
+
 	public void SetPickup()
 	{
 		if (currentDestination != null && currentDestination.minimapMarker != null) {
@@ -152,6 +157,15 @@ public class LevelManager : MonoBehaviour {
 
 				if (currCutScene.avatar != null)
 					m_CutsceneAvatarR.sprite = currCutScene.avatar;
+
+				else
+					m_CutsceneAvatarR.sprite = null;
+				
+				if (currCutScene.avatarL != null)
+					m_CutsceneAvatarL.sprite = currCutScene.avatarL;
+				else
+					m_CutsceneAvatarL.sprite = null;
+
 
 				if (currCutScene.avatarL != null)
 					m_CutsceneAvatarL.sprite = currCutScene.avatarL;
@@ -196,11 +210,12 @@ public class LevelManager : MonoBehaviour {
 
 	private IEnumerator Run()
 	{
+		AsyncOperation loadLevel;
 		if (SceneManager.GetActiveScene ().name != "InGame") {
 			GameManager.Instance.FindCamera ();
 			yield return StartCoroutine (cutSceneData.RunCutScene ());
 			DisableCutScene ();
-			AsyncOperation loadLevel = SceneManager.LoadSceneAsync ("InGame");
+			loadLevel = SceneManager.LoadSceneAsync ("InGame");
 			yield return new WaitUntil (() => loadLevel.isDone);
 		}
 
@@ -208,16 +223,27 @@ public class LevelManager : MonoBehaviour {
 		activeLocations = GameObject.FindObjectsOfType<Location> ();
 
 		SpawnCars ();
+
 		SpawnPostmans ();
 		SpawnDogs ();
 
 
-		yield return StartCoroutine (levelData.RunLevel());
-		SceneManager.LoadScene ("Results Screen");
+		Coroutine level = StartCoroutine (levelData.RunLevel());
+		yield return StartCoroutine(levelData.TimeUp(levelData.events.Count-1));
+		StopCoroutine (level);
+
+		DisableHUD ();
+		loadLevel = SceneManager.LoadSceneAsync ("Results");
+		yield return new WaitUntil (() => loadLevel.isDone);
 	}
 
 	private void DisableCutScene()
 	{
 		m_CutsceneBackground.gameObject.SetActive (false);
+	}
+
+	private void DisableHUD()
+	{
+		m_DialogueBox.gameObject.SetActive (false);
 	}
 }
