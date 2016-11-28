@@ -44,7 +44,7 @@ public class LevelManager : MonoBehaviour {
 
 	private Location[] activeLocations;
 
-	void Start () {
+	void Awake () {
 		if (_Instance == null) {
 			_Instance = this;
 			StartCoroutine(Run ());
