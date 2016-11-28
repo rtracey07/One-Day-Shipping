@@ -60,7 +60,6 @@ public class Monday : Level {
 	{
 		yield return new WaitUntil (() => LevelManager.Instance.CheckWinState ());
 		yield return LevelManager.Instance.StartCoroutine (TriggerEvent (eventIndex));
-		LevelManager.Instance.StopCoroutine ("RunLevel");
 	}
 		
 }
