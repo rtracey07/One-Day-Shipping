@@ -35,6 +35,7 @@ public class Level : ScriptableObject{
 	public class PostmanPathGroup
 	{
 		public int numberOfPostmanToSpawn;
+		public bool throwProjectiles;
 		public GameObject postmanPrefab;
 	}
 

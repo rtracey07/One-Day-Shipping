@@ -13,6 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelName: Wednesday
   missionLength: 10
+  packageCount: 0
   carPathGroup:
     numberOfCarsToSpawn: 50
     carPrefabs:
@@ -28,5 +29,15 @@ MonoBehaviour:
     - {fileID: 1000014174934912, guid: 1cd65b0e33630439bb90e45101f98c92, type: 2}
     - {fileID: 1000014174934912, guid: 54e4f6d1fdf3f48cb9a482354b76f00c, type: 2}
     - {fileID: 1000014174934912, guid: ff0d95c161361449c84725d1c2fac500, type: 2}
+  postmanPathGroup:
+    numberOfPostmanToSpawn: 10
+    throwProjectiles: 1
+    postmanPrefab: {fileID: 1000013488615578, guid: 9062692dc9f2e41698be565a79e79390,
+      type: 2}
+  dogGroup:
+    dog: {fileID: 1000013319492356, guid: b733cab54df0844ea9f357ae13ff3766, type: 2}
+    numDogsToSpawn: 15
   pickupLocations: []
   dropoffLocations: []
+  events: []
+  currIndex: 0

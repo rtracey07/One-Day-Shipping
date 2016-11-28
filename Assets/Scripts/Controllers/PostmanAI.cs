@@ -13,7 +13,7 @@ public class PostmanAI : MonoBehaviour {
 	private int next;
 	private bool fwd;
 	private float turnDelay = 1.0f;
-	private float speedMod = 1.0f;
+	private float speedMod = 0.5f;
 
 	private bool wall = false;
 	private Pathway path;									// the path
@@ -88,7 +88,7 @@ public class PostmanAI : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+		center = transform.position;
 		player = GameObject.FindGameObjectWithTag ("Player");
 		currentLook = CurrentPathPercent + rotationOffset;
 		percentsPerSecond = 0.02f;//speed * 0.0004f;
@@ -171,6 +171,7 @@ public class PostmanAI : MonoBehaviour {
 			+ (player.transform.position.z - transform.position.z) * (player.transform.position.z - transform.position.z) <= radius * radius) {
 			center = transform.position;
 			state = State.PlayerChase;
+			Debug.Log ("from walking");
 		}
 	}
 
@@ -190,7 +191,7 @@ public class PostmanAI : MonoBehaviour {
 
 			Debug.Log(projectile_shoot.gameObject.name);
 			//send forward
-			projectile_shoot.AddForce (transform.forward * projectileSpeed);
+			projectile_shoot.AddForce (new Vector3(transform.forward.x, transform.forward.y - 0.05f, transform.forward.z) * projectileSpeed);
 			Destroy (projectile_shoot.gameObject, 2.0f);
 
 
@@ -203,31 +204,18 @@ public class PostmanAI : MonoBehaviour {
 	/// not used at the moment, keeping it for now
 	/// </summary>
 	void TurningState() {
-		if (!dirChange) {
-			transform.Translate (-4.0f * transform.forward * GameClockManager.Instance.time * speed, Space.World);
-			current = transform.rotation.eulerAngles.y;
-			if (current > 180.0f) {
-				change = Random.Range (-180.0f, -120.0f);
-			} else {
-				change = Random.Range (120.0f, 180.0f);
-			}
-			//Debug.Log ("dir true");
-			dirChange = true;
-		}
+		transform.LookAt (center);
+		//			Vector3 dir3 = (new Vector3 (center.x, 0.0f, center.z) - transform.position).normalized;
+		//			Quaternion rot3 = Quaternion.LookRotation (dir3);
+		//			transform.rotation = Quaternion.Slerp (transform.rotation, rot3, GameClockManager.Instance.time * speed);
+		transform.Translate (transform.forward * GameClockManager.Instance.time * speed, Space.World);
+		//state = State.Walking;
 
-		// the rotation is slerped based on turning direction
-		if (current > 180.0f && transform.rotation.eulerAngles.y > current + change) {
-			transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.Euler (transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + change, transform.rotation.eulerAngles.z), GameClockManager.Instance.time * speed);
-		} else if (current < 180.0f && transform.rotation.eulerAngles.y < current + change) {
-			transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.Euler (transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + change, transform.rotation.eulerAngles.z), GameClockManager.Instance.time * speed);
-		} else {
-			dirChange = false;
-			//Debug.Log ("dir false");
-			transform.Translate (transform.forward * GameClockManager.Instance.time * speed, Space.World);
+		if ((transform.position.x - center.x) * (transform.position.x - center.x)
+			+ (transform.position.z - center.z) * (transform.position.z - center.z) <= 0.1f) {
 			state = State.Walking;
+			Debug.Log ("back to path");
 		}
-		//Debug.Log ("turn state");
-		CheckForPlayer ();
 	}
 
 	/// <summary>
@@ -258,7 +246,7 @@ public class PostmanAI : MonoBehaviour {
 			}
 
 		} else {
-			state = State.Walking;
+			state = State.PlayerChase;
 		}
 	}
 
@@ -283,27 +271,22 @@ public class PostmanAI : MonoBehaviour {
 		if ((player.transform.position.x - transform.position.x) * (player.transform.position.x - transform.position.x)
 		    + (player.transform.position.z - transform.position.z) * (player.transform.position.z - transform.position.z) <= attackProximity) {
 			state = State.Attacking;
-
-		} else {
-			Vector3 dir = (new Vector3 (player.transform.position.x, 0.0f, player.transform.position.z) - transform.position).normalized;
-			Quaternion rot = Quaternion.LookRotation (dir);
-			Quaternion newrot = Quaternion.Euler (new Vector3 (transform.rotation.x, rot.y, transform.rotation.z));
-			transform.rotation = Quaternion.Slerp (transform.rotation, newrot, GameClockManager.Instance.time * speed);
-			transform.Translate (transform.forward * GameClockManager.Instance.time * speed, Space.World);
+			Debug.Log ("player attack");
 		}
 
 
-
-		Vector3 dir2 = (new Vector3 (player.transform.position.x, dir_y, player.transform.position.z) - transform.position).normalized;
-		Quaternion rot2 = Quaternion.LookRotation (dir2);
-		transform.rotation = Quaternion.Slerp (transform.rotation, rot2, GameClockManager.Instance.time * speed);
-		transform.Translate (transform.forward * GameClockManager.Instance.time * speed, Space.World);
-
-
+		//go back to walking state
 		if ((transform.position.x - center.x) * (transform.position.x - center.x)
 			+ (transform.position.z - center.z) * (transform.position.z - center.z) >= radius * radius) {
-			state = State.Walking;
+			Debug.Log ("postman outside radius");
+			state = State.Turning;
+
 		} else {
+			Debug.Log ("player inside radius");
+			Vector3 dir = (new Vector3 (player.transform.position.x, player.transform.position.y - 0.4f, player.transform.position.z) - transform.position).normalized;
+			Quaternion rot = Quaternion.LookRotation (dir);
+			transform.rotation = Quaternion.Slerp (transform.rotation, rot, GameClockManager.Instance.time * speed);
+			transform.Translate (transform.forward * GameClockManager.Instance.time * speed, Space.World);
 			CheckForPlayer ();
 		}
 	}
@@ -317,18 +300,21 @@ public class PostmanAI : MonoBehaviour {
 		if (throwsProjectiles) {
 			animator.SetBool ("Walk", false);
 			animator.SetTrigger("Attack");
-			Vector3 dir = (new Vector3 (player.transform.position.x, player.transform.position.y, player.transform.position.z) - transform.position).normalized;
+			Vector3 dir = (new Vector3 (player.transform.position.x, player.transform.position.y - 0.4f, player.transform.position.z) - transform.position).normalized;
 			Quaternion rot = Quaternion.LookRotation (dir);
 			transform.rotation = Quaternion.Slerp (transform.rotation, rot, GameClockManager.Instance.time * speed);
 			shoot ();
+			Debug.Log ("should be looking at player");
 			//transform.Translate (transform.forward * GameClockManager.Instance.time * speed, Space.World);
 			if (radius <= projectileRadius && ((player.transform.position.x - transform.position.x) * (player.transform.position.x - transform.position.x)
 				+ (player.transform.position.z - transform.position.z) * (player.transform.position.z - transform.position.z) <= radius * radius)) {
 				center = transform.position;
 				state = State.PlayerChase;
+				Debug.Log ("if 1");
 			} else if ((player.transform.position.x - center.x) * (player.transform.position.x - center.x)
 				+ (player.transform.position.z - center.z) * (player.transform.position.z - center.z) >= projectileRadius * projectileRadius) {
 				state = State.Walking;
+				Debug.Log ("if 2");
 			} else {
 				CheckForPlayer ();
 			}
@@ -338,6 +324,7 @@ public class PostmanAI : MonoBehaviour {
 			    + (player.transform.position.z - transform.position.z) * (player.transform.position.z - transform.position.z) <= radius * radius)) {
 				center = transform.position;
 				state = State.PlayerChase;
+				Debug.Log ("if 3");
 			} else {
 				state = State.Walking;
 			}
@@ -356,7 +343,6 @@ public class PostmanAI : MonoBehaviour {
 		if (Physics.Raycast (transform.position, -Vector3.up, out hit)) {
 			ground = hit;
 		}
-
 
 //		if (path == null || !path.isActive) {
 //			path = m_Manager.GetAreaPath ();

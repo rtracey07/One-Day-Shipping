@@ -2187,10 +2187,10 @@ MonoBehaviour:
   pathType: 0
   rotationOffset: 0.05
   groundOffset: 0.05
-  speed: 0.5
+  speed: 1.5
   damageStrength: 2
-  radius: 3
-  projectileRadius: 5
+  radius: 5
+  projectileRadius: 7
   attackProximity: 0.6
   throwsProjectiles: 1
   projectileSpeed: 1000

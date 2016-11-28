@@ -80,6 +80,7 @@ public class LevelManager : MonoBehaviour {
 				GameObject postman = GameObject.Instantiate (postmanPrefab);
 				postman.transform.parent = postmanParent.transform;
 				PostmanAI postmanPath = postman.GetComponent<PostmanAI> ();
+				postmanPath.ThrowsProjectiles = levelData.postmanPathGroup.throwProjectiles;
 				postmanPath.CurrentPathPercent = (float)i / levelData.postmanPathGroup.numberOfPostmanToSpawn;
 			}
 		}
