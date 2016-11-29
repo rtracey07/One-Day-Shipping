@@ -5,16 +5,14 @@ public class PlayerCollisions : MonoBehaviour {
 
 	public AudioClip treeCollision;
 
+	void OnTriggerEnter(Collider other){
 
-	void OnCollisionEnter(Collider other){
-	
 		switch (other.gameObject.tag) {
-
-		case "tree":
+		case "Tree":
 			AudioManager.Instance.PlaySoundEffect (treeCollision);
 			break;
-
+		//add other cases here
 		}
-	
+
 	}
 }

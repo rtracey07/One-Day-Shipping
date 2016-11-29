@@ -10,7 +10,7 @@ public class CarPath : MonoBehaviour {
 	public float speed = 50.0f;
 	private float speedMod = 1.0f;
 
-	[SerializeField] private float damageStrength = 5.0f;
+	[SerializeField] private float damageStrength = 10.0f;
 
 	private float currentLook =0.25f;										// where the car is looking
 	private float percentsPerSecond = 0.1f; 								// %1 of the path moved per second

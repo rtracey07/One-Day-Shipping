@@ -1,10 +1,12 @@
 fileFormatVersion: 2
 guid: c35900088109c4d4ab0b97c387e07e3d
-timeCreated: 1480452170
+timeCreated: 1480454443
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - treeCollision: {fileID: 8300000, guid: 477a8382de5004572bdf6c6116c75c1b, type: 3}
+  - carCollision: {fileID: 8300000, guid: 4e550000874804eb2885857f0420363c, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
