@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: SuburbRiver
   isActive: 0
-  center: {x: 110, y: 0.14, z: 62}
+  center: {x: 87.7, y: 0.14, z: 69.2}
   locations:
   - {x: 95.85, y: 0.14, z: 37}
   - {x: 119.83, y: 0.14, z: 56}
