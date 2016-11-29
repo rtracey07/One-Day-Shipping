@@ -35,6 +35,8 @@ public class LevelManager : MonoBehaviour {
 	public Text m_CutsceneText;
 	public Button m_CutsceneConfirm;
 
+	public Image m_BlackOut;
+
 	[Header("Level Data")]
 	public Level levelData;
 	public CutScene cutSceneData;
@@ -155,6 +157,13 @@ public class LevelManager : MonoBehaviour {
 			if (currEvent is CutSceneEvent) {
 				CutSceneEvent currCutScene = currEvent as CutSceneEvent;
 
+				if (currCutScene.background != null) {
+					m_CutsceneBackground.sprite = currCutScene.background;
+					StartCoroutine (BackgroundFade (true));
+				} else {
+					StartCoroutine (BackgroundFade (false));
+				}
+
 				if (currCutScene.avatar != null)
 					m_CutsceneAvatarR.sprite = currCutScene.avatar;
 
@@ -176,7 +185,6 @@ public class LevelManager : MonoBehaviour {
 
 				m_CutsceneText.text = dialogue;
 
-				m_CutsceneBackground.sprite = currCutScene.background;
 				m_CutsceneBackground.gameObject.SetActive (true);
 				m_CutsceneConfirm.gameObject.SetActive (currEvent.requiresConfirmation);
 
@@ -245,5 +253,61 @@ public class LevelManager : MonoBehaviour {
 	private void DisableHUD()
 	{
 		m_DialogueBox.gameObject.SetActive (false);
+	}
+
+	private IEnumerator BackgroundFade(bool fadeIn)
+	{
+		float time = 0.0f;
+		Color currColor = m_CutsceneBackground.color;
+
+		if (fadeIn) {
+			while (time <= 1.5f) {
+				m_CutsceneBackground.color = Color.Lerp (currColor, Color.white, time / 1.5f);
+				time += Time.deltaTime;
+				yield return null;
+			}
+
+			m_CutsceneBackground.color = Color.white;
+
+		} else {
+			while (time <= 1.5f) {
+				m_CutsceneBackground.color = Color.Lerp (currColor, Color.black, time / 1.5f);
+				time += Time.deltaTime;
+				yield return null;
+			}
+
+			m_CutsceneBackground.color = Color.black;
+		}
+	}
+
+	public IEnumerator FullScreenFade(bool fadeOut)
+	{
+		Color bOut = new Color (0, 0, 0, 1);
+		Color bIn = new Color (0, 0, 0, 0);
+		float time = 0.0f;
+
+		if (fadeOut) {
+			m_BlackOut.color = bIn;
+
+			m_BlackOut.gameObject.SetActive (true);
+			while (time <= 3.0f) {
+				m_BlackOut.color = Color.Lerp (bIn, bOut, time / 3.0f);
+				time += Time.deltaTime;
+				yield return null;
+			}
+
+			m_BlackOut.color = bOut;
+
+		} else {
+			m_BlackOut.color = bOut;
+
+			while (time <= 3.0f) {
+				m_BlackOut.color = Color.Lerp (bOut, bIn, time / 3.0f);
+				time += Time.deltaTime;
+				yield return null;
+			}
+				
+			m_BlackOut.gameObject.SetActive (false);
+		}
 	}
 }
