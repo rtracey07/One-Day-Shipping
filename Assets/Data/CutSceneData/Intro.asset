@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Name: Intro
   m_EditorClassIdentifier: 
   Events:
-  - sound: {fileID: 8300000, guid: 65c0a37515c2745ecaaf3bc9c96b264b, type: 3}
+  - eventName: Play Alarm CLock
+    sound: {fileID: 8300000, guid: 65c0a37515c2745ecaaf3bc9c96b264b, type: 3}
     soundVolume: 0.1
     avatar: {fileID: 0}
     dialogue:
@@ -24,7 +25,8 @@ MonoBehaviour:
     duration: 3
     background: {fileID: 0}
     avatarL: {fileID: 0}
-  - sound: {fileID: 0}
+  - eventName: Larry Wakes Up
+    sound: {fileID: 0}
     soundVolume: 0
     avatar: {fileID: 0}
     dialogue:
@@ -37,8 +39,9 @@ MonoBehaviour:
     duration: 2
     background: {fileID: 0}
     avatarL: {fileID: 0}
-  - sound: {fileID: 0}
-    soundVolume: 0
+  - eventName: Fade to Office
+    sound: {fileID: 8300000, guid: e6fd2622d51f046bbb80c549c288ef61, type: 3}
+    soundVolume: 0.4
     avatar: {fileID: 0}
     dialogue:
     - 
@@ -49,19 +52,22 @@ MonoBehaviour:
     duration: 2
     background: {fileID: 21300000, guid: 0e48952e0f21448c5a70511be0babc36, type: 3}
     avatarL: {fileID: 0}
-  - sound: {fileID: 0}
+  - eventName: Dispatcher Meets Larry
+    sound: {fileID: 0}
     soundVolume: 0
-    avatar: {fileID: 0}
+    avatar: {fileID: 21300000, guid: 630e7a78ffd454e2baaabee5409f11bf, type: 3}
     dialogue:
-    - 
+    - 'Hey, you must be the new - '
+    - OH MY GAWD! What's wrong with your arms?!
     timeBeforeDisplaying: 0
     isSkippable: 0
-    pauseGame: 0
+    pauseGame: 1
     requiresConfirmation: 1
     duration: 2
     background: {fileID: 21300000, guid: 0e48952e0f21448c5a70511be0babc36, type: 3}
-    avatarL: {fileID: 21300000, guid: 630e7a78ffd454e2baaabee5409f11bf, type: 3}
-  - sound: {fileID: 0}
+    avatarL: {fileID: 0}
+  - eventName: 
+    sound: {fileID: 0}
     soundVolume: 0
     avatar: {fileID: 0}
     dialogue:
