@@ -487,12 +487,12 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1056.5, y: 800.7}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -722,6 +722,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f40596a2532044e8a317e73f5e63e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tallyLength: 2
+  delivered: {fileID: 114000012669670290}
+  destroyed: {fileID: 114000011712474434}
+  cars: {fileID: 114000013460290864}
+  dogs: {fileID: 114000013653241546}
+  postmen: {fileID: 114000011690650990}
+  total: {fileID: 114000013523110590}
 --- !u!222 &222000010355951604
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -867,7 +874,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 224000011833752044}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 487, y: -297}
@@ -942,9 +949,9 @@ RectTransform:
   - {fileID: 224000010680373196}
   - {fileID: 224000010123088574}
   - {fileID: 224000012858952880}
-  - {fileID: 224000012716057528}
   - {fileID: 224000013076389120}
   - {fileID: 224000010628474164}
+  - {fileID: 224000012716057528}
   - {fileID: 224000010537150244}
   - {fileID: 224000011357685736}
   - {fileID: 224000012594453954}
@@ -988,7 +995,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 224000011833752044}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 293, y: -130}
@@ -1024,7 +1031,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_Children: []
   m_Father: {fileID: 224000011833752044}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -7, y: -221}
