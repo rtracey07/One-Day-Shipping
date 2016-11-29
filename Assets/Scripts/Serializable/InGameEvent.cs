@@ -7,6 +7,7 @@ using System;
 public class InGameEvent {
 
 	public AudioClip sound;
+	public float soundVolume;
 	public Sprite avatar;
 	public String[] dialogue;
 	public float timeBeforeDisplaying;
