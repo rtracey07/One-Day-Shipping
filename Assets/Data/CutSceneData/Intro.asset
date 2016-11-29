@@ -22,7 +22,7 @@ MonoBehaviour:
     pauseGame: 1
     requiresConfirmation: 1
     duration: 2
-    background: {fileID: 21300000, guid: 7ab5bc92dbcdc4cd88927d619085dfe8, type: 3}
+    background: {fileID: 0}
     avatarL: {fileID: 0}
   - sound: {fileID: 0}
     avatar: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
@@ -33,7 +33,7 @@ MonoBehaviour:
     pauseGame: 1
     requiresConfirmation: 1
     duration: 2
-    background: {fileID: 21300000, guid: 7ab5bc92dbcdc4cd88927d619085dfe8, type: 3}
+    background: {fileID: 21300000, guid: 0e48952e0f21448c5a70511be0babc36, type: 3}
     avatarL: {fileID: 0}
   - sound: {fileID: 0}
     avatar: {fileID: 0}
@@ -41,10 +41,10 @@ MonoBehaviour:
     - Or the Left Avatar.
     timeBeforeDisplaying: 0
     isSkippable: 0
-    pauseGame: 1
+    pauseGame: 0
     requiresConfirmation: 1
     duration: 2
-    background: {fileID: 21300000, guid: 7ab5bc92dbcdc4cd88927d619085dfe8, type: 3}
+    background: {fileID: 21300000, guid: 0e48952e0f21448c5a70511be0babc36, type: 3}
     avatarL: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   - sound: {fileID: 0}
     avatar: {fileID: 0}
@@ -55,5 +55,5 @@ MonoBehaviour:
     pauseGame: 0
     requiresConfirmation: 0
     duration: 3
-    background: {fileID: 21300000, guid: 7ab5bc92dbcdc4cd88927d619085dfe8, type: 3}
+    background: {fileID: 21300000, guid: 0e48952e0f21448c5a70511be0babc36, type: 3}
     avatarL: {fileID: 0}

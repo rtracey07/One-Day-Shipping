@@ -438,7 +438,8 @@ public class PostmanAI : MonoBehaviour {
 	void OnDrawGizmos()
 	{
 		//Visual. Not used in movement
-		iTween.DrawPath(path.pathway);
+		if(path != null && path.pathway != null)
+			iTween.DrawPath(path.pathway);
 
 		if (m_Manager.debug) {
 			Gizmos.color = Color.green;

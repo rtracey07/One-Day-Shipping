@@ -10,9 +10,14 @@ public class CutScene : ScriptableObject {
 
 	public IEnumerator RunCutScene()
 	{
+		LevelManager.Instance.StartCoroutine (LevelManager.Instance.FullScreenFade (false));
+
 		for (int i=0; i<Events.Count; i++) {
 			yield return LevelManager.Instance.StartCoroutine (TriggerEvent (i));
 		}
+
+		yield return LevelManager.Instance.StartCoroutine (LevelManager.Instance.FullScreenFade (true));
+		LevelManager.Instance.m_BlackOut.gameObject.SetActive (false);
 	}
 
 	public virtual IEnumerator TriggerEvent( int index)

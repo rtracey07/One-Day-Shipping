@@ -24,7 +24,7 @@ GameObject:
   - 23: {fileID: 23000014178839512}
   m_Layer: 0
   m_Name: River
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -42,7 +42,7 @@ GameObject:
   - 23: {fileID: 23000011598280726}
   m_Layer: 0
   m_Name: River (1)
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -184,10 +184,10 @@ MeshCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010179557142}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 0
+  m_Convex: 1
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!64 &64000012177897072
 MeshCollider:
@@ -196,10 +196,10 @@ MeshCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011622187376}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 0
+  m_Convex: 1
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!154 &154000012549708110
 TerrainCollider:
