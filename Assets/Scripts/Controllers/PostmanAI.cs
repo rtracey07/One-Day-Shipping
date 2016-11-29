@@ -239,10 +239,10 @@ public class PostmanAI : MonoBehaviour {
 			if (attackTime >= attackDelay) {
 				////Debug.Log ("tossing");
 				AudioManager.Instance.PlaySoundEffect (physicalAttackSound);
+				GameManager.Instance.stats.postmenHit++;
 				package = GameObject.FindGameObjectWithTag ("Package");
 				if (package != null) {
 					package.GetComponent<Package> ().DamagePackage (damageStrength / 2.0f);
-					GameManager.Instance.stats.postmenHit++;
 				}
 				attackTime = 0.0f;
 			} else if (attackTime < attackDelay) {
