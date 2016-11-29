@@ -627,6 +627,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e068a776dfd044a3b8999cfee90da03e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonClick: {fileID: 8300000, guid: ae8f1861429384dc8a28bcdf623f05aa, type: 3}
 --- !u!114 &114000011677947510
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -808,6 +809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e068a776dfd044a3b8999cfee90da03e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonClick: {fileID: 8300000, guid: ae8f1861429384dc8a28bcdf623f05aa, type: 3}
 --- !u!114 &114000012772721688
 MonoBehaviour:
   m_ObjectHideFlags: 1
