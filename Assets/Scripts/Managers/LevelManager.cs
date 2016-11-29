@@ -233,7 +233,7 @@ public class LevelManager : MonoBehaviour {
 		SpawnCars ();
 
 		SpawnPostmans ();
-		SpawnDogs ();
+		//SpawnDogs ();
 
 
 		Coroutine level = StartCoroutine (levelData.RunLevel());
