@@ -10,7 +10,7 @@ public class CutScene : ScriptableObject {
 
 	public IEnumerator RunCutScene()
 	{
-		LevelManager.Instance.StartCoroutine (LevelManager.Instance.FullScreenFade (false));
+		yield return LevelManager.Instance.StartCoroutine (LevelManager.Instance.FullScreenFade (false));
 
 		for (int i=0; i<Events.Count; i++) {
 			yield return LevelManager.Instance.StartCoroutine (TriggerEvent (i));
@@ -24,6 +24,9 @@ public class CutScene : ScriptableObject {
 	{
 		yield return new WaitForSeconds (Events[index].timeBeforeDisplaying);
 		GameClockManager.Instance.freeze = Events [index].pauseGame;
+
+		if (Events [index].sound != null)
+			AudioManager.Instance.PlaySoundEffect (Events [index].sound, Events[index].soundVolume);
 
 		foreach (string dialogue in Events[index].dialogue) {
 			LevelManager.Instance.RunEvent (Events [index], dialogue);

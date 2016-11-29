@@ -181,12 +181,8 @@ public class LevelManager : MonoBehaviour {
 
 				else
 					m_CutsceneAvatarR.sprite = null;
-				
 
-				m_CutsceneText.text = dialogue;
-
-				m_CutsceneBackground.gameObject.SetActive (true);
-				m_CutsceneConfirm.gameObject.SetActive (currEvent.requiresConfirmation);
+				StartCoroutine (DisplayDialog (dialogue, m_CutsceneText, 0.02f, currEvent.requiresConfirmation));
 
 			} else {
 				if (currEvent.avatar != null)
@@ -309,5 +305,17 @@ public class LevelManager : MonoBehaviour {
 				
 			m_BlackOut.gameObject.SetActive (false);
 		}
+	}
+
+	public IEnumerator DisplayDialog(string dialogue, Text area, float speed, bool confirmButton)
+	{
+		m_CutsceneConfirm.gameObject.SetActive (false);
+		
+		for (int i = 1; i < dialogue.Length; i++) {
+			area.text = dialogue.Substring (0, i);
+			yield return new WaitForSeconds (speed);
+		}
+
+		m_CutsceneConfirm.gameObject.SetActive (confirmButton);
 	}
 }
