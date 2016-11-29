@@ -163,25 +163,9 @@ public class LevelManager : MonoBehaviour {
 				} else {
 					StartCoroutine (BackgroundFade (false));
 				}
-
-				if (currCutScene.avatar != null)
-					m_CutsceneAvatarR.sprite = currCutScene.avatar;
-
-				else
-					m_CutsceneAvatarR.sprite = null;
-				
-				if (currCutScene.avatarL != null)
-					m_CutsceneAvatarL.sprite = currCutScene.avatarL;
-				else
-					m_CutsceneAvatarL.sprite = null;
-
-
-				if (currCutScene.avatarL != null)
-					m_CutsceneAvatarL.sprite = currCutScene.avatarL;
-
-				else
-					m_CutsceneAvatarR.sprite = null;
-
+					
+				StartCoroutine (DisplayAvatar (currCutScene.avatar, m_CutsceneAvatarR, 1.5f));
+				StartCoroutine (DisplayAvatar (currCutScene.avatarL, m_CutsceneAvatarL, 1.5f));
 				StartCoroutine (DisplayDialog (dialogue, m_CutsceneText, 0.02f, currEvent.requiresConfirmation));
 
 			} else {
@@ -311,11 +295,42 @@ public class LevelManager : MonoBehaviour {
 	{
 		m_CutsceneConfirm.gameObject.SetActive (false);
 		
-		for (int i = 1; i < dialogue.Length; i++) {
+		for (int i = 1; i <= dialogue.Length; i++) {
 			area.text = dialogue.Substring (0, i);
 			yield return new WaitForSeconds (speed);
 		}
 
 		m_CutsceneConfirm.gameObject.SetActive (confirmButton);
+	}
+
+	public IEnumerator DisplayAvatar(Sprite avatar, Image location, float rate)
+	{
+			Color fadedOut = new Color (1, 1, 1, 0);
+			Color fadedIn = new Color (1, 1, 1, 1);
+			float time = 0.0f;
+
+		if ((location.sprite == null && avatar != null) || (location.sprite != null && avatar != null && location.sprite != avatar)) {
+				location.color = fadedOut;
+				location.sprite = avatar;
+
+				while (time <= rate) {
+					location.color = Color.Lerp (fadedOut, fadedIn, time / rate);
+					time += Time.deltaTime;
+					yield return null;
+				}
+
+				location.color = fadedIn;
+			} else if (location.sprite != null && avatar == null) {
+				location.color = fadedIn;
+
+				while (time <= rate) {
+					location.color = Color.Lerp (fadedIn, fadedOut, time / rate);
+					time += Time.deltaTime;
+					yield return null;
+				}
+
+				location.color = fadedOut;
+				location.sprite = null;
+			}
 	}
 }

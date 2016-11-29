@@ -26,7 +26,8 @@ public class CutScene : ScriptableObject {
 		GameClockManager.Instance.freeze = Events [index].pauseGame;
 
 		if (Events [index].sound != null)
-			AudioManager.Instance.PlaySoundEffect (Events [index].sound, Events[index].soundVolume);
+			AudioManager.Instance.PlaySoundEffect(Events [index].sound, Events[index].soundVolume);
+
 
 		foreach (string dialogue in Events[index].dialogue) {
 			LevelManager.Instance.RunEvent (Events [index], dialogue);

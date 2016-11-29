@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Events:
   - sound: {fileID: 8300000, guid: 65c0a37515c2745ecaaf3bc9c96b264b, type: 3}
-    soundVolume: 1.5
+    soundVolume: 0.1
     avatar: {fileID: 0}
     dialogue:
     - 
@@ -41,11 +41,11 @@ MonoBehaviour:
     soundVolume: 0
     avatar: {fileID: 0}
     dialogue:
-    - You can activate the Right Avatar.
+    - 
     timeBeforeDisplaying: 0
     isSkippable: 0
     pauseGame: 1
-    requiresConfirmation: 1
+    requiresConfirmation: 0
     duration: 2
     background: {fileID: 21300000, guid: 0e48952e0f21448c5a70511be0babc36, type: 3}
     avatarL: {fileID: 0}
@@ -53,14 +53,14 @@ MonoBehaviour:
     soundVolume: 0
     avatar: {fileID: 0}
     dialogue:
-    - Or the Left Avatar.
+    - 
     timeBeforeDisplaying: 0
     isSkippable: 0
     pauseGame: 0
     requiresConfirmation: 1
     duration: 2
     background: {fileID: 21300000, guid: 0e48952e0f21448c5a70511be0babc36, type: 3}
-    avatarL: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    avatarL: {fileID: 21300000, guid: 630e7a78ffd454e2baaabee5409f11bf, type: 3}
   - sound: {fileID: 0}
     soundVolume: 0
     avatar: {fileID: 0}

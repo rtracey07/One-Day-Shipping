@@ -9,7 +9,7 @@ public class AudioManager : MonoBehaviour {
 			return _Instance;
 		}
 	}
-		
+
 	void Awake(){
 		if (_Instance == null)
 			_Instance = this;
@@ -32,4 +32,5 @@ public class AudioManager : MonoBehaviour {
 	public void PlaySoundEffect(AudioClip clip, float volume) {
 		AudioSource.PlayClipAtPoint (clip, GameManager.Instance.mainCamera.transform.position, volume);
 	}
+		
 }

@@ -6,6 +6,7 @@ using System;
 [Serializable]
 public class InGameEvent {
 
+	public string eventName;
 	public AudioClip sound;
 	public float soundVolume;
 	public Sprite avatar;
