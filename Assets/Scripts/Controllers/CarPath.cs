@@ -15,6 +15,8 @@ public class CarPath : MonoBehaviour {
 	private bool isHit = false;
 	private Vector3 cameraSpacePos;
 
+	public AudioClip carCollisionSound;
+
 	void Start()
 	{
 		currentLook = CurrentPathPercent + rotationOffset;
@@ -73,6 +75,7 @@ public class CarPath : MonoBehaviour {
 			if (!isHit) {
 				GameManager.Instance.stats.carsHit++;
 				isHit = true;
+				AudioManager.Instance.PlaySoundEffect (carCollisionSound);
 				StartCoroutine (ResetHit (2.0f));
 			}
 		}

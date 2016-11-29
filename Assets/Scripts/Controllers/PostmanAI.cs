@@ -4,6 +4,8 @@ using System.Collections;
 public class PostmanAI : MonoBehaviour {
 
 	private State state;
+	public AudioClip physicalAttackSound;
+	public AudioClip rangedAttackSound;
 
 	//type of movement
 	private enum pathEnum{loop, reverse};
@@ -189,7 +191,7 @@ public class PostmanAI : MonoBehaviour {
 			if (package != null) {
 				projectile_shoot.GetComponent<PostmanProjectile> ().Pack = package;
 			}
-
+			AudioManager.Instance.PlaySoundEffect (rangedAttackSound);
 			//Debug.Log(projectile_shoot.gameObject.name);
 			//send forward
 			projectile_shoot.AddForce (new Vector3(transform.forward.x, transform.forward.y - 0.05f, transform.forward.z) * projectileSpeed);
@@ -227,9 +229,6 @@ public class PostmanAI : MonoBehaviour {
 	/// </summary>
 	void AttackingState(){
 		////Debug.Log ("attack state");
-
-
-
 		animator.SetBool ("Walk", false);
 		animator.SetTrigger("Attack");
 
@@ -239,9 +238,11 @@ public class PostmanAI : MonoBehaviour {
 
 			if (attackTime >= attackDelay) {
 				////Debug.Log ("tossing");
+				AudioManager.Instance.PlaySoundEffect (physicalAttackSound);
 				package = GameObject.FindGameObjectWithTag ("Package");
 				if (package != null) {
 					package.GetComponent<Package> ().DamagePackage (damageStrength / 2.0f);
+					GameManager.Instance.stats.postmenHit++;
 				}
 				attackTime = 0.0f;
 			} else if (attackTime < attackDelay) {
