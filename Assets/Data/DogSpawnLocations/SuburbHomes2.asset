@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: SuburbHomes2
   isActive: 0
-  center: {x: 282.6, y: 0.14, z: 52}
+  center: {x: 293.9, y: 0.14, z: 52}
   locations:
   - {x: 297, y: 0.14, z: 51}
   - {x: 248.71, y: 0.14, z: 66.27}

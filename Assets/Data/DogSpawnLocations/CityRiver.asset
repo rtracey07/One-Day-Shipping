@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: CityRiver
   isActive: 0
-  center: {x: -24.5, y: 0.14, z: 46}
+  center: {x: 0, y: 0.14, z: -1.5}
   locations:
   - {x: 20.4, y: 0.14, z: 31.9}
   - {x: -9.9, y: 0.14, z: 0}

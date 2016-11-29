@@ -59,8 +59,19 @@ public class DogManager : MonoBehaviour {
 //	}
 
 	void SetDogPositions(DogSpawnLocations area){
-		for (int i = 0; i < area.locations.Count; i++) {
+		// don't want to clone more dogs than positions
+		int activeDogCount = area.locations.Count;
+		int inActivesDogCount = dogs.Count - activeDogCount;
+		//Debug.Log ("activeDogCount: " + activeDogCount + " inActivesDogCount: " + inActivesDogCount);
+		for (int i = 0; i < activeDogCount; i++) {
+			dogs [i].gameObject.SetActive (true);
+			//Debug.Log ("activating dog " + i);
 			dogs [i].Center = area.locations [i];
+		}
+
+		for (int i = activeDogCount; i < dogs.Count; i++) {
+			dogs [i].gameObject.SetActive (false);
+			//Debug.Log ("de-activating dog " + i);
 		}
 	}
 
