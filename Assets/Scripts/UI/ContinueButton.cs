@@ -8,6 +8,6 @@ public class ContinueButton : MonoBehaviour {
 	public void OnClick()
 	{
 		GameManager.Instance.Continue ();
-		AudioManager.Instance.PlaySoundEffect (buttonClick);
+		AudioManager.Instance.PlaySoundEffect (buttonClick, 0.1f);
 	}
 }
