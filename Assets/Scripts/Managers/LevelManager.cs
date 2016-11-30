@@ -230,7 +230,7 @@ public class LevelManager : MonoBehaviour {
 		GameManager.Instance.FindCamera ();
 		activeLocations = GameObject.FindObjectsOfType<Location> ();
 
-		SpawnCars ();
+		//SpawnCars ();
 
 		SpawnPostmans ();
 		//SpawnDogs ();

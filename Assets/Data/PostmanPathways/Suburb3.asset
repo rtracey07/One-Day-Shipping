@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcec4d19ae60945748ec14f6a2e98c28, type: 3}
   m_Name: Suburb3
   m_EditorClassIdentifier: 
-  name: Suburb3
+  pathName: 
   isActive: 0
   center: {x: 302.7, y: 0, z: 40.1}
   pathway:
@@ -26,6 +26,7 @@ MonoBehaviour:
   - {x: 283.1, y: 0, z: 64.7}
   - {x: 279.9, y: 0, z: 47.2}
   - {x: 282.9, y: 0, z: 44.4}
+  - {x: 276.9, y: 0, z: 44.4}
   - {x: 269.9, y: 0, z: 44.4}
   - {x: 258.4, y: 0, z: 45.9}
   - {x: 256.8, y: 0, z: 39.2}

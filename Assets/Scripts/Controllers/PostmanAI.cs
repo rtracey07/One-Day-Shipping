@@ -291,6 +291,7 @@ public class PostmanAI : MonoBehaviour {
 			Quaternion rot = Quaternion.LookRotation (dir);
 			transform.rotation = Quaternion.Slerp (transform.rotation, rot, GameClockManager.Instance.time * speed);
 			transform.Translate (transform.forward * GameClockManager.Instance.time * speed, Space.World);
+			transform.position = Vector3.MoveTowards (transform.position, new Vector3 (transform.position.x, ground.point.y + groundOffset, transform.position.z), GameClockManager.Instance.time * speed);
 			CheckForPlayer ();
 		}
 	}
