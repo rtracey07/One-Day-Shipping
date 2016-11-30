@@ -17,6 +17,7 @@ public class CarPath : MonoBehaviour {
 	private CarPathManager m_Manager;
 	private bool isHit = false;
 	private Vector3 cameraSpacePos;
+	private float groundOffset = -0.1f;
 
 	public AudioClip carCollisionSound;
 
@@ -60,6 +61,7 @@ public class CarPath : MonoBehaviour {
 			Vector3 look = iTween.PointOnPath (path.pathway, currentLook);
 			iTween.PutOnPath (gameObject, path.pathway, CurrentPathPercent);
 			transform.LookAt (look);
+			transform.position = Vector3.MoveTowards (transform.position, new Vector3 (transform.position.x, transform.position.x + groundOffset, transform.position.z), GameClockManager.Instance.time * speed);
 		}
 	}
 
