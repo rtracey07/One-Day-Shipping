@@ -1,10 +1,16 @@
 fileFormatVersion: 2
 guid: c795bcde3a2a244dca298df41be2c3fd
-timeCreated: 1479005272
+timeCreated: 1480549832
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - carCollisionSound1: {fileID: 8300000, guid: 2e656dd86478d498d83faa890bf8d019,
+      type: 3}
+  - carCollisionSound2: {fileID: 8300000, guid: 8bb83fe14077e420cb553741323ebc55,
+      type: 3}
+  - carCollisionSound3: {fileID: 8300000, guid: 4a3ee95337b7b47a98f28f02d72f55db,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

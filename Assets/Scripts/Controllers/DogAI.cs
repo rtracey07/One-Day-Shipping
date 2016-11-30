@@ -175,7 +175,7 @@ public class DogAI : MonoBehaviour {
 			if (package != null) {
 				package.DamagePackage (damageStrength);
 			}
-			playDogBarkSound ();
+			PlayDogBarkSound ();
 			GameManager.Instance.stats.dogsHit++;
 			attackTime = 0.0f;
 		} else if (attack && attackTime < attackDelay) {
@@ -185,7 +185,7 @@ public class DogAI : MonoBehaviour {
 
 	}
 
-	public void playDogBarkSound(){
+	public void PlayDogBarkSound(){
 		int random = Random.Range (1, 5);
 		switch (random) {
 		case 1:
