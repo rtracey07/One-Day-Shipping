@@ -53,3 +53,5 @@ Assembly-CSharp-Editor.csproj
 Assembly-CSharp-firstpass.csproj
 
 *.csproj
+
+Assets/Standard Assets/Characters/FirstPersonCharacter/Audio.meta

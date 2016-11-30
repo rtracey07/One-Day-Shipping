@@ -38,11 +38,13 @@ public class DogManager : MonoBehaviour {
 						activeAreas.Add (areas [i]);
 						areas [i].isActive = true;
 						SetDogPositions (areas [i]);
+						Debug.Log ("areas " + i);
 					}
 				} else {
 					if (areas[i].isActive) {
 						activeAreas.Remove(areas [i]);
 						areas [i].isActive = false;
+						Debug.Log ("areas " + i);
 					}
 				}
 			}
@@ -63,6 +65,9 @@ public class DogManager : MonoBehaviour {
 		int activeDogCount = area.locations.Count;
 		int inActivesDogCount = dogs.Count - activeDogCount;
 		//Debug.Log ("activeDogCount: " + activeDogCount + " inActivesDogCount: " + inActivesDogCount);
+		if (activeDogCount == null && inActivesDogCount == null) {
+			return;
+		}
 		for (int i = 0; i < activeDogCount; i++) {
 			dogs [i].gameObject.SetActive (true);
 			//Debug.Log ("activating dog " + i);

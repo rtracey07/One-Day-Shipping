@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcec4d19ae60945748ec14f6a2e98c28, type: 3}
+  m_Name: City5
+  m_EditorClassIdentifier: 
+  pathName: 
+  isActive: 0
+  center: {x: 59.69, y: 0, z: 152.5}
+  pathway:
+  - {x: 12.5, y: 0, z: 139.6}
+  - {x: 15.2, y: 0, z: 139.6}
+  - {x: 15.2, y: 0, z: 133.3}
+  - {x: 17.2, y: 0, z: 133.3}
+  - {x: 19.6, y: 0, z: 128.8}
+  - {x: 18.4, y: 0, z: 136.8}
+  - {x: 18.4, y: 0, z: 140.9}
+  - {x: 24.1, y: 0, z: 140.9}
+  - {x: 29.8, y: 0, z: 140.9}
+  - {x: 32.5, y: 0, z: 140.9}
+  - {x: 32.5, y: 0, z: 126.4}
+  - {x: 32.5, y: 0, z: 116.3}
+  - {x: 40.3, y: 0, z: 116.3}
+  - {x: 40.3, y: 0, z: 128}
+  - {x: 40.3, y: 0, z: 134.2}
+  - {x: 40.3, y: 0, z: 144.2}
+  - {x: 40.3, y: 0, z: 157.9}
+  - {x: 35.6, y: 0, z: 162.8}
+  - {x: 29, y: 0, z: 162.8}
+  - {x: 29, y: 0, z: 158.9}
+  - {x: 22.7, y: 0, z: 158.7}
+  - {x: 19.1, y: 0, z: 159.6}
+  - {x: 18.1, y: 0, z: 157.1}
+  - {x: 18.1, y: 0, z: 151.6}
+  - {x: 18.1, y: 0, z: 147.4}
+  - {x: 13.3, y: 0, z: 144.1}
+  - {x: 12.5, y: 0, z: 139.6}

@@ -2188,7 +2188,7 @@ MonoBehaviour:
   rangedAttackSound: {fileID: 0}
   pathType: 0
   rotationOffset: 0.05
-  groundOffset: 0.05
+  groundOffset: 0.01
   speed: 1.5
   damageStrength: 2
   radius: 5

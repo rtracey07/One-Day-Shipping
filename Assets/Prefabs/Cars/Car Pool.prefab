@@ -72,5 +72,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5d5098166cdc9469ab999301af43b953, type: 2}
   inactivePathColor: {r: 1, g: 1, b: 1, a: 1}
   activePathColor: {r: 1, g: 0, b: 0, a: 1}
-  activeDistance: 80
-  debug: 1
+  activeDistance: 70
+  debug: 0
