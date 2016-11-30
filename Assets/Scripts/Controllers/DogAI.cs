@@ -71,7 +71,7 @@ public class DogAI : MonoBehaviour {
 	/// <param name="col">Col.</param>
 	void  OnTriggerEnter (Collider col)
 	{
-		print ("COLLISION");
+		//print ("COLLISION");
 
 	}
 

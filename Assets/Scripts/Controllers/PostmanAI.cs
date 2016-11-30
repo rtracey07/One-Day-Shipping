@@ -176,6 +176,7 @@ public class PostmanAI : MonoBehaviour {
 			state = State.PlayerChase;
 			//Debug.Log ("from walking");
 		}
+		transform.position = Vector3.MoveTowards (transform.position, new Vector3 (transform.position.x, ground.point.y + groundOffset, transform.position.z), GameClockManager.Instance.time * speed);
 	}
 
 	/// <summary>
@@ -191,7 +192,8 @@ public class PostmanAI : MonoBehaviour {
 			if (package != null) {
 				projectile_shoot.GetComponent<PostmanProjectile> ().Pack = package;
 			}
-			AudioManager.Instance.PlaySoundEffect (rangedAttackSound);
+			if (rangedAttackSound != null)
+				AudioManager.Instance.PlaySoundEffect (rangedAttackSound);
 			//Debug.Log(projectile_shoot.gameObject.name);
 			//send forward
 			projectile_shoot.AddForce (new Vector3(transform.forward.x, transform.forward.y - 0.05f, transform.forward.z) * projectileSpeed);
