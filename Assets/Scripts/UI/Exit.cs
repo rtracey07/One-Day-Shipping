@@ -12,7 +12,6 @@ public class Exit : MonoBehaviour {
     public IEnumerator LoadScene()
     {
         yield return new WaitForSeconds(1.0f);
-        SceneManager.LoadScene("CutScene");
-        yield return null;
+        Application.Quit();
     }
 }
