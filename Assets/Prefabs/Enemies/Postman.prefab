@@ -2184,6 +2184,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a53c889da8bf0482cb8ca59db8f8a236, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  physicalAttackSound: {fileID: 8300000, guid: 4e550000874804eb2885857f0420363c, type: 3}
+  rangedAttackSound: {fileID: 0}
   pathType: 0
   rotationOffset: 0.05
   groundOffset: 0.01

@@ -11002,7 +11002,7 @@ MonoBehaviour:
   damageStrength: 15
   radius: 5
   attackProximity: 0.2
-  package: {fileID: 0}
+  attackSound: {fileID: 8300000, guid: f6dfaab3dc8a1488e962b720d3a9e030, type: 3}
   groundOffset: 0.1
 --- !u!137 &137000011064557356
 SkinnedMeshRenderer:

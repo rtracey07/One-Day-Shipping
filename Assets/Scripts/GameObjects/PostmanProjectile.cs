@@ -26,6 +26,7 @@ public class PostmanProjectile : MonoBehaviour {
 			if (Pack != null) {
 				Debug.Log ("Package Hit");
 				Pack.GetComponent<Package> ().DamagePackage (DamageStrength);
+				GameManager.Instance.stats.postmenHit++;
 			}
 		}
 			

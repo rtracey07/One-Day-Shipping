@@ -12,11 +12,26 @@ MonoBehaviour:
   m_Name: Intro
   m_EditorClassIdentifier: 
   Events:
-  - sound: {fileID: 0}
+  - eventName: Play Alarm CLock
+    sound: {fileID: 8300000, guid: 65c0a37515c2745ecaaf3bc9c96b264b, type: 3}
+    soundVolume: 0.1
     avatar: {fileID: 0}
     dialogue:
-    - This is an example of a cutscene.
-    - The upper white boxes are avatars
+    - 
+    timeBeforeDisplaying: 0
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 0
+    duration: 3
+    background: {fileID: 0}
+    avatarL: {fileID: 0}
+  - eventName: Larry Wakes Up
+    sound: {fileID: 0}
+    soundVolume: 0
+    avatar: {fileID: 0}
+    dialogue:
+    - 8am already... Time to get up.
+    - First day on the job. I hope it goes better than the last one.
     timeBeforeDisplaying: 0
     isSkippable: 0
     pauseGame: 1
@@ -24,10 +39,26 @@ MonoBehaviour:
     duration: 2
     background: {fileID: 0}
     avatarL: {fileID: 0}
-  - sound: {fileID: 0}
-    avatar: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  - eventName: Fade to Office
+    sound: {fileID: 8300000, guid: e6fd2622d51f046bbb80c549c288ef61, type: 3}
+    soundVolume: 0.4
+    avatar: {fileID: 0}
     dialogue:
-    - You can activate the Right Avatar.
+    - 
+    timeBeforeDisplaying: 0
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 0
+    duration: 2
+    background: {fileID: 21300000, guid: 0e48952e0f21448c5a70511be0babc36, type: 3}
+    avatarL: {fileID: 0}
+  - eventName: Dispatcher Meets Larry
+    sound: {fileID: 0}
+    soundVolume: 0
+    avatar: {fileID: 21300000, guid: 630e7a78ffd454e2baaabee5409f11bf, type: 3}
+    dialogue:
+    - 'Hey, you must be Larry - '
+    - OH MY GAWD! What's wrong with your arms?!
     timeBeforeDisplaying: 0
     isSkippable: 0
     pauseGame: 1
@@ -35,25 +66,59 @@ MonoBehaviour:
     duration: 2
     background: {fileID: 21300000, guid: 0e48952e0f21448c5a70511be0babc36, type: 3}
     avatarL: {fileID: 0}
-  - sound: {fileID: 0}
-    avatar: {fileID: 0}
+  - eventName: Boss Meets Larry
+    sound: {fileID: 0}
+    soundVolume: 0
+    avatar: {fileID: 21300000, guid: 630e7a78ffd454e2baaabee5409f11bf, type: 3}
     dialogue:
-    - Or the Left Avatar.
+    - What's going on over here?
+    - Ah Noodleman! You're here!
+    - Welcome to "One Day Shipping".
+    - Now hurry up. You've got packages to deliver.
     timeBeforeDisplaying: 0
     isSkippable: 0
-    pauseGame: 0
+    pauseGame: 1
     requiresConfirmation: 1
     duration: 2
     background: {fileID: 21300000, guid: 0e48952e0f21448c5a70511be0babc36, type: 3}
-    avatarL: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  - sound: {fileID: 0}
-    avatar: {fileID: 0}
+    avatarL: {fileID: 21300000, guid: 47f35c39a642b4b17bff47a2688a0ae8, type: 3}
+  - eventName: Boss Leaves.
+    sound: {fileID: 0}
+    soundVolume: 0
+    avatar: {fileID: 21300000, guid: 630e7a78ffd454e2baaabee5409f11bf, type: 3}
     dialogue:
-    - The scene will start in 3 seconds.
+    - 
     timeBeforeDisplaying: 0
     isSkippable: 0
-    pauseGame: 0
+    pauseGame: 1
     requiresConfirmation: 0
-    duration: 3
+    duration: 1.5
+    background: {fileID: 21300000, guid: 0e48952e0f21448c5a70511be0babc36, type: 3}
+    avatarL: {fileID: 0}
+  - eventName: Dispatcher outro
+    sound: {fileID: 0}
+    soundVolume: 0
+    avatar: {fileID: 21300000, guid: 630e7a78ffd454e2baaabee5409f11bf, type: 3}
+    dialogue:
+    - Okay then New Guy. Let's get you setup.
+    - '... gawd he''s so lanky.'
+    timeBeforeDisplaying: 0
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 1
+    duration: 0
+    background: {fileID: 21300000, guid: 0e48952e0f21448c5a70511be0babc36, type: 3}
+    avatarL: {fileID: 0}
+  - eventName: Dispatcher Leaves - Transition
+    sound: {fileID: 0}
+    soundVolume: 0
+    avatar: {fileID: 0}
+    dialogue:
+    - 
+    timeBeforeDisplaying: 0
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 0
+    duration: 2
     background: {fileID: 21300000, guid: 0e48952e0f21448c5a70511be0babc36, type: 3}
     avatarL: {fileID: 0}

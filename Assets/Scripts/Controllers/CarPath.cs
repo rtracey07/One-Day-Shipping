@@ -4,16 +4,21 @@ using System.Collections;
 public class CarPath : MonoBehaviour {
 
 	private Pathway path;						// the path
+	private Package package;
 	private Rigidbody m_Rigidbody;
 	public float rotationOffset = 0.05f;			// how far ahead to look to orient on path
 	public float speed = 50.0f;
 	private float speedMod = 1.0f;
+
+	[SerializeField] private float damageStrength = 10.0f;
 
 	private float currentLook =0.25f;										// where the car is looking
 	private float percentsPerSecond = 0.1f; 								// %1 of the path moved per second
 	private CarPathManager m_Manager;
 	private bool isHit = false;
 	private Vector3 cameraSpacePos;
+
+	public AudioClip carCollisionSound;
 
 	void Start()
 	{
@@ -27,6 +32,11 @@ public class CarPath : MonoBehaviour {
 	public float CurrentPathPercent {
 		get;
 		set;
+	}
+
+	// property to get damage points
+	public float DamageStrength {
+		get{ return damageStrength; }
 	}
 		
 
@@ -73,6 +83,15 @@ public class CarPath : MonoBehaviour {
 			if (!isHit) {
 				GameManager.Instance.stats.carsHit++;
 				isHit = true;
+				AudioManager.Instance.PlaySoundEffect (carCollisionSound);
+				//damage package if it exists:
+				GameObject pack_gameobject = GameObject.FindGameObjectWithTag("Package");
+				if (pack_gameobject != null) {
+					package = pack_gameobject.GetComponent<Package>();
+					if (package != null) {
+						package.DamagePackage (damageStrength);
+					}
+				}
 				StartCoroutine (ResetHit (2.0f));
 			}
 		}

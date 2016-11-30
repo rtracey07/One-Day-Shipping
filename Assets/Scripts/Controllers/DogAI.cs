@@ -16,6 +16,8 @@ public class DogAI : MonoBehaviour {
 	[SerializeField] private float radius = 3.0f;
 	[SerializeField] private float attackProximity = 0.3f;		// when to do attack animation
 
+	public AudioClip attackSound;
+
 	private Package package;				// package to damage
 
 	private GameObject player;
@@ -173,6 +175,7 @@ public class DogAI : MonoBehaviour {
 			if (package != null) {
 				package.DamagePackage (damageStrength);
 			}
+			AudioManager.Instance.PlaySoundEffect (attackSound);
 			GameManager.Instance.stats.dogsHit++;
 			attackTime = 0.0f;
 		} else if (attack && attackTime < attackDelay) {
