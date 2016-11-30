@@ -199,19 +199,21 @@ public class LevelManager : MonoBehaviour {
 	private IEnumerator Run()
 	{
 		AsyncOperation loadLevel;
-		if (SceneManager.GetActiveScene ().name == "InGame") {
+		if (SceneManager.GetActiveScene ().name != "CutScene") {
 
 			loadLevel = SceneManager.LoadSceneAsync ("CutScene");
 			yield return new WaitUntil (() => loadLevel.isDone);
-			m_CutsceneBackground.gameObject.SetActive (true);
-			GameManager.Instance.FindCamera ();
+		}
 
-			yield return StartCoroutine (cutSceneData.RunCutScene ());
-			DisableCutScene ();
+		m_CutsceneBackground.gameObject.SetActive (true);
+		GameManager.Instance.FindCamera ();
 
-			loadLevel = SceneManager.LoadSceneAsync ("InGame");
-			yield return new WaitUntil (() => loadLevel.isDone);
-		} 
+		yield return StartCoroutine (cutSceneData.RunCutScene ());
+		DisableCutScene ();
+
+		loadLevel = SceneManager.LoadSceneAsync ("InGame");
+		yield return new WaitUntil (() => loadLevel.isDone);
+
 
 		GameManager.Instance.FindCamera ();
 		activeLocations = GameObject.FindObjectsOfType<Location> ();
