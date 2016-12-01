@@ -21,6 +21,7 @@ public class Package : MonoBehaviour {
 		if (GameManager.Instance.hasPackage)
 			PlayPackageDamageSound ();
 		if (Health <= 0) {
+			GameManager.Instance.stats.packagesDestroyed++;
 			GameManager.Instance.destroyed = true;
 			DisablePackage ();
 		}
