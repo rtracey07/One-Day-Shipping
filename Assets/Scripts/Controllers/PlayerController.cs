@@ -54,12 +54,16 @@ public class PlayerController : MonoBehaviour {
 
 	public AudioClip jumpSound;
 
+	Transform start;
+	public AudioClip respawnSound;
+
 	void Start()
 	{
 		//Cache Controllers for use.
 		//controller = GetComponent<CharacterController>();
 		animator = GetComponent<Animator> ();
 		m_Rigidbody = GetComponent<Rigidbody> ();
+		start = GameObject.FindGameObjectWithTag ("SpawnPoint").transform;
 	}
 
 	void FixedUpdate() 
@@ -178,6 +182,19 @@ public class PlayerController : MonoBehaviour {
 			gizmos [i] = new gizmoData ();
 			gizmos [i].collisionPoint = other.contacts [i].point;
 			gizmos [i].collisionNormal = other.contacts [i].normal;
+		}
+	}
+
+	//use trigger detection to detect if player walks into the water
+	void OnTriggerEnter(Collider other){
+		if (other.gameObject.tag == "Water"){
+			AudioSource.PlayClipAtPoint (respawnSound, GameManager.Instance.mainCamera.transform.position);
+			transform.position = start.position;
+			if (package != null) {
+				GetPackage (false);
+				GameManager.Instance.hasPackage = false;
+				GameManager.Instance.destroyed = true;
+			}
 		}
 	}
 
