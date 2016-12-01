@@ -8,8 +8,7 @@ public class Package : MonoBehaviour {
 	[SerializeField] private Slider damageSlider;
 	[SerializeField] private float totalHealth = 100.0f;
 	private float health;
-	public AudioClip pickupSound;
-	public AudioClip deliverSound;
+	public AudioClip pickupSound, deliverSound, destroyPackageSound;
 
 	//access the health if necessary
 	public float Health {
@@ -19,6 +18,9 @@ public class Package : MonoBehaviour {
 
 	public void DamagePackage(float hp){
 		Health = Health - hp;
+		if (Health <= 0) {
+			DisablePackage ();
+		}
 	}
 
 	// Use this for initialization
@@ -46,6 +48,7 @@ public class Package : MonoBehaviour {
 
 	public void DisablePackage()
 	{
-		
+		AudioManager.Instance.PlaySoundEffect (destroyPackageSound);
+		damageSlider.gameObject.SetActive (false);
 	}
 }

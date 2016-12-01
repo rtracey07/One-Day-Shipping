@@ -20,6 +20,7 @@ public class CarPath : MonoBehaviour {
 	private float groundOffset = -0.1f;
 
 	public AudioClip carCollisionSound1, carCollisionSound2, carCollisionSound3;
+	public AudioClip packageDamage1, packageDamage2, packageDamage3;
 
 	void Start()
 	{
@@ -92,6 +93,7 @@ public class CarPath : MonoBehaviour {
 					package = pack_gameobject.GetComponent<Package>();
 					if (package != null) {
 						package.DamagePackage (damageStrength);
+						PlayPackageDamageSound ();
 					}
 				}
 				StartCoroutine (ResetHit (2.0f));
@@ -110,6 +112,21 @@ public class CarPath : MonoBehaviour {
 			break;
 		case 3:
 			AudioManager.Instance.PlaySoundEffect (carCollisionSound3);
+			break;
+		}
+	}
+
+	public void PlayPackageDamageSound(){
+		int random = Random.Range (1, 4);
+		switch (random) {
+		case 1:
+			AudioManager.Instance.PlaySoundEffect (packageDamage1);
+			break;
+		case 2:
+			AudioManager.Instance.PlaySoundEffect (packageDamage2);
+			break;
+		case 3:
+			AudioManager.Instance.PlaySoundEffect (packageDamage3);
 			break;
 		}
 	}

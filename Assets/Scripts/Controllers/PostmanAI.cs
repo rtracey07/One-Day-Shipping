@@ -46,6 +46,8 @@ public class PostmanAI : MonoBehaviour {
 	private GameObject player;					// player to chase
 	private GameObject package;
 
+	public AudioClip packageDamage1, packageDamage2, packageDamage3; 
+
 	private Animator animator;
 	private float attackTime = 1.0f;
 	private float attackDelay = 3.0f;
@@ -244,6 +246,7 @@ public class PostmanAI : MonoBehaviour {
 				GameManager.Instance.stats.postmenHit++;
 				package = GameObject.FindGameObjectWithTag ("Package");
 				if (package != null) {
+					PlayPackageDamageSound ();
 					package.GetComponent<Package> ().DamagePackage (damageStrength / 2.0f);
 				}
 				attackTime = 0.0f;
@@ -451,6 +454,20 @@ public class PostmanAI : MonoBehaviour {
 		}
 	}
 
+	public void PlayPackageDamageSound(){
+		int random = Random.Range (1, 4);
+		switch (random) {
+		case 1:
+			AudioManager.Instance.PlaySoundEffect (packageDamage1);
+			break;
+		case 2:
+			AudioManager.Instance.PlaySoundEffect (packageDamage2);
+			break;
+		case 3:
+			AudioManager.Instance.PlaySoundEffect (packageDamage3);
+			break;
+		}
+	}
 
 
 }

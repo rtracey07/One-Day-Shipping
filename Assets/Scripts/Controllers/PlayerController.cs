@@ -53,7 +53,6 @@ public class PlayerController : MonoBehaviour {
 	private Rigidbody m_Rigidbody;
 
 	public AudioClip jumpSound;
-	public AudioClip landSound;
 
 	void Start()
 	{
