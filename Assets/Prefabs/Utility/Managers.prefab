@@ -849,6 +849,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasPackage: 0
+  destroyed: 0
   continueClicked: 0
   dogAttack: 0
   timeUp: 0

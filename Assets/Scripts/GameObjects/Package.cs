@@ -21,6 +21,7 @@ public class Package : MonoBehaviour {
 		if (GameManager.Instance.hasPackage)
 			PlayPackageDamageSound ();
 		if (Health <= 0) {
+			GameManager.Instance.destroyed = true;
 			DisablePackage ();
 		}
 	}
@@ -35,6 +36,7 @@ public class Package : MonoBehaviour {
 		health = totalHealth;
 		damageSlider.gameObject.SetActive (true);
 		AudioManager.Instance.PlaySoundEffect (pickupSound);
+		GameManager.Instance.destroyed = false;
 	}
 
 	void OnDisable(){

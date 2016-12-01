@@ -8,9 +8,11 @@ public class Monday : Level {
 
 	public override IEnumerator RunLevel()
 	{
+		bool playedFirstDelivery = false;
 		//Setup event for first dog attack.
 		LevelManager.Instance.StartCoroutine (OnDogAttack(2));
-		LevelManager.Instance.StartCoroutine (CheckWinState (4));
+		LevelManager.Instance.StartCoroutine (CheckWinState (5));
+		LevelManager.Instance.StartCoroutine (CheckPackageDestroyed (4));
 
 		//Get first package pickup location & update UI counter.
 		LevelManager.Instance.UpdatePackageDeliveredCount ();
@@ -28,12 +30,18 @@ public class Monday : Level {
 
 		//Deliver package and get updated counter.
 		yield return new WaitUntil (() => !GameManager.Instance.hasPackage);
-		GameManager.Instance.stats.packagesDelivered++;
-		LevelManager.Instance.UpdatePackageDeliveredCount ();
+		if (!GameManager.Instance.destroyed) {
+			GameManager.Instance.stats.packagesDelivered++;
+			LevelManager.Instance.UpdatePackageDeliveredCount ();
+			//Trigger Onboarding event #3: Rinse & Repeat delivery.
+			yield return LevelManager.Instance.StartCoroutine (TriggerEvent (3));
+			playedFirstDelivery = true;
+		}
+
+		GameManager.Instance.destroyed = false;
+
 		LevelManager.Instance.SetPickup ();
 
-		//Trigger Onboarding event #3: Rinse & Repeat delivery.
-		yield return LevelManager.Instance.StartCoroutine (TriggerEvent (3));
 
 		//Package Loop. Will be interrupted by time up co-routine.
 		while (true) {
@@ -43,7 +51,17 @@ public class Monday : Level {
 
 			//Package Loop Pick up.
 			yield return new WaitUntil (() => !GameManager.Instance.hasPackage);
-			GameManager.Instance.stats.packagesDelivered++;
+			if (!GameManager.Instance.destroyed) {
+				GameManager.Instance.stats.packagesDelivered++;
+				if (!playedFirstDelivery) {
+					//Trigger Onboarding event #3: Rinse & Repeat delivery.
+					yield return LevelManager.Instance.StartCoroutine (TriggerEvent (3));
+					playedFirstDelivery = true;
+				}
+			}
+
+			GameManager.Instance.destroyed = false;
+
 			LevelManager.Instance.UpdatePackageDeliveredCount ();
 			LevelManager.Instance.SetPickup ();
 		}
@@ -61,4 +79,9 @@ public class Monday : Level {
 		yield return LevelManager.Instance.StartCoroutine (TriggerEvent (eventIndex));
 	}
 		
+	public IEnumerator CheckPackageDestroyed(int eventIndex)
+	{
+		yield return new WaitUntil (() => GameManager.Instance.destroyed);
+		yield return LevelManager.Instance.StartCoroutine (TriggerEvent (eventIndex));
+	}
 }
