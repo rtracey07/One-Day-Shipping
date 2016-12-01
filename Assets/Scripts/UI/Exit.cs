@@ -6,12 +6,7 @@ public class Exit : MonoBehaviour {
 
     public void OnClick()
     {
-        StartCoroutine(LoadScene());
+		Application.Quit();
     }
 
-    public IEnumerator LoadScene()
-    {
-        yield return new WaitForSeconds(1.0f);
-        Application.Quit();
-    }
 }
