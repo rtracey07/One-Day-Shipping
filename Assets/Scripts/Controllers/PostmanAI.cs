@@ -30,7 +30,7 @@ public class PostmanAI : MonoBehaviour {
 	private RaycastHit ground;
 	[SerializeField] private float groundOffset = 0.2f;
 	[SerializeField] private float speed = 5.0f;				// flight speed
-	[SerializeField] private float damageStrength = 5.0f;		// damage to player
+	[SerializeField] private float damageStrength = 10.0f;		// damage to package
 	private Vector3 center;										// center of the chase radius
 	[SerializeField] private float radius = 3.0f;				// chasing radius
 	[SerializeField] private float projectileRadius = 5.0f;		// radius for shooting projectiles
