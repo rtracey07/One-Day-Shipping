@@ -430,4 +430,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationOffset: 0.01
   speed: 0
-  carCollisionSound: {fileID: 8300000, guid: 49c99b5ae7df5416cb5b860ff76f3d54, type: 3}
+  damageStrength: 10
+  carCollisionSound1: {fileID: 8300000, guid: 2e656dd86478d498d83faa890bf8d019, type: 3}
+  carCollisionSound2: {fileID: 8300000, guid: 8bb83fe14077e420cb553741323ebc55, type: 3}
+  carCollisionSound3: {fileID: 8300000, guid: 4a3ee95337b7b47a98f28f02d72f55db, type: 3}
