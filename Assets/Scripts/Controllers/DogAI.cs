@@ -17,7 +17,6 @@ public class DogAI : MonoBehaviour {
 	[SerializeField] private float attackProximity = 0.3f;		// when to do attack animation
 
 	public AudioClip attackSound1, attackSound2, attackSound3, attackSound4;
-	public AudioClip packageDamage1, packageDamage2, packageDamage3; 
 
 	private Package package;				// package to damage
 
@@ -175,7 +174,6 @@ public class DogAI : MonoBehaviour {
 
 			if (package != null) {
 				package.DamagePackage (damageStrength);
-				PlayPackageDamageSound ();
 			}
 			PlayDogBarkSound ();
 			GameManager.Instance.stats.dogsHit++;
@@ -201,21 +199,6 @@ public class DogAI : MonoBehaviour {
 			break;
 		case 4:
 			AudioManager.Instance.PlaySoundEffect (attackSound4);
-			break;
-		}
-	}
-
-	public void PlayPackageDamageSound(){
-		int random = Random.Range (1, 4);
-		switch (random) {
-		case 1:
-			AudioManager.Instance.PlaySoundEffect (packageDamage1);
-			break;
-		case 2:
-			AudioManager.Instance.PlaySoundEffect (packageDamage2);
-			break;
-		case 3:
-			AudioManager.Instance.PlaySoundEffect (packageDamage3);
 			break;
 		}
 	}
