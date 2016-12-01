@@ -2190,7 +2190,7 @@ MonoBehaviour:
   rotationOffset: 0.05
   groundOffset: 0.01
   speed: 1.5
-  damageStrength: 2
+  damageStrength: 13
   radius: 5
   projectileRadius: 7
   attackProximity: 0.6
@@ -2199,9 +2199,6 @@ MonoBehaviour:
   projectileInterval: 0.5
   projectile: {fileID: 54000011118484082, guid: da7e932ec170646a3a2f9cb4897ad98a,
     type: 2}
-  packageDamage1: {fileID: 8300000, guid: 2cdc80583e7e64a9ab57977ea9173c96, type: 3}
-  packageDamage2: {fileID: 8300000, guid: aff446cf653fb47169c576d0384d2298, type: 3}
-  packageDamage3: {fileID: 8300000, guid: b1125e43e5dca4e12927d2e64f4eaff6, type: 3}
 --- !u!137 &137000010023492578
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
