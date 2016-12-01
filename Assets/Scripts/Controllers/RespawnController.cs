@@ -7,7 +7,7 @@ public class RespawnController : MonoBehaviour {
 	public AudioClip respawnSound;
 
 	void Start(){
-		start = GameObject.FindGameObjectWithTag("SpawnPoint").transform;
+		start = GameObject.FindGameObjectWithTag ("SpawnPoint").transform;
 	}
 
 	void OnTriggerEnter(Collider other){
@@ -16,4 +16,6 @@ public class RespawnController : MonoBehaviour {
 			transform.position = start.position;
 		}
 	}
+
+
 }
