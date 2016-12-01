@@ -49,6 +49,8 @@ public class Package : MonoBehaviour {
 	public void DisablePackage()
 	{
 		AudioManager.Instance.PlaySoundEffect (destroyPackageSound);
+		GameManager.Instance.hasPackage = false;
 		damageSlider.gameObject.SetActive (false);
+
 	}
 }
