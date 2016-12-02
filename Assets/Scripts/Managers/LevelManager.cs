@@ -166,7 +166,7 @@ public class LevelManager : MonoBehaviour {
 					
 				StartCoroutine (DisplayAvatar (currCutScene.avatar, m_CutsceneAvatarR, 1.5f));
 				StartCoroutine (DisplayAvatar (currCutScene.avatarL, m_CutsceneAvatarL, 1.5f));
-				StartCoroutine (DisplayDialog (dialogue, m_CutsceneText, 0.02f, currEvent.requiresConfirmation));
+				StartCoroutine (DisplayDialog (dialogue, m_CutsceneText, 0.01f, currEvent.requiresConfirmation));
 
 			} else {
 				if (currEvent.avatar != null)

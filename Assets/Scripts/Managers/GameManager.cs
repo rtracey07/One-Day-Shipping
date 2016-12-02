@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour {
 	public bool hasPackage = false;
 
 	[HideInInspector]
+	public bool destroyed = false;
+
+	[HideInInspector]
 	public bool continueClicked = false;
 
 	[HideInInspector]

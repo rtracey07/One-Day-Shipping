@@ -19,7 +19,7 @@ public class CarPath : MonoBehaviour {
 	private Vector3 cameraSpacePos;
 	private float groundOffset = -0.1f;
 
-	public AudioClip carCollisionSound;
+	public AudioClip carCollisionSound1, carCollisionSound2, carCollisionSound3;
 
 	void Start()
 	{
@@ -85,7 +85,7 @@ public class CarPath : MonoBehaviour {
 			if (!isHit) {
 				GameManager.Instance.stats.carsHit++;
 				isHit = true;
-				AudioManager.Instance.PlaySoundEffect (carCollisionSound);
+				PlayCarHornSound ();
 				//damage package if it exists:
 				GameObject pack_gameobject = GameObject.FindGameObjectWithTag("Package");
 				if (pack_gameobject != null) {
@@ -96,6 +96,21 @@ public class CarPath : MonoBehaviour {
 				}
 				StartCoroutine (ResetHit (2.0f));
 			}
+		}
+	}
+
+	public void PlayCarHornSound(){
+		int random = Random.Range (1, 4);
+		switch (random) {
+		case 1:
+			AudioManager.Instance.PlaySoundEffect (carCollisionSound1);
+			break;
+		case 2:
+			AudioManager.Instance.PlaySoundEffect (carCollisionSound2);
+			break;
+		case 3:
+			AudioManager.Instance.PlaySoundEffect (carCollisionSound3);
+			break;
 		}
 	}
 

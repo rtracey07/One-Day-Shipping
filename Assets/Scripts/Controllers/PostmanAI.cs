@@ -438,7 +438,6 @@ public class PostmanAI : MonoBehaviour {
 
 	}
 
-
 	void OnDrawGizmos()
 	{
 		//Visual. Not used in movement
@@ -450,7 +449,4 @@ public class PostmanAI : MonoBehaviour {
 			Gizmos.DrawWireSphere (this.transform.position, 3);
 		}
 	}
-
-
-
 }
