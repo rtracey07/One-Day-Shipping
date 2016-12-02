@@ -61,7 +61,8 @@ public class CarPath : MonoBehaviour {
 			Vector3 look = iTween.PointOnPath (path.pathway, currentLook);
 			iTween.PutOnPath (gameObject, path.pathway, CurrentPathPercent);
 			transform.LookAt (look);
-			transform.position = Vector3.MoveTowards (transform.position, new Vector3 (transform.position.x, transform.position.x + groundOffset, transform.position.z), GameClockManager.Instance.time * speed);
+			//transform.position = Vector3.MoveTowards (transform.position, new Vector3 (transform.position.x, transform.position.x + groundOffset, transform.position.z), GameClockManager.Instance.time * speed);
+			//Debug.DrawRay (transform.position, transform.forward, Color.cyan);
 		}
 	}
 
