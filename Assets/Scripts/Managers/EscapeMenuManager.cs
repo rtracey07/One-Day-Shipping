@@ -26,7 +26,7 @@ public class EscapeMenuManager : MonoBehaviour {
 		}
 	}
 
-	void AccessEscapeMenu(){
+	public void AccessEscapeMenu(){
 		if (!active) {
 			m_ActiveCanvas.SetActive (true);
 			GameClockManager.Instance.freeze = true; //pause the game
@@ -36,6 +36,13 @@ public class EscapeMenuManager : MonoBehaviour {
 			GameClockManager.Instance.freeze = false; //pause the game
 			active = false;
 		}
+	}
+
+	public void MainTransition()
+	{
+		m_ActiveCanvas.SetActive(false);
+		m_Main.SetActive(true);
+		m_ActiveCanvas = m_Main;
 	}
 
 	public void WantToQuitTransition(){
