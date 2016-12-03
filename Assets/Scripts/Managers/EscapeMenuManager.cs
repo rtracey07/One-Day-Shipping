@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class EscapeMenuManager : MonoBehaviour {
 
@@ -27,14 +28,16 @@ public class EscapeMenuManager : MonoBehaviour {
 	}
 
 	public void AccessEscapeMenu(){
-		if (!active) {
-			m_ActiveCanvas.SetActive (true);
-			GameClockManager.Instance.freeze = true; //pause the game
-			active = true;
-		} else {
-			m_ActiveCanvas.SetActive (false);
-			GameClockManager.Instance.freeze = false; //pause the game
-			active = false;
+		if (SceneManager.GetActiveScene ().name != "FrontEnd") {
+			if (!active) {
+				m_ActiveCanvas.SetActive (true);
+				GameClockManager.Instance.freeze = true; //pause the game
+				active = true;
+			} else {
+				m_ActiveCanvas.SetActive (false);
+				GameClockManager.Instance.freeze = false; //pause the game
+				active = false;
+			}
 		}
 	}
 
