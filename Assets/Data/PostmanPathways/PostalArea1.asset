@@ -11,9 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcec4d19ae60945748ec14f6a2e98c28, type: 3}
   m_Name: PostalArea1
   m_EditorClassIdentifier: 
-  name: 
+  pathName: 
   isActive: 0
-  center: {x: 23.37, y: 0, z: -54.7}
+  center: {x: 14.1, y: 0, z: -46.8}
   pathway:
   - {x: 40.6, y: 0, z: -14.39}
   - {x: 32.32, y: 0.1, z: -18.81}
