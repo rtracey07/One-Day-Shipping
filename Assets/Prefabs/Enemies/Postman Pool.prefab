@@ -62,7 +62,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d1402312d21df4fa68998895b6d0840c, type: 2}
   - {fileID: 11400000, guid: 0400780b9d8034ffd9d8010ff7757fd4, type: 2}
   - {fileID: 11400000, guid: 9ee6f3e094a6b46c9bf4cc01237baa3f, type: 2}
+  - {fileID: 11400000, guid: f15f59c9a3c8d4a2d805c4f283cfb595, type: 2}
+  - {fileID: 11400000, guid: cb51cbd8356dc460295851c9c65aad37, type: 2}
+  - {fileID: 11400000, guid: b1e7b51ace2544a7eb92a8dc30fadbb0, type: 2}
   inactivePathColor: {r: 0.013083923, g: 0.8897059, b: 0.019129543, a: 1}
   activePathColor: {r: 1, g: 0, b: 0, a: 1}
   activeDistance: 50
-  debug: 1
+  debug: 0

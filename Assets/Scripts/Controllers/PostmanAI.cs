@@ -176,7 +176,7 @@ public class PostmanAI : MonoBehaviour {
 			state = State.PlayerChase;
 			//Debug.Log ("from walking");
 		}
-		transform.position = Vector3.MoveTowards (transform.position, new Vector3 (transform.position.x, ground.point.y + groundOffset, transform.position.z), GameClockManager.Instance.time * speed);
+		//transform.position = Vector3.MoveTowards (transform.position, new Vector3 (transform.position.x, ground.point.y + groundOffset, transform.position.z), GameClockManager.Instance.time * speed);
 	}
 
 	/// <summary>
@@ -215,6 +215,7 @@ public class PostmanAI : MonoBehaviour {
 		//			Quaternion rot3 = Quaternion.LookRotation (dir3);
 		//			transform.rotation = Quaternion.Slerp (transform.rotation, rot3, GameClockManager.Instance.time * speed);
 		transform.Translate (transform.forward * GameClockManager.Instance.time * speed, Space.World);
+		//transform.position = Vector3.MoveTowards (transform.position, new Vector3 (transform.position.x, ground.point.y + groundOffset, transform.position.z), GameClockManager.Instance.time * speed);
 		//state = State.Walking;
 
 		if ((transform.position.x - center.x) * (transform.position.x - center.x)
@@ -294,7 +295,7 @@ public class PostmanAI : MonoBehaviour {
 			Quaternion rot = Quaternion.LookRotation (dir);
 			transform.rotation = Quaternion.Slerp (transform.rotation, rot, GameClockManager.Instance.time * speed);
 			transform.Translate (transform.forward * GameClockManager.Instance.time * speed, Space.World);
-			transform.position = Vector3.MoveTowards (transform.position, new Vector3 (transform.position.x, ground.point.y + groundOffset, transform.position.z), GameClockManager.Instance.time * speed);
+			//transform.position = Vector3.MoveTowards (transform.position, new Vector3 (transform.position.x, ground.point.y + groundOffset, transform.position.z), GameClockManager.Instance.time * speed);
 			CheckForPlayer ();
 		}
 	}
@@ -351,6 +352,9 @@ public class PostmanAI : MonoBehaviour {
 		if (Physics.Raycast (transform.position, -Vector3.up, out hit)) {
 			ground = hit;
 		}
+
+		if (state == State.PlayerChase || state == State.Turning)
+			transform.position = Vector3.MoveTowards (transform.position, new Vector3 (transform.position.x, ground.point.y + groundOffset, transform.position.z), GameClockManager.Instance.time * speed);
 
 //		if (path == null || !path.isActive) {
 //			path = m_Manager.GetAreaPath ();

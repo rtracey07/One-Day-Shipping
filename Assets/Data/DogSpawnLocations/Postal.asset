@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6c76d983fd6542819816f0c212ebb9b, type: 3}
+  m_Name: Postal
+  m_EditorClassIdentifier: 
+  name: Postal
+  isActive: 0
+  center: {x: 89.7, y: 0, z: -59.8}
+  locations:
+  - {x: 102.3, y: 14.5, z: -67.7}
+  - {x: 99, y: 14.5, z: -59.2}
+  - {x: 89.3, y: 14.5, z: -57.3}
+  - {x: 78.9, y: 14.5, z: -57.6}
+  - {x: 74.1, y: 14.5, z: -67.7}
+  - {x: 78.3, y: 14.5, z: -74.8}
+  - {x: 51.5, y: 14.5, z: -74.8}
+  - {x: 120.8, y: 14.5, z: -74.8}
+  - {x: 136.12, y: 14.5, z: -65.15}
+  - {x: 154.7, y: 14.5, z: -73.6}
+  - {x: 26.79, y: 14.5, z: -70.96}
+  - {x: 14.76, y: 14.5, z: -63.34}

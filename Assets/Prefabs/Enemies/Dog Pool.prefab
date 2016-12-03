@@ -60,6 +60,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ee66b1c79ded74a93bd244d759d30a91, type: 2}
   - {fileID: 11400000, guid: 39fdb462509aa4dee95ca98a63f498bb, type: 2}
   - {fileID: 11400000, guid: 935114c13371d4de991b0315cb88a946, type: 2}
+  - {fileID: 11400000, guid: 9d9d17b161b3646cf941dd861ae0ff65, type: 2}
   inactivePathColor: {r: 0.44117647, g: 0.56064904, b: 1, a: 1}
   activePathColor: {r: 1, g: 0, b: 0, a: 1}
   activeDistance: 50
