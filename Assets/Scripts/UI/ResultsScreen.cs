@@ -80,13 +80,8 @@ public class ResultsScreen : MonoBehaviour {
 
 
 	void CheckForHighscore(){
+		
 		resultsCalculationWindow.GetComponent<Canvas> ().enabled = false;
-
-		//instantiate if not set yet
-		if (PlayerPrefs.GetInt (LevelManager.Instance.levelData.name + "_Score") == null) {
-			PlayerPrefs.SetInt (LevelManager.Instance.levelData.name + "_Score", -1);
-			PlayerPrefs.SetString (LevelManager.Instance.levelData.name + "_Name", "unnamed");
-		}
 
 		int currHighscore = PlayerPrefs.GetInt (LevelManager.Instance.levelData.name + "_Score");
 
