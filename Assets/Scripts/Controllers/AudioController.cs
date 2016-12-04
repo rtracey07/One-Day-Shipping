@@ -9,7 +9,11 @@ public class AudioController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		AudioManager.Instance.playSoundtrack ();
-		volumeControl = (Slider)GameObject.FindGameObjectWithTag ("AudioSlider").GetComponent<Slider>();
+		GameObject obj = GameObject.FindGameObjectWithTag ("AudioSlider");
+
+		if (obj != null) {
+			volumeControl = (Slider)obj.GetComponent<Slider> ();
+		}
 	}
 
 	void Update(){
