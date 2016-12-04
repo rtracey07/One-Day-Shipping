@@ -3,18 +3,16 @@ using System.Collections;
 using System;
 using UnityEngine.SceneManagement;
 
-[CreateAssetMenu(menuName = "Data/Level/Tuesday")]
-public class Tuesday : Level {
-
+[CreateAssetMenu(menuName = "Data/Level/Wednesday")]
+public class Wednesday : Level {
 
 	public override IEnumerator RunLevel()
 	{
-		LevelManager.Instance.StartCoroutine (CheckWinState (3));
-		LevelManager.Instance.StartCoroutine (CheckPostmanHit (1));
-		LevelManager.Instance.StartCoroutine (CheckEnteringSuburbs (2));
+		//LevelManager.Instance.StartCoroutine (TriggerStorm ());
+		LevelManager.Instance.StartCoroutine (CheckWinState (1));
 
 		//Package Loop. Will be interrupted by time up co-routine.
-		LevelManager.Instance.UpdatePackageDeliveredCount ();	
+		LevelManager.Instance.UpdatePackageDeliveredCount ();
 		GameManager.Instance.destroyed = false;
 		LevelManager.Instance.SetPickup ();	
 
@@ -45,23 +43,12 @@ public class Tuesday : Level {
 		yield return LevelManager.Instance.StartCoroutine (TriggerEvent (eventIndex));
 	}
 
-	public IEnumerator CheckPostmanHit(int eventIndex)
-	{
-		yield return new WaitUntil (() => GameManager.Instance.postmanAttack);
-		yield return LevelManager.Instance.StartCoroutine (TriggerEvent (eventIndex));
-	}
+	//storm logic goes here:
 
-	public IEnumerator CheckEnteringSuburbs(int eventIndex)
-	{
-		PlayerController player = FindObjectOfType<PlayerController> ();
-		if (player == null) {
-			yield break;
-		}
-		//wait until we are in the suburb location disclosed by (87, y, 18)
-		yield return new WaitUntil (() => player.transform.position.x > 87.0f && player.transform.position.z > 18.0f);
-
-		yield return LevelManager.Instance.StartCoroutine (TriggerEvent (eventIndex));
+	/*
+	public IEnumerator TriggerStorm(){
+		yield return;
 	}
+	*/
 
 }
-
