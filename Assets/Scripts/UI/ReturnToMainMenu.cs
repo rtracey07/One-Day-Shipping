@@ -4,9 +4,15 @@ using UnityEngine.SceneManagement;
 
 public class ReturnToMainMenu : MonoBehaviour {
 
+
 	public void OnClick(){
+
+		//deactive escape window:
 		GameObject escapeUI = GameObject.FindGameObjectWithTag("EscapeUI");
-		escapeUI.GetComponent<EscapeMenuManager> ().Deactivate (); //deactive escape window
+		if (escapeUI != null) {
+			escapeUI.GetComponent<EscapeMenuManager> ().Deactivate (); 
+		}
+
 		SceneManager.LoadScene ("FrontEnd");
 	}
 }
