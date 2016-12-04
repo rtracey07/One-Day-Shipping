@@ -188,6 +188,8 @@ public class PostmanAI : MonoBehaviour {
 			package = GameObject.FindGameObjectWithTag ("Package");
 			Rigidbody projectile_shoot = Instantiate (projectile, new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z), transform.rotation) as Rigidbody;
 
+			GameManager.Instance.postmanAttack = true;
+
 			projectile_shoot.GetComponent<PostmanProjectile> ().DamageStrength = damageStrength;
 			if (package != null) {
 				projectile_shoot.GetComponent<PostmanProjectile> ().Pack = package;

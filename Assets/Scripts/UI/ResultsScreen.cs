@@ -22,6 +22,10 @@ public class ResultsScreen : MonoBehaviour {
 	void Start () {
 		newHighscoreWindow.SetActive (false);
 		optionsWindow.SetActive (false);
+
+		if (LevelManager.Instance.CheckWinState ())
+			PlayerPrefs.SetInt (LevelManager.Instance.levelData.name + "_Win", 1);
+
 		StartCoroutine (TallyScore ());
 	}
 
@@ -47,7 +51,6 @@ public class ResultsScreen : MonoBehaviour {
 		currScore = GameManager.Instance.stats.postmenHit * -10;
 		yield return StartCoroutine (Tally (currScore, postmen, total));
 
-		float time = 0.0f;
 		float originalFontSize = total.fontSize;
 
 		yield return new WaitForSeconds(1.5f);
@@ -96,7 +99,8 @@ public class ResultsScreen : MonoBehaviour {
 
 	public void OnClick(){
 		if (newHighScoreNameInput.text != null)
-			PlayerPrefs.SetString (LevelManager.Instance.levelData.name + "_Name", newHighScoreNameInput.text.Substring(0, 7));
+			PlayerPrefs.SetString (LevelManager.Instance.levelData.name + "_Name", 
+				newHighScoreNameInput.text.Length > 7 ?  newHighScoreNameInput.text.Substring(0, 7) : newHighScoreNameInput.text);
 		else {
 			PlayerPrefs.SetString (LevelManager.Instance.levelData.name + "_Name", "unnamed");
 		}

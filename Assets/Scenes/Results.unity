@@ -704,33 +704,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114000012603268402, guid: e3b5d8de54c89481797a0f6752162366,
-        type: 2}
-      propertyPath: stats.packagesDelivered
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000012603268402, guid: e3b5d8de54c89481797a0f6752162366,
-        type: 2}
-      propertyPath: stats.packagesDestroyed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000012603268402, guid: e3b5d8de54c89481797a0f6752162366,
-        type: 2}
-      propertyPath: stats.carsHit
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000012603268402, guid: e3b5d8de54c89481797a0f6752162366,
-        type: 2}
-      propertyPath: stats.dogsHit
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000012603268402, guid: e3b5d8de54c89481797a0f6752162366,
-        type: 2}
-      propertyPath: stats.postmenHit
-      value: 5
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114000010145439424, guid: e3b5d8de54c89481797a0f6752162366, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e3b5d8de54c89481797a0f6752162366, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &532181599
