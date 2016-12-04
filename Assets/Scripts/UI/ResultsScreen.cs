@@ -89,7 +89,7 @@ public class ResultsScreen : MonoBehaviour {
 
 	void CheckForHighscore(){
 		
-		m_ResultsUI.GetComponent<Canvas> ().enabled = false;
+		m_ResultsUI.SetActive (false);
 
 		int currHighscore = PlayerPrefs.GetInt (LevelManager.Instance.levelData.name + "_Score");
 

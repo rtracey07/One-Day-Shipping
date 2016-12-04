@@ -51,6 +51,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9934d621facf143e3a041b68a24e554a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levels:
+  - level: {fileID: 11400000, guid: 3681cef75f96c41e6873f7c877bbcd78, type: 2}
+    cutScene: {fileID: 11400000, guid: c79b9f14ad18e4d519ca6a94777a358e, type: 2}
+  - level: {fileID: 11400000, guid: c44595258ec394fac855188fa2383ddd, type: 2}
+    cutScene: {fileID: 11400000, guid: c79b9f14ad18e4d519ca6a94777a358e, type: 2}
+  - level: {fileID: 11400000, guid: 439f8bcce1cd14260b1ae6a8836734f9, type: 2}
+    cutScene: {fileID: 11400000, guid: c79b9f14ad18e4d519ca6a94777a358e, type: 2}
+  - level: {fileID: 11400000, guid: 173a787c3dda645ff8f96ba292b71efc, type: 2}
+    cutScene: {fileID: 11400000, guid: c79b9f14ad18e4d519ca6a94777a358e, type: 2}
+  - level: {fileID: 11400000, guid: b96cdc560e900444187c7349d71407fc, type: 2}
+    cutScene: {fileID: 11400000, guid: c79b9f14ad18e4d519ca6a94777a358e, type: 2}
+  currLevelIndex: 0
   hasPackage: 0
   destroyed: 0
   continueClicked: 0

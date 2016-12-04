@@ -49,6 +49,8 @@ public class LevelManager : MonoBehaviour {
 	void Awake () {
 		if (_Instance == null) {
 			_Instance = this;
+			levelData = GameManager.Instance.GetLevelInfo ();
+			cutSceneData = GameManager.Instance.GetCutSceneInfo ();
 			StartCoroutine(Run ());
 		}
 		else {
@@ -193,7 +195,12 @@ public class LevelManager : MonoBehaviour {
 
 	public bool CheckWinState()
 	{
-		return (GameManager.Instance.stats.packagesDelivered == levelData.packageCount);
+		if (GameManager.Instance.stats.packagesDelivered == levelData.packageCount) {
+			GameManager.Instance.UpdateLevelInfo ();
+			return true;
+		}
+
+		return false;
 	}
 
 	private IEnumerator Run()
@@ -340,5 +347,13 @@ public class LevelManager : MonoBehaviour {
 				location.color = fadedOut;
 				location.sprite = null;
 			}
+	}
+
+	public void StartNextLevel()
+	{
+		levelData = GameManager.Instance.GetLevelInfo ();
+		cutSceneData = GameManager.Instance.GetCutSceneInfo ();
+
+		StartCoroutine (Run ());
 	}
 }
