@@ -9,10 +9,7 @@ public class ReturnToMainMenu : MonoBehaviour {
 
 		//deactive escape window:
 		GameObject escapeUI = GameObject.FindGameObjectWithTag("EscapeUI");
-		if (escapeUI != null) {
-			escapeUI.GetComponent<EscapeMenuManager> ().Deactivate (); 
-		}
-
+		FindObjectOfType<EscapeMenuManager>().Deactivate (); //deactive escape window
 		SceneManager.LoadScene ("FrontEnd");
 	}
 }

@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviour {
 	public bool continueClicked = false;
 
 	[HideInInspector]
+	public bool skipClicked = false;
+
+	[HideInInspector]
 	public bool dogAttack = false;
 
 	[HideInInspector]
@@ -40,6 +43,12 @@ public class GameManager : MonoBehaviour {
 	public void Continue()
 	{
 		continueClicked = true;
+	}
+
+	public void Skip()
+	{
+		continueClicked = true;
+		skipClicked = true;
 	}
 
 	public void FindCamera()
