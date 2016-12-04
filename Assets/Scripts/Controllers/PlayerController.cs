@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour {
 	Transform start;
 	public AudioClip respawnSound;
 
+
 	void Start()
 	{
 		//Cache Controllers for use.
@@ -173,6 +174,20 @@ public class PlayerController : MonoBehaviour {
 					sliding = false;
 				}
 			}
+		}
+
+		if (other.gameObject.tag.Equals("Vehicle")) {
+			vertical = 0.5f;
+			//Debug.Log("vertical: " + vertical);
+			//Debug.Log ("car!");
+			Vector3 forcedir = transform.position - other.gameObject.transform.position;
+			forcedir = new Vector3 (forcedir.x, 0.1f, forcedir.z);
+			moveDirection = Vector3.zero;
+			m_Rigidbody.AddForce (forcedir * 500.0f);
+			moveDirection = new Vector3 (forcedir.x, -0.1f, forcedir.z);
+
+
+
 		}
 
 
