@@ -4,6 +4,12 @@ using System.Collections;
 
 public class ResultsScreen : MonoBehaviour {
 
+	[Header("Results Windows")]
+	public GameObject m_HighScoreUI;
+	public GameObject m_OptionsUI;
+	public GameObject m_ResultsUI;
+
+	[Header("Results Fields")]
 	public float tallyLength;
 	public Text delivered;
 	public Text destroyed;
@@ -11,17 +17,20 @@ public class ResultsScreen : MonoBehaviour {
 	public Text dogs;
 	public Text postmen;
 	public Text total;
-	public GameObject newHighscoreWindow;
-	public GameObject optionsWindow;
-	public GameObject resultsCalculationWindow;
-	public Text newHighScoreNameInput;
+
+	[Header("New High Score Name Field")]
+	public Text NameInput;
 
 	private int totalVal;
 
 	// Use this for initialization
 	void Start () {
-		newHighscoreWindow.SetActive (false);
-		optionsWindow.SetActive (false);
+		m_HighScoreUI.SetActive (false);
+		m_OptionsUI.SetActive (false);
+
+		if (LevelManager.Instance.CheckWinState ())
+			PlayerPrefs.SetInt (LevelManager.Instance.levelData.name + "_Win", 1);
+
 		StartCoroutine (TallyScore ());
 	}
 
@@ -47,7 +56,6 @@ public class ResultsScreen : MonoBehaviour {
 		currScore = GameManager.Instance.stats.postmenHit * -10;
 		yield return StartCoroutine (Tally (currScore, postmen, total));
 
-		float time = 0.0f;
 		float originalFontSize = total.fontSize;
 
 		yield return new WaitForSeconds(1.5f);
@@ -81,26 +89,27 @@ public class ResultsScreen : MonoBehaviour {
 
 	void CheckForHighscore(){
 		
-		resultsCalculationWindow.GetComponent<Canvas> ().enabled = false;
+		m_ResultsUI.GetComponent<Canvas> ().enabled = false;
 
 		int currHighscore = PlayerPrefs.GetInt (LevelManager.Instance.levelData.name + "_Score");
 
 		//store new highscore value if a new highscore has been achieved
 		if (totalVal > currHighscore) {
 			PlayerPrefs.SetInt (LevelManager.Instance.levelData.name + "_Score", totalVal);
-			newHighscoreWindow.SetActive (true);
+			m_HighScoreUI.SetActive (true);
+		} else {
+			m_OptionsUI.SetActive (true);
 		}
-
-		optionsWindow.SetActive (true);
 	}
 
 	public void OnClick(){
-		if (newHighScoreNameInput.text != null)
-			PlayerPrefs.SetString (LevelManager.Instance.levelData.name + "_Name", newHighScoreNameInput.text.Substring(0, 7));
+		if (NameInput.text != null)
+			PlayerPrefs.SetString (LevelManager.Instance.levelData.name + "_Name", 
+				NameInput.text.Length > 7 ?  NameInput.text.Substring(0, 7) : NameInput.text);
 		else {
 			PlayerPrefs.SetString (LevelManager.Instance.levelData.name + "_Name", "unnamed");
 		}
-		newHighscoreWindow.SetActive (false);
-		optionsWindow.SetActive (true);
+		m_HighScoreUI.SetActive (false);
+		m_OptionsUI.SetActive (true);
 	}
 }
