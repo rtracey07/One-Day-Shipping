@@ -12,7 +12,7 @@ public class EscapeMenuManager : MonoBehaviour {
 	public GameObject m_WantToMainMenu;
 	public GameObject m_Settings;
 
-	bool active;
+	public bool active;
 
 	void Awake(){
 		m_ActiveCanvas = m_Main;
@@ -64,6 +64,11 @@ public class EscapeMenuManager : MonoBehaviour {
 		m_ActiveCanvas.SetActive (false);
 		m_Settings.SetActive (true);
 		m_ActiveCanvas = m_Settings;
+	}
+
+	public void Deactivate(){
+		m_ActiveCanvas.SetActive (false);
+		active = false;
 	}
 
 }
