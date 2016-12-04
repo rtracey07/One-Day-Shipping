@@ -12,10 +12,12 @@ public class CutScene : ScriptableObject {
 	{
 		yield return LevelManager.Instance.StartCoroutine (LevelManager.Instance.FullScreenFade (false));
 
-		for (int i=0; i<Events.Count; i++) {
+		for (int i=0; i<Events.Count && !GameManager.Instance.skipClicked; i++) {
 			yield return LevelManager.Instance.StartCoroutine (TriggerEvent (i));
 		}
 
+		GameManager.Instance.skipClicked = false;
+		GameManager.Instance.continueClicked = false;
 		yield return LevelManager.Instance.StartCoroutine (LevelManager.Instance.FullScreenFade (true));
 		LevelManager.Instance.m_BlackOut.gameObject.SetActive (false);
 	}
@@ -35,8 +37,13 @@ public class CutScene : ScriptableObject {
 			if (Events [index].requiresConfirmation) {
 				yield return new WaitUntil (() => GameManager.Instance.continueClicked);
 				GameManager.Instance.continueClicked = false;
+
 			} else {
 				yield return new WaitForSeconds (Events [index].duration);
+			}
+
+			if (GameManager.Instance.skipClicked) {
+				yield break;
 			}
 		}
 

@@ -6,7 +6,10 @@ public class EscapeMenuManager : MonoBehaviour {
 
 	private GameObject m_ActiveCanvas;
 
-	//reference to other UI windows:
+	[Header("Parent of the Escape Menus")]
+	public GameObject m_EscapeMenu;
+
+	[Header("Sub Menus for the Escape Menu")]
 	public GameObject m_Main;
 	public GameObject m_WantToQuit;
 	public GameObject m_WantToMainMenu;
@@ -16,7 +19,6 @@ public class EscapeMenuManager : MonoBehaviour {
 
 	void Awake(){
 		m_ActiveCanvas = m_Main;
-		m_ActiveCanvas.SetActive (false);
 		active = false;
 	}
 	
@@ -28,13 +30,14 @@ public class EscapeMenuManager : MonoBehaviour {
 	}
 
 	public void AccessEscapeMenu(){
-		if (SceneManager.GetActiveScene ().name != "FrontEnd") {
+		if (SceneManager.GetActiveScene ().name != "FrontEnd" || SceneManager.GetActiveScene ().name != "CutScene") {
 			if (!active) {
-				m_ActiveCanvas.SetActive (true);
+				m_EscapeMenu.SetActive (true);
 				GameClockManager.Instance.freeze = true; //pause the game
 				active = true;
 			} else {
-				m_ActiveCanvas.SetActive (false);
+				m_EscapeMenu.SetActive (false);
+				m_ActiveCanvas = m_Main;
 				GameClockManager.Instance.freeze = false; //pause the game
 				active = false;
 			}
@@ -67,8 +70,7 @@ public class EscapeMenuManager : MonoBehaviour {
 	}
 
 	public void Deactivate(){
-		m_ActiveCanvas.SetActive (false);
-		active = false;
+		Destroy (GameManager.Instance.gameObject);
 	}
 
 }
