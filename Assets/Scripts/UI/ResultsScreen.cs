@@ -96,7 +96,7 @@ public class ResultsScreen : MonoBehaviour {
 
 	public void OnClick(){
 		if (newHighScoreNameInput.text != null)
-			PlayerPrefs.SetString (LevelManager.Instance.levelData.name + "_Name", newHighScoreNameInput.text);
+			PlayerPrefs.SetString (LevelManager.Instance.levelData.name + "_Name", newHighScoreNameInput.text.Substring(0, 7));
 		else {
 			PlayerPrefs.SetString (LevelManager.Instance.levelData.name + "_Name", "unnamed");
 		}
