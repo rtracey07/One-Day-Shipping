@@ -11,14 +11,15 @@ public class Wednesday : Level {
 		//LevelManager.Instance.StartCoroutine (TriggerStorm ());
 		LevelManager.Instance.StartCoroutine (CheckWinState (1));
 
-		//Package Loop. Will be interrupted by time up co-routine.
+		//reset variables:
 		LevelManager.Instance.UpdatePackageDeliveredCount ();
 		GameManager.Instance.destroyed = false;
 		LevelManager.Instance.SetPickup ();	
 
-		//Trigger Onboarding event #1: Explain Entering Suburbs.
+		//Trigger Onboarding event #1: Explain Weather.
 		yield return LevelManager.Instance.StartCoroutine (TriggerEvent (0)); 
 
+		//Package Loop. Will be interrupted by time up co-routine:
 		while (true) {
 			//Package Loop: Drop off.
 			yield return new WaitUntil (() => GameManager.Instance.hasPackage);
