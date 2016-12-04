@@ -55,13 +55,15 @@ public class CarPathManager : MonoBehaviour {
 	{
 		if (debug == true) {
 			for (int i = 0; i < areas.Count; i++) {
-				if (areas[i].isActive)
+				if (areas[i] != null && areas[i].isActive)
 					Gizmos.color = activePathColor;
 				else
 					Gizmos.color = inactivePathColor;
-					
-				iTween.DrawPath (areas [i].pathway);
-				Gizmos.DrawWireSphere (areas [i].center, activeDistance);
+				if (areas [i] != null) {
+					iTween.DrawPath (areas [i].pathway);
+					Gizmos.DrawWireSphere (areas [i].center, activeDistance);
+				}	
+
 			}
 		}
 	}

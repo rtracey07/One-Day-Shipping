@@ -18,6 +18,7 @@ TagManager:
   - Water
   - SpawnPoint
   - Tree
+  - EscapeUI
   layers:
   - Default
   - TransparentFX

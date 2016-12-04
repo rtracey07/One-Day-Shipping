@@ -11,11 +11,17 @@ public class ResultsScreen : MonoBehaviour {
 	public Text dogs;
 	public Text postmen;
 	public Text total;
+	public GameObject newHighscoreWindow;
+	public GameObject optionsWindow;
+	public GameObject resultsCalculationWindow;
+	public Text newHighScoreNameInput;
 
 	private int totalVal;
 
 	// Use this for initialization
 	void Start () {
+		newHighscoreWindow.SetActive (false);
+		optionsWindow.SetActive (false);
 		StartCoroutine (TallyScore ());
 	}
 
@@ -43,6 +49,11 @@ public class ResultsScreen : MonoBehaviour {
 
 		float time = 0.0f;
 		float originalFontSize = total.fontSize;
+
+		yield return new WaitForSeconds(1.5f);
+
+		CheckForHighscore ();
+
 	}
 
 
@@ -65,5 +76,31 @@ public class ResultsScreen : MonoBehaviour {
 
 		currText.text = currScore.ToString();
 		currTotalText.text = totalVal.ToString();
+	}
+
+
+	void CheckForHighscore(){
+		
+		resultsCalculationWindow.GetComponent<Canvas> ().enabled = false;
+
+		int currHighscore = PlayerPrefs.GetInt (LevelManager.Instance.levelData.name + "_Score");
+
+		//store new highscore value if a new highscore has been achieved
+		if (totalVal > currHighscore) {
+			PlayerPrefs.SetInt (LevelManager.Instance.levelData.name + "_Score", totalVal);
+			newHighscoreWindow.SetActive (true);
+		}
+
+		optionsWindow.SetActive (true);
+	}
+
+	public void OnClick(){
+		if (newHighScoreNameInput.text != null)
+			PlayerPrefs.SetString (LevelManager.Instance.levelData.name + "_Name", newHighScoreNameInput.text.Substring(0, 7));
+		else {
+			PlayerPrefs.SetString (LevelManager.Instance.levelData.name + "_Name", "unnamed");
+		}
+		newHighscoreWindow.SetActive (false);
+		optionsWindow.SetActive (true);
 	}
 }
