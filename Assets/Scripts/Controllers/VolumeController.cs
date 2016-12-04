@@ -2,19 +2,22 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class AudioController : MonoBehaviour {
+public class VolumeController : MonoBehaviour {
 
 	private Slider volumeControl;
 
 	// Use this for initialization
 	void Start () {
-		AudioManager.Instance.playSoundtrack ();
-		volumeControl = (Slider)GameObject.FindGameObjectWithTag ("AudioSlider").GetComponent<Slider>();
+		GameObject audio = GameObject.FindGameObjectWithTag ("AudioSlider");
+		if (audio != null) {
+			volumeControl = audio.GetComponent<Slider> ();
+		}
 	}
 
 	void Update(){
+		
 		AudioListener.volume = volumeControl.value;
 	}
-	
+
 
 }
