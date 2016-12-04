@@ -13,7 +13,9 @@ public class AudioController : MonoBehaviour {
 	}
 
 	void Update(){
-		AudioListener.volume = volumeControl.value;
+		if (volumeControl != null) {
+			AudioListener.volume = volumeControl.value;
+		}
 	}
 	
 
