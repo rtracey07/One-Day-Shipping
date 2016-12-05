@@ -19,6 +19,8 @@ public class CarPath : MonoBehaviour {
 	private Vector3 cameraSpacePos;
 	private float groundOffset = -0.1f;
 
+	private Vector3[] iTweenPath;
+
 	public AudioClip carCollisionSound1, carCollisionSound2, carCollisionSound3;
 
 	void Start()
@@ -28,6 +30,8 @@ public class CarPath : MonoBehaviour {
 
 		m_Manager = GetComponentInParent<CarPathManager> ();
 		m_Rigidbody = GetComponent<Rigidbody> ();
+
+		iTween.PutOnPath (gameObject, path.pathway, CurrentPathPercent);
 	}
 
 	public float CurrentPathPercent {
@@ -45,6 +49,7 @@ public class CarPath : MonoBehaviour {
 	{
 		if (path == null || !path.isActive) {
 			path = m_Manager.GetAreaPath ();
+			iTweenPath = iTween.PathControlPointGenerator (path.pathway);
 		}
 
 		if (path != null) {
@@ -58,9 +63,12 @@ public class CarPath : MonoBehaviour {
 			// move along the percentage of the path by time
 			CurrentPathPercent += percentsPerSecond * speedMod * GameClockManager.Instance.time;
 			currentLook += percentsPerSecond * speedMod * GameClockManager.Instance.time;
-			Vector3 look = iTween.PointOnPath (path.pathway, currentLook);
-			iTween.PutOnPath (gameObject, path.pathway, CurrentPathPercent);
+
+			Vector3 look = iTween.PointOnProcessedPath (path.pathway, currentLook);
+			iTween.PutOnProcessedPath (gameObject, path.pathway, CurrentPathPercent);
+
 			transform.LookAt (look);
+
 			//transform.position = Vector3.MoveTowards (transform.position, new Vector3 (transform.position.x, transform.position.x + groundOffset, transform.position.z), GameClockManager.Instance.time * speed);
 			//Debug.DrawRay (transform.position, transform.forward, Color.cyan);
 		}

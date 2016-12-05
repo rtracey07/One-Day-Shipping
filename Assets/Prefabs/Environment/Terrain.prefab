@@ -39,7 +39,11 @@ GameObject:
   - 4: {fileID: 4000010876663740}
   - 33: {fileID: 33000011096348524}
   - 23: {fileID: 23000011598280726}
+<<<<<<< HEAD
   - 65: {fileID: 65000012840754396}
+=======
+  - 65: {fileID: 65000013388916358}
+>>>>>>> origin/master
   m_Layer: 0
   m_Name: River (1)
   m_TagString: Water
@@ -189,7 +193,11 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 1
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+<<<<<<< HEAD
 --- !u!65 &65000012840754396
+=======
+--- !u!65 &65000013388916358
+>>>>>>> origin/master
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -220,8 +228,8 @@ Terrain:
   m_Enabled: 1
   serializedVersion: 3
   m_TerrainData: {fileID: 15600000, guid: 8f0bdb0aebc3b41579859acc3e593bf8, type: 2}
-  m_TreeDistance: 394
-  m_TreeBillboardDistance: 250
+  m_TreeDistance: 240
+  m_TreeBillboardDistance: 138
   m_TreeCrossFadeLength: 15.9
   m_TreeMaximumFullLODCount: 30
   m_DetailObjectDistance: 55
