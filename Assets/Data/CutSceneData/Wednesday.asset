@@ -1,0 +1,138 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea726306599174a85a770ee404be0753, type: 3}
+  m_Name: Wednesday
+  m_EditorClassIdentifier: 
+  Events:
+  - eventName: Alarm Clock
+    sound: {fileID: 8300000, guid: 65c0a37515c2745ecaaf3bc9c96b264b, type: 3}
+    soundVolume: 0.1
+    avatar: {fileID: 0}
+    dialogue:
+    - 
+    timeBeforeDisplaying: 0
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 0
+    duration: 3
+    background: {fileID: 0}
+    avatarL: {fileID: 0}
+  - eventName: Larry Wakes Up
+    sound: {fileID: 8300000, guid: fd188fe62e338451c86c72f762cdaca0, type: 3}
+    soundVolume: 0
+    avatar: {fileID: 0}
+    dialogue:
+    - 8 am. Another day, another dollar.
+    - Wow, the weather looks terrible out there. I better get going so I'm not late.
+    timeBeforeDisplaying: 0
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 1
+    duration: 2
+    background: {fileID: 0}
+    avatarL: {fileID: 0}
+  - eventName: Fade To Office
+    sound: {fileID: 8300000, guid: e6fd2622d51f046bbb80c549c288ef61, type: 3}
+    soundVolume: 0.4
+    avatar: {fileID: 0}
+    dialogue:
+    - 
+    timeBeforeDisplaying: 0
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 0
+    duration: 2
+    background: {fileID: 21300000, guid: 0e48952e0f21448c5a70511be0babc36, type: 3}
+    avatarL: {fileID: 0}
+  - eventName: Boss Greeting
+    sound: {fileID: 0}
+    soundVolume: 0
+    avatar: {fileID: 0}
+    dialogue:
+    - Noodleman. You made it to work today despite the storm.
+    - Unlike the Dispatcher. Where is she?
+    timeBeforeDisplaying: 0
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 1
+    duration: 2
+    background: {fileID: 21300000, guid: 0e48952e0f21448c5a70511be0babc36, type: 3}
+    avatarL: {fileID: 21300000, guid: 47f35c39a642b4b17bff47a2688a0ae8, type: 3}
+  - eventName: Dispatcher Arrives Late
+    sound: {fileID: 0}
+    soundVolume: 0
+    avatar: {fileID: 21300000, guid: 630e7a78ffd454e2baaabee5409f11bf, type: 3}
+    dialogue:
+    - THIS WEATHER IS TERRIBLE! I HATE IT!
+    - I'm late, okay? What's the big deal?
+    - Ahh, Larry. You're still employed. Hah! *cough*
+    timeBeforeDisplaying: 0
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 1
+    duration: 2
+    background: {fileID: 21300000, guid: 0e48952e0f21448c5a70511be0babc36, type: 3}
+    avatarL: {fileID: 21300000, guid: 47f35c39a642b4b17bff47a2688a0ae8, type: 3}
+  - eventName: Boss Message
+    sound: {fileID: 0}
+    soundVolume: 0
+    avatar: {fileID: 21300000, guid: 630e7a78ffd454e2baaabee5409f11bf, type: 3}
+    dialogue:
+    - Hey. Don't talk to me like that.
+    - Anyways, big day today. I heard the Postal Service is taking a day off.
+    - Any package we deliver today will boost our reputation. Get to work, guys.
+    timeBeforeDisplaying: 0
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 1
+    duration: 2
+    background: {fileID: 21300000, guid: 0e48952e0f21448c5a70511be0babc36, type: 3}
+    avatarL: {fileID: 21300000, guid: 47f35c39a642b4b17bff47a2688a0ae8, type: 3}
+  - eventName: Boss Leaves
+    sound: {fileID: 0}
+    soundVolume: 0
+    avatar: {fileID: 21300000, guid: 630e7a78ffd454e2baaabee5409f11bf, type: 3}
+    dialogue:
+    - 
+    timeBeforeDisplaying: 0
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 0
+    duration: 1.5
+    background: {fileID: 21300000, guid: 0e48952e0f21448c5a70511be0babc36, type: 3}
+    avatarL: {fileID: 0}
+  - eventName: Dispatcher Sassy Comment
+    sound: {fileID: 0}
+    soundVolume: 0
+    avatar: {fileID: 21300000, guid: 630e7a78ffd454e2baaabee5409f11bf, type: 3}
+    dialogue:
+    - 'Gawd, what are you looking at? '
+    - Get going, Lanky Larry. Enjoy the storm.
+    timeBeforeDisplaying: 0
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 1
+    duration: 0
+    background: {fileID: 21300000, guid: 0e48952e0f21448c5a70511be0babc36, type: 3}
+    avatarL: {fileID: 0}
+  - eventName: Dispatcher Leaves
+    sound: {fileID: 0}
+    soundVolume: 0
+    avatar: {fileID: 0}
+    dialogue:
+    - 
+    timeBeforeDisplaying: 0
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 0
+    duration: 2
+    background: {fileID: 21300000, guid: 0e48952e0f21448c5a70511be0babc36, type: 3}
+    avatarL: {fileID: 0}

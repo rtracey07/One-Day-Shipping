@@ -1,0 +1,123 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea726306599174a85a770ee404be0753, type: 3}
+  m_Name: Tuesday
+  m_EditorClassIdentifier: 
+  Events:
+  - eventName: Alarm Clock
+    sound: {fileID: 8300000, guid: 65c0a37515c2745ecaaf3bc9c96b264b, type: 3}
+    soundVolume: 0.1
+    avatar: {fileID: 0}
+    dialogue:
+    - 
+    timeBeforeDisplaying: 0
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 0
+    duration: 3
+    background: {fileID: 0}
+    avatarL: {fileID: 0}
+  - eventName: Larry Wakes Up
+    sound: {fileID: 8300000, guid: fd188fe62e338451c86c72f762cdaca0, type: 3}
+    soundVolume: 0
+    avatar: {fileID: 0}
+    dialogue:
+    - 8 am. Rise and grind...
+    - 'I can''t believe I''m not fired yet. '
+    timeBeforeDisplaying: 0
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 1
+    duration: 2
+    background: {fileID: 0}
+    avatarL: {fileID: 0}
+  - eventName: Fade to Office
+    sound: {fileID: 8300000, guid: e6fd2622d51f046bbb80c549c288ef61, type: 3}
+    soundVolume: 0.4
+    avatar: {fileID: 0}
+    dialogue:
+    - 
+    timeBeforeDisplaying: 0
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 0
+    duration: 2
+    background: {fileID: 21300000, guid: 0e48952e0f21448c5a70511be0babc36, type: 3}
+    avatarL: {fileID: 0}
+  - eventName: Dispatcher Greeting
+    sound: {fileID: 0}
+    soundVolume: 0
+    avatar: {fileID: 21300000, guid: 630e7a78ffd454e2baaabee5409f11bf, type: 3}
+    dialogue:
+    - There you are, New Guy. Gawd, Why do you look so excited?
+    - Boss, he has arrived. Come over here.
+    timeBeforeDisplaying: 0
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 1
+    duration: 2
+    background: {fileID: 21300000, guid: 0e48952e0f21448c5a70511be0babc36, type: 3}
+    avatarL: {fileID: 0}
+  - eventName: Boss Greeting
+    sound: {fileID: 0}
+    soundVolume: 0
+    avatar: {fileID: 21300000, guid: 630e7a78ffd454e2baaabee5409f11bf, type: 3}
+    dialogue:
+    - Noodleman! You're on time again. I like it.
+    - Your work yesterday didn't go unnoticed.
+    - You'll be delivering some packages to the Suburbs today.
+    - 'It''s just across the bridge. '
+    timeBeforeDisplaying: 0
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 1
+    duration: 2
+    background: {fileID: 21300000, guid: 0e48952e0f21448c5a70511be0babc36, type: 3}
+    avatarL: {fileID: 21300000, guid: 47f35c39a642b4b17bff47a2688a0ae8, type: 3}
+  - eventName: Boss Leaves
+    sound: {fileID: 0}
+    soundVolume: 0
+    avatar: {fileID: 21300000, guid: 630e7a78ffd454e2baaabee5409f11bf, type: 3}
+    dialogue:
+    - 
+    timeBeforeDisplaying: 0
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 0
+    duration: 1.5
+    background: {fileID: 21300000, guid: 0e48952e0f21448c5a70511be0babc36, type: 3}
+    avatarL: {fileID: 0}
+  - eventName: Dispatcher outro
+    sound: {fileID: 0}
+    soundVolume: 0
+    avatar: {fileID: 21300000, guid: 630e7a78ffd454e2baaabee5409f11bf, type: 3}
+    dialogue:
+    - What are you waiting for? Get going.
+    timeBeforeDisplaying: 0
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 1
+    duration: 0
+    background: {fileID: 21300000, guid: 0e48952e0f21448c5a70511be0babc36, type: 3}
+    avatarL: {fileID: 0}
+  - eventName: Dispatcher Leaves
+    sound: {fileID: 0}
+    soundVolume: 0
+    avatar: {fileID: 0}
+    dialogue:
+    - 
+    timeBeforeDisplaying: 0
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 0
+    duration: 2
+    background: {fileID: 21300000, guid: 0e48952e0f21448c5a70511be0babc36, type: 3}
+    avatarL: {fileID: 0}
