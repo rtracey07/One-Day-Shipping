@@ -8,7 +8,7 @@ public class CarPath : MonoBehaviour {
 	private Rigidbody m_Rigidbody;
 	public float rotationOffset = 0.05f;			// how far ahead to look to orient on path
 	public float speed = 50.0f;
-	private float speedMod = 0.8f;
+	private float speedMod = 0.65f;
 
 	[SerializeField] private float damageStrength = 10.0f;
 
@@ -26,7 +26,7 @@ public class CarPath : MonoBehaviour {
 	void Start()
 	{
 		currentLook = CurrentPathPercent + rotationOffset;
-		percentsPerSecond = 0.02f;//speed * 0.0004f;
+		percentsPerSecond = 0.015f;//speed * 0.0004f;
 
 		m_Manager = GetComponentInParent<CarPathManager> ();
 		m_Rigidbody = GetComponent<Rigidbody> ();
