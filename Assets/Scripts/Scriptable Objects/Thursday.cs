@@ -52,6 +52,7 @@ public class Thursday : Level {
 
 			//Trigger Onboarding event #2: Explain strange dropoff at PSO at first try:
 			if (firstTry){
+				yield return new WaitForSeconds (2.0f);
 				yield return LevelManager.Instance.StartCoroutine (TriggerEvent (1));
 				yield return new WaitForSeconds (1.0f);
 				yield return LevelManager.Instance.StartCoroutine (TriggerEvent (2));

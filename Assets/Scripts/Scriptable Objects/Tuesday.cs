@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 [CreateAssetMenu(menuName = "Data/Level/Tuesday")]
 public class Tuesday : Level {
 
-
 	public override IEnumerator RunLevel()
 	{
 		LevelManager.Instance.StartCoroutine (CheckWinState (3));
