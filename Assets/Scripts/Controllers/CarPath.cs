@@ -8,7 +8,7 @@ public class CarPath : MonoBehaviour {
 	private Rigidbody m_Rigidbody;
 	public float rotationOffset = 0.05f;			// how far ahead to look to orient on path
 	public float speed = 50.0f;
-	private float speedMod = 1.0f;
+	private float speedMod = 0.8f;
 
 	[SerializeField] private float damageStrength = 10.0f;
 
@@ -45,11 +45,12 @@ public class CarPath : MonoBehaviour {
 	}
 		
 
-	void Update ()
+	void FixedUpdate ()
 	{
 		if (path == null || !path.isActive) {
 			path = m_Manager.GetAreaPath ();
-			iTweenPath = iTween.PathControlPointGenerator (path.pathway);
+			if (path != null && path.pathway != null)
+				iTweenPath = iTween.PathControlPointGenerator (path.pathway);
 		}
 
 		if (path != null) {
