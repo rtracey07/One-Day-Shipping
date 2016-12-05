@@ -48,7 +48,7 @@ public class Thursday : Level {
 			yield return new WaitUntil (() => GameManager.Instance.hasPackage);
 
 			//Set dropoff (will always be at Postal Service Office):
-			//LevelManager.Instance.SetSpecificDropoff(mountainDropoffLocation);
+			LevelManager.Instance.SetSpecificDropoff(mountainDropoffLocation);
 
 			//Trigger Onboarding event #2: Explain strange dropoff at PSO at first try:
 			if (firstTry){
@@ -98,17 +98,5 @@ public class Thursday : Level {
 	}
 
 
-	/*
-	 * insert to levelmanager script
-	public void SetSpecificDropoff(Location dropoffLoc){
-		if (currentDestination != null && currentDestination.minimapMarker != null) {
-			currentDestination.SetMiniMapMarkerActive (false);
-			currentDestination = dropoffLoc;
-			currentDestination.SetMiniMapMarkerActive (true);
-		} else {
-			Debug.Log ("Current location doesn't exist or has no minimap marker.");
-		}
-	}
-	*/
 
 }

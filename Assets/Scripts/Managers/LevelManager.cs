@@ -153,6 +153,16 @@ public class LevelManager : MonoBehaviour {
 		}
 	}
 
+	public void SetSpecificDropoff(Location dropoffLoc){
+		if (currentDestination != null && currentDestination.minimapMarker != null) {
+			currentDestination.SetMiniMapMarkerActive (false);
+			currentDestination = dropoffLoc;
+			currentDestination.SetMiniMapMarkerActive (true);
+		} else {
+			Debug.Log ("Current location doesn't exist or has no minimap marker.");
+		}
+	}
+
 	public void RunEvent(InGameEvent currEvent, string dialogue)
 	{
 		if (currEvent != null) {
