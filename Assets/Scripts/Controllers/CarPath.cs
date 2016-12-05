@@ -8,7 +8,7 @@ public class CarPath : MonoBehaviour {
 	private Rigidbody m_Rigidbody;
 	public float rotationOffset = 0.05f;			// how far ahead to look to orient on path
 	public float speed = 50.0f;
-	private float speedMod = 0.65f;
+	private float speedMod = 0.25f;
 
 	[SerializeField] private float damageStrength = 10.0f;
 
