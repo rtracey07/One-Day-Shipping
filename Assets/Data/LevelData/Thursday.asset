@@ -59,6 +59,8 @@ MonoBehaviour:
     - Suburb_Dropoff_P
     - Suburb_Dropoff_S
     - Suburb_Dropoff_X
+  - locations:
+    - Mountain_Dropoff
   events:
   - eventName: Game Intro
     sound: {fileID: 0}
@@ -99,19 +101,30 @@ MonoBehaviour:
     pauseGame: 1
     requiresConfirmation: 1
     duration: 0
-  - eventName: End of Level
+  - eventName: Dropoff Postal Service Package (Boss)
     sound: {fileID: 0}
     soundVolume: 0
     avatar: {fileID: 21300000, guid: aae6d859cf7f246cfb3acc6a36ed621e, type: 3}
     dialogue:
     - This package was a personal gift from me to the Postal Service
-    - Thank you for helping me deiliver it to them, Noodleman.
-    - Rest up. Expect a challenging day at work tomorrow.
+    - Thank you for helping me deliver it, Noodleman.
+    - You're off your shift now. Feel free to deliver more packages!
     timeBeforeDisplaying: 0
     isSkippable: 0
     pauseGame: 1
     requiresConfirmation: 1
     duration: 0
-  currIndex: 0
-  mountainDropoffLocation: {fileID: 114000011439289896, guid: d1a17116f57794dd4814fd5b07c6b135,
-    type: 2}
+  - eventName: End Level
+    sound: {fileID: 0}
+    soundVolume: 0
+    avatar: {fileID: 21300000, guid: 201084ff4c3f142b6b247eb8b414072a, type: 3}
+    dialogue:
+    - A personal gift from the Boss... hmm...
+    - I wonder what it could be...
+    - 'Ahh forget it. Why would I even care? '
+    timeBeforeDisplaying: 0
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 1
+    duration: 0
+  currIndex: 2

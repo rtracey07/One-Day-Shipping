@@ -109,8 +109,7 @@ MonoBehaviour:
     soundVolume: 0
     avatar: {fileID: 21300000, guid: 201084ff4c3f142b6b247eb8b414072a, type: 3}
     dialogue:
-    - Oh my gawd, that must have been a sassy package you delivered to the Postal
-      Service yesterday.
+    - Oh my gawd, it must've been a sassy package you gave to the Postal Service.
     - I heard they are planning to take you down by all means today.
     - What's that up in the air? I see... Fire...
     - At least I won't have trouble lighting my cigarettes today. Heh-heh *cough*

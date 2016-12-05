@@ -153,10 +153,11 @@ public class LevelManager : MonoBehaviour {
 		}
 	}
 
-	public void SetSpecificDropoff(Location dropoffLoc){
+	//specifically for Thursday:
+	public void SetMountainDropoff(){
 		if (currentDestination != null && currentDestination.minimapMarker != null) {
 			currentDestination.SetMiniMapMarkerActive (false);
-			currentDestination = dropoffLoc;
+			currentDestination = levelData.GetMountainDropoffLocation (ref activeLocations);
 			currentDestination.SetMiniMapMarkerActive (true);
 		} else {
 			Debug.Log ("Current location doesn't exist or has no minimap marker.");

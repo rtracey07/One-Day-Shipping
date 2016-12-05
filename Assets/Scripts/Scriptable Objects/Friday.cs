@@ -9,12 +9,14 @@ public class Friday : Level {
 	public override IEnumerator RunLevel()
 	{
 		LevelManager.Instance.StartCoroutine (CheckWinState (1));
+		//LevelManager.Instance.StartCoroutine (CheckFlamingPackages (1));
 
 		LevelManager.Instance.UpdatePackageDeliveredCount ();	
 		GameManager.Instance.destroyed = false;
 		LevelManager.Instance.SetPickup ();	
 
 		//Trigger Onboarding event #1: Explain Flaming Packages from the sky.
+		yield return new WaitForSeconds(1.5f);
 		yield return LevelManager.Instance.StartCoroutine (TriggerEvent (0)); 
 
 		while (true) {
@@ -40,5 +42,13 @@ public class Friday : Level {
 		yield return new WaitUntil (() => LevelManager.Instance.CheckWinState ());
 		yield return LevelManager.Instance.StartCoroutine (TriggerEvent (eventIndex));
 	}
+
+	//flaming package detection not implemented yet.
+	/*
+	public IEnumerator CheckFlamingPackages(int eventIndex)
+	{
+		
+	}
+	*/
 
 }

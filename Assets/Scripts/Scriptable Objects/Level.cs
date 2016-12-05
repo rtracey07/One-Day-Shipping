@@ -101,6 +101,27 @@ public class Level : ScriptableObject{
 		return null;
 	}
 
+	//specifically for Thursday:
+	public Location GetMountainDropoffLocation(ref Location[] activeLocations)
+	{        
+		string current = "Mountain_Dropoff";
+
+		currIndex = 2; //Thursday level only has 3 packages to complete
+
+		for (int i = 0; i < activeLocations.Length; i++) {
+			if (activeLocations[i].gameObject.name == current) {
+				Location location = activeLocations [i];
+				location.SetActive ();
+				return location;
+			}
+		}
+
+
+		Debug.Log (string.Format ("Dropoff Location {0} not found in scene.", current));
+
+		return null;
+	}
+
 	public virtual IEnumerator RunLevel()
 	{
 		Debug.Log ("Default Level Type. Override to add level structure");

@@ -6,9 +6,6 @@ using UnityEngine.SceneManagement;
 [CreateAssetMenu(menuName = "Data/Level/Thursday")]
 public class Thursday : Level {
 
-	//reference to the mountain dropoff location:
-	public Location mountainDropoffLocation;
-
 	public override IEnumerator RunLevel()
 	{
 		LevelManager.Instance.StartCoroutine (CheckWinState (4));
@@ -48,7 +45,7 @@ public class Thursday : Level {
 			yield return new WaitUntil (() => GameManager.Instance.hasPackage);
 
 			//Set dropoff (will always be at Postal Service Office):
-			LevelManager.Instance.SetSpecificDropoff(mountainDropoffLocation);
+			LevelManager.Instance.SetMountainDropoff();
 
 			//Trigger Onboarding event #2: Explain strange dropoff at PSO at first try:
 			if (firstTry){
@@ -65,6 +62,7 @@ public class Thursday : Level {
 				GameManager.Instance.stats.packagesDelivered++;
 				delivered = true; //condition to exit loop
 				//Display Dialougue boxes saying "you delivered to the PSO":
+				yield return new WaitForSeconds(1.0f);
 				yield return LevelManager.Instance.StartCoroutine (TriggerEvent (3));
 			}
 
