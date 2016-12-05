@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fce7888c8549445da925ea9e38a51ef2, type: 3}
+  m_Name: PostOffice
+  m_EditorClassIdentifier: 
+  name: PostOffice
+  isActive: 0
+  center: {x: -0.8939362, y: 5.422726, z: 4.589088}
+  locations:
+  - {x: 76.5368, y: 14.5, z: -61.81104}
+  - {x: 84.03, y: 14.5, z: -59.8}
+  - {x: 90.86, y: 14.5, z: -59.8}
+  - {x: 95.57, y: 14.5, z: -66.15}
+  - {x: 92.8, y: 14.5, z: -71.4}
+  - {x: 61.2, y: 14.5, z: -71.4}
+  - {x: 121, y: 14.5, z: -77.9}
+  - {x: 106.7, y: 14.5, z: -71.2}
+  - {x: 60.2, y: 14.5, z: -74.4}
+  - {x: 76.9, y: 14.5, z: -59.99}

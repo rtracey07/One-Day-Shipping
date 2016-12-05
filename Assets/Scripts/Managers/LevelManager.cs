@@ -116,6 +116,25 @@ public class LevelManager : MonoBehaviour {
 		}
 	}
 
+	public void SpawnStatPostman(){
+		GameObject statParent = GameObject.Find ("Stationary Postman Pool");
+
+		if(statParent != null)
+		{
+			for (int i = 0; i < levelData.statPostmanGroup.numStatPostmenToSpawn; i++) {
+				GameObject stat = GameObject.Instantiate (levelData.statPostmanGroup.stat);
+				stat.transform.parent = statParent.transform;
+				PostmanStationaryAI postman = stat.GetComponent<PostmanStationaryAI> ();
+				postman.ThrowsProjectiles = levelData.postmanPathGroup.throwProjectiles;
+				//dog.GetComponent<DogAI>().Center = levelData.dogGroup.dogSpawnLocations [i];
+			}
+		}
+		else
+		{
+			Debug.Log("Dog Pool GameObject missing from scene. Nowhere to instantiate cars");
+		}
+	}
+
 	public float GetMissionLength()
 	{
 		return levelData.missionLength;
