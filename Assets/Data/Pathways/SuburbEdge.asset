@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: SuburbEdge
   m_EditorClassIdentifier: 
   pathName: 
-  isActive: 1
+  isActive: 0
   center: {x: 246.4, y: 0, z: 8.1}
   pathway:
   - {x: 222, y: 0, z: 13.5}
@@ -46,7 +46,7 @@ MonoBehaviour:
   - {x: 241.3, y: 0, z: 67.1}
   - {x: 234.1, y: 0, z: 46.7}
   - {x: 220.5, y: 0, z: 37.4}
-  - {x: 215.9, y: 0, z: 39.8}
+  - {x: 215.9, y: 0, z: 36.8}
   - {x: 205.9, y: 0, z: 40.8}
   - {x: 194.4, y: 0, z: 47.3}
   - {x: 198.6, y: 0, z: 41.4}
