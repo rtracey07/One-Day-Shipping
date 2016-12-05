@@ -59,7 +59,46 @@ MonoBehaviour:
     - Suburb_Dropoff_P
     - Suburb_Dropoff_S
     - Suburb_Dropoff_X
-  events: []
+  events:
+  - eventName: Game Intro
+    sound: {fileID: 0}
+    soundVolume: 0
+    avatar: {fileID: 21300000, guid: 201084ff4c3f142b6b247eb8b414072a, type: 3}
+    dialogue:
+    - Larry, the phone won't stop ringing!
+    - Oh my gawd, what have you done?
+    - You are making my work day harder than it has to be.
+    - Oh well... Another day, another dollar.
+    timeBeforeDisplaying: 0
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 1
+    duration: 0
+  - eventName: Pickup Postal Service Package (Dispatcher)
+    sound: {fileID: 0}
+    soundVolume: 0
+    avatar: {fileID: 21300000, guid: 201084ff4c3f142b6b247eb8b414072a, type: 3}
+    dialogue:
+    - Umm... This package has a strange address. Let me look it up for you.
+    - Gawd, this is the address of the Postal Service Headquarters!
+    - 'Is this a trap? I''m not sure if we should deliver it. '
+    timeBeforeDisplaying: 0
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 1
+    duration: 0
+  - eventName: Pickup Postal Service Package (Boss)
+    sound: {fileID: 0}
+    soundVolume: 0
+    avatar: {fileID: 21300000, guid: aae6d859cf7f246cfb3acc6a36ed621e, type: 3}
+    dialogue:
+    - No, Dispatcher. We are One Day Shipping.
+    - It's a package. We shall deliver it.
+    timeBeforeDisplaying: 0
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 1
+    duration: 0
   currIndex: 0
   mountainDropoffLocation: {fileID: 114000011439289896, guid: d1a17116f57794dd4814fd5b07c6b135,
     type: 2}

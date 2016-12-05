@@ -11,7 +11,7 @@ public class Thursday : Level {
 
 	public override IEnumerator RunLevel()
 	{
-		LevelManager.Instance.StartCoroutine (CheckWinState (3));
+		LevelManager.Instance.StartCoroutine (CheckWinState (4));
 
 		//reset variables:
 		LevelManager.Instance.UpdatePackageDeliveredCount ();
@@ -53,6 +53,8 @@ public class Thursday : Level {
 			//Trigger Onboarding event #2: Explain strange dropoff at PSO at first try:
 			if (firstTry){
 				yield return LevelManager.Instance.StartCoroutine (TriggerEvent (1));
+				yield return new WaitForSeconds (1.0f);
+				yield return LevelManager.Instance.StartCoroutine (TriggerEvent (2));
 				firstTry = false;
 			}
 
@@ -62,7 +64,7 @@ public class Thursday : Level {
 				GameManager.Instance.stats.packagesDelivered++;
 				delivered = true; //condition to exit loop
 				//Display Dialougue boxes saying "you delivered to the PSO":
-				yield return LevelManager.Instance.StartCoroutine (TriggerEvent (2));
+				yield return LevelManager.Instance.StartCoroutine (TriggerEvent (3));
 			}
 
 			//reset / update parameters:
