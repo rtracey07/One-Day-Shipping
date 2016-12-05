@@ -6,16 +6,6 @@ using UnityEngine.SceneManagement;
 [CreateAssetMenu(menuName = "Data/Level/Tuesday")]
 public class Tuesday : Level {
 
-	// Changes since Monday:
-	// Deliver packages to the suburbs
-	// postmen now shoots packages
-
-	// textboxes:
-	// "you just did a great job in the city. now let's go to suburbs"
-	// "Did that guy just throw a package at you? wow you really pissed them off. Stay away"
-	// "This is the suburbs. Don't get lost"
-	// "Really, Noodleman? Do you have to walk on my lawn?!" (strategically place location)
-	// ""
 
 	public override IEnumerator RunLevel()
 	{

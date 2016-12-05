@@ -8,36 +8,99 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f1c58ec081064413a2bebda9ccb76cb, type: 3}
+  m_Script: {fileID: 11500000, guid: 0104909e204b446cabe17a3b5c1c517d, type: 3}
   m_Name: Wednesday
   m_EditorClassIdentifier: 
   levelName: Wednesday
-  missionLength: 10
-  packageCount: 0
-  backgroundMusic: {fileID: 8300000, guid: a79efaf74a8e8474499c5ff782d78930, type: 3}
+  missionLength: 5
+  packageCount: 6
+  backgroundMusic: {fileID: 8300000, guid: 6a93e87e6e4b44511bdb34709e5fa048, type: 3}
   carPathGroup:
-    numberOfCarsToSpawn: 50
-    carPrefabs:
-    - {fileID: 1000014174934912, guid: 51860edce4c0a4b769ff189aba3c918d, type: 2}
-    - {fileID: 1000014174934912, guid: cb1168ac3685a4af7bd2c6c94c382247, type: 2}
-    - {fileID: 1000014174934912, guid: 95fb02a8189804689a7b7891228feabf, type: 2}
-    - {fileID: 1000014174934912, guid: 79da92a775832432e9302135f66d4645, type: 2}
-    - {fileID: 1000014174934912, guid: 8b25db4f5147e41f0abe134f5b126e41, type: 2}
-    - {fileID: 1000014174934912, guid: 4acac27cebe2844cda271e3772cfd4a2, type: 2}
-    - {fileID: 1000014174934912, guid: 959c8c6aaf3b540a98416b2e4488a64b, type: 2}
-    - {fileID: 1000014174934912, guid: a2db029ef64e6482796b19afb56e225b, type: 2}
-    - {fileID: 1000014174934912, guid: c107bcefa27034374912dac7d1df6dea, type: 2}
-    - {fileID: 1000014174934912, guid: 1cd65b0e33630439bb90e45101f98c92, type: 2}
-    - {fileID: 1000014174934912, guid: 54e4f6d1fdf3f48cb9a482354b76f00c, type: 2}
-    - {fileID: 1000014174934912, guid: ff0d95c161361449c84725d1c2fac500, type: 2}
+    numberOfCarsToSpawn: 0
+    carPrefabs: []
   dogGroup:
-    dog: {fileID: 1000013319492356, guid: b733cab54df0844ea9f357ae13ff3766, type: 2}
-    numDogsToSpawn: 15
+    dog: {fileID: 0}
+    numDogsToSpawn: 0
   postmanPathGroup:
-    postman: {fileID: 1000013488615578, guid: 9062692dc9f2e41698be565a79e79390, type: 2}
-    numPostmanToSpawn: 10
-    throwProjectiles: 1
-  pickupLocations: []
-  dropoffLocations: []
-  events: []
+    postman: {fileID: 0}
+    numPostmanToSpawn: 0
+    throwProjectiles: 0
+  pickupLocations:
+  - locations:
+    - City_Mailbox_G
+    - City_Mailbox_J
+    - City_Mailbox_K
+  - locations:
+    - City_Mailbox_Z
+    - City_Mailbox_T
+    - City_Mailbox_S
+  - locations:
+    - Suburb_Mailbox_H
+    - Suburb_Mailbox_J
+    - Suburb_Mailbox_D
+  - locations:
+    - Suburb_Mailbox_M
+    - Suburb_Mailbox_O
+    - Suburb_Mailbox_Q
+  - locations:
+    - Suburb_Mailbox_D
+    - Suburb_Mailbox_G
+    - Suburb_Mailbox_L
+  - locations:
+    - City_Mailbox_P
+    - City_Mailbox_R
+    - City_Mailbox_X
+  dropoffLocations:
+  - locations:
+    - City_Dropoff_X
+    - City_Dropoff_Y
+    - City_Dropoff_R
+  - locations:
+    - Suburb_Dropoff_D
+    - Suburb_Dropoff_E
+    - Suburb_Dropoff_F
+  - locations:
+    - Suburb_Dropoff_H
+    - Suburb_Dropoff_J
+    - Suburb_Dropoff_O
+  - locations:
+    - Suburb_Dropoff_A
+    - Suburb_Dropoff_K
+    - Suburb_Dropoff_M
+  - locations:
+    - City_Dropoff_C
+    - City_Dropoff_D
+    - City_Dropoff_F
+  - locations:
+    - City_Dropoff_L
+    - City_Dropoff_N
+    - City_Dropoff_I
+  events:
+  - eventName: Weather Warning
+    sound: {fileID: 0}
+    soundVolume: 0
+    avatar: {fileID: 21300000, guid: 201084ff4c3f142b6b247eb8b414072a, type: 3}
+    dialogue:
+    - Yuck. Terrible weather out there.
+    - My hair is all wet. My cigarette won't light up.
+    - But I guess we have to stay true to our One Day Delivery promise, Larry.
+    - Unlike you, at least I get to stay inside today.
+    - heh heh... *cough*
+    timeBeforeDisplaying: 0
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 1
+    duration: 0
+  - eventName: End Game
+    sound: {fileID: 0}
+    soundVolume: 0
+    avatar: {fileID: 21300000, guid: aae6d859cf7f246cfb3acc6a36ed621e, type: 3}
+    dialogue:
+    - Fantastic work, Noodleman.
+    - Our company is really picking up steam.
+    timeBeforeDisplaying: 0
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 1
+    duration: 0
   currIndex: 0

@@ -5494,6 +5494,22 @@ public class iTween : MonoBehaviour{
 	public static void PutOnPath(GameObject target, Vector3[] path, float percent){
 		target.transform.position=Interp(PathControlPointGenerator(path),percent);
 	}
+
+	/// <summary>
+	/// Puts a GameObject on a path at the provided percentage 
+	/// </summary>
+	/// <param name="target">
+	/// A <see cref="GameObject"/>
+	/// </param>
+	/// <param name="path">
+	/// A <see cref="Vector3[]"/>
+	/// </param>
+	/// <param name="percent">
+	/// A <see cref="System.Single"/>
+	/// </param>
+	public static void PutOnProcessedPath(GameObject target, Vector3[] path, float percent){
+		target.transform.position=Interp(path,percent);
+	}
 	
 	/// <summary>
 	/// Puts a GameObject on a path at the provided percentage 
@@ -5783,7 +5799,23 @@ public class iTween : MonoBehaviour{
 	/// </returns>
 	public static Vector3 PointOnPath(Vector3[] path, float percent){
 		return(Interp(PathControlPointGenerator(path),percent));
-	}		
+	}	
+
+	/// <summary>
+	/// Returns a Vector3 position on a path at the provided percentage  
+	/// </summary>
+	/// <param name="path">
+	/// A <see cref="Vector3[]"/>
+	/// </param>
+	/// <param name="percent">
+	/// A <see cref="System.Single"/>
+	/// </param>
+	/// <returns>
+	/// A <see cref="Vector3"/>
+	/// </returns>
+	public static Vector3 PointOnProcessedPath(Vector3[] path, float percent){
+		return(Interp(path,percent));
+	}
 	
 	/// <summary>
 	/// When called from an OnDrawGizmos() function it will draw a curved path through the provided array of Vector3s.
@@ -6668,7 +6700,7 @@ public class iTween : MonoBehaviour{
 		}
 	}	
 	
-	private static Vector3[] PathControlPointGenerator(Vector3[] path){
+	public static Vector3[] PathControlPointGenerator(Vector3[] path){
 		Vector3[] suppliedPath;
 		Vector3[] vector3s;
 		

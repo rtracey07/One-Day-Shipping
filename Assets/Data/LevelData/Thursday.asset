@@ -8,36 +8,97 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f1c58ec081064413a2bebda9ccb76cb, type: 3}
+  m_Script: {fileID: 11500000, guid: 4ab582a6baf77405e96fad9c1ad7834d, type: 3}
   m_Name: Thursday
   m_EditorClassIdentifier: 
   levelName: Thursday
-  missionLength: 10
-  packageCount: 0
-  backgroundMusic: {fileID: 8300000, guid: 6a93e87e6e4b44511bdb34709e5fa048, type: 3}
+  missionLength: 5
+  packageCount: 3
+  backgroundMusic: {fileID: 8300000, guid: e5720f4e6b11a46a8a6f90efb10ef17f, type: 3}
   carPathGroup:
-    numberOfCarsToSpawn: 60
+    numberOfCarsToSpawn: 30
     carPrefabs:
-    - {fileID: 1000014174934912, guid: 51860edce4c0a4b769ff189aba3c918d, type: 2}
     - {fileID: 1000014174934912, guid: cb1168ac3685a4af7bd2c6c94c382247, type: 2}
-    - {fileID: 1000014174934912, guid: 95fb02a8189804689a7b7891228feabf, type: 2}
-    - {fileID: 1000014174934912, guid: 79da92a775832432e9302135f66d4645, type: 2}
-    - {fileID: 1000014174934912, guid: 8b25db4f5147e41f0abe134f5b126e41, type: 2}
-    - {fileID: 1000014174934912, guid: 4acac27cebe2844cda271e3772cfd4a2, type: 2}
-    - {fileID: 1000014174934912, guid: 959c8c6aaf3b540a98416b2e4488a64b, type: 2}
-    - {fileID: 1000014174934912, guid: a2db029ef64e6482796b19afb56e225b, type: 2}
-    - {fileID: 1000014174934912, guid: c107bcefa27034374912dac7d1df6dea, type: 2}
-    - {fileID: 1000014174934912, guid: 1cd65b0e33630439bb90e45101f98c92, type: 2}
-    - {fileID: 1000014174934912, guid: 54e4f6d1fdf3f48cb9a482354b76f00c, type: 2}
+    - {fileID: 1000014174934912, guid: 51860edce4c0a4b769ff189aba3c918d, type: 2}
     - {fileID: 1000014174934912, guid: ff0d95c161361449c84725d1c2fac500, type: 2}
+    - {fileID: 1000014174934912, guid: 54e4f6d1fdf3f48cb9a482354b76f00c, type: 2}
+    - {fileID: 1000014174934912, guid: 79da92a775832432e9302135f66d4645, type: 2}
+    - {fileID: 1000014174934912, guid: 95fb02a8189804689a7b7891228feabf, type: 2}
+    - {fileID: 1000014174934912, guid: 959c8c6aaf3b540a98416b2e4488a64b, type: 2}
+    - {fileID: 1000014174934912, guid: 4acac27cebe2844cda271e3772cfd4a2, type: 2}
+    - {fileID: 1000014174934912, guid: 1cd65b0e33630439bb90e45101f98c92, type: 2}
+    - {fileID: 1000014174934912, guid: a2db029ef64e6482796b19afb56e225b, type: 2}
+    - {fileID: 1000014174934912, guid: 8b25db4f5147e41f0abe134f5b126e41, type: 2}
+    - {fileID: 1000014174934912, guid: c107bcefa27034374912dac7d1df6dea, type: 2}
   dogGroup:
     dog: {fileID: 1000013319492356, guid: b733cab54df0844ea9f357ae13ff3766, type: 2}
-    numDogsToSpawn: 15
+    numDogsToSpawn: 10
   postmanPathGroup:
     postman: {fileID: 1000013488615578, guid: 9062692dc9f2e41698be565a79e79390, type: 2}
-    numPostmanToSpawn: 12
+    numPostmanToSpawn: 8
     throwProjectiles: 1
-  pickupLocations: []
-  dropoffLocations: []
-  events: []
+  pickupLocations:
+  - locations:
+    - City_Mailbox_N
+    - City_Mailbox_Q
+    - City_Mailbox_D
+  - locations:
+    - Suburb_Mailbox_F
+    - Suburb_Mailbox_H
+    - Suburb_Mailbox_M
+  - locations:
+    - Suburb_Mailbox_D
+    - City_Mailbox_Y
+    - City_Mailbox_G
+  dropoffLocations:
+  - locations:
+    - City_Dropoff_L
+    - Suburb_Dropoff_C
+    - Suburb_Dropoff_E
+  - locations:
+    - Suburb_Dropoff_P
+    - Suburb_Dropoff_S
+    - Suburb_Dropoff_X
+  events:
+  - eventName: Game Intro
+    sound: {fileID: 0}
+    soundVolume: 0
+    avatar: {fileID: 21300000, guid: 201084ff4c3f142b6b247eb8b414072a, type: 3}
+    dialogue:
+    - Larry, the phone won't stop ringing!
+    - Oh my gawd, what have you done?
+    - You are making my work day harder than it has to be.
+    - Oh well... Another day, another dollar.
+    timeBeforeDisplaying: 0
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 1
+    duration: 0
+  - eventName: Pickup Postal Service Package (Dispatcher)
+    sound: {fileID: 0}
+    soundVolume: 0
+    avatar: {fileID: 21300000, guid: 201084ff4c3f142b6b247eb8b414072a, type: 3}
+    dialogue:
+    - Umm... This package has a strange address. Let me look it up for you.
+    - Gawd, this is the address of the Postal Service Headquarters!
+    - 'Is this a trap? I''m not sure if we should deliver it. '
+    timeBeforeDisplaying: 0
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 1
+    duration: 0
+  - eventName: Pickup Postal Service Package (Boss)
+    sound: {fileID: 0}
+    soundVolume: 0
+    avatar: {fileID: 21300000, guid: aae6d859cf7f246cfb3acc6a36ed621e, type: 3}
+    dialogue:
+    - No, Dispatcher. We are One Day Shipping.
+    - It's a package. We shall deliver it.
+    timeBeforeDisplaying: 0
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 1
+    duration: 0
   currIndex: 0
+  mountainDropoffLocation: {fileID: 114000011439289896, guid: d1a17116f57794dd4814fd5b07c6b135,
+    type: 2}

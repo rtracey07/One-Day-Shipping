@@ -28,7 +28,7 @@ public class CarPathManager : MonoBehaviour {
 		if (areas != null && player != null) {
 			
 			for (int i = 0; i < areas.Count; i++) {
-				Debug.Log (" " + areas [i].center +  " " + activeDistance);
+
 				if (Vector3.Distance (areas [i].center, player.position) <= activeDistance) {
 					if (!areas[i].isActive) {
 						activeAreas.Add (areas [i]);

@@ -488,7 +488,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013122626614}
-  - 114: {fileID: 114000012603268402}
   - 114: {fileID: 114000010145439424}
   - 114: {fileID: 114000010462843628}
   - 114: {fileID: 114000011699379230}
@@ -2155,31 +2154,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114000012603268402
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013025401862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9934d621facf143e3a041b68a24e554a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hasPackage: 0
-  destroyed: 0
-  continueClicked: 0
-  skipClicked: 0
-  dogAttack: 0
-  timeUp: 0
-  mainCamera: {fileID: 0}
-  stats:
-    score: 0
-    packagesDelivered: 0
-    packagesDestroyed: 0
-    carsHit: 0
-    dogsHit: 0
-    postmenHit: 0
 --- !u!114 &114000012691427974
 MonoBehaviour:
   m_ObjectHideFlags: 1

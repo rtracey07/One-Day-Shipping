@@ -177,13 +177,13 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		if (other.gameObject.tag.Equals("Vehicle")) {
-			vertical = 0.5f;
+			vertical = 0.05f;
 			//Debug.Log("vertical: " + vertical);
 			//Debug.Log ("car!");
 			Vector3 forcedir = transform.position - other.gameObject.transform.position;
 			forcedir = new Vector3 (forcedir.x, 0.1f, forcedir.z);
 			moveDirection = Vector3.zero;
-			m_Rigidbody.AddForce (forcedir * 500.0f);
+			m_Rigidbody.AddForce (forcedir * 300.0f);
 			moveDirection = new Vector3 (forcedir.x, -0.1f, forcedir.z);
 
 

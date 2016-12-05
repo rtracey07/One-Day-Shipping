@@ -36,7 +36,6 @@ public class CutScene : ScriptableObject {
 		GameObject audio = GameObject.FindGameObjectWithTag ("AudioSlider");
 		if (audio != null) {
 			volumeControl = audio.GetComponent<Slider> ();
-			Debug.Log ("value: " + (volumeControl.value * Events [index].soundVolume));
 
 		} else {
 			Debug.Log ("audio slider not found");

@@ -49,6 +49,8 @@ public class LevelManager : MonoBehaviour {
 	void Awake () {
 		if (_Instance == null) {
 			_Instance = this;
+			levelData = GameManager.Instance.GetLevelInfo ();
+			cutSceneData = GameManager.Instance.GetCutSceneInfo ();
 			StartCoroutine(Run ());
 		}
 		else {
@@ -151,6 +153,16 @@ public class LevelManager : MonoBehaviour {
 		}
 	}
 
+	public void SetSpecificDropoff(Location dropoffLoc){
+		if (currentDestination != null && currentDestination.minimapMarker != null) {
+			currentDestination.SetMiniMapMarkerActive (false);
+			currentDestination = dropoffLoc;
+			currentDestination.SetMiniMapMarkerActive (true);
+		} else {
+			Debug.Log ("Current location doesn't exist or has no minimap marker.");
+		}
+	}
+
 	public void RunEvent(InGameEvent currEvent, string dialogue)
 	{
 		if (currEvent != null) {
@@ -193,7 +205,12 @@ public class LevelManager : MonoBehaviour {
 
 	public bool CheckWinState()
 	{
-		return (GameManager.Instance.stats.packagesDelivered == levelData.packageCount);
+		if (GameManager.Instance.stats.packagesDelivered == levelData.packageCount) {
+			GameManager.Instance.UpdateLevelInfo ();
+			return true;
+		}
+
+		return false;
 	}
 
 	private IEnumerator Run()
@@ -340,5 +357,13 @@ public class LevelManager : MonoBehaviour {
 				location.color = fadedOut;
 				location.sprite = null;
 			}
+	}
+
+	public void StartNextLevel()
+	{
+		levelData = GameManager.Instance.GetLevelInfo ();
+		cutSceneData = GameManager.Instance.GetCutSceneInfo ();
+
+		StartCoroutine (Run ());
 	}
 }

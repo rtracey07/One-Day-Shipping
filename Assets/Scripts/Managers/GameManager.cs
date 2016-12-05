@@ -1,11 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System;
 
 public class GameManager : MonoBehaviour {
 
 	private static GameManager _Instance;
 	public static GameManager Instance {  get { return _Instance; } }
+
+	[Serializable]
+	public class Mission
+	{
+		public Level level;
+		public CutScene cutScene;
+	}
+
+	public List<Mission> levels;
+	public int currLevelIndex = 0; 
 
 	[HideInInspector]
 	public bool hasPackage = false;
@@ -39,7 +50,7 @@ public class GameManager : MonoBehaviour {
 			DontDestroyOnLoad (this);
 		}
 		else {
-			DestroyImmediate (this);
+			DestroyImmediate (this.gameObject);
 		}
 	}
 
@@ -60,5 +71,22 @@ public class GameManager : MonoBehaviour {
 
 		if (cam != null)
 			mainCamera = cam.GetComponent<Camera> ();
+	}
+
+	public Level GetLevelInfo()
+	{
+		return levels [currLevelIndex].level;
+	}
+
+	public CutScene GetCutSceneInfo()
+	{
+		return levels [currLevelIndex].cutScene;
+	}
+
+	public void UpdateLevelInfo()
+	{
+		currLevelIndex++;
+		if (currLevelIndex >= levels.Count)
+			currLevelIndex = 0;
 	}
 }
