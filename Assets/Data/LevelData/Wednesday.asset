@@ -21,6 +21,9 @@ MonoBehaviour:
   dogGroup:
     dog: {fileID: 0}
     numDogsToSpawn: 0
+  statPostmanGroup:
+    stat: {fileID: 1000013488615578, guid: f2b6e05946f4842a78f1aca2c5a57ec1, type: 2}
+    numStatPostmenToSpawn: 10
   postmanPathGroup:
     postman: {fileID: 0}
     numPostmanToSpawn: 0
