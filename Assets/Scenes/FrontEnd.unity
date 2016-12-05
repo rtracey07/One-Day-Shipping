@@ -4354,6 +4354,30 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 114000013121056388, guid: 7fae1710242a2416395ab8c1e5881144,
+        type: 2}
+      propertyPath: levels.Array.data[1].cutScene
+      value: 
+      objectReference: {fileID: 11400000, guid: d10a73ad97041470596f906ae1496007,
+        type: 2}
+    - target: {fileID: 114000013121056388, guid: 7fae1710242a2416395ab8c1e5881144,
+        type: 2}
+      propertyPath: levels.Array.data[2].cutScene
+      value: 
+      objectReference: {fileID: 11400000, guid: 185ffbcdd6aee422d8e1b7a79f774bab,
+        type: 2}
+    - target: {fileID: 114000013121056388, guid: 7fae1710242a2416395ab8c1e5881144,
+        type: 2}
+      propertyPath: levels.Array.data[3].cutScene
+      value: 
+      objectReference: {fileID: 11400000, guid: 942f9b7c5acb948a9a1811c2e745f0c8,
+        type: 2}
+    - target: {fileID: 114000013121056388, guid: 7fae1710242a2416395ab8c1e5881144,
+        type: 2}
+      propertyPath: levels.Array.data[4].cutScene
+      value: 
+      objectReference: {fileID: 11400000, guid: 56f8f2377631b4ff590b50d8ab886ac0,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7fae1710242a2416395ab8c1e5881144, type: 2}
   m_IsPrefabParent: 0
