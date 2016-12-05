@@ -38,29 +38,82 @@ MonoBehaviour:
     numPostmanToSpawn: 10
     throwProjectiles: 1
   pickupLocations:
-  - locations: []
-  - locations: []
-  - locations: []
-  - locations: []
-  - locations: []
-  - locations: []
-  - locations: []
-  - locations: []
+  - locations:
+    - City_Mailbox_A
+    - City_Mailbox_D
+    - City_Mailbox_F
+  - locations:
+    - City_Mailbox_I
+    - City_Mailbox_L
+    - City_Mailbox_M
+  - locations:
+    - Suburb_Mailbox_B
+    - Suburb_Mailbox_D
+    - Suburb_Mailbox_F
+  - locations:
+    - Suburb_Mailbox_E
+    - Suburb_Mailbox_A
+    - Suburb_Mailbox_C
+  - locations:
+    - Suburb_Mailbox_I
+    - Suburb_Mailbox_J
+    - Suburb_Mailbox_K
+  - locations:
+    - Suburb_Mailbox_L
+    - Suburb_Mailbox_M
+    - Suburb_Mailbox_P
+  - locations:
+    - Suburb_Mailbox_A
+    - Suburb_Mailbox_B
+    - Suburb_Mailbox_C
+  - locations:
+    - City_Mailbox_U
+    - City_Mailbox_V
+    - City_Mailbox_X
   dropoffLocations:
-  - locations: []
-  - locations: []
-  - locations: []
-  - locations: []
-  - locations: []
-  - locations: []
-  - locations: []
-  - locations: []
+  - locations:
+    - City_Dropoff_D
+    - City_Dropoff_L
+    - City_Dropoff_K
+  - locations:
+    - City_Dropoff_S
+    - City_Dropoff_V
+    - City_Dropoff_Z
+  - locations:
+    - City_Dropoff_E
+    - City_Dropoff_C
+    - Suburb_Dropoff_R
+  - locations:
+    - Suburb_Dropoff_G
+    - Suburb_Dropoff_I
+    - Suburb_Dropoff_K
+  - locations:
+    - Suburb_Dropoff_M
+    - Suburb_Dropoff_N
+    - Suburb_Dropoff_O
+  - locations:
+    - Suburb_Dropoff_T
+    - Suburb_Dropoff_U
+    - Suburb_Dropoff_W
+  - locations:
+    - City_Dropoff_D
+    - City_Dropoff_B
+    - City_Dropoff_G
+  - locations:
+    - City_Dropoff_V
+    - City_Dropoff_N
+    - City_Dropoff_K
   events:
   - eventName: 'Level Intro: Flaming Packages Explanation'
     sound: {fileID: 0}
     soundVolume: 0
     avatar: {fileID: 21300000, guid: 201084ff4c3f142b6b247eb8b414072a, type: 3}
-    dialogue: []
+    dialogue:
+    - Oh my gawd, that must have been a sassy package you delivered to the Postal
+      Service yesterday.
+    - I heard they are planning to take you down by all means today.
+    - What's that up in the air? I see... Fire...
+    - At least I won't have trouble lighting my cigarettes today. Heh-heh *cough*
     timeBeforeDisplaying: 0
     isSkippable: 0
     pauseGame: 1
@@ -70,7 +123,10 @@ MonoBehaviour:
     sound: {fileID: 0}
     soundVolume: 0
     avatar: {fileID: 21300000, guid: aae6d859cf7f246cfb3acc6a36ed621e, type: 3}
-    dialogue: []
+    dialogue:
+    - Noodleman. You have been a real asset to One Day Shipping.
+    - Thanks to you we have taken over package delivery in the City.
+    - I will certainly look for more lanky people next week to help you out.
     timeBeforeDisplaying: 0
     isSkippable: 0
     pauseGame: 1
