@@ -127,7 +127,8 @@ public class PostmanAI : MonoBehaviour {
 
 		if (path == null || !path.isActive) {
 			path = m_Manager.GetAreaPath ();
-			iTweenPath = iTween.PathControlPointGenerator (path.pathway);
+			if (path != null && path.pathway != null)
+				iTweenPath = iTween.PathControlPointGenerator (path.pathway);
 		}
 
 //		Quaternion lookRotation = Quaternion.LookRotation((route[next] - transform.position).normalized);

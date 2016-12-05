@@ -129,57 +129,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224000010209142012, guid: e3b5d8de54c89481797a0f6752162366,
-        type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224000010209142012, guid: e3b5d8de54c89481797a0f6752162366,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224000013155373022, guid: e3b5d8de54c89481797a0f6752162366,
-        type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224000013155373022, guid: e3b5d8de54c89481797a0f6752162366,
-        type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224000013155373022, guid: e3b5d8de54c89481797a0f6752162366,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000011639143872, guid: e3b5d8de54c89481797a0f6752162366, type: 2}
-      propertyPath: m_Name
-      value: BackButton
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000013735025558, guid: e3b5d8de54c89481797a0f6752162366,
-        type: 2}
-      propertyPath: m_Text
-      value: Back
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000013694273540, guid: e3b5d8de54c89481797a0f6752162366, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000011049568542, guid: e3b5d8de54c89481797a0f6752162366,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MainTransition
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000010409320434, guid: e3b5d8de54c89481797a0f6752162366, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000010347137224, guid: e3b5d8de54c89481797a0f6752162366, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e3b5d8de54c89481797a0f6752162366, type: 2}
   m_IsPrefabParent: 0

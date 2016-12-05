@@ -8,15 +8,24 @@ public class VolumeController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		GameObject audio = GameObject.FindGameObjectWithTag ("AudioSlider");
-		if (audio != null) {
-			volumeControl = audio.GetComponent<Slider> ();
-		}
+		SetAudioSlider ();
 	}
 
 	void Update(){
-		
-		AudioListener.volume = volumeControl.value;
+		if (Input.GetKey (KeyCode.Escape)) {
+			SetAudioSlider ();
+		}
+		if (volumeControl != null) {
+			AudioListener.volume = volumeControl.value;
+		}
+	}
+
+	void SetAudioSlider(){
+		GameObject obj = GameObject.FindGameObjectWithTag ("AudioSlider");
+
+		if (obj != null) {
+			volumeControl = (Slider)obj.GetComponent<Slider> ();
+		}
 	}
 
 

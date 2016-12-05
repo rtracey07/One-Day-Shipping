@@ -31,7 +31,7 @@ public class CarPath : MonoBehaviour {
 		m_Manager = GetComponentInParent<CarPathManager> ();
 		m_Rigidbody = GetComponent<Rigidbody> ();
 
-		iTween.PutOnPath (gameObject, path.pathway, CurrentPathPercent);
+		//iTween.PutOnPath (gameObject, path.pathway, CurrentPathPercent);
 	}
 
 	public float CurrentPathPercent {
