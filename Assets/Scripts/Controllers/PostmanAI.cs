@@ -54,6 +54,7 @@ public class PostmanAI : MonoBehaviour {
 	private float angle = 0.0f;
 	private float current;
 	private bool dirChange = false;
+	private Vector3[] iTweenPath;
 
 	//postman states
 	public enum State
@@ -126,6 +127,7 @@ public class PostmanAI : MonoBehaviour {
 
 		if (path == null || !path.isActive) {
 			path = m_Manager.GetAreaPath ();
+			iTweenPath = iTween.PathControlPointGenerator (path.pathway);
 		}
 
 //		Quaternion lookRotation = Quaternion.LookRotation((route[next] - transform.position).normalized);
@@ -159,8 +161,8 @@ public class PostmanAI : MonoBehaviour {
 			// move along the percentage of the path by time
 			CurrentPathPercent += percentsPerSecond * speedMod * GameClockManager.Instance.time;
 			currentLook += percentsPerSecond * speedMod * GameClockManager.Instance.time;
-			Vector3 look = iTween.PointOnPath (path.pathway, currentLook);
-			iTween.PutOnPath (gameObject, path.pathway, CurrentPathPercent);
+			Vector3 look = iTween.PointOnProcessedPath (path.pathway, currentLook);
+			iTween.PutOnProcessedPath (gameObject, path.pathway, CurrentPathPercent);
 			transform.LookAt (look);
 		}
 
