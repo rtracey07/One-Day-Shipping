@@ -8,7 +8,7 @@ public class CarPath : MonoBehaviour {
 	private Rigidbody m_Rigidbody;
 	public float rotationOffset = 0.05f;			// how far ahead to look to orient on path
 	public float speed = 50.0f;
-	private float speedMod = 1.0f;
+	private float speedMod = 0.65f;
 
 	[SerializeField] private float damageStrength = 10.0f;
 
@@ -26,12 +26,12 @@ public class CarPath : MonoBehaviour {
 	void Start()
 	{
 		currentLook = CurrentPathPercent + rotationOffset;
-		percentsPerSecond = 0.02f;//speed * 0.0004f;
+		percentsPerSecond = 0.015f;//speed * 0.0004f;
 
 		m_Manager = GetComponentInParent<CarPathManager> ();
 		m_Rigidbody = GetComponent<Rigidbody> ();
 
-		iTween.PutOnPath (gameObject, path.pathway, CurrentPathPercent);
+		//iTween.PutOnPath (gameObject, path.pathway, CurrentPathPercent);
 	}
 
 	public float CurrentPathPercent {
@@ -45,11 +45,12 @@ public class CarPath : MonoBehaviour {
 	}
 		
 
-	void Update ()
+	void FixedUpdate ()
 	{
 		if (path == null || !path.isActive) {
 			path = m_Manager.GetAreaPath ();
-			iTweenPath = iTween.PathControlPointGenerator (path.pathway);
+			if (path != null && path.pathway != null)
+				iTweenPath = iTween.PathControlPointGenerator (path.pathway);
 		}
 
 		if (path != null) {

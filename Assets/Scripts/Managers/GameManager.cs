@@ -43,6 +43,8 @@ public class GameManager : MonoBehaviour {
 
 	public Stats stats;
 
+	private bool hasBeenUpdated = false;
+
 	void Awake()
 	{
 		if (_Instance == null) {
@@ -85,8 +87,30 @@ public class GameManager : MonoBehaviour {
 
 	public void UpdateLevelInfo()
 	{
-		currLevelIndex++;
-		if (currLevelIndex >= levels.Count)
-			currLevelIndex = 0;
+		if (!hasBeenUpdated) {
+			currLevelIndex++;
+			if (currLevelIndex >= levels.Count)
+				currLevelIndex = 0;
+			hasBeenUpdated = true;
+		}
+	}
+
+	public void Reset()
+	{
+		hasPackage = false;
+		destroyed = false;
+		continueClicked = false;
+		skipClicked = false;
+		dogAttack = false;
+		postmanAttack = false;
+		timeUp = false;
+		hasBeenUpdated = false;
+
+		stats.carsHit = 0;
+		stats.dogsHit = 0;
+		stats.packagesDelivered = 0;
+		stats.packagesDestroyed = 0;
+		stats.postmenHit = 0;
+		stats.score = 0;
 	}
 }

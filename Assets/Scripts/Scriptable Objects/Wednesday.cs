@@ -10,6 +10,7 @@ public class Wednesday : Level {
 	{
 		//LevelManager.Instance.StartCoroutine (TriggerStorm ());
 		LevelManager.Instance.StartCoroutine (CheckWinState (1));
+		//LevelManager.Instance.StartCoroutine (DetectWind (1));  //add this back in when DetectWind is set up
 
 		//reset variables:
 		LevelManager.Instance.UpdatePackageDeliveredCount ();
@@ -50,6 +51,14 @@ public class Wednesday : Level {
 	public IEnumerator TriggerStorm(){
 		yield return;
 	}
+
+	public IEnumerator DetectWind(int eventIndex)
+	{
+		yield return new WaitUntil (() => LevelManager.Instance.windDetected ());  //need to implement windDetected in levelmanager
+		yield return LevelManager.Instance.StartCoroutine (TriggerEvent (eventIndex));
+	}
+
+
 	*/
 
 }

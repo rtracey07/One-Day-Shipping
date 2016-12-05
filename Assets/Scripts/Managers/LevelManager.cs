@@ -205,7 +205,7 @@ public class LevelManager : MonoBehaviour {
 
 	public bool CheckWinState()
 	{
-		if (GameManager.Instance.stats.packagesDelivered == levelData.packageCount) {
+		if (GameManager.Instance.stats.packagesDelivered >= levelData.packageCount) {
 			GameManager.Instance.UpdateLevelInfo ();
 			return true;
 		}
@@ -363,7 +363,8 @@ public class LevelManager : MonoBehaviour {
 	{
 		levelData = GameManager.Instance.GetLevelInfo ();
 		cutSceneData = GameManager.Instance.GetCutSceneInfo ();
-
+		StopAllCoroutines ();
+		GameManager.Instance.Reset ();
 		StartCoroutine (Run ());
 	}
 }
