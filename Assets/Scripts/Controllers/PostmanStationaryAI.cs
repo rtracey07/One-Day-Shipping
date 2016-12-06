@@ -18,8 +18,8 @@ public class PostmanStationaryAI : MonoBehaviour {
 	private float speedMod = 0.5f;
 
 	private bool wall = false;
-	private Pathway path;									// the path
-	public float rotationOffset = 0.05f;			// how far ahead to look to orient on path
+	private Pathway path;													// the path
+	public float rotationOffset = 0.05f;									// how far ahead to look to orient on path
 	private float currentLook =0.25f;										// where the car is looking
 	private float percentsPerSecond = 0.1f; 								// %1 of the path moved per second
 	private bool swapPositions = false;
@@ -31,7 +31,7 @@ public class PostmanStationaryAI : MonoBehaviour {
 	[SerializeField] private float groundOffset = 0.2f;
 	[SerializeField] private float speed = 5.0f;				// flight speed
 	[SerializeField] private float damageStrength = 10.0f;		// damage to package
-	private Vector3 center;					// center of the chase radius
+	private Vector3 center;										// center of the chase radius
 	[SerializeField] private float radius = 3.0f;				// chasing radius
 	[SerializeField] private float projectileRadius = 5.0f;		// radius for shooting projectiles
 	[SerializeField] private float attackProximity = 0.3f;		// when to do attack animation
@@ -43,17 +43,14 @@ public class PostmanStationaryAI : MonoBehaviour {
 	[SerializeField] private float projectileInterval = 1.0f;	// wait between projectiles
 	private float projectileTime = 0.0f;
 	[SerializeField] private Rigidbody projectile;				// package
-	private GameObject player;					// player to chase
+	private GameObject player;									// player to chase
 	private GameObject package;
 
 	private Animator animator;
 	private float attackTime = 1.0f;
 	private float attackDelay = 3.0f;
 
-	private float change = 0.0f;
-	private float angle = 0.0f;
 	private float current;
-	private bool dirChange = false;
 	private Vector3[] iTweenPath;
 
 	public Vector3 Center {
@@ -248,10 +245,6 @@ public class PostmanStationaryAI : MonoBehaviour {
 	/// </summary>
 	void PlayerChaseState(){
 		////Debug.Log ("chasing");
-		float dir_y = -0.1014264f; 
-
-
-
 		if ((player.transform.position.x - transform.position.x) * (player.transform.position.x - transform.position.x)
 			+ (player.transform.position.z - transform.position.z) * (player.transform.position.z - transform.position.z) <= attackProximity) {
 			state = State.Attacking;
@@ -332,56 +325,6 @@ public class PostmanStationaryAI : MonoBehaviour {
 
 		if (state == State.PlayerChase || state == State.Turning)
 			transform.position = Vector3.MoveTowards (transform.position, new Vector3 (transform.position.x, ground.point.y + groundOffset, transform.position.z), GameClockManager.Instance.time * speed);
-
-		//		if (path == null || !path.isActive) {
-		//			path = m_Manager.GetAreaPath ();
-		//		}
-		//
-		//		if (path != null) {
-		//			// if the we're at the end, restart
-		//			if (CurrentPathPercent >= 0.99f) {
-		//				CurrentPathPercent = 0.0f;
-		//				// TODO - this needs some lerping adjustment
-		//				currentLook = rotationOffset;
-		//			}
-		//
-		//			// move along the percentage of the path by time
-		//			CurrentPathPercent += percentsPerSecond * speedMod * GameClockManager.Instance.time;
-		//			currentLook += percentsPerSecond * speedMod * GameClockManager.Instance.time;
-		//			Vector3 look = iTween.PointOnPath (path.pathway.ToArray(), currentLook);
-		//			iTween.PutOnPath (gameObject, path.pathway.ToArray(), CurrentPathPercent);
-		//			transform.LookAt (look);
-		//		}
-
-
-		//don't walk into walls, do walk up to player
-		//		RaycastHit front;
-		//		if (Physics.Raycast (transform.position, transform.forward, out front)) {
-		//			////Debug.Log ("hit something " + front.distance);
-		//			if (hit.point.y > 0.3f && front.distance < 0.3f && !hit.collider.name.Equals("player") && !hit.collider.name.Equals("dog") && state != State.Turning) {
-		//				//try to avoid walking through walls by going to next step
-		//				if (state == State.Standing) {
-		//					if (next == route.Length - 1 && pathType == pathEnum.loop) {
-		//						next = 0;
-		//					} else if (pathType == pathEnum.loop) {
-		//						next++;
-		//					} else if (next == route.Length - 1 && pathType == pathEnum.reverse) {
-		//						fwd = false;
-		//					} else if (next == 0 && pathType == pathEnum.reverse) {
-		//						fwd = true;
-		//					}
-		//
-		//					if (pathType == pathEnum.reverse && fwd) {
-		//						next++;
-		//					} else if (pathType == pathEnum.reverse && !fwd) {
-		//						next--;
-		//					}
-		//				} else {
-		//					state = State.Standing;
-		//				}
-		//			}
-		//		} 
-
 	}
 
 	// Update is called once per frame
