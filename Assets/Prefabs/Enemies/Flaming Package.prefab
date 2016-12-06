@@ -155,6 +155,7 @@ MonoBehaviour:
   damageSound2: {fileID: 8300000, guid: aff446cf653fb47169c576d0384d2298, type: 3}
   damageSound3: {fileID: 8300000, guid: b1125e43e5dca4e12927d2e64f4eaff6, type: 3}
   poolsize: 0
+  damageStrength: 10
 --- !u!198 &198000011265119778
 ParticleSystem:
   m_ObjectHideFlags: 1

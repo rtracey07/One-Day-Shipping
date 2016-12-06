@@ -11,6 +11,10 @@ public class FlamingPackageAI : MonoBehaviour {
 
 	public int poolsize;
 
+	public float damageStrength;
+
+	private GameObject pack;
+
 	void Start(){
 		
 		//play sound when object gets created:
@@ -38,7 +42,16 @@ public class FlamingPackageAI : MonoBehaviour {
 				break;
 			}
 
+			pack = GameObject.Find ("Package");
+			if (pack != null) {
+				Debug.Log ("Package Hit");
+				pack.GetComponent<Package> ().DamagePackage (damageStrength);
+				//GameManager.Instance.stats.
+			}
+
 		}
+
+
 		//destroy package no matter what:
 		gameObject.SetActive(false);
 	}
