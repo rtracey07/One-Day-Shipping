@@ -1018,12 +1018,16 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1000013108931722, guid: e3b5d8de54c89481797a0f6752162366, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114000010456145534, guid: e3b5d8de54c89481797a0f6752162366,
         type: 2}
       propertyPath: m_Color.a
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013687153448, guid: e3b5d8de54c89481797a0f6752162366, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e3b5d8de54c89481797a0f6752162366, type: 2}
@@ -1758,7 +1762,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!224 &994764060
 RectTransform:
@@ -2513,7 +2517,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1548137619
 GameObject:
   m_ObjectHideFlags: 0

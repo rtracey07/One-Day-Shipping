@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 public class RetryLevel : MonoBehaviour {
 
 	public void OnClick(){
-		SceneManager.LoadScene ("InGame");
+
+		if (LevelManager.Instance.CheckWinState ())
+			GameManager.Instance.currLevelIndex--;
+
+		LevelManager.Instance.StartNextLevel ();
 	}
 }
