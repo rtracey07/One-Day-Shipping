@@ -17,9 +17,11 @@ public class Package : MonoBehaviour {
 	}
 
 	public void DamagePackage(float hp){
-		Health = Health - hp;
-		if (GameManager.Instance.hasPackage)
+
+		if (GameManager.Instance.hasPackage) {
 			PlayPackageDamageSound ();
+			Health = Health - hp;
+		}
 		if (Health <= 0) {
 			GameManager.Instance.stats.packagesDestroyed++;
 			GameManager.Instance.destroyed = true;
