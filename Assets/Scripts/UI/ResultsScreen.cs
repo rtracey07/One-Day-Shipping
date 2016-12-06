@@ -2,13 +2,18 @@
 using UnityEngine.UI;
 using System.Collections;
 
+/**
+ * The MonoBehaviour script for
+ */
 public class ResultsScreen : MonoBehaviour {
 
+    //  The UIs
 	[Header("Results Windows")]
 	public GameObject m_HighScoreUI;
 	public GameObject m_OptionsUI;
 	public GameObject m_ResultsUI;
-
+    
+    //  The Results feilds
 	[Header("Results Fields")]
 	public float tallyLength;
 	public Text delivered;
@@ -18,13 +23,17 @@ public class ResultsScreen : MonoBehaviour {
 	public Text postmen;
 	public Text total;
 
+    //  The name input feild
 	[Header("New High Score Name Field")]
 	public Text NameInput;
 
+    //  The total value
 	private int totalVal;
 
-	// Use this for initialization
-	void Start () {
+    /**
+     * Use this for initialization 
+     */
+    void Start () {
 		m_HighScoreUI.SetActive (false);
 		m_OptionsUI.SetActive (false);
 
@@ -34,11 +43,15 @@ public class ResultsScreen : MonoBehaviour {
 		StartCoroutine (TallyScore ());
 	}
 
+    /**
+     * Tallys all the users scores
+     */
 	IEnumerator TallyScore()
 	{
-
+        //  Pause
 		yield return new WaitForSeconds (1.0f);
 
+        //  Tally up the scores
 		int currScore = GameManager.Instance.stats.packagesDelivered * 100;
 		totalVal = 0;
 
@@ -58,14 +71,16 @@ public class ResultsScreen : MonoBehaviour {
 
 		float originalFontSize = total.fontSize;
 
+        //  Pause to show user score
 		yield return new WaitForSeconds(1.5f);
 
+        //  Check if user has set a high score
 		CheckForHighscore ();
-
 	}
 
-
-
+    /**
+     * Tally a single score
+     */
 	IEnumerator Tally(int currScore, Text currText, Text currTotalText)
 	{
 		float time = 0.0f;
@@ -86,14 +101,16 @@ public class ResultsScreen : MonoBehaviour {
 		currTotalText.text = totalVal.ToString();
 	}
 
-
+    /**
+     * Checks if the users score is a HighScore
+     */
 	void CheckForHighscore(){
 		
 		m_ResultsUI.SetActive (false);
 
 		int currHighscore = PlayerPrefs.GetInt (LevelManager.Instance.levelData.name + "_Score");
 
-		//store new highscore value if a new highscore has been achieved
+		//  Store new highscore value if a new highscore has been achieved
 		if (totalVal > currHighscore) {
 			PlayerPrefs.SetInt (LevelManager.Instance.levelData.name + "_Score", totalVal);
 			m_HighScoreUI.SetActive (true);
@@ -102,6 +119,10 @@ public class ResultsScreen : MonoBehaviour {
 		}
 	}
 
+    /**
+     * The method called when the user submits their name for a HighScore
+     *
+     */
 	public void OnClick(){
 		if (NameInput.text != null)
 			PlayerPrefs.SetString (LevelManager.Instance.levelData.name + "_Name", 

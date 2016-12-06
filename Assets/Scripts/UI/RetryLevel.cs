@@ -2,8 +2,15 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class RetryLevel : MonoBehaviour {
 
+/**
+ * The MonoBehaviour script for the level retry
+ */
+public class RetryLevel : MonoBehaviour {
+    
+    /**
+     * The method called when the user clicks the retry level button
+     */
 	public void OnClick(){
 
 		if (LevelManager.Instance.CheckWinState ())

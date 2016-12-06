@@ -2,14 +2,19 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 
+/**
+ * The MonoBehaviour script for returning to the main menu
+ */
 public class ReturnToMainMenu : MonoBehaviour {
 
 
-	public void OnClick(){
-
-		//deactive escape window:
+    /**
+     * The function called when the user clicks
+     */
+	public void OnClick() {        
 		GameManager.Instance.Reset();
-		FindObjectOfType<EscapeMenuManager>().Deactivate (); //deactive escape window
+        //deactive escape window
+        FindObjectOfType<EscapeMenuManager>().Deactivate (); 
 		SceneManager.LoadScene ("FrontEnd");
 	}
 }
