@@ -113,7 +113,7 @@ MonoBehaviour:
     soundVolume: 0
     avatar: {fileID: 21300000, guid: aae6d859cf7f246cfb3acc6a36ed621e, type: 3}
     dialogue:
-    - This package was a personal gift from me to the Postal Service
+    - This package was a personal gift from me to the Postal Service.
     - Thank you for helping me deliver it, Noodleman.
     - You're off your shift now. Feel free to deliver more packages!
     timeBeforeDisplaying: 0
@@ -132,4 +132,4 @@ MonoBehaviour:
     pauseGame: 1
     requiresConfirmation: 1
     duration: 0
-  currIndex: 2
+  currIndex: 0

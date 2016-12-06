@@ -59,7 +59,7 @@ MonoBehaviour:
     avatar: {fileID: 21300000, guid: 630e7a78ffd454e2baaabee5409f11bf, type: 3}
     dialogue:
     - Oh, you again...
-    - Just on time for my smoke break. Get out of my way.
+    - Just in time for my smoke break. Get out of my way.
     timeBeforeDisplaying: 0
     isSkippable: 0
     pauseGame: 1
