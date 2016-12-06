@@ -15,10 +15,11 @@ public class PostmanManager : MonoBehaviour {
 	public bool debug = false;
 	private Transform player;
 
-	void Awake()
+	void Start()
 	{
 		player = GameObject.Find ("Player").transform;
 		activeAreas = new List<Pathway> (areas.Count);
+		LevelManager.Instance.SpawnPostmans (this.gameObject);
 	}
 
 	// Update is called once per frame

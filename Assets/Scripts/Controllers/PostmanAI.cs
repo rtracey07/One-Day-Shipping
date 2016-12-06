@@ -44,7 +44,7 @@ public class PostmanAI : MonoBehaviour {
 	private float projectileTime = 0.0f;
 	[SerializeField] private Rigidbody projectile;				// packages that are thrown
 	private GameObject player;									// player to chase
-	private GameObject package;									// package to damage
+	private Package package;									// package to damage
 
 	private Animator animator;
 	private float attackTime = 1.0f;
@@ -92,7 +92,8 @@ public class PostmanAI : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		center = transform.position;
-		player = GameObject.FindGameObjectWithTag ("Player");
+		player = GameObject.Find ("Player");
+		package = player.GetComponentsInChildren<Package> (true) [0];
 		currentLook = CurrentPathPercent + rotationOffset;
 		percentsPerSecond = 0.02f;//speed * 0.0004f;
 
@@ -102,9 +103,6 @@ public class PostmanAI : MonoBehaviour {
 		animator = GetComponent <Animator>();
 		//state = State.Standing;
 		state = State.Spawn;
-
-
-		package = GameObject.FindGameObjectWithTag ("Package");
 	}
 
 	/// <summary>
@@ -166,24 +164,26 @@ public class PostmanAI : MonoBehaviour {
 	/// </summary>
 	void shoot(){
 
-		if (Time.time >= projectileTime) {
-			package = GameObject.FindGameObjectWithTag ("Package");
+		if (Time.time >= projectileTime && !GameClockManager.Instance.freeze) {
 			Rigidbody projectile_shoot = Instantiate (projectile, new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z), transform.rotation) as Rigidbody;
 
 			GameManager.Instance.postmanAttack = true;
 
 			projectile_shoot.GetComponent<PostmanProjectile> ().DamageStrength = damageStrength;
 			if (package != null) {
-				projectile_shoot.GetComponent<PostmanProjectile> ().Pack = package;
+				projectile_shoot.GetComponent<PostmanProjectile> ().Pack = package.gameObject;
 			}
 			if (rangedAttackSound != null)
 				AudioManager.Instance.PlaySoundEffect (rangedAttackSound);
 			//Debug.Log(projectile_shoot.gameObject.name);
 			//send forward
-			projectile_shoot.AddForce (new Vector3(transform.forward.x, transform.forward.y - 0.05f, transform.forward.z) * projectileSpeed);
-			Destroy (projectile_shoot.gameObject, 2.0f);
 
+			Vector3 aim = (player.transform.position - transform.position).normalized;
+			aim = Quaternion.AngleAxis (-45, transform.right) * aim;
 
+			projectile_shoot.AddForce (aim * projectileSpeed);
+			Destroy (projectile_shoot, 5);
+		
 			projectileTime = Time.time + projectileInterval;
 		}
 	}
@@ -222,10 +222,7 @@ public class PostmanAI : MonoBehaviour {
 				////Debug.Log ("tossing");
 				AudioManager.Instance.PlaySoundEffect (physicalAttackSound);
 				GameManager.Instance.stats.postmenHit++;
-				package = GameObject.FindGameObjectWithTag ("Package");
-				if (package != null) {
-					package.GetComponent<Package> ().DamagePackage (damageStrength / 2.0f);
-				}
+				package.DamagePackage (damageStrength / 2.0f);
 				attackTime = 0.0f;
 			} else if (attackTime < attackDelay) {
 				attackTime += 5.0f * GameClockManager.Instance.time;
@@ -331,7 +328,7 @@ public class PostmanAI : MonoBehaviour {
 		}
 
 		if (state == State.PlayerChase || state == State.Turning)
-			transform.position = Vector3.MoveTowards (transform.position, new Vector3 (transform.position.x, ground.point.y + groundOffset, transform.position.z), GameClockManager.Instance.time * speed);
+			transform.position = Vector3.MoveTowards (transform.position, new Vector3 (transform.position.x, ground.point.y + groundOffset, transform.position.z), GameClockManager.Instance.fixedTime * speed);
 	}
 	
 	// Update is called once per frame
@@ -365,8 +362,7 @@ public class PostmanAI : MonoBehaviour {
 			break;
 		}
 		CheckForPlayer ();
-
-
+	
 	}
 
 	void OnDrawGizmos()
@@ -375,9 +371,11 @@ public class PostmanAI : MonoBehaviour {
 		if(path != null && path.pathway != null)
 			iTween.DrawPath(path.pathway);
 
-		if (m_Manager.debug) {
-			Gizmos.color = Color.green;
-			Gizmos.DrawWireSphere (this.transform.position, 3);
+		if (m_Manager != null){
+			if (m_Manager.debug) {
+				Gizmos.color = Color.green;
+				Gizmos.DrawWireSphere (this.transform.position, 3);
+			}
 		}
 	}
 }

@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour {
 	public AudioClip respawnSound;
 
 
-	void Start()
+	void Awake()
 	{
 		//Cache Controllers for use.
 		//controller = GetComponent<CharacterController>();

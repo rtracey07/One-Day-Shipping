@@ -20,7 +20,7 @@ public class PostmanProjectile : MonoBehaviour {
 	/// <param name="collision">Collision.</param>
 	void OnCollisionEnter(Collision collision) {
 		
-		if (collision.rigidbody != null && collision.rigidbody.name.Equals ("Player")) {
+		if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Package") {
 			//Debug.Log (DamageStrength);
 			//Debug.Log (Pack.name);
 			if (Pack != null) {
@@ -28,18 +28,8 @@ public class PostmanProjectile : MonoBehaviour {
 				Pack.GetComponent<Package> ().DamagePackage (DamageStrength);
 				GameManager.Instance.stats.postmenHit++;
 			}
-		}
-			
-
+		} else if(collision.gameObject.tag == "Ground")
+			Destroy (this.gameObject);	
 	}
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }

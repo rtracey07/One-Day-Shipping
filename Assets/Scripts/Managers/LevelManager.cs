@@ -85,24 +85,16 @@ public class LevelManager : MonoBehaviour {
 	/// places set number of postman at equal intervals along itween path
 	/// number of postmen are set by the level scriptable object
 	/// </summary>
-	private void SpawnPostmans(){
-		GameObject postmanParent = GameObject.Find ("Postman Pool");
+	public void SpawnPostmans(GameObject parent){
 
-		if(postmanParent != null)
-		{
-			for (int i = 0; i < levelData.postmanPathGroup.numPostmanToSpawn; i++) {
-				GameObject postmanPrefab = levelData.postmanPathGroup.postman;
-				GameObject postman = GameObject.Instantiate (postmanPrefab);
-				postman.transform.parent = postmanParent.transform;
-				PostmanAI postmanPath = postman.GetComponent<PostmanAI> ();
-				// only throw projectiles in correct levels
-				postmanPath.ThrowsProjectiles = levelData.postmanPathGroup.throwProjectiles;
-				postmanPath.CurrentPathPercent = (float)i / levelData.postmanPathGroup.numPostmanToSpawn;
-			}
-		}
-		else
-		{
-			Debug.Log("Postman Pool GameObject missing from scene. Nowhere to instantiate postmans");
+		for (int i = 0; i < levelData.postmanPathGroup.numPostmanToSpawn; i++) {
+			GameObject postmanPrefab = levelData.postmanPathGroup.postman;
+			GameObject postman = GameObject.Instantiate (postmanPrefab);
+			postman.transform.parent = parent.transform;
+			PostmanAI postmanPath = postman.GetComponent<PostmanAI> ();
+			// only throw projectiles in correct levels
+			postmanPath.ThrowsProjectiles = levelData.postmanPathGroup.throwProjectiles;
+			postmanPath.CurrentPathPercent = (float)i / levelData.postmanPathGroup.numPostmanToSpawn;
 		}
 	}
 
@@ -287,12 +279,6 @@ public class LevelManager : MonoBehaviour {
 
 		GameManager.Instance.FindCamera ();
 		activeLocations = GameObject.FindObjectsOfType<Location> ();
-
-		//SpawnCars ();
-
-		SpawnPostmans ();
-		//SpawnDogs ();
-
 
 		Coroutine level = StartCoroutine (levelData.RunLevel());
 		yield return StartCoroutine(levelData.TimeUp(levelData.events.Count-1));
