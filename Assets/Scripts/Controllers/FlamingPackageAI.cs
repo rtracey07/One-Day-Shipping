@@ -6,18 +6,18 @@ public class FlamingPackageAI : MonoBehaviour {
 
 	private List<GameObject> flamingPackages;
 
-
-	public AudioClip fallSound;
-	public AudioClip collisionSound;
+	public AudioClip fallSound, collisionSound;
 	public AudioClip damageSound1, damageSound2, damageSound3;
 
 	public int poolsize;
 
 	void Start(){
 		
-
 		//play sound when object gets created:
-		AudioSource.PlayClipAtPoint (fallSound, this.gameObject.transform.position);
+		if (fallSound != null){
+			AudioSource.PlayClipAtPoint (fallSound, this.gameObject.transform.position);
+		}
+
 	}
 
 	void OnCollisionEnter(Collision other){

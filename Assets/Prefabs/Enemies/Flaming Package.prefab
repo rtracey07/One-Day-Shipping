@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0a82a1cccaf4b0da61bf7b5f3fb98b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallSound: {fileID: 8300000, guid: 3b09d59f4499d45428baa7a21e954296, type: 3}
+  fallSound: {fileID: 0}
   collisionSound: {fileID: 8300000, guid: fd1d1b015b14e40fdb93e50430191e6c, type: 3}
   damageSound1: {fileID: 8300000, guid: 2cdc80583e7e64a9ab57977ea9173c96, type: 3}
   damageSound2: {fileID: 8300000, guid: aff446cf653fb47169c576d0384d2298, type: 3}
