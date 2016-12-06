@@ -126,7 +126,7 @@ MonoBehaviour:
     pauseGame: 1
     requiresConfirmation: 1
     duration: 0
-  - eventName: End Level
+  - eventName: Win State
     sound: {fileID: 0}
     soundVolume: 0
     avatar: {fileID: 21300000, guid: aae6d859cf7f246cfb3acc6a36ed621e, type: 3}
@@ -139,4 +139,16 @@ MonoBehaviour:
     pauseGame: 1
     requiresConfirmation: 1
     duration: 0
+  - eventName: End Level
+    sound: {fileID: 0}
+    soundVolume: 0
+    avatar: {fileID: 21300000, guid: aae6d859cf7f246cfb3acc6a36ed621e, type: 3}
+    dialogue:
+    - Time's up. Enjoy the weekend.
+    timeBeforeDisplaying: 0
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 1
+    duration: 0
   currIndex: 0
+  m_Apocalypse: {fileID: 0}
