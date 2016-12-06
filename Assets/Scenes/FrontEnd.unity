@@ -101,6 +101,7 @@ GameObject:
   - 222: {fileID: 73793695}
   - 114: {fileID: 73793694}
   - 114: {fileID: 73793693}
+  - 114: {fileID: 73793696}
   m_Layer: 5
   m_Name: Friday
   m_TagString: Untagged
@@ -201,6 +202,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 73793691}
+--- !u!114 &73793696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 73793691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7fea414647bb47d990e133841a89b47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: CutScene
+  specificLevel: 1
+  levelIndex: 4
 --- !u!1 &91535127
 GameObject:
   m_ObjectHideFlags: 0
@@ -888,10 +903,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 280759865}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c69f8a45b76ef4457a265b017adbeb2e, type: 3}
+  m_Script: {fileID: 11500000, guid: f7fea414647bb47d990e133841a89b47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: CutScene
+  specificLevel: 0
+  levelIndex: 0
 --- !u!114 &280759868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -931,7 +948,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 280759867}
+      - m_Target: {fileID: 0}
         m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
@@ -2226,6 +2243,7 @@ GameObject:
   - 222: {fileID: 984776263}
   - 114: {fileID: 984776262}
   - 114: {fileID: 984776261}
+  - 114: {fileID: 984776264}
   m_Layer: 5
   m_Name: Tuesday
   m_TagString: Untagged
@@ -2326,6 +2344,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 984776259}
+--- !u!114 &984776264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 984776259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7fea414647bb47d990e133841a89b47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: CutScene
+  specificLevel: 1
+  levelIndex: 1
 --- !u!1 &996576233
 GameObject:
   m_ObjectHideFlags: 0
@@ -2461,6 +2493,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: CutScene
+  specificLevel: 1
+  levelIndex: 0
 --- !u!1 &1019906431
 GameObject:
   m_ObjectHideFlags: 0
@@ -2508,6 +2542,7 @@ GameObject:
   - 222: {fileID: 1062568956}
   - 114: {fileID: 1062568955}
   - 114: {fileID: 1062568954}
+  - 114: {fileID: 1062568957}
   m_Layer: 5
   m_Name: Thursday
   m_TagString: Untagged
@@ -2608,6 +2643,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1062568952}
+--- !u!114 &1062568957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1062568952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7fea414647bb47d990e133841a89b47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: CutScene
+  specificLevel: 1
+  levelIndex: 3
 --- !u!1 &1127296107
 GameObject:
   m_ObjectHideFlags: 0
@@ -3693,6 +3742,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: CutScene
+  specificLevel: 1
+  levelIndex: 0
 --- !u!114 &1497667940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4223,6 +4274,7 @@ GameObject:
   - 222: {fileID: 1700587980}
   - 114: {fileID: 1700587979}
   - 114: {fileID: 1700587978}
+  - 114: {fileID: 1700587981}
   m_Layer: 5
   m_Name: Wednesday
   m_TagString: Untagged
@@ -4323,6 +4375,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1700587976}
+--- !u!114 &1700587981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1700587976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7fea414647bb47d990e133841a89b47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: CutScene
+  specificLevel: 1
+  levelIndex: 2
 --- !u!1 &1759306270
 GameObject:
   m_ObjectHideFlags: 0

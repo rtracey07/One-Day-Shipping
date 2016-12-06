@@ -12,6 +12,7 @@ public class LevelSelectManager : MonoBehaviour {
 
 	// Use this for initialization
 	void OnEnable () {
+
 		m_Monday.interactable = true;
 		m_Tuesday.interactable = PlayerPrefs.GetInt ("Monday_Win") == 1;
 		m_Wednesday.interactable = PlayerPrefs.GetInt ("Tuesday_Win") == 1;
