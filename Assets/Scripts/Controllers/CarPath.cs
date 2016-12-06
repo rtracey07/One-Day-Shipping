@@ -123,7 +123,7 @@ public class CarPath : MonoBehaviour {
 			AudioManager.Instance.PlaySoundEffect (carCollisionSound1);
 			break;
 		case 2:
-			AudioManager.Instance.PlaySoundEffect (carCollisionSound2);
+			AudioManager.Instance.PlaySoundEffect (carCollisionSound2, 0.05f);
 			break;
 		case 3:
 			AudioManager.Instance.PlaySoundEffect (carCollisionSound3);
