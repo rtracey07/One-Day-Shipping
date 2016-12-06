@@ -62,14 +62,14 @@ public class Thursday : Level {
 			if (!GameManager.Instance.destroyed) {
 				GameManager.Instance.stats.packagesDelivered++;
 				delivered = true; //condition to exit loop
-				//Display Dialougue boxes saying "you delivered to the PSO":
-				yield return new WaitForSeconds(1.0f);
-				//yield return LevelManager.Instance.StartCoroutine (TriggerEvent (3));
+				//Reset index for bonus rounds:
+				currIndex = 0;
 			}
 
 			//reset / update parameters:
 			GameManager.Instance.destroyed = false;
 			LevelManager.Instance.UpdatePackageDeliveredCount ();
+
 			LevelManager.Instance.SetPickup ();
 		}
 

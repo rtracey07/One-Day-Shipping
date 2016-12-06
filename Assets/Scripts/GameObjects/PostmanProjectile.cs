@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class PostmanProjectile : MonoBehaviour {
+
 	private float damageStrength;
 	private GameObject pack;
 
@@ -14,6 +15,16 @@ public class PostmanProjectile : MonoBehaviour {
 		set{ pack = value; }
 		get{ return pack; }
 	}
+
+	void Start(){
+		LevelManager.Instance.StartCoroutine (LastFiveSeconds());
+	}
+
+	IEnumerator LastFiveSeconds(){
+		yield return new WaitForSeconds(5.0f);
+		Destroy (this.gameObject);
+	}
+
 	/// <summary>
 	/// Checks for collisions with player
 	/// </summary>
@@ -21,14 +32,13 @@ public class PostmanProjectile : MonoBehaviour {
 	void OnCollisionEnter(Collision collision) {
 		
 		if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Package") {
-			//Debug.Log (DamageStrength);
-			//Debug.Log (Pack.name);
 			if (Pack != null) {
-				Debug.Log ("Package Hit");
 				Pack.GetComponent<Package> ().DamagePackage (DamageStrength);
 				GameManager.Instance.stats.postmenHit++;
 			}
 		} else if(collision.gameObject.tag == "Ground")
 			Destroy (this.gameObject);	
 	}
+
+
 }
