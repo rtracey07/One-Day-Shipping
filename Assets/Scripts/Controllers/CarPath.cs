@@ -45,8 +45,15 @@ public class CarPath : MonoBehaviour {
 	}
 		
 
-	void Update ()
-	{
+	//this should be fixed update for smooth colisions
+	void FixedUpdate(){
+		if (path != null) {
+			Vector3 look = iTween.PointOnProcessedPath (path.pathway, currentLook);
+			iTween.PutOnProcessedPath (gameObject, path.pathway, CurrentPathPercent);
+
+			transform.LookAt (look);
+		}
+
 		if (path == null || !path.isActive) {
 			path = m_Manager.GetAreaPath ();
 			if (path != null && path.pathway != null)
@@ -61,24 +68,14 @@ public class CarPath : MonoBehaviour {
 			}
 
 			// move along the percentage of the path by time
-			CurrentPathPercent += percentsPerSecond * speedMod * GameClockManager.Instance.time;
+			CurrentPathPercent += percentsPerSecond * speedMod * GameClockManager.Instance.fixedTime;
 			// look ahead on the path
-			currentLook += percentsPerSecond * speedMod * GameClockManager.Instance.time;
+			currentLook += percentsPerSecond * speedMod * GameClockManager.Instance.fixedTime;
 
-//			Vector3 look = iTween.PointOnProcessedPath (path.pathway, currentLook);
-//			iTween.PutOnProcessedPath (gameObject, path.pathway, CurrentPathPercent);
-//
-//			transform.LookAt (look);
-		}
-	}
-
-	//this should be fixed update for smooth colisions
-	void FixedUpdate(){
-		if (path != null) {
-			Vector3 look = iTween.PointOnProcessedPath (path.pathway, currentLook);
-			iTween.PutOnProcessedPath (gameObject, path.pathway, CurrentPathPercent);
-
-			transform.LookAt (look);
+			//			Vector3 look = iTween.PointOnProcessedPath (path.pathway, currentLook);
+			//			iTween.PutOnProcessedPath (gameObject, path.pathway, CurrentPathPercent);
+			//
+			//			transform.LookAt (look);
 		}
 	}
 
