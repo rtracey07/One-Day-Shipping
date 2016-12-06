@@ -36,8 +36,11 @@ public class PostmanProjectile : MonoBehaviour {
 				Pack.GetComponent<Package> ().DamagePackage (DamageStrength);
 				GameManager.Instance.stats.postmenHit++;
 			}
-		} else if(collision.gameObject.tag == "Ground")
+		} else if (collision.gameObject.tag == "Ground") {
+			StopCoroutine ("LastFiveSeconds");
 			Destroy (this.gameObject);	
+		}
+			
 	}
 
 
