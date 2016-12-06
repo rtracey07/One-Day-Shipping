@@ -46,14 +46,17 @@ public class FlamingPackageAI : MonoBehaviour {
 			if (pack != null) {
 				Debug.Log ("Package Hit");
 				pack.GetComponent<Package> ().DamagePackage (damageStrength);
+
 				//GameManager.Instance.stats.
 			}
+
+			gameObject.SetActive(false);
 
 		}
 
 
 		//destroy package no matter what:
-		gameObject.SetActive(false);
+		//gameObject.SetActive(false);
 	}
 
 }
