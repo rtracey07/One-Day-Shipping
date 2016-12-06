@@ -107,3 +107,5 @@ MonoBehaviour:
     requiresConfirmation: 1
     duration: 0
   currIndex: 0
+  stormPrefab: {fileID: 1000011530352090, guid: a40bf5101782947ff85e1095b6705464,
+    type: 2}

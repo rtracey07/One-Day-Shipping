@@ -6,9 +6,13 @@ using UnityEngine.SceneManagement;
 [CreateAssetMenu(menuName = "Data/Level/Wednesday")]
 public class Wednesday : Level {
 
+	public GameObject stormPrefab;
+
 	public override IEnumerator RunLevel()
 	{
-		//LevelManager.Instance.StartCoroutine (TriggerStorm ());
+		
+		TriggerStorm ();
+
 		LevelManager.Instance.StartCoroutine (CheckWinState (1));
 		//LevelManager.Instance.StartCoroutine (DetectWind (1));  //add this back in when DetectWind is set up
 
@@ -47,18 +51,19 @@ public class Wednesday : Level {
 
 	//storm logic goes here:
 
-	/*
-	public IEnumerator TriggerStorm(){
-		yield return;
+
+	public void TriggerStorm(){
+		GameObject storm = (GameObject)GameObject.Instantiate (stormPrefab, GameManager.Instance.mainCamera.transform);
+		storm.transform.localPosition = Vector3.zero;
 	}
 
+/*
 	public IEnumerator DetectWind(int eventIndex)
 	{
 		yield return new WaitUntil (() => LevelManager.Instance.windDetected ());  //need to implement windDetected in levelmanager
 		yield return LevelManager.Instance.StartCoroutine (TriggerEvent (eventIndex));
 	}
 
-
-	*/
+*/
 
 }
