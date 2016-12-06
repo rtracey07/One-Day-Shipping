@@ -11,6 +11,7 @@ public class Thursday : Level {
 		LevelManager.Instance.StartCoroutine (CheckWinState (3));
 
 		//reset variables:
+		currIndex = 0;
 		LevelManager.Instance.UpdatePackageDeliveredCount ();
 		GameManager.Instance.destroyed = false;
 		LevelManager.Instance.SetPickup ();	
