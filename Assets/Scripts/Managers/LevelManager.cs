@@ -145,7 +145,26 @@ public class LevelManager : MonoBehaviour {
 		}
 		else
 		{
-			Debug.Log("Dog Pool GameObject missing from scene. Nowhere to instantiate cars");
+			Debug.Log("Dog Pool GameObject missing from scene. Nowhere to instantiate dogs");
+		}
+	}
+
+	public void SpawnFlamingPackages(GameObject player, Rigidbody playerBody){
+		//Check if flaming packages are activated:
+		if (levelData.flamingPackageGroup.activated != null) {
+			//Find spawn area at Vector3(playerposition, playerposition+50, playerposition+30):
+			Vector3 playerPosition = player.transform.position;
+			Vector3 flamingPackageSpawnArea = playerPosition;
+
+
+			//Instantiate the given number of flaming packages at the Flaming Packages Pool:
+			for (int i = 0; i < levelData.flamingPackageGroup.numFlamingPackagesToSpawn; i++){
+				flamingPackageSpawnArea.y += 30;
+				flamingPackageSpawnArea.z += Random.Range(1,5) * playerBody.velocity.z;
+				flamingPackageSpawnArea.x += Random.Range (-2, 2) * playerBody.velocity.x;		
+				GameObject flamingPackage = GameObject.Instantiate (levelData.flamingPackageGroup.flamingPackage);
+				flamingPackage.transform.position = flamingPackageSpawnArea;
+			}
 		}
 	}
 

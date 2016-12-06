@@ -9,7 +9,7 @@ public class Friday : Level {
 	public override IEnumerator RunLevel()
 	{
 		LevelManager.Instance.StartCoroutine (CheckWinState (1));
-		//LevelManager.Instance.StartCoroutine (CheckFlamingPackages (1));
+		LevelManager.Instance.StartCoroutine (SpawnFlamingPackages ());
 
 		LevelManager.Instance.UpdatePackageDeliveredCount ();	
 		GameManager.Instance.destroyed = false;
@@ -40,15 +40,18 @@ public class Friday : Level {
 	public IEnumerator CheckWinState(int eventIndex)
 	{
 		yield return new WaitUntil (() => LevelManager.Instance.CheckWinState ());
+		LevelManager.Instance.StopCoroutine ("SpawnFlamingPackages");
 		yield return LevelManager.Instance.StartCoroutine (TriggerEvent (eventIndex));
 	}
 
-	//flaming package detection not implemented yet.
-	/*
-	public IEnumerator CheckFlamingPackages(int eventIndex)
-	{
-		
+
+	public IEnumerator SpawnFlamingPackages(){
+		GameObject player = GameObject.Find ("Player");
+		Rigidbody playerBody = player.GetComponent<Rigidbody> ();
+		while (true) {
+			yield return new WaitForSeconds(1.0f);
+			LevelManager.Instance.SpawnFlamingPackages (player, playerBody);
+		}
 	}
-	*/
 
 }

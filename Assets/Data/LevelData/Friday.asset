@@ -40,6 +40,11 @@ MonoBehaviour:
     postman: {fileID: 1000013488615578, guid: 9062692dc9f2e41698be565a79e79390, type: 2}
     numPostmanToSpawn: 10
     throwProjectiles: 1
+  flamingPackageGroup:
+    flamingPackage: {fileID: 1000013266396748, guid: 63fe3165676cd49628d28b96f608da93,
+      type: 2}
+    numFlamingPackagesToSpawn: 5
+    activated: 1
   pickupLocations:
   - locations:
     - City_Mailbox_A

@@ -63,6 +63,18 @@ public class Level : ScriptableObject{
 	public PostmanPathGroup postmanPathGroup;
 
 
+	[HideInInspector]
+	[Serializable]
+	public class FlamingPackageGroup
+	{
+		public GameObject flamingPackage;
+		public int numFlamingPackagesToSpawn;
+		public bool activated;
+	}
+
+	[Header("Flaming Package Spawning")]
+	public FlamingPackageGroup flamingPackageGroup;
+
 	[Header("Package Locations")]
 	public List<LocationGroup> pickupLocations;
 	public List<LocationGroup> dropoffLocations;
