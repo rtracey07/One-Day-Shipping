@@ -70,7 +70,8 @@ public class EscapeMenuManager : MonoBehaviour {
 	}
 
 	public void Deactivate(){
-		Destroy (GameManager.Instance.gameObject);
+		m_EscapeMenu.SetActive (false);
+		m_ActiveCanvas.SetActive (false);
+		Destroy (this.gameObject);
 	}
-
 }

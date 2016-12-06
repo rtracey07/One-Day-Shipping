@@ -26,11 +26,11 @@ public class AudioManager : MonoBehaviour {
 	}
 		
 	public void PlaySoundEffect(AudioClip clip) {
-		AudioSource.PlayClipAtPoint(clip, Vector3.zero);
+		AudioSource.PlayClipAtPoint(clip, GameManager.Instance.mainCamera.transform.position);
 	}
 
 	public void PlaySoundEffect(AudioClip clip, float volume) {
-		AudioSource.PlayClipAtPoint (clip, Vector3.zero, volume);
+		AudioSource.PlayClipAtPoint (clip, GameManager.Instance.mainCamera.transform.position, volume);
 	}
 		
 }
