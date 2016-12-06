@@ -281,6 +281,7 @@ public class LevelManager : MonoBehaviour {
 
 		DisableHUD ();
 		loadLevel = SceneManager.LoadSceneAsync ("Results");
+		m_ParcelCount.text = "";
 		yield return new WaitUntil (() => loadLevel.isDone);
 	}
 

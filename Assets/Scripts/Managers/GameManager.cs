@@ -112,5 +112,7 @@ public class GameManager : MonoBehaviour {
 		stats.packagesDestroyed = 0;
 		stats.postmenHit = 0;
 		stats.score = 0;
+
+		LevelManager.Instance.m_ParcelCount.text = "";
 	}
 }
