@@ -2195,8 +2195,8 @@ MonoBehaviour:
   projectileRadius: 7
   attackProximity: 0.6
   throwsProjectiles: 1
-  projectileSpeed: 60
-  projectileInterval: 0.5
+  projectileSpeed: 400
+  projectileInterval: 1
   projectile: {fileID: 54000011118484082, guid: da7e932ec170646a3a2f9cb4897ad98a,
     type: 2}
 --- !u!137 &137000010023492578
