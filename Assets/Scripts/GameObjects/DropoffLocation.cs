@@ -18,5 +18,6 @@ public class DropoffLocation : Location {
 	public override void HandlePackage()
 	{
 		GameManager.Instance.hasPackage = false;
+		AudioManager.Instance.PlaySoundEffect (m_AudioClip, m_Volume);
 	}
 }

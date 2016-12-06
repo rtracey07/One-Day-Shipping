@@ -6,6 +6,8 @@ public class Location : MonoBehaviour {
     public GameObject minimapMarker;
 
 	public Animator m_Animator;
+	public AudioClip m_AudioClip;
+	public float m_Volume;
 
 	public ParticleSystem activeEffect;
 	public ParticleSystem collectedEffect;
@@ -51,5 +53,6 @@ public class Location : MonoBehaviour {
 	public virtual void HandlePackage()
 	{
 		GameManager.Instance.hasPackage = true;
+		AudioManager.Instance.PlaySoundEffect (m_AudioClip, m_Volume);
 	}
 }

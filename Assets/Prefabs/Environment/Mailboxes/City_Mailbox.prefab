@@ -103,8 +103,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010967416636}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 45.328102, y: 0.3735, z: 122.759796}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: -0.7071068}
+  m_LocalPosition: {x: -129.79999, y: 0.3735, z: 26.699987}
   m_LocalScale: {x: 1.1100011, y: 1.1100001, z: 1.1100011}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -256,6 +256,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minimapMarker: {fileID: 1000011417773920}
   m_Animator: {fileID: 95000013322185830}
+  m_AudioClip: {fileID: 8300000, guid: 937f039c1a60543dda79ac406e03c943, type: 3}
+  m_Volume: 0
   activeEffect: {fileID: 198000011681228746}
   collectedEffect: {fileID: 198000014044577808}
 --- !u!198 &198000011681228746
@@ -3884,6 +3886,6 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.9338235, g: 0.06866356, b: 0.76675785, a: 1}
+  m_Color: {r: 0, g: 0.20000005, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

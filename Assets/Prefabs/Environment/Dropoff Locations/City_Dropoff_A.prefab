@@ -85,8 +85,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012066951146}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.238073, y: 0.7, z: 74.753}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 32.876, y: 1.1257576, z: 158.477}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -176,6 +176,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minimapMarker: {fileID: 1000011176110868}
   m_Animator: {fileID: 95000012193989936}
+  m_AudioClip: {fileID: 8300000, guid: e2f1854b0f2fd4d62b2e24678193cb09, type: 3}
+  m_Volume: 0.2
   activeEffect: {fileID: 198000013064465992}
   collectedEffect: {fileID: 198000010500812204}
 --- !u!198 &198000010500812204
