@@ -21,11 +21,12 @@ public class Package : MonoBehaviour {
 		if (GameManager.Instance.hasPackage) {
 			PlayPackageDamageSound ();
 			Health = Health - hp;
-		}
-		if (Health <= 0) {
-			GameManager.Instance.stats.packagesDestroyed++;
-			GameManager.Instance.destroyed = true;
-			DisablePackage ();
+
+			if (Health <= 0) {
+				GameManager.Instance.stats.packagesDestroyed++;
+				GameManager.Instance.destroyed = true;
+				DisablePackage ();
+			}
 		}
 	}
 
