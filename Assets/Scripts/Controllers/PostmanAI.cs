@@ -14,15 +14,12 @@ public class PostmanAI : MonoBehaviour {
 	//[SerializeField] Vector3[] route;
 	private int next;
 	private bool fwd;
-	private float turnDelay = 1.0f;
 	private float speedMod = 0.5f;											// for moving along paths
 
-	private bool wall = false;
 	private Pathway path;													// the path
 	public float rotationOffset = 0.05f;									// how far ahead to look to orient on path
 	private float currentLook =0.25f;										// where the car is looking
 	private float percentsPerSecond = 0.1f; 								// %1 of the path moved per second
-	private bool swapPositions = false;
 	private PostmanManager m_Manager;
 	private Vector3 cameraSpacePos;
 
@@ -50,11 +47,7 @@ public class PostmanAI : MonoBehaviour {
 	private float attackTime = 1.0f;
 	private float attackDelay = 3.0f;
 
-	private float change = 0.0f;
-	private float angle = 0.0f;
 	private float current;
-	private bool dirChange = false;
-	private Vector3[] iTweenPath;
 
 	//postman states
 	public enum State
@@ -95,7 +88,7 @@ public class PostmanAI : MonoBehaviour {
 		player = GameObject.Find ("Player");
 		package = player.GetComponentsInChildren<Package> (true) [0];
 		currentLook = CurrentPathPercent + rotationOffset;
-		percentsPerSecond = 0.02f;//speed * 0.0004f;
+		percentsPerSecond = 0.02f;
 
 		m_Manager = GetComponentInParent<PostmanManager> ();
 
@@ -109,8 +102,7 @@ public class PostmanAI : MonoBehaviour {
 	/// Checks for player within radius
 	/// </summary>
 	void CheckForPlayer() {
-		if (Mathf.Sqrt( (player.transform.position.x - transform.position.x) * (player.transform.position.x - transform.position.x)
-			+ (player.transform.position.z - transform.position.z) * (player.transform.position.z - transform.position.z) ) <= attackProximity
+		if (Vector3.Distance(player.transform.position, transform.position) <= attackProximity
 			&& Mathf.Abs(player.transform.position.y - transform.position.y) <= attackProximity) {
 			state = State.Attacking;
 		}
@@ -126,7 +118,7 @@ public class PostmanAI : MonoBehaviour {
 		if (path == null || !path.isActive) {
 			path = m_Manager.GetAreaPath ();
 			if (path != null && path.pathway != null)
-				iTweenPath = iTween.PathControlPointGenerator (path.pathway);
+				iTween.PathControlPointGenerator (path.pathway);
 		}
 
 
@@ -146,14 +138,12 @@ public class PostmanAI : MonoBehaviour {
 			transform.LookAt (look);
 		}
 
-		if ((player.transform.position.x - transform.position.x) * (player.transform.position.x - transform.position.x)
-			+ (player.transform.position.z - transform.position.z) * (player.transform.position.z - transform.position.z) <= projectileRadius * projectileRadius) {
+		if (Vector3.Distance(player.transform.position, transform.position) <= projectileRadius) {
 			center = transform.position;
 			state = State.PlayerShoot;
 		}
 
-		if ((player.transform.position.x - transform.position.x) * (player.transform.position.x - transform.position.x)
-			+ (player.transform.position.z - transform.position.z) * (player.transform.position.z - transform.position.z) <= radius * radius) {
+		if (Vector3.Distance(player.transform.position, transform.position) <= radius) {
 			center = transform.position;
 			state = State.PlayerChase;
 		}
@@ -197,8 +187,7 @@ public class PostmanAI : MonoBehaviour {
 		transform.LookAt (center);
 		transform.Translate (transform.forward * GameClockManager.Instance.time * speed, Space.World);
 
-		if ((transform.position.x - center.x) * (transform.position.x - center.x)
-			+ (transform.position.z - center.z) * (transform.position.z - center.z) <= 0.1f) {
+		if (Vector3.Distance(player.transform.position, transform.position) <= 0.1f) {
 
 			state = State.Walking;
 			//Debug.Log ("back to path");
@@ -214,8 +203,7 @@ public class PostmanAI : MonoBehaviour {
 		animator.SetBool ("Walk", false);
 		animator.SetTrigger("Attack");
 
-		if ((player.transform.position.x - transform.position.x) * (player.transform.position.x - transform.position.x)
-		    + (player.transform.position.z - transform.position.z) * (player.transform.position.z - transform.position.z) <= attackProximity) {
+		if (Vector3.Distance(player.transform.position, transform.position) <= attackProximity) {
 			state = State.Attacking;
 
 			if (attackTime >= attackDelay) {
@@ -250,16 +238,14 @@ public class PostmanAI : MonoBehaviour {
 		////Debug.Log ("chasing");
 
 		// check for player position, attack if close
-		if ((player.transform.position.x - transform.position.x) * (player.transform.position.x - transform.position.x)
-		    + (player.transform.position.z - transform.position.z) * (player.transform.position.z - transform.position.z) <= attackProximity) {
+		if (Vector3.Distance(player.transform.position, transform.position) <= attackProximity) {
 			state = State.Attacking;
 			//Debug.Log ("player attack");
 		}
 
 
 		//go back to walking state
-		if ((transform.position.x - center.x) * (transform.position.x - center.x)
-			+ (transform.position.z - center.z) * (transform.position.z - center.z) >= radius * radius) {
+		if (Vector3.Distance(player.transform.position, transform.position) >= radius) {
 			//Debug.Log ("postman outside radius");
 			state = State.Turning;
 
@@ -269,7 +255,6 @@ public class PostmanAI : MonoBehaviour {
 			Quaternion rot = Quaternion.LookRotation (dir);
 			transform.rotation = Quaternion.Slerp (transform.rotation, rot, GameClockManager.Instance.time * speed);
 			transform.Translate (transform.forward * GameClockManager.Instance.time * speed, Space.World);
-			//transform.position = Vector3.MoveTowards (transform.position, new Vector3 (transform.position.x, ground.point.y + groundOffset, transform.position.z), GameClockManager.Instance.time * speed);
 			CheckForPlayer ();
 		}
 	}
@@ -289,13 +274,10 @@ public class PostmanAI : MonoBehaviour {
 			shoot ();
 
 			//transform.Translate (transform.forward * GameClockManager.Instance.time * speed, Space.World);
-			if (radius <= projectileRadius && ((player.transform.position.x - transform.position.x) * (player.transform.position.x - transform.position.x)
-				+ (player.transform.position.z - transform.position.z) * (player.transform.position.z - transform.position.z) <= radius * radius)) {
-				center = transform.position;
+			if (radius <= projectileRadius && Vector3.Distance(player.transform.position, transform.position) <= radius) {
 				state = State.PlayerChase;
 				//Debug.Log ("if 1");
-			} else if ((player.transform.position.x - center.x) * (player.transform.position.x - center.x)
-				+ (player.transform.position.z - center.z) * (player.transform.position.z - center.z) >= projectileRadius * projectileRadius) {
+			} else if (Vector3.Distance(player.transform.position, transform.position) >= projectileRadius * projectileRadius) {
 				state = State.Walking;
 				//Debug.Log ("if 2");
 			} else {
@@ -303,18 +285,14 @@ public class PostmanAI : MonoBehaviour {
 			}
 		} else {
 
-			if (radius <= projectileRadius && ((player.transform.position.x - transform.position.x) * (player.transform.position.x - transform.position.x)
-			    + (player.transform.position.z - transform.position.z) * (player.transform.position.z - transform.position.z) <= radius * radius)) {
+			if (radius <= projectileRadius && Vector3.Distance(player.transform.position, transform.position) <= radius) {
 				center = transform.position;
 				state = State.PlayerChase;
 				//Debug.Log ("if 3");
 			} else {
 				state = State.Walking;
 			}
-
-
 		}
-
 	}
 
 	/// <summary>
@@ -328,7 +306,9 @@ public class PostmanAI : MonoBehaviour {
 		}
 
 		if (state == State.PlayerChase || state == State.Turning)
-			transform.position = Vector3.MoveTowards (transform.position, new Vector3 (transform.position.x, ground.point.y + groundOffset, transform.position.z), GameClockManager.Instance.fixedTime * speed);
+			transform.position = Vector3.MoveTowards (transform.position, 
+				new Vector3 (transform.position.x, ground.point.y + groundOffset, transform.position.z),
+				GameClockManager.Instance.fixedTime * speed);
 	}
 	
 	// Update is called once per frame

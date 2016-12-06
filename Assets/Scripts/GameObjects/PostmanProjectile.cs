@@ -31,5 +31,4 @@ public class PostmanProjectile : MonoBehaviour {
 		} else if(collision.gameObject.tag == "Ground")
 			Destroy (this.gameObject);	
 	}
-
 }
