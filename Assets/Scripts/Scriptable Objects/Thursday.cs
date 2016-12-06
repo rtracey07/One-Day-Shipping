@@ -8,7 +8,7 @@ public class Thursday : Level {
 
 	public override IEnumerator RunLevel()
 	{
-		LevelManager.Instance.StartCoroutine (CheckWinState (4));
+		LevelManager.Instance.StartCoroutine (CheckWinState (3));
 
 		//reset variables:
 		LevelManager.Instance.UpdatePackageDeliveredCount ();
@@ -63,7 +63,7 @@ public class Thursday : Level {
 				delivered = true; //condition to exit loop
 				//Display Dialougue boxes saying "you delivered to the PSO":
 				yield return new WaitForSeconds(1.0f);
-				yield return LevelManager.Instance.StartCoroutine (TriggerEvent (3));
+				//yield return LevelManager.Instance.StartCoroutine (TriggerEvent (3));
 			}
 
 			//reset / update parameters:

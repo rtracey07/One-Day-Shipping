@@ -257,7 +257,7 @@ MonoBehaviour:
   minimapMarker: {fileID: 1000011417773920}
   m_Animator: {fileID: 95000013322185830}
   m_AudioClip: {fileID: 8300000, guid: 937f039c1a60543dda79ac406e03c943, type: 3}
-  m_Volume: 0
+  m_Volume: 2
   activeEffect: {fileID: 198000011681228746}
   collectedEffect: {fileID: 198000014044577808}
 --- !u!198 &198000011681228746
