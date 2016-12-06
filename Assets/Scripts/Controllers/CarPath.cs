@@ -8,7 +8,7 @@ public class CarPath : MonoBehaviour {
 	private Rigidbody m_Rigidbody;
 	public float rotationOffset = 0.05f;									// how far ahead to look to orient on path
 	public float speed = 50.0f;
-	private float speedMod = 0.25f;											// speed around path
+	private float speedMod = 0.70f;											// speed around path
 
 	[SerializeField] private float damageStrength = 10.0f;					// for hurting package
 
@@ -26,7 +26,7 @@ public class CarPath : MonoBehaviour {
 	void Start()
 	{
 		currentLook = CurrentPathPercent + rotationOffset;
-		percentsPerSecond = 0.015f;//speed * 0.0004f;
+		percentsPerSecond = 0.02f;//speed * 0.0004f;
 
 		m_Manager = GetComponentInParent<CarPathManager> ();
 		m_Rigidbody = GetComponent<Rigidbody> ();
@@ -45,7 +45,7 @@ public class CarPath : MonoBehaviour {
 	}
 		
 
-	void FixedUpdate ()
+	void Update ()
 	{
 		if (path == null || !path.isActive) {
 			path = m_Manager.GetAreaPath ();
@@ -65,6 +65,16 @@ public class CarPath : MonoBehaviour {
 			// look ahead on the path
 			currentLook += percentsPerSecond * speedMod * GameClockManager.Instance.time;
 
+//			Vector3 look = iTween.PointOnProcessedPath (path.pathway, currentLook);
+//			iTween.PutOnProcessedPath (gameObject, path.pathway, CurrentPathPercent);
+//
+//			transform.LookAt (look);
+		}
+	}
+
+	//this should be fixed update for smooth colisions
+	void FixedUpdate(){
+		if (path != null) {
 			Vector3 look = iTween.PointOnProcessedPath (path.pathway, currentLook);
 			iTween.PutOnProcessedPath (gameObject, path.pathway, CurrentPathPercent);
 

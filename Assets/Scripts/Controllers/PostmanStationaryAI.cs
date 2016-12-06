@@ -120,6 +120,7 @@ public class PostmanStationaryAI : MonoBehaviour {
 		if (Mathf.Sqrt( (player.transform.position.x - transform.position.x) * (player.transform.position.x - transform.position.x)
 			+ (player.transform.position.z - transform.position.z) * (player.transform.position.z - transform.position.z) ) <= attackProximity
 			&& Mathf.Abs(player.transform.position.y - transform.position.y) <= attackProximity) {
+			animator.SetTrigger("Attack");
 			state = State.Attacking;
 		}
 	}
@@ -210,6 +211,7 @@ public class PostmanStationaryAI : MonoBehaviour {
 
 		if ((player.transform.position.x - transform.position.x) * (player.transform.position.x - transform.position.x)
 			+ (player.transform.position.z - transform.position.z) * (player.transform.position.z - transform.position.z) <= attackProximity) {
+			animator.SetTrigger("Attack");
 			state = State.Attacking;
 
 			if (attackTime >= attackDelay) {
@@ -247,6 +249,7 @@ public class PostmanStationaryAI : MonoBehaviour {
 		////Debug.Log ("chasing");
 		if ((player.transform.position.x - transform.position.x) * (player.transform.position.x - transform.position.x)
 			+ (player.transform.position.z - transform.position.z) * (player.transform.position.z - transform.position.z) <= attackProximity) {
+			animator.SetTrigger("Attack");
 			state = State.Attacking;
 			//Debug.Log ("player attack");
 		}
