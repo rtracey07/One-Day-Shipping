@@ -26,8 +26,8 @@ MonoBehaviour:
     background: {fileID: 0}
     avatarL: {fileID: 0}
   - eventName: Larry Wakes Up
-    sound: {fileID: 8300000, guid: fd188fe62e338451c86c72f762cdaca0, type: 3}
-    soundVolume: 0
+    sound: {fileID: 8300000, guid: 65cec00cb0fa94211b81e318b20d4ddc, type: 3}
+    soundVolume: 0.1
     avatar: {fileID: 0}
     dialogue:
     - 8 am. Another day, another dollar.

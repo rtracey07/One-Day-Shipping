@@ -27,7 +27,7 @@ MonoBehaviour:
     avatarL: {fileID: 0}
   - eventName: Larry Wakes Up
     sound: {fileID: 8300000, guid: fd188fe62e338451c86c72f762cdaca0, type: 3}
-    soundVolume: 0
+    soundVolume: 0.1
     avatar: {fileID: 0}
     dialogue:
     - 8 am. Rise and grind...
@@ -58,7 +58,7 @@ MonoBehaviour:
     avatar: {fileID: 21300000, guid: 630e7a78ffd454e2baaabee5409f11bf, type: 3}
     dialogue:
     - There you are, New Guy. Gawd, Why do you look so excited?
-    - Boss, he has arrived. Come over here.
+    - Hey Boss, the New Guy's here.
     timeBeforeDisplaying: 0
     isSkippable: 0
     pauseGame: 1
@@ -72,7 +72,7 @@ MonoBehaviour:
     avatar: {fileID: 21300000, guid: 630e7a78ffd454e2baaabee5409f11bf, type: 3}
     dialogue:
     - Noodleman! You're on time again. I like it.
-    - Your work yesterday didn't go unnoticed.
+    - Good work yesterday.
     - You'll be delivering some packages to the Suburbs today.
     - 'It''s just across the bridge. '
     timeBeforeDisplaying: 0
@@ -100,7 +100,7 @@ MonoBehaviour:
     soundVolume: 0
     avatar: {fileID: 21300000, guid: 630e7a78ffd454e2baaabee5409f11bf, type: 3}
     dialogue:
-    - What are you waiting for? Get going.
+    - What are you waiting for? Get going!
     timeBeforeDisplaying: 0
     isSkippable: 0
     pauseGame: 1
