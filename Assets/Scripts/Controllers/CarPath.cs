@@ -3,14 +3,14 @@ using System.Collections;
 
 public class CarPath : MonoBehaviour {
 
-	private Pathway path;						// the path
+	private Pathway path;													// the path
 	private Package package;
 	private Rigidbody m_Rigidbody;
-	public float rotationOffset = 0.05f;			// how far ahead to look to orient on path
+	public float rotationOffset = 0.05f;									// how far ahead to look to orient on path
 	public float speed = 50.0f;
-	private float speedMod = 0.25f;
+	private float speedMod = 0.70f;											// speed around path
 
-	[SerializeField] private float damageStrength = 10.0f;
+	[SerializeField] private float damageStrength = 10.0f;					// for hurting package
 
 	private float currentLook =0.25f;										// where the car is looking
 	private float percentsPerSecond = 0.1f; 								// %1 of the path moved per second
@@ -26,7 +26,7 @@ public class CarPath : MonoBehaviour {
 	void Start()
 	{
 		currentLook = CurrentPathPercent + rotationOffset;
-		percentsPerSecond = 0.015f;//speed * 0.0004f;
+		percentsPerSecond = 0.02f;//speed * 0.0004f;
 
 		m_Manager = GetComponentInParent<CarPathManager> ();
 		m_Rigidbody = GetComponent<Rigidbody> ();
@@ -45,7 +45,7 @@ public class CarPath : MonoBehaviour {
 	}
 		
 
-	void FixedUpdate ()
+	void Update ()
 	{
 		if (path == null || !path.isActive) {
 			path = m_Manager.GetAreaPath ();
@@ -57,21 +57,28 @@ public class CarPath : MonoBehaviour {
 			// if the we're at the end, restart
 			if (CurrentPathPercent >= 0.99f) {
 				CurrentPathPercent = 0.0f;
-				// TODO - this needs some lerping adjustment
 				currentLook = rotationOffset;
 			}
 
 			// move along the percentage of the path by time
 			CurrentPathPercent += percentsPerSecond * speedMod * GameClockManager.Instance.time;
+			// look ahead on the path
 			currentLook += percentsPerSecond * speedMod * GameClockManager.Instance.time;
 
+//			Vector3 look = iTween.PointOnProcessedPath (path.pathway, currentLook);
+//			iTween.PutOnProcessedPath (gameObject, path.pathway, CurrentPathPercent);
+//
+//			transform.LookAt (look);
+		}
+	}
+
+	//this should be fixed update for smooth colisions
+	void FixedUpdate(){
+		if (path != null) {
 			Vector3 look = iTween.PointOnProcessedPath (path.pathway, currentLook);
 			iTween.PutOnProcessedPath (gameObject, path.pathway, CurrentPathPercent);
 
 			transform.LookAt (look);
-
-			//transform.position = Vector3.MoveTowards (transform.position, new Vector3 (transform.position.x, transform.position.x + groundOffset, transform.position.z), GameClockManager.Instance.time * speed);
-			//Debug.DrawRay (transform.position, transform.forward, Color.cyan);
 		}
 	}
 
@@ -109,6 +116,9 @@ public class CarPath : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// sound effects for running into player
+	/// </summary>
 	public void PlayCarHornSound(){
 		int random = Random.Range (1, 4);
 		switch (random) {

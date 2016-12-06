@@ -205,7 +205,7 @@ public class PlayerController : MonoBehaviour {
 		if (other.gameObject.tag == "Water"){
 			AudioSource.PlayClipAtPoint (respawnSound, GameManager.Instance.mainCamera.transform.position);
 			transform.position = start.position;
-			if (package != null) {
+			if (package.activeSelf) {
 				GetPackage (false);
 				GameManager.Instance.hasPackage = false;
 				GameManager.Instance.destroyed = true;

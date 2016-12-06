@@ -18,11 +18,11 @@ public class DogAI : MonoBehaviour {
 
 	public AudioClip attackSound1, attackSound2, attackSound3, attackSound4;
 
-	private Package package;				// package to damage
+	private Package package;									// package to damage
 
-	private GameObject player;
+	private GameObject player;									// the player object
 	private Collider col;
-	private bool wallHit = false;
+	private bool wallHit = false;								// checks for walls or end of range
 	private bool playerChase = false;							// if the player is nearby
 	private Animator animator;									// for animating
 	private bool wall = false;
@@ -34,6 +34,7 @@ public class DogAI : MonoBehaviour {
 	private float angle = 0.0f;
 	private float current;
 
+	//for attacking player
 	private bool attack = false;
 	private float attackTime = 3.0f;
 	private float attackDelay = 3.0f;
@@ -47,6 +48,7 @@ public class DogAI : MonoBehaviour {
 		get{ return damageStrength; }
 	}
 
+	// the center points are set by the spawning manager
 	public Vector3 Center {
 		set{ 
 			center = value;
@@ -64,16 +66,7 @@ public class DogAI : MonoBehaviour {
 		player = GameObject.Find ("Player");
 		//life = lifePoints;
 	}
-
-	/// <summary>
-	/// accept damage when hit by glows
-	/// </summary>
-	/// <param name="col">Col.</param>
-	void  OnTriggerEnter (Collider col)
-	{
-		//print ("COLLISION");
-
-	}
+		
 
 	void FixedUpdate() {
 		RaycastHit hit;
@@ -169,7 +162,7 @@ public class DogAI : MonoBehaviour {
 			}
 		}
 
-
+		// attack the package
 		if (attack && attackTime >= attackDelay) {
 
 			if (package != null) {
@@ -185,6 +178,9 @@ public class DogAI : MonoBehaviour {
 
 	}
 
+	/// <summary>
+	/// plays sound effects
+	/// </summary>
 	public void PlayDogBarkSound(){
 		int random = Random.Range (1, 5);
 		switch (random) {

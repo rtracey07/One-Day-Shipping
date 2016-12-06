@@ -58,6 +58,9 @@ public class LevelManager : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// places random cars at equal intervals along activated itween path
+	/// </summary>
 	public void SpawnCars(){
 		GameObject carParent = GameObject.Find ("Car Pool");
 
@@ -78,6 +81,10 @@ public class LevelManager : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// places set number of postman at equal intervals along itween path
+	/// number of postmen are set by the level scriptable object
+	/// </summary>
 	private void SpawnPostmans(){
 		GameObject postmanParent = GameObject.Find ("Postman Pool");
 
@@ -88,6 +95,7 @@ public class LevelManager : MonoBehaviour {
 				GameObject postman = GameObject.Instantiate (postmanPrefab);
 				postman.transform.parent = postmanParent.transform;
 				PostmanAI postmanPath = postman.GetComponent<PostmanAI> ();
+				// only throw projectiles in correct levels
 				postmanPath.ThrowsProjectiles = levelData.postmanPathGroup.throwProjectiles;
 				postmanPath.CurrentPathPercent = (float)i / levelData.postmanPathGroup.numPostmanToSpawn;
 			}
@@ -98,23 +106,9 @@ public class LevelManager : MonoBehaviour {
 		}
 	}
 
-	private void SpawnFlamingPackages(){
-		GameObject flamingPackageParent = GameObject.Find ("Flaming Package Pool");
-
-		if(flamingPackageParent != null)
-		{
-			for (int i = 0; i < levelData.flamingPackageGroup.numFlamingPackagesToSpawn; i++) {
-				GameObject flamingPackagePrefab = levelData.flamingPackageGroup.flamingPackage;
-				GameObject flamingPackage = GameObject.Instantiate (flamingPackagePrefab);
-
-			}
-		}
-		else
-		{
-			Debug.Log("Flaming package Pool GameObject missing from scene. Nowhere to instantiate postmans");
-		}
-	}
-
+	/// <summary>
+	/// places set number of dogs based on placement vector3
+	/// </summary>
 	public void SpawnDogs(){
 		GameObject dogParent = GameObject.Find ("Dog Pool");
 
@@ -123,7 +117,30 @@ public class LevelManager : MonoBehaviour {
 			for (int i = 0; i < levelData.dogGroup.numDogsToSpawn; i++) {
 				GameObject dog = GameObject.Instantiate (levelData.dogGroup.dog);
 				dog.transform.parent = dogParent.transform;
-				//dog.GetComponent<DogAI>().Center = levelData.dogGroup.dogSpawnLocations [i];
+			}
+		}
+		else
+		{
+			Debug.Log("Dog Pool GameObject missing from scene. Nowhere to instantiate cars");
+		}
+	}
+
+	/// <summary>
+	/// places set number of postman at indicated spawn points
+	/// these postmen don't walk around
+	/// number of postmen are set by the level scriptable object
+	/// </summary>
+	public void SpawnStatPostman(){
+		GameObject statParent = GameObject.Find ("Stationary Postman Pool");
+
+		if(statParent != null)
+		{
+			for (int i = 0; i < levelData.statPostmanGroup.numStatPostmenToSpawn; i++) {
+				GameObject stat = GameObject.Instantiate (levelData.statPostmanGroup.stat);
+				stat.transform.parent = statParent.transform;
+				PostmanStationaryAI postman = stat.GetComponent<PostmanStationaryAI> ();
+				// only throw projectiles in correct levels
+				postman.ThrowsProjectiles = levelData.postmanPathGroup.throwProjectiles;
 			}
 		}
 		else
@@ -236,7 +253,7 @@ public class LevelManager : MonoBehaviour {
 
 	public void UpdatePackageDeliveredCount()
 	{
-		m_ParcelCount.text = string.Format ("{0}/{1}", GameManager.Instance.stats.packagesDelivered, levelData.packageCount);
+		m_ParcelCount.text = string.Format ("Packages Delivered: {0}/{1}", GameManager.Instance.stats.packagesDelivered, levelData.packageCount);
 	}
 
 	public bool CheckWinState()
@@ -283,6 +300,7 @@ public class LevelManager : MonoBehaviour {
 
 		DisableHUD ();
 		loadLevel = SceneManager.LoadSceneAsync ("Results");
+		m_ParcelCount.text = "";
 		yield return new WaitUntil (() => loadLevel.isDone);
 	}
 

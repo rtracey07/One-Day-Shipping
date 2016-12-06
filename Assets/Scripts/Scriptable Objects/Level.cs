@@ -43,6 +43,16 @@ public class Level : ScriptableObject{
 
 	[HideInInspector]
 	[Serializable]
+	public class StatPostmanGroup
+	{
+		public GameObject stat;
+		public int numStatPostmenToSpawn;
+	}
+
+	public StatPostmanGroup statPostmanGroup;
+
+	[HideInInspector]
+	[Serializable]
 	public class PostmanPathGroup
 	{
 		public GameObject postman;

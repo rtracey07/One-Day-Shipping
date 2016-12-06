@@ -20,6 +20,7 @@ TagManager:
   - Tree
   - EscapeUI
   - AudioSlider
+  - Postman
   layers:
   - Default
   - TransparentFX
