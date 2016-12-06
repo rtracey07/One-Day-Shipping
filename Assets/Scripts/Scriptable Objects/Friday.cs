@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 [CreateAssetMenu(menuName = "Data/Level/Friday")]
 public class Friday : Level {
 
+	public GameObject m_Apocalypse;
+
 	public override IEnumerator RunLevel()
 	{
 		LevelManager.Instance.StartCoroutine (CheckWinState (1));
@@ -54,4 +56,8 @@ public class Friday : Level {
 		}
 	}
 
+	public void TriggerApocalypse(){
+		GameObject apocalypse = (GameObject)GameObject.Instantiate (m_Apocalypse, GameManager.Instance.mainCamera.transform);
+		apocalypse.transform.localPosition = Vector3.zero;
+	}
 }
