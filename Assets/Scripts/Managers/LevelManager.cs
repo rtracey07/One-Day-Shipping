@@ -58,6 +58,9 @@ public class LevelManager : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// places random cars at equal intervals along activated itween path
+	/// </summary>
 	public void SpawnCars(){
 		GameObject carParent = GameObject.Find ("Car Pool");
 
@@ -78,6 +81,10 @@ public class LevelManager : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// places set number of postman at equal intervals along itween path
+	/// number of postmen are set by the level scriptable object
+	/// </summary>
 	private void SpawnPostmans(){
 		GameObject postmanParent = GameObject.Find ("Postman Pool");
 
@@ -88,6 +95,7 @@ public class LevelManager : MonoBehaviour {
 				GameObject postman = GameObject.Instantiate (postmanPrefab);
 				postman.transform.parent = postmanParent.transform;
 				PostmanAI postmanPath = postman.GetComponent<PostmanAI> ();
+				// only throw projectiles in correct levels
 				postmanPath.ThrowsProjectiles = levelData.postmanPathGroup.throwProjectiles;
 				postmanPath.CurrentPathPercent = (float)i / levelData.postmanPathGroup.numPostmanToSpawn;
 			}
@@ -98,7 +106,9 @@ public class LevelManager : MonoBehaviour {
 		}
 	}
 
-
+	/// <summary>
+	/// places set number of dogs based on placement vector3
+	/// </summary>
 	public void SpawnDogs(){
 		GameObject dogParent = GameObject.Find ("Dog Pool");
 
@@ -107,7 +117,6 @@ public class LevelManager : MonoBehaviour {
 			for (int i = 0; i < levelData.dogGroup.numDogsToSpawn; i++) {
 				GameObject dog = GameObject.Instantiate (levelData.dogGroup.dog);
 				dog.transform.parent = dogParent.transform;
-				//dog.GetComponent<DogAI>().Center = levelData.dogGroup.dogSpawnLocations [i];
 			}
 		}
 		else
@@ -116,6 +125,11 @@ public class LevelManager : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// places set number of postman at indicated spawn points
+	/// these postmen don't walk around
+	/// number of postmen are set by the level scriptable object
+	/// </summary>
 	public void SpawnStatPostman(){
 		GameObject statParent = GameObject.Find ("Stationary Postman Pool");
 
@@ -125,8 +139,8 @@ public class LevelManager : MonoBehaviour {
 				GameObject stat = GameObject.Instantiate (levelData.statPostmanGroup.stat);
 				stat.transform.parent = statParent.transform;
 				PostmanStationaryAI postman = stat.GetComponent<PostmanStationaryAI> ();
+				// only throw projectiles in correct levels
 				postman.ThrowsProjectiles = levelData.postmanPathGroup.throwProjectiles;
-				//dog.GetComponent<DogAI>().Center = levelData.dogGroup.dogSpawnLocations [i];
 			}
 		}
 		else

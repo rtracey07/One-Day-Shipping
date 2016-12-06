@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class CarPathManager : MonoBehaviour {
-		
+
+	// list of the areas on the map
 	[SerializeField]
 	public List<Pathway> areas;			
 	private List<Pathway> activeAreas;

@@ -4,11 +4,13 @@ using System.Collections.Generic;
 
 public class DogManager : MonoBehaviour {
 
+	// spawn location lists and dog script component
 	[SerializeField]
 	public List<DogSpawnLocations> areas;	
 	private List<DogSpawnLocations> activeAreas;
 	private List<DogAI> dogs;
 
+	// for drawing in debug
 	public Color inactivePathColor = Color.white;
 	public Color activePathColor = Color.red;
 	public float activeDistance;
@@ -31,6 +33,7 @@ public class DogManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		// if the player is in the area, activate the dogs in that area
 		if (areas != null && player != null) {
 			for (int i = 0; i < areas.Count; i++) {
 				if (Vector3.Distance (areas [i].center, player.position) <= activeDistance) {
@@ -48,16 +51,11 @@ public class DogManager : MonoBehaviour {
 			}
 		}
 	}
-
-//	public Pathway GetAreaPath()
-//	{
-//		if (activeAreas.Count > 0) {
-//			return activeAreas[Random.Range(0, activeAreas.Count-1)];
-//		}
-//
-//		return null;
-//	}
-
+		
+	/// <summary>
+	/// Set the dogs. Make sure to only set as many dogs as are required by the level
+	/// </summary>
+	/// <param name="area">Area.</param>
 	void SetDogPositions(DogSpawnLocations area){
 		// don't want to clone more dogs than positions
 		int activeDogCount = area.locations.Count;
@@ -70,14 +68,11 @@ public class DogManager : MonoBehaviour {
 			if (i >= dogs.Count)
 				break;
 			dogs [i].gameObject.SetActive (true);
-			//Debug.Log ("activating dog " + i);
-
 			dogs [i].Center = area.locations [i];
 		}
 
 		for (int i = activeDogCount; i < dogs.Count; i++) {
 			dogs [i].gameObject.SetActive (false);
-			//Debug.Log ("de-activating dog " + i);
 		}
 	}
 
