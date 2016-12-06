@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour {
 		if (_Instance == null) {
 			_Instance = this;
 			DontDestroyOnLoad (this);
+			FindCamera ();
 		}
 		else {
 			DestroyImmediate (this.gameObject);
