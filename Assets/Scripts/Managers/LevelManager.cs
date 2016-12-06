@@ -234,7 +234,7 @@ public class LevelManager : MonoBehaviour {
 
 	public void UpdatePackageDeliveredCount()
 	{
-		m_ParcelCount.text = string.Format ("{0}/{1}", GameManager.Instance.stats.packagesDelivered, levelData.packageCount);
+		m_ParcelCount.text = string.Format ("Packages Delivered: {0}/{1}", GameManager.Instance.stats.packagesDelivered, levelData.packageCount);
 	}
 
 	public bool CheckWinState()
