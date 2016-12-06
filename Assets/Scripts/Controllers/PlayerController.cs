@@ -69,6 +69,9 @@ public class PlayerController : MonoBehaviour {
 
 	void FixedUpdate() 
 	{
+		if (transform.position.y < yBoundary)
+			transform.position = start.position;
+
 		if (GameClockManager.Instance.freeze) {
 			animator.speed = 0;
 		} else {
