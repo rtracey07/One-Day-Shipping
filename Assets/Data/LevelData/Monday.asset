@@ -40,6 +40,10 @@ MonoBehaviour:
     postman: {fileID: 1000013488615578, guid: 9062692dc9f2e41698be565a79e79390, type: 2}
     numPostmanToSpawn: 5
     throwProjectiles: 0
+  flamingPackageGroup:
+    flamingPackage: {fileID: 0}
+    numFlamingPackagesToSpawn: 0
+    activated: 0
   pickupLocations:
   - locations:
     - City_Mailbox_A
@@ -190,7 +194,7 @@ MonoBehaviour:
     soundVolume: 0
     avatar: {fileID: 21300000, guid: aae6d859cf7f246cfb3acc6a36ed621e, type: 3}
     dialogue:
-    - Times up! Head back into the office.
+    - Time's up! Head back into the office.
     timeBeforeDisplaying: 0.3
     isSkippable: 0
     pauseGame: 1

@@ -40,6 +40,10 @@ MonoBehaviour:
     postman: {fileID: 1000013488615578, guid: 9062692dc9f2e41698be565a79e79390, type: 2}
     numPostmanToSpawn: 8
     throwProjectiles: 1
+  flamingPackageGroup:
+    flamingPackage: {fileID: 0}
+    numFlamingPackagesToSpawn: 0
+    activated: 0
   pickupLocations:
   - locations:
     - City_Mailbox_N
@@ -104,7 +108,7 @@ MonoBehaviour:
     pauseGame: 1
     requiresConfirmation: 1
     duration: 0
-  - eventName: Dropoff Postal Service Package (Boss)
+  - eventName: Dropoff Postal Service Package (Win State)
     sound: {fileID: 0}
     soundVolume: 0
     avatar: {fileID: 21300000, guid: aae6d859cf7f246cfb3acc6a36ed621e, type: 3}
@@ -120,11 +124,9 @@ MonoBehaviour:
   - eventName: End Level
     sound: {fileID: 0}
     soundVolume: 0
-    avatar: {fileID: 21300000, guid: 201084ff4c3f142b6b247eb8b414072a, type: 3}
+    avatar: {fileID: 21300000, guid: aae6d859cf7f246cfb3acc6a36ed621e, type: 3}
     dialogue:
-    - A personal gift from the Boss... hmm...
-    - I wonder what it could be...
-    - 'Ahh forget it. Why would I even care? '
+    - Quittin' time. You're done for the day.
     timeBeforeDisplaying: 0
     isSkippable: 0
     pauseGame: 1
