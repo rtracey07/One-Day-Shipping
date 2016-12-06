@@ -24,9 +24,7 @@ public class AudioController : MonoBehaviour {
 
 		if (obj != null) {
 			volumeControl = (Slider)obj.GetComponent<Slider> ();
-		} else {
-			Debug.Log ("missing");
-		}
+		} 
 	}
 	
 
