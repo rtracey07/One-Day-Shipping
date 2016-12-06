@@ -1870,7 +1870,7 @@ MonoBehaviour:
   jumpSpeed: 300
   slideSpeed: 2
   gravity: 8
-  yBoundary: 0
+  yBoundary: -50
   moveDirection: {x: 0, y: 0, z: 0}
   vertical: 0
   sliding: 0
