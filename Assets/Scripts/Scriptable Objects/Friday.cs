@@ -10,6 +10,7 @@ public class Friday : Level {
 
 	public override IEnumerator RunLevel()
 	{
+		TriggerApocalypse ();
 		LevelManager.Instance.StartCoroutine (CheckWinState (1));
 		LevelManager.Instance.StartCoroutine (SpawnFlamingPackages ());
 
