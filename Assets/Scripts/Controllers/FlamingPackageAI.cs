@@ -42,6 +42,7 @@ public class FlamingPackageAI : MonoBehaviour {
 				break;
 			}
 
+			//get the package and do damage
 			pack = GameObject.Find ("Package");
 			if (pack != null) {
 				Debug.Log ("Package Hit");
@@ -57,6 +58,14 @@ public class FlamingPackageAI : MonoBehaviour {
 
 		//destroy package no matter what:
 		//gameObject.SetActive(false);
+	}
+
+	void Update(){
+		if (GameClockManager.Instance.freeze) {
+			gameObject.GetComponent<Rigidbody> ().constraints = RigidbodyConstraints.FreezeAll;
+		} else {
+			gameObject.GetComponent<Rigidbody> ().constraints = RigidbodyConstraints.None;
+		}
 	}
 
 }

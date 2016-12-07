@@ -12,19 +12,19 @@ public class PlayerController : MonoBehaviour {
 	};
 
 	[Tooltip("Character Move Speed")]
-	public float speed = 6.0f;
+	public float speed = 6.0f;												// walk speed
 
 	[Tooltip("Modify backup Speed")]
-	public float backupSpeedFactor = 2.0f;
+	public float backupSpeedFactor = 2.0f;									// backwards speed
 
 	[Tooltip("Character Rotation Speed")]
-	public float rotationSpeed = 60.0f;
+	public float rotationSpeed = 60.0f;										// turning around speed
 
 	[Tooltip("Character Jump Speed")]
-	public float jumpSpeed = 8.0f;
+	public float jumpSpeed = 8.0f;											// jump speed
 
 	[Tooltip("Character Speed Down Slope")]
-	public float slideSpeed = 2.0f;
+	public float slideSpeed = 2.0f;											// sliding on slopes
 
 	[Tooltip("Downward Force")]
 	public float gravity = 20.0f;
@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour {
 	{
 		if (transform.position.y < yBoundary)
 			transform.position = start.position;
-
+		// on pause
 		if (GameClockManager.Instance.freeze) {
 			animator.speed = 0;
 		} else {
@@ -117,8 +117,6 @@ public class PlayerController : MonoBehaviour {
 	//Move Player.
 	void Move()
 	{
-		//Store current y-value.
-//		float fall = moveDirection.y;
 
 		currSpeed = Mathf.Clamp ((vertical != 0) ? (currSpeed + acceleration) : (currSpeed - 3*acceleration), 0, speed);
 

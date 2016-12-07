@@ -14,12 +14,12 @@ public class CarPath : MonoBehaviour {
 
 	private float currentLook =0.25f;										// where the car is looking
 	private float percentsPerSecond = 0.1f; 								// %1 of the path moved per second
-	private CarPathManager m_Manager;
-	private bool isHit = false;
-	private Vector3 cameraSpacePos;
-	private float groundOffset = -0.1f;
+	private CarPathManager m_Manager;										// the manager object
+	private bool isHit = false;												// checks if car is colliding
+	private Vector3 cameraSpacePos;											// keeps track of camera
+	private float groundOffset = -0.1f;										// adjusts for floating off ground
 
-	private Vector3[] iTweenPath;
+	private Vector3[] iTweenPath;											// the path to follow
 
 	public AudioClip carCollisionSound1, carCollisionSound2, carCollisionSound3;
 
@@ -72,10 +72,6 @@ public class CarPath : MonoBehaviour {
 			// look ahead on the path
 			currentLook += percentsPerSecond * speedMod * GameClockManager.Instance.fixedTime;
 
-			//			Vector3 look = iTween.PointOnProcessedPath (path.pathway, currentLook);
-			//			iTween.PutOnProcessedPath (gameObject, path.pathway, CurrentPathPercent);
-			//
-			//			transform.LookAt (look);
 		}
 	}
 
@@ -94,6 +90,7 @@ public class CarPath : MonoBehaviour {
 
 	void OnCollisionEnter(Collision other)
 	{
+		// if running into player, do damage
 		if (other.gameObject.tag == "Player") {
 			other.rigidbody.AddForce (-other.contacts [0].normal * Vector3.Dot(-other.contacts [0].normal,transform.forward)*m_Rigidbody.mass);
 			if (!isHit) {
@@ -131,6 +128,11 @@ public class CarPath : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// delays on hits to avoid pop-in issues
+	/// </summary>
+	/// <returns>The hit.</returns>
+	/// <param name="time">Time.</param>
 	IEnumerator ResetHit(float time)
 	{
 		yield return new WaitForSeconds (time);

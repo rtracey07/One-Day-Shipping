@@ -19,6 +19,9 @@ public class AudioController : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// sets the volume slider for audio control
+	/// </summary>
 	void SetAudioSlider(){
 		GameObject obj = GameObject.FindGameObjectWithTag ("AudioSlider");
 

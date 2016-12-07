@@ -76,7 +76,7 @@ public class DogAI : MonoBehaviour {
 		//don't walk into walls, do walk up to player
 		RaycastHit front;
 		if (Physics.Raycast (transform.position, transform.forward, out front)) {
-			//Debug.Log ("hit something " + front.distance);
+			//close to wall
 			if (front.distance < 0.3f && !hit.collider.name.Equals("player")) {
 				wall = true;
 			}
@@ -106,11 +106,11 @@ public class DogAI : MonoBehaviour {
 				animator.SetBool ("Attack", false);
 		
 
-
+				//the player is within the radius
 				if ((player.transform.position.x - center.x) * (player.transform.position.x - center.x)
 				   + (player.transform.position.z - center.z) * (player.transform.position.z - center.z) <= radius * radius) {
 					wallHit = false;
-					//animator.SetBool ("Attack", true);
+					// get the package if it exists
 					GameObject pack_gameobject = GameObject.FindGameObjectWithTag("Package");
 					if (pack_gameobject != null) {
 						package = pack_gameobject.GetComponent<Package>();
@@ -118,7 +118,7 @@ public class DogAI : MonoBehaviour {
 						
 					playerChase = true;
 					GameManager.Instance.dogAttack = true;
-					//Vector3 dir = (new Vector3 (player.transform.position.x, center.y, player.transform.position.z) - transform.position).normalized;
+					//go after player
 					Vector3 dir = (new Vector3 (player.transform.position.x, player.transform.position.y, player.transform.position.z) - transform.position).normalized;
 					Quaternion rot = Quaternion.LookRotation (dir);
 					transform.rotation = Quaternion.Slerp (transform.rotation, rot, GameClockManager.Instance.time * speed);
