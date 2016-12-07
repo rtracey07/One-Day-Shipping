@@ -3,6 +3,10 @@ using System.Collections;
 
 public class DropoffLocation : Location {
 
+	/// <summary>
+	/// Function to activate or deactivate the dropoff location event
+	/// </summary>
+	/// <param name="on">If set to <c>true</c> on.</param>
 	public override void TriggerEvent(bool on)
 	{
 		if (on) 
@@ -15,6 +19,9 @@ public class DropoffLocation : Location {
 		}
 	}
 
+	/// <summary>
+	/// Function to drop off package.
+	/// </summary>
 	public override void HandlePackage()
 	{
 		GameManager.Instance.hasPackage = false;

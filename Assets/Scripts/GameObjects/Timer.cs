@@ -2,7 +2,11 @@
 using UnityEngine.UI;
 using System.Collections;
 
+/// <summary>
+/// Timer class that controls the UI clock.
+/// </summary>
 public class Timer : MonoBehaviour {
+
 
 	private float time;
 	private float currTime;
@@ -16,6 +20,10 @@ public class Timer : MonoBehaviour {
 
 	public Color m_OutOfTimeColor;
 
+	/// <summary>
+	/// Start this instance.
+	/// Set the time and hand colors.
+	/// </summary>
 	void Start () {
 		time = LevelManager.Instance.GetMissionLength () * 60.0f;
 		currTime = time;
@@ -23,6 +31,11 @@ public class Timer : MonoBehaviour {
 		minuteColor = minuteHand.color;
 	}
 
+	/// <summary>
+	/// Update this instance.
+	/// Updates the hands to the current time.
+	/// Gradually switches color of hands to red as it gets closer to end time.
+	/// </summary>
 	void Update () {
 		if (active) 
 		{
