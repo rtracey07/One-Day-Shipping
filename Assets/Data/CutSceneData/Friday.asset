@@ -38,46 +38,91 @@ MonoBehaviour:
     duration: 2
     background: {fileID: 0}
     avatarL: {fileID: 0}
-  - eventName: Incomplete
+  - eventName: Fade to Office
+    sound: {fileID: 8300000, guid: e6fd2622d51f046bbb80c549c288ef61, type: 3}
+    soundVolume: 0.4
+    avatar: {fileID: 0}
+    dialogue:
+    - 
+    timeBeforeDisplaying: 0
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 0
+    duration: 2
+    background: {fileID: 21300000, guid: 0e48952e0f21448c5a70511be0babc36, type: 3}
+    avatarL: {fileID: 0}
+  - eventName: Boss Greeting
     sound: {fileID: 0}
     soundVolume: 0
     avatar: {fileID: 0}
     dialogue:
-    - 
+    - Hah-hah. Take that, stupid Postal Service!
+    - Good job, Noodleman. You really showed them.
     timeBeforeDisplaying: 0
     isSkippable: 0
     pauseGame: 1
     requiresConfirmation: 1
     duration: 0
     background: {fileID: 21300000, guid: 0e48952e0f21448c5a70511be0babc36, type: 3}
-    avatarL: {fileID: 0}
-  - eventName: Incomplete
-    sound: {fileID: 0}
-    soundVolume: 0
+    avatarL: {fileID: 21300000, guid: 47f35c39a642b4b17bff47a2688a0ae8, type: 3}
+  - eventName: Explosion
+    sound: {fileID: 8300000, guid: fd1d1b015b14e40fdb93e50430191e6c, type: 3}
+    soundVolume: 1
     avatar: {fileID: 0}
     dialogue:
     - 
+    timeBeforeDisplaying: 0
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 0
+    duration: 2
+    background: {fileID: 21300000, guid: 0e48952e0f21448c5a70511be0babc36, type: 3}
+    avatarL: {fileID: 21300000, guid: 47f35c39a642b4b17bff47a2688a0ae8, type: 3}
+  - eventName: Dispatcher Panics
+    sound: {fileID: 0}
+    soundVolume: 0
+    avatar: {fileID: 21300000, guid: 630e7a78ffd454e2baaabee5409f11bf, type: 3}
+    dialogue:
+    - WHAT WAS THAT?!
+    - OH MY GAWD! There are flaming packages falling from the sky!
+    - What have you done?!
     timeBeforeDisplaying: 0
     isSkippable: 0
     pauseGame: 1
     requiresConfirmation: 1
     duration: 0
     background: {fileID: 21300000, guid: 0e48952e0f21448c5a70511be0babc36, type: 3}
-    avatarL: {fileID: 0}
-  - eventName: Incomplete
+    avatarL: {fileID: 21300000, guid: 47f35c39a642b4b17bff47a2688a0ae8, type: 3}
+  - eventName: Dispatcher Leaves
     sound: {fileID: 0}
     soundVolume: 0
     avatar: {fileID: 0}
     dialogue:
     - 
+    timeBeforeDisplaying: 0
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 0
+    duration: 1.5
+    background: {fileID: 21300000, guid: 0e48952e0f21448c5a70511be0babc36, type: 3}
+    avatarL: {fileID: 21300000, guid: 47f35c39a642b4b17bff47a2688a0ae8, type: 3}
+  - eventName: Boss Panics
+    sound: {fileID: 0}
+    soundVolume: 0
+    avatar: {fileID: 0}
+    dialogue:
+    - Noodleman! What are you waiting for?
+    - DELIVER
+    - THOSE
+    - PACKAGES!!!
     timeBeforeDisplaying: 0
     isSkippable: 0
     pauseGame: 1
     requiresConfirmation: 1
     duration: 0
     background: {fileID: 21300000, guid: 0e48952e0f21448c5a70511be0babc36, type: 3}
-    avatarL: {fileID: 0}
-  - eventName: Incomplete
+    avatarL: {fileID: 21300000, guid: 47f35c39a642b4b17bff47a2688a0ae8, type: 3}
+  - eventName: Boss Leaves
     sound: {fileID: 0}
     soundVolume: 0
     avatar: {fileID: 0}
@@ -86,7 +131,7 @@ MonoBehaviour:
     timeBeforeDisplaying: 0
     isSkippable: 0
     pauseGame: 1
-    requiresConfirmation: 1
-    duration: 0
+    requiresConfirmation: 0
+    duration: 1
     background: {fileID: 21300000, guid: 0e48952e0f21448c5a70511be0babc36, type: 3}
     avatarL: {fileID: 0}

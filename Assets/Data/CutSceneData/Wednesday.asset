@@ -81,14 +81,26 @@ MonoBehaviour:
     duration: 2
     background: {fileID: 21300000, guid: 0e48952e0f21448c5a70511be0babc36, type: 3}
     avatarL: {fileID: 21300000, guid: 47f35c39a642b4b17bff47a2688a0ae8, type: 3}
+  - eventName: Dispatcher Leaves
+    sound: {fileID: 0}
+    soundVolume: 0
+    avatar: {fileID: 0}
+    dialogue:
+    - 
+    timeBeforeDisplaying: 0
+    isSkippable: 0
+    pauseGame: 1
+    requiresConfirmation: 0
+    duration: 1.5
+    background: {fileID: 21300000, guid: 0e48952e0f21448c5a70511be0babc36, type: 3}
+    avatarL: {fileID: 21300000, guid: 47f35c39a642b4b17bff47a2688a0ae8, type: 3}
   - eventName: Boss Message
     sound: {fileID: 0}
     soundVolume: 0
-    avatar: {fileID: 21300000, guid: 630e7a78ffd454e2baaabee5409f11bf, type: 3}
+    avatar: {fileID: 0}
     dialogue:
-    - Hey. Don't talk to me like that.
-    - Anyways, big day today. I heard the Postal Service is taking a day off.
-    - Any package we deliver today will boost our reputation. Get to work, guys.
+    - Big day today, Noodleman. The whole city is shut down because of the storm.
+    - If we deliver packages today, we will be HEROES!
     timeBeforeDisplaying: 0
     isSkippable: 0
     pauseGame: 1
@@ -107,32 +119,5 @@ MonoBehaviour:
     pauseGame: 1
     requiresConfirmation: 0
     duration: 1.5
-    background: {fileID: 21300000, guid: 0e48952e0f21448c5a70511be0babc36, type: 3}
-    avatarL: {fileID: 0}
-  - eventName: Dispatcher Sassy Comment
-    sound: {fileID: 0}
-    soundVolume: 0
-    avatar: {fileID: 21300000, guid: 630e7a78ffd454e2baaabee5409f11bf, type: 3}
-    dialogue:
-    - 'Gawd, what are you looking at? '
-    - Get going, Lanky Larry. Enjoy the storm.
-    timeBeforeDisplaying: 0
-    isSkippable: 0
-    pauseGame: 1
-    requiresConfirmation: 1
-    duration: 0
-    background: {fileID: 21300000, guid: 0e48952e0f21448c5a70511be0babc36, type: 3}
-    avatarL: {fileID: 0}
-  - eventName: Dispatcher Leaves
-    sound: {fileID: 0}
-    soundVolume: 0
-    avatar: {fileID: 0}
-    dialogue:
-    - 
-    timeBeforeDisplaying: 0
-    isSkippable: 0
-    pauseGame: 1
-    requiresConfirmation: 0
-    duration: 2
     background: {fileID: 21300000, guid: 0e48952e0f21448c5a70511be0babc36, type: 3}
     avatarL: {fileID: 0}
