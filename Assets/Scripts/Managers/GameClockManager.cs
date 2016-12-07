@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
+/* Freeze Time. */
 public class GameClockManager : MonoBehaviour {
 
 	private static GameClockManager _Instance;

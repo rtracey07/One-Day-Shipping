@@ -4,19 +4,19 @@ using System.Collections.Generic;
 
 public class DogManager : MonoBehaviour {
 
-	// spawn location lists and dog script component
 	[SerializeField]
-	public List<DogSpawnLocations> areas;	
-	private List<DogSpawnLocations> activeAreas;
-	private List<DogAI> dogs;
+	public List<DogSpawnLocations> areas;				//Dog Areas.
+	private List<DogSpawnLocations> activeAreas;		//Active Dog Areas.
+	private List<DogAI> dogs;							//Dog Pool.
 
-	// for drawing in debug
+	//For drawing in debug
 	public Color inactivePathColor = Color.white;
 	public Color activePathColor = Color.red;
 	public float activeDistance;
 
 	public bool debug = false;
 	private Transform player;
+
 
 	void Start() {
 		player = GameObject.Find ("Player").transform;
@@ -30,7 +30,7 @@ public class DogManager : MonoBehaviour {
 		}
 	}
 
-	// Update is called once per frame
+	/* Get Active Placements for dog. */
 	void Update () {
 
 		// if the player is in the area, activate the dogs in that area

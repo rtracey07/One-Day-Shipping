@@ -29,6 +29,7 @@ public class EscapeMenuManager : MonoBehaviour {
 		}
 	}
 
+	/* Set Escape Menu visible */
 	public void AccessEscapeMenu(){
 		if (SceneManager.GetActiveScene ().name != "FrontEnd" || SceneManager.GetActiveScene ().name != "CutScene") {
 			if (!active) {
@@ -44,6 +45,7 @@ public class EscapeMenuManager : MonoBehaviour {
 		}
 	}
 
+	/* Transition to main. */
 	public void MainTransition()
 	{
 		m_ActiveCanvas.SetActive(false);
@@ -51,24 +53,28 @@ public class EscapeMenuManager : MonoBehaviour {
 		m_ActiveCanvas = m_Main;
 	}
 
+	/* Transition to Are You Sure? */
 	public void WantToQuitTransition(){
 		m_ActiveCanvas.SetActive (false);
 		m_WantToQuit.SetActive (true);
 		m_ActiveCanvas = m_WantToQuit;
 	}
 
+	/* Transition to Are You Sure? */
 	public void WantToMainMenuTransition(){
 		m_ActiveCanvas.SetActive (false);
 		m_WantToMainMenu.SetActive (true);
 		m_ActiveCanvas = m_WantToMainMenu;
 	}
 
+	/* Transition to Settings. */
 	public void SettingsTransition(){
 		m_ActiveCanvas.SetActive (false);
 		m_Settings.SetActive (true);
 		m_ActiveCanvas = m_Settings;
 	}
 
+	/* Deactivate Menu. */
 	public void Deactivate(){
 		m_EscapeMenu.SetActive (false);
 		m_ActiveCanvas.SetActive (false);

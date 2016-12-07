@@ -6,19 +6,13 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour {
 
 	private static LevelManager _Instance;
-	public static LevelManager Instance {
-		get {
-			return _Instance;
-		}
-	}
+	public static LevelManager Instance { get { return _Instance; } }
 
     void OnDestroy()
     {
         levelData.currIndex = 0;
     }
 
-
-	//Dialog Box Elements.
 
 	[Header("In-Game UI Elements")]
 	public Image m_DialogueBox;

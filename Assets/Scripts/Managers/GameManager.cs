@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour {
 	private static GameManager _Instance;
 	public static GameManager Instance {  get { return _Instance; } }
 
+
+	//Each level has a mission & cut scene associated with it.
 	[Serializable]
 	public class Mission
 	{
@@ -15,6 +17,7 @@ public class GameManager : MonoBehaviour {
 		public CutScene cutScene;
 	}
 
+	//List of levels & current level index.
 	public List<Mission> levels;
 	public int currLevelIndex = 0; 
 
@@ -57,17 +60,20 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
+	// Continue button pressed.
 	public void Continue()
 	{
 		continueClicked = true;
 	}
 
+	//Skip button pressed.
 	public void Skip()
 	{
 		continueClicked = true;
 		skipClicked = true;
 	}
 
+	//Get the main camera in the current scene.
 	public void FindCamera()
 	{
 		GameObject cam = GameObject.Find ("Main Camera");
@@ -76,16 +82,19 @@ public class GameManager : MonoBehaviour {
 			mainCamera = cam.GetComponent<Camera> ();
 	}
 
+	//Return current level info to levelmanager.
 	public Level GetLevelInfo()
 	{
 		return levels [currLevelIndex].level;
 	}
 
+	//Return current cutscene infor to levelmanager.
 	public CutScene GetCutSceneInfo()
 	{
 		return levels [currLevelIndex].cutScene;
 	}
 
+	//Change level.
 	public void UpdateLevelInfo()
 	{
 		if (!hasBeenUpdated) {
@@ -96,6 +105,7 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
+	//Reset Gamemanager's stats.
 	public void Reset()
 	{
 		hasPackage = false;

@@ -4,14 +4,15 @@ using System.Collections;
 
 public class FrontEndManager : MonoBehaviour {
 
-	public GameObject m_Main;
-	public GameObject m_LevelSelect;
-	public GameObject m_Scores;
-	public GameObject m_Controls;
+	public GameObject m_Main;			//Main Menu
+	public GameObject m_LevelSelect;	//Level Select Menu
+	public GameObject m_Scores;			//Scores Menu
+	public GameObject m_Controls;		//Controls Menu.
 
-	private GameObject m_ActiveCanvas;
-	private Vector3 mainOutPos;
+	private GameObject m_ActiveCanvas;	//Active Menu.
+	private Vector3 mainOutPos;			//Starting position for animation.
 
+	/* Start window animation. */
 	void Awake()
 	{
 		m_ActiveCanvas = m_Main;
@@ -20,6 +21,7 @@ public class FrontEndManager : MonoBehaviour {
 		StartCoroutine (MoveMain (true));
 	}
 
+	/* Transition to main. */
 	public void MainTransition()
 	{
 		m_ActiveCanvas.SetActive(false);
@@ -27,6 +29,7 @@ public class FrontEndManager : MonoBehaviour {
 		m_ActiveCanvas = m_Main;
 	}
 
+	/* Transition to level select. */
 	public void LevelSelectTransition()
 	{
 		m_ActiveCanvas.SetActive(false);
@@ -34,6 +37,7 @@ public class FrontEndManager : MonoBehaviour {
 		m_ActiveCanvas = m_LevelSelect;
 	}
 
+	/* Transition to scores. */
 	public void ScoresTransition()
 	{
 		m_ActiveCanvas.SetActive(false);
@@ -41,6 +45,7 @@ public class FrontEndManager : MonoBehaviour {
 		m_ActiveCanvas = m_Scores;
 	}
 
+	/* Transition to Controls. */
 	public void ControlsTransition()
 	{
 		m_ActiveCanvas.SetActive(false);
@@ -48,6 +53,7 @@ public class FrontEndManager : MonoBehaviour {
 		m_ActiveCanvas = m_Controls;
 	}
 
+	/* Animate Main Menu. */
 	private IEnumerator MoveMain(bool moveIn)
 	{
 		float time = 0.0f;
