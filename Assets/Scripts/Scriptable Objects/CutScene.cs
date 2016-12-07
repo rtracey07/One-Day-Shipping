@@ -8,7 +8,6 @@ public class CutScene : ScriptableObject {
 
 
 	public List<CutSceneEvent> Events;
-	private Slider volumeControl;
 
 	/// <summary>
 	/// displays cut scenes that run between levels
@@ -26,11 +25,6 @@ public class CutScene : ScriptableObject {
 		GameManager.Instance.continueClicked = false;
 		yield return LevelManager.Instance.StartCoroutine (LevelManager.Instance.FullScreenFade (true));
 		LevelManager.Instance.m_BlackOut.gameObject.SetActive (false);
-		GameObject audio = GameObject.FindGameObjectWithTag ("AudioSlider");
-		// displays the audio slider
-		if (audio != null) {
-			volumeControl = audio.GetComponent<Slider> ();
-		}
 	}
 
 	/// <summary>
@@ -43,17 +37,7 @@ public class CutScene : ScriptableObject {
 		yield return new WaitForSeconds (Events[index].timeBeforeDisplaying);
 		GameClockManager.Instance.freeze = Events [index].pauseGame;
 
-		GameObject audio = GameObject.FindGameObjectWithTag ("AudioSlider");
-		if (audio != null) {
-			volumeControl = audio.GetComponent<Slider> ();
-
-		} else {
-			Debug.Log ("audio slider not found");
-		}
-
-		if (Events [index].sound != null && audio != null)
-			AudioManager.Instance.PlaySoundEffect(Events [index].sound, volumeControl.value*Events[index].soundVolume);
-		else if(Events[index].sound != null)
+		if(Events[index].sound != null)
 			AudioManager.Instance.PlaySoundEffect(Events [index].sound, Events[index].soundVolume);
 
 		// displays dialog buttons based on dialog type

@@ -69,8 +69,6 @@ public class ResultsScreen : MonoBehaviour {
 		currScore = GameManager.Instance.stats.postmenHit * -10;
 		yield return StartCoroutine (Tally (currScore, postmen, total));
 
-		float originalFontSize = total.fontSize;
-
         //  Pause to show user score
 		yield return new WaitForSeconds(1.5f);
 

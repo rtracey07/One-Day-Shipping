@@ -61,11 +61,7 @@ public class StatPostmanManager : MonoBehaviour {
 	void SetStatPostmanPositions(StatPostmanLocations area){
 		// don't want to clone more statPosts than positions
 		int activeStatPostmanCount = area.locations.Count;
-		int inActivesStatPostmanCount = statPosts.Count - activeStatPostmanCount;
-		//Debug.Log ("activeStatPostmanCount: " + activeStatPostmanCount + " inActivesStatPostmanCount: " + inActivesStatPostmanCount);
-		if (activeStatPostmanCount == null && inActivesStatPostmanCount == null) {
-			return;
-		}
+
 		for (int i = 0; i < activeStatPostmanCount; i++) {
 			if (i >= statPosts.Count)
 				break;

@@ -23,7 +23,6 @@ public class DogAI : MonoBehaviour {
 	private GameObject player;									// the player object
 	private Collider col;
 	private bool wallHit = false;								// checks for walls or end of range
-	private bool playerChase = false;							// if the player is nearby
 	private Animator animator;									// for animating
 	private bool wall = false;
 
@@ -31,7 +30,6 @@ public class DogAI : MonoBehaviour {
 	private float x;
 	private float z;
 	private float change = 0.0f;
-	private float angle = 0.0f;
 	private float current;
 
 	//for attacking player
@@ -116,7 +114,6 @@ public class DogAI : MonoBehaviour {
 						package = pack_gameobject.GetComponent<Package>();
 					}
 						
-					playerChase = true;
 					GameManager.Instance.dogAttack = true;
 					//go after player
 					Vector3 dir = (new Vector3 (player.transform.position.x, player.transform.position.y, player.transform.position.z) - transform.position).normalized;
@@ -132,7 +129,6 @@ public class DogAI : MonoBehaviour {
 					} else {
 						change = Random.Range (120.0f, 180.0f);
 					}
-					playerChase = false;
 					wallHit = true;
 				} else if (wall && !wallHit) {
 					// hit a wall, so turn around
@@ -143,7 +139,6 @@ public class DogAI : MonoBehaviour {
 					} else {
 						change = Random.Range (120.0f, 180.0f);
 					}
-					playerChase = false;
 					wallHit = true;
 				}
 
@@ -175,7 +170,6 @@ public class DogAI : MonoBehaviour {
 			attackTime += 3.0f * GameClockManager.Instance.time;
 			attack = false;
 		}
-
 	}
 
 	/// <summary>
@@ -198,5 +192,4 @@ public class DogAI : MonoBehaviour {
 			break;
 		}
 	}
-
 }

@@ -14,16 +14,9 @@ public class PostmanStationaryAI : MonoBehaviour {
 	//[SerializeField] Vector3[] route;
 	private int next;
 	private bool fwd;
-	private float turnDelay = 1.0f;
-	private float speedMod = 0.5f;
 
-	private bool wall = false;
 	private Pathway path;													// the path
 	public float rotationOffset = 0.05f;									// how far ahead to look to orient on path
-	private float currentLook =0.25f;										// where the car is looking
-	private float percentsPerSecond = 0.1f; 								// %1 of the path moved per second
-	private bool swapPositions = false;
-	private PostmanManager m_Manager;
 	private Vector3 cameraSpacePos;
 
 	//keep track of ground
@@ -99,16 +92,10 @@ public class PostmanStationaryAI : MonoBehaviour {
 	void Start () {
 		//center = transform.position;
 		player = GameObject.FindGameObjectWithTag ("Player");
-		currentLook = CurrentPathPercent + rotationOffset;
-		percentsPerSecond = 0.02f;//speed * 0.0004f;
-
-		m_Manager = GetComponentInParent<PostmanManager> ();
-
 
 		animator = GetComponent <Animator>();
 		//state = State.Standing;
 		state = State.Spawn;
-
 
 		package = GameObject.FindGameObjectWithTag ("Package");
 	}
@@ -136,17 +123,14 @@ public class PostmanStationaryAI : MonoBehaviour {
 
 		if ((player.transform.position.x - transform.position.x) * (player.transform.position.x - transform.position.x)
 			+ (player.transform.position.z - transform.position.z) * (player.transform.position.z - transform.position.z) <= projectileRadius * projectileRadius) {
-			//center = transform.position;
-			Debug.Log("shoot range");
+
 			state = State.PlayerShoot;
 		}
 
 		if ((player.transform.position.x - transform.position.x) * (player.transform.position.x - transform.position.x)
 			+ (player.transform.position.z - transform.position.z) * (player.transform.position.z - transform.position.z) <= radius * radius) {
-			//center = transform.position;
-			Debug.Log("chase range");
+
 			state = State.PlayerChase;
-			//Debug.Log ("from walking");
 		}
 		//transform.position = Vector3.MoveTowards (transform.position, new Vector3 (transform.position.x, ground.point.y + groundOffset, transform.position.z), GameClockManager.Instance.time * speed);
 	}

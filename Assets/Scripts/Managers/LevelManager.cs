@@ -144,7 +144,7 @@ public class LevelManager : MonoBehaviour {
 	public void SpawnFlamingPackages(GameObject player, Rigidbody playerBody){
 		//Check if flaming packages are activated:
 
-		if (levelData.flamingPackageGroup.activated != null) {
+		if (levelData.flamingPackageGroup.activated) {
 			//Find spawn area at Vector3(playerposition, playerposition+50, playerposition+30):
 			Vector3 playerPosition = player.transform.position;
 			Vector3 flamingPackageSpawnArea = playerPosition;

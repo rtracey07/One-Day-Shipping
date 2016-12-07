@@ -17,9 +17,6 @@ public class CarPath : MonoBehaviour {
 	private CarPathManager m_Manager;										// the manager object
 	private bool isHit = false;												// checks if car is colliding
 	private Vector3 cameraSpacePos;											// keeps track of camera
-	private float groundOffset = -0.1f;										// adjusts for floating off ground
-
-	private Vector3[] iTweenPath;											// the path to follow
 
 	public AudioClip carCollisionSound1, carCollisionSound2, carCollisionSound3;
 
@@ -57,7 +54,7 @@ public class CarPath : MonoBehaviour {
 		if (path == null || !path.isActive) {
 			path = m_Manager.GetAreaPath ();
 			if (path != null && path.pathway != null)
-				iTweenPath = iTween.PathControlPointGenerator (path.pathway);
+				iTween.PathControlPointGenerator (path.pathway);
 		}
 
 		if (path != null) {

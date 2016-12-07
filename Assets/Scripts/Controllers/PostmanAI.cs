@@ -14,15 +14,12 @@ public class PostmanAI : MonoBehaviour {
 	//[SerializeField] Vector3[] route;
 	private int next;
 	private bool fwd;
-	private float turnDelay = 1.0f;
 	private float speedMod = 0.5f;											// for moving along paths
 
-	private bool wall = false;
 	private Pathway path;													// the path
 	public float rotationOffset = 0.05f;									// how far ahead to look to orient on path
 	private float currentLook =0.25f;										// where the car is looking
 	private float percentsPerSecond = 0.1f; 								// %1 of the path moved per second
-	private bool swapPositions = false;
 	private PostmanManager m_Manager;
 	private Vector3 cameraSpacePos;
 
@@ -50,11 +47,7 @@ public class PostmanAI : MonoBehaviour {
 	private float attackTime = 1.0f;
 	private float attackDelay = 3.0f;
 
-	private float change = 0.0f;
-	private float angle = 0.0f;
 	private float current;
-	private bool dirChange = false;
-	private Vector3[] iTweenPath;
 
 	//postman states
 	public enum State
@@ -126,7 +119,7 @@ public class PostmanAI : MonoBehaviour {
 		if (path == null || !path.isActive) {
 			path = m_Manager.GetAreaPath ();
 			if (path != null && path.pathway != null)
-				iTweenPath = iTween.PathControlPointGenerator (path.pathway);
+				iTween.PathControlPointGenerator (path.pathway);
 		}
 
 
@@ -184,7 +177,6 @@ public class PostmanAI : MonoBehaviour {
 			aim = Quaternion.AngleAxis (-45, transform.right) * aim;
 
 			projectile_shoot.AddForce (aim * projectileSpeed);
-			Destroy (projectile_shoot, 5);
 
 			projectileTime = Time.time + projectileInterval;
 		}

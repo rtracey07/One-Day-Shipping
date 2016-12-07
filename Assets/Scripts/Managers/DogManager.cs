@@ -59,11 +59,7 @@ public class DogManager : MonoBehaviour {
 	void SetDogPositions(DogSpawnLocations area){
 		// don't want to clone more dogs than positions
 		int activeDogCount = area.locations.Count;
-		int inActivesDogCount = dogs.Count - activeDogCount;
-		//Debug.Log ("activeDogCount: " + activeDogCount + " inActivesDogCount: " + inActivesDogCount);
-		if (activeDogCount == null && inActivesDogCount == null) {
-			return;
-		}
+
 		for (int i = 0; i < activeDogCount; i++) {
 			if (i >= dogs.Count)
 				break;
