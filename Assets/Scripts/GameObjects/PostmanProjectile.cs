@@ -42,7 +42,8 @@ public class PostmanProjectile : MonoBehaviour {
 	/// <returns>The five seconds.</returns>
 	IEnumerator LastFiveSeconds(){
 		yield return new WaitForSeconds(5.0f);
-		Destroy (this.gameObject);
+		if(this.gameObject != null)
+			Destroy (this.gameObject);
 	}
 
 	/// <summary>

@@ -15,6 +15,7 @@ public class CutScene : ScriptableObject {
 	/// <returns>The cut scene.</returns>
 	public IEnumerator RunCutScene()
 	{
+		LevelManager.Instance.m_CutsceneText.text = "";
 		yield return LevelManager.Instance.StartCoroutine (LevelManager.Instance.FullScreenFade (false));
 		// checks if skip button is clicked
 		for (int i=0; i<Events.Count && !GameManager.Instance.skipClicked; i++) {
