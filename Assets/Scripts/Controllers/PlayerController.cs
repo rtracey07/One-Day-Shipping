@@ -92,6 +92,7 @@ public class PlayerController : MonoBehaviour {
 			animator.SetFloat ("Speed", speedFraction);
 			animator.SetFloat ("Direction", vertical);
 
+			//lankiness effects
 			legL.localScale = new Vector3 (legL.localScale.x, Mathf.Lerp (1.0f, 1.4f, speedFraction), legL.localScale.z);
 			legR.localScale = new Vector3 (legR.localScale.x, Mathf.Lerp (1.0f, 1.4f, speedFraction), legR.localScale.z);
 			armL.localScale = new Vector3 (armL.localScale.x, Mathf.Lerp (1.2f, 1.4f, speedFraction), armL.localScale.z);
@@ -177,10 +178,9 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 
+		//hit by a car, move up and away
 		if (other.gameObject.tag.Equals("Vehicle")) {
 			vertical = 0.05f;
-			//Debug.Log("vertical: " + vertical);
-			//Debug.Log ("car!");
 			Vector3 forcedir = transform.position - other.gameObject.transform.position;
 			forcedir = new Vector3 (forcedir.x, 0.1f, forcedir.z);
 			moveDirection = Vector3.zero;
@@ -191,7 +191,7 @@ public class PlayerController : MonoBehaviour {
 
 		}
 
-
+		// debugging gizmos
 		gizmos = new gizmoData[other.contacts.Length];
 
 		for (int i = 0; i < gizmos.Length; i++) {
@@ -214,12 +214,17 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-
+	/// <summary>
+	/// stop the player
+	/// </summary>
 	public void PlayerStop()
 	{
 		currSpeed /= 2;
 	}
 
+	/// <summary>
+	/// jump and play sound when jump key pressed
+	/// </summary>
 	public void PlayerJump()
 	{
 		if (!sliding) {
@@ -230,6 +235,9 @@ public class PlayerController : MonoBehaviour {
 		jumpPrimed = false;
 	}
 
+	/// <summary>
+	/// debugging gizmos
+	/// </summary>
 	void OnDrawGizmos()
 	{
 		if (gizmos != null) {
@@ -249,6 +257,10 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// for getting the package for other scripts
+	/// </summary>
+	/// <param name="state">If set to <c>true</c> state.</param>
 	public void GetPackage(bool state)
 	{
 		animator.SetBool ("Package", state);

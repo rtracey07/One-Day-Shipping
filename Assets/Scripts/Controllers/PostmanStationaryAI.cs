@@ -168,7 +168,7 @@ public class PostmanStationaryAI : MonoBehaviour {
 			}
 			if (rangedAttackSound != null)
 				AudioManager.Instance.PlaySoundEffect (rangedAttackSound);
-			//Debug.Log(projectile_shoot.gameObject.name);
+
 			//send forward
 			projectile_shoot.AddForce (new Vector3(transform.forward.x, transform.forward.y - 0.05f, transform.forward.z) * projectileSpeed);
 			Destroy (projectile_shoot.gameObject, 2.0f);
@@ -287,16 +287,14 @@ public class PostmanStationaryAI : MonoBehaviour {
 			transform.rotation = Quaternion.Slerp (transform.rotation, rot, GameClockManager.Instance.time * speed);
 			shoot ();
 
-			//transform.Translate (transform.forward * GameClockManager.Instance.time * speed, Space.World);
+			// if the player is within range, chase, if not stand still
 			if (radius <= projectileRadius && ((player.transform.position.x - transform.position.x) * (player.transform.position.x - transform.position.x)
 				+ (player.transform.position.z - transform.position.z) * (player.transform.position.z - transform.position.z) <= radius * radius)) {
 				center = transform.position;
 				state = State.PlayerChase;
-				//Debug.Log ("if 1");
 			} else if ((player.transform.position.x - center.x) * (player.transform.position.x - center.x)
 				+ (player.transform.position.z - center.z) * (player.transform.position.z - center.z) >= projectileRadius * projectileRadius) {
 				state = State.Standing;
-				//Debug.Log ("if 2");
 			} else {
 				CheckForPlayer ();
 			}
@@ -306,7 +304,6 @@ public class PostmanStationaryAI : MonoBehaviour {
 				+ (player.transform.position.z - transform.position.z) * (player.transform.position.z - transform.position.z) <= radius * radius)) {
 				center = transform.position;
 				state = State.PlayerChase;
-				//Debug.Log ("if 3");
 			} else {
 				state = State.Standing;
 			}

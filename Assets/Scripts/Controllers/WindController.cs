@@ -14,16 +14,22 @@ public class WindController : MonoBehaviour {
 		m_WindParticles.Stop ();
 	}
 
+	// start the wind when enabled
 	void OnEnable()
 	{
 		StartCoroutine (RandomWind ());
 	}
 
+	// stop when disabled
 	void OnDisable()
 	{
 		this.StopAllCoroutines ();
 	}
 
+	/// <summary>
+	/// Sets the wind at random
+	/// </summary>
+	/// <returns>The wind.</returns>
 	public IEnumerator RandomWind()
 	{
 		while (true) {
@@ -32,6 +38,10 @@ public class WindController : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Triggers the wind.
+	/// </summary>
+	/// <returns>The wind.</returns>
 	public IEnumerator TriggerWind()
 	{
 		m_WindParticles.transform.RotateAround (m_Player.position, Vector3.up, Random.Range (0.0f, 359.0f));

@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 [CreateAssetMenu(menuName = "Data/Level/Friday")]
 public class Friday : Level {
 
-	public GameObject m_Apocalypse;
+	public GameObject m_Apocalypse;						// apocolypse effects
 
 	public override IEnumerator RunLevel()
 	{
@@ -38,7 +38,11 @@ public class Friday : Level {
 			LevelManager.Instance.SetPickup ();
 		}
 	}
-
+	/// <summary>
+	/// Checks if the level has been won
+	/// </summary>
+	/// <returns>The window state.</returns>
+	/// <param name="eventIndex">Event index.</param>
 	public IEnumerator CheckWinState(int eventIndex)
 	{
 		yield return new WaitUntil (() => LevelManager.Instance.CheckWinState ());
@@ -46,7 +50,10 @@ public class Friday : Level {
 		yield return LevelManager.Instance.StartCoroutine (TriggerEvent (eventIndex));
 	}
 
-
+	/// <summary>
+	/// makes flaming packages fall from sky
+	/// </summary>
+	/// <returns>The flaming packages.</returns>
 	public IEnumerator SpawnFlamingPackages(){
 		GameObject player = GameObject.Find ("Player");
 		Rigidbody playerBody = player.GetComponent<Rigidbody> ();
@@ -56,6 +63,9 @@ public class Friday : Level {
 		}
 	}
 
+	/// <summary>
+	/// starts the apocolypse
+	/// </summary>
 	public void TriggerApocalypse(){
 		GameObject apocalypse = (GameObject)GameObject.Instantiate (m_Apocalypse, GameManager.Instance.mainCamera.transform);
 		apocalypse.transform.localPosition = Vector3.zero;

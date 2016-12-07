@@ -138,7 +138,7 @@ public class PostmanAI : MonoBehaviour {
 				currentLook = rotationOffset;
 			}
 
-			// move along the percentage of the path by time
+			// move along the percentage of the path by time and look oriented on the path
 			CurrentPathPercent += percentsPerSecond * speedMod * GameClockManager.Instance.time;
 			currentLook += percentsPerSecond * speedMod * GameClockManager.Instance.time;
 			Vector3 look = iTween.PointOnProcessedPath (path.pathway, currentLook);
@@ -146,12 +146,14 @@ public class PostmanAI : MonoBehaviour {
 			transform.LookAt (look);
 		}
 
+		//if the player within shoot range, shoot
 		if ((player.transform.position.x - transform.position.x) * (player.transform.position.x - transform.position.x)
 			+ (player.transform.position.z - transform.position.z) * (player.transform.position.z - transform.position.z) <= projectileRadius * projectileRadius) {
 			center = transform.position;
 			state = State.PlayerShoot;
 		}
 
+		//if the player in chase range, chase
 		if ((player.transform.position.x - transform.position.x) * (player.transform.position.x - transform.position.x)
 			+ (player.transform.position.z - transform.position.z) * (player.transform.position.z - transform.position.z) <= radius * radius) {
 			center = transform.position;
@@ -219,7 +221,7 @@ public class PostmanAI : MonoBehaviour {
 			state = State.Attacking;
 
 			if (attackTime >= attackDelay) {
-				////Debug.Log ("tossing");
+				// time the attack hits so that it isn't a constant drain on health
 				AudioManager.Instance.PlaySoundEffect (physicalAttackSound);
 				GameManager.Instance.stats.postmenHit++;
 				package.DamagePackage (damageStrength / 2.0f);
@@ -247,7 +249,6 @@ public class PostmanAI : MonoBehaviour {
 	/// If the player is nearby, chase until he gets away, then go back to route
 	/// </summary>
 	void PlayerChaseState(){
-		////Debug.Log ("chasing");
 
 		// check for player position, attack if close
 		if ((player.transform.position.x - transform.position.x) * (player.transform.position.x - transform.position.x)
@@ -260,7 +261,6 @@ public class PostmanAI : MonoBehaviour {
 		//go back to walking state
 		if ((transform.position.x - center.x) * (transform.position.x - center.x)
 			+ (transform.position.z - center.z) * (transform.position.z - center.z) >= radius * radius) {
-			//Debug.Log ("postman outside radius");
 			state = State.Turning;
 
 		} else {
@@ -269,7 +269,6 @@ public class PostmanAI : MonoBehaviour {
 			Quaternion rot = Quaternion.LookRotation (dir);
 			transform.rotation = Quaternion.Slerp (transform.rotation, rot, GameClockManager.Instance.time * speed);
 			transform.Translate (transform.forward * GameClockManager.Instance.time * speed, Space.World);
-			//transform.position = Vector3.MoveTowards (transform.position, new Vector3 (transform.position.x, ground.point.y + groundOffset, transform.position.z), GameClockManager.Instance.time * speed);
 			CheckForPlayer ();
 		}
 	}

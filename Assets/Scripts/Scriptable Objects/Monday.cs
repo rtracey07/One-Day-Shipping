@@ -67,18 +67,31 @@ public class Monday : Level {
 		}
 	}
 
+	/// <summary>
+	/// Raises the dog attack event.
+	/// </summary>
+	/// <param name="eventIndex">Event index.</param>
 	public IEnumerator OnDogAttack(int eventIndex)
 	{
 		yield return new WaitUntil (() => GameManager.Instance.dogAttack);
 		yield return LevelManager.Instance.StartCoroutine (TriggerEvent (eventIndex));
 	}
-
+	/// <summary>
+	/// Checks if the level is won
+	/// </summary>
+	/// <returns>The win state.</returns>
+	/// <param name="eventIndex">Event index.</param>
 	public IEnumerator CheckWinState(int eventIndex)
 	{
 		yield return new WaitUntil (() => LevelManager.Instance.CheckWinState ());
 		yield return LevelManager.Instance.StartCoroutine (TriggerEvent (eventIndex));
 	}
-		
+
+	/// <summary>
+	/// Checks if the package destroyed.
+	/// </summary>
+	/// <returns>The package destroyed.</returns>
+	/// <param name="eventIndex">Event index.</param>
 	public IEnumerator CheckPackageDestroyed(int eventIndex)
 	{
 		yield return new WaitUntil (() => GameManager.Instance.destroyed);
