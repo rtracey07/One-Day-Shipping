@@ -142,19 +142,16 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	public void SpawnFlamingPackages(GameObject player, Rigidbody playerBody){
-		//Check if flaming packages are activated:
 
+		//Check if flaming packages are activated:
 		if (levelData.flamingPackageGroup.activated) {
 			//Find spawn area at Vector3(playerposition, playerposition+50, playerposition+30):
 			Vector3 playerPosition = player.transform.position;
 			Vector3 flamingPackageSpawnArea = playerPosition;
 
-
 			//Instantiate the given number of flaming packages at the Flaming Packages Pool:
 			for (int i = 0; i < levelData.flamingPackageGroup.numFlamingPackagesToSpawn; i++){
 				flamingPackageSpawnArea.y += 30;
-				//flamingPackageSpawnArea.z += Random.Range(1,5) * playerBody.velocity.z;
-				//flamingPackageSpawnArea.x += Random.Range (-2, 2) * playerBody.velocity.x;
 				float vel = 4.0f * Mathf.Sqrt(playerBody.velocity.x*playerBody.velocity.x + playerBody.velocity.z*playerBody.velocity.z);
 				Vector3 front = playerBody.transform.forward * vel + playerBody.transform.position;
 
@@ -162,7 +159,6 @@ public class LevelManager : MonoBehaviour {
 				flamingPackageSpawnArea.x = Random.Range (front.x - 1, front.x + 1);
 				GameObject flamingPackage = GameObject.Instantiate (levelData.flamingPackageGroup.flamingPackage);
 				flamingPackage.transform.position = flamingPackageSpawnArea;
-				Debug.Log(flamingPackageSpawnArea + " " + playerBody.transform.position + " " + (playerBody.transform.forward*vel + playerBody.transform.position));
 			}
 		}
 	}

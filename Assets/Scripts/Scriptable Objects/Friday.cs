@@ -59,7 +59,9 @@ public class Friday : Level {
 		Rigidbody playerBody = player.GetComponent<Rigidbody> ();
 		while (true) {
 			yield return new WaitForSeconds(1.0f);
-			LevelManager.Instance.SpawnFlamingPackages (player, playerBody);
+			if (!GameClockManager.Instance.freeze) {
+				LevelManager.Instance.SpawnFlamingPackages (player, playerBody);
+			}
 		}
 	}
 

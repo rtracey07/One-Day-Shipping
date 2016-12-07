@@ -43,7 +43,7 @@ MonoBehaviour:
   flamingPackageGroup:
     flamingPackage: {fileID: 1000013266396748, guid: 63fe3165676cd49628d28b96f608da93,
       type: 2}
-    numFlamingPackagesToSpawn: 5
+    numFlamingPackagesToSpawn: 1
     activated: 1
   pickupLocations:
   - locations:

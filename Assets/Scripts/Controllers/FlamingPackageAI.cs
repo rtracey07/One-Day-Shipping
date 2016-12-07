@@ -21,6 +21,7 @@ public class FlamingPackageAI : MonoBehaviour {
 		if (fallSound != null){
 			AudioSource.PlayClipAtPoint (fallSound, this.gameObject.transform.position);
 		}
+		StartCoroutine (DestroyAfterFiveSeconds ());
 
 	}
 
@@ -48,16 +49,12 @@ public class FlamingPackageAI : MonoBehaviour {
 				Debug.Log ("Package Hit");
 				pack.GetComponent<Package> ().DamagePackage (damageStrength);
 
-				//GameManager.Instance.stats.
 			}
-
-			gameObject.SetActive(false);
+			StopCoroutine ("DestroyAfterFiveSeconds");
+			Destroy (this.gameObject);
 
 		}
-
-
-		//destroy package no matter what:
-		//gameObject.SetActive(false);
+			
 	}
 
 	void Update(){
@@ -66,6 +63,14 @@ public class FlamingPackageAI : MonoBehaviour {
 		} else {
 			gameObject.GetComponent<Rigidbody> ().constraints = RigidbodyConstraints.None;
 		}
+	}
+
+	public IEnumerator DestroyAfterFiveSeconds(){
+		yield return new WaitForSeconds (10.0f);
+		if (this.gameObject != null) {
+			Destroy (this.gameObject);
+		}
+
 	}
 
 }
