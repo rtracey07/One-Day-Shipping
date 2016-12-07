@@ -4,17 +4,17 @@ using System.Collections.Generic;
 
 public class CarPathManager : MonoBehaviour {
 
-	// list of the areas on the map
+
 	[SerializeField]
-	public List<Pathway> areas;			
-	private List<Pathway> activeAreas;
+	public List<Pathway> areas;						//List of car areas.
+	private List<Pathway> activeAreas;				//Currently active areas.
 
-	public Color inactivePathColor = Color.white;
-	public Color activePathColor = Color.red;
-	public float activeDistance;
+	public Color inactivePathColor = Color.white;	//Gizmo color for inactive paths.
+	public Color activePathColor = Color.red;		//Gizmo color for active paths.
+	public float activeDistance;					//Distance for path activation.
 
-	public bool debug = false;
-	private Transform player;
+	public bool debug = false;						//Toggle Gizmos ON/OFF
+	private Transform player;						//Player location.
 
 	void Start()
 	{
@@ -23,7 +23,7 @@ public class CarPathManager : MonoBehaviour {
 		LevelManager.Instance.SpawnCars ();
 	}
 
-	// Update is called once per frame
+	/* Get Active Paths on Update */
 	void Update () {
 
 		if (areas != null && player != null) {
@@ -45,6 +45,7 @@ public class CarPathManager : MonoBehaviour {
 		}
 	}
 
+	/* Pass back an area to a car. */
 	public Pathway GetAreaPath()
 	{
 		if (activeAreas.Count > 0) {
@@ -54,6 +55,7 @@ public class CarPathManager : MonoBehaviour {
 		return null;
 	}
 
+	/* For Debugging: Draw GIzmos in scene. */
 	void OnDrawGizmos()
 	{
 		if (debug == true) {
@@ -71,6 +73,7 @@ public class CarPathManager : MonoBehaviour {
 		}
 	}
 		
+	/* Deactivate paths on destroy. */
 	void OnDestroy()
 	{
 		foreach (Pathway p in areas) {

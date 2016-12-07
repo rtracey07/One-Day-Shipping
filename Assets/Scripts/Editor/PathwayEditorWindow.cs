@@ -3,18 +3,18 @@ using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
 
+/* Editor Window to help with building paths in-game. */
 public class PathwayEditorWindow : EditorWindow {
 
-	private string k_SaveDirectory = "Assets/Data/Pathways/";
-	private string m_PathwayName = "Test";
-	private int m_PathwayCount;
-	private int m_CurrVertex;
-	private bool m_AddVertices = false;
-	private bool m_ShowVertex = false;
-	private Pathway m_Pathway;
+	private string k_SaveDirectory = "Assets/Data/Pathways/";		//Project directory for pathway objects.
+	private string m_PathwayName = "Test";							//Name of new pathway.
+	private int m_PathwayCount;										//Number of points on path.
+	private int m_CurrVertex;										//Current point on path.
+	private bool m_AddVertices = false;								//AddVertices.
+	private bool m_ShowVertex = false;								//Show Vertices.
+	private Pathway m_Pathway;										//Pathway 
 
 	private GameObject pathHelper;
-
 	private Vector3 m_CurrPosition = Vector3.zero;
 
 	[MenuItem("Custom/Windows/Pathway Creator Tool")]
@@ -23,6 +23,7 @@ public class PathwayEditorWindow : EditorWindow {
 		EditorWindow.GetWindow<PathwayEditorWindow> ();
 	}
 
+	/* On UI Drawn. */
 	void OnGUI()
 	{
 		NameFields ();
@@ -30,6 +31,7 @@ public class PathwayEditorWindow : EditorWindow {
 		AssignVertices ();
 	}
 
+	/* Name Entering UI Area. */
 	void NameFields()
 	{
 		GUILayout.BeginHorizontal ();
@@ -43,6 +45,7 @@ public class PathwayEditorWindow : EditorWindow {
 		GUILayout.EndHorizontal ();
 	}
 
+	/* UI Area to house the "Create" Button. */
 	void CreateButton()
 	{
 		if (GUILayout.Button ("Create")) {
@@ -58,6 +61,7 @@ public class PathwayEditorWindow : EditorWindow {
 		}
 	}
 
+	/* UI Area to add vertices to path. */
 	void AssignVertices()
 	{
 		if (m_AddVertices) {
@@ -84,6 +88,7 @@ public class PathwayEditorWindow : EditorWindow {
 		}
 	}
 
+	/* Draw Gizmo During Edit Mode. */
 	void DrawVertexGizmo()
 	{
 		if (SceneView.sceneViews.Count != 0) {
@@ -97,6 +102,7 @@ public class PathwayEditorWindow : EditorWindow {
 		}
 	}
 
+	/* Clear instantiated data close. */
 	void OnDestroy()
 	{
 		DestroyImmediate (pathHelper);

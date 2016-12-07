@@ -5,8 +5,9 @@ using System;
 [ExecuteInEditMode]
 public class PathHelper : MonoBehaviour {
 
-	public Pathway pathway;
+	public Pathway pathway;	//Pathway to visualize.
 
+	/* Draw Selected Pathway in Edit mode. */
 	void OnDrawGizmos()
 	{
 		Gizmos.DrawWireSphere (this.transform.position, 1);
